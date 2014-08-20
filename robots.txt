@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://greena13.github.io/sitemap.xml 
