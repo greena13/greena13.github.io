@@ -3,7 +3,7 @@ layout: post
 title: "Reducing a Routine's Parameters"
 date: 2014-08-20 21:04:08 +0100
 comments: true
-categories: [complexity, simplicity, function, method, parameter]
+categories: [Code Complete, complexity, simplicity, function, method, parameter]
 ---
 
 Steve McConnel's [Code Complete](http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670) provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.
