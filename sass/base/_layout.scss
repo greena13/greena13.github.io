@@ -1,4 +1,4 @@
-$max-width: 1200px !default;
+$max-width: 900px !default;
 
 // Padding used for layout margins
 $pad-min: 18px !default;
@@ -7,10 +7,10 @@ $pad-medium: 35px !default;
 $pad-wide: 55px !default;
 
 // Sidebar widths used in media queries
-$sidebar-width-medium: 240px !default;
+$sidebar-width-medium: 150px !default;
 $sidebar-pad-medium: 15px !default;
 $sidebar-pad-wide: 20px !default;
-$sidebar-width-wide: 300px !default;
+$sidebar-width-wide: 200px !default;
 
 $indented-lists: false !default;
 
@@ -18,7 +18,15 @@ $header-font-size: 1em !default;
 $header-padding-top: 1.5em !default;
 $header-padding-bottom: 1.5em !default;
 
+$banner-border-colour: #8b648c;
+$main-border-colour: #E0E0E0;
+
 .group { @include pie-clearfix; }
+
+@mixin left-and-right-border{
+  border-left: 1px solid $main-border-colour;
+  border-right: 1px solid $main-border-colour;
+}
 
 @mixin collapse-sidebar {
   float: none;
@@ -47,7 +55,7 @@ body {
   -webkit-text-size-adjust: none;
   max-width: $max-width;
   position: relative;
-  margin: 0 auto;
+  margin: 1em auto;
   > header, > nav, > footer, #content > article, #content > div > article, #content > div > section {
     @extend .group;
     padding-left: $pad-min;
@@ -86,12 +94,28 @@ body {
     font-size: $header-font-size;
     padding-top: $header-padding-top;
     padding-bottom: $header-padding-bottom;
+    border-radius: 0.8em 0.8em 0 0;
   }
 }
 
 #content {
   overflow: hidden;
   > div, > article { width: 100%; }
+}
+
+#main, nav {
+  @include left-and-right-border;
+}
+
+footer[role=contentinfo] {
+  @include left-and-right-border;
+  border-bottom: 1px solid $main-border-colour;
+}
+
+header[role=banner] {
+  border-right: 1px solid $banner-border-colour;
+  border-left: 1px solid $banner-border-colour;
+  border-top: 1px solid $banner-border-colour;
 }
 
 aside.sidebar {

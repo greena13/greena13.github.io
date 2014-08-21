@@ -3,7 +3,6 @@ article {
   a { @extend .force-wrap; }
   header {
     position: relative;
-    padding-top: 2em;
     padding-bottom: 1em;
     margin-bottom: 1em;
     background: $img-border bottom left repeat-x;
@@ -19,7 +18,6 @@ article {
       &.meta {
         @extend .sans;
         text-transform: uppercase;
-        position: absolute; top: 0;
       }
     }
     @media only screen and (min-width: 768px) {
