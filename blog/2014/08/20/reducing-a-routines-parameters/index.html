@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Reducing a Routine's Parameters - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Steve McConnel&rsquo;s Code Complete provides a great insight into understanding some of the common function forms and how to go about simplifying &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Key Shift in Cmd</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:greena13.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Reducing a Routine's Parameters</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-20T21:04:08+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:04 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.</p>
+
+<p>First, a brief note on terminology: I will be using <em>routine</em>, <em>method</em> and <em>function</em> interchangeably to refer to a <em>piece of code that accepts or requires a given number of inputs, or parameters</em>.</p>
+
+<p>McConnel points out that code with a long list of parameters present problems to those who need to understand, maintain and use it. Multiple parameters are difficult to remember when the function needs to be called - as is the correct order to use them in. Code compliant with the mandates of <em>Defensive Programming</em> will also need to check the arguments have been provided in the correct order and have sensible values. While many IDEs and languages will do the recording of correct parameter order and type checking, this should not been seen as excuse for bad practices. Long parameter lists provide further headaches for maintenance if the method&rsquo;s signature needs to be later modified.</p>
+
+<p>A function can usually be improved by reducing the number of parameters it requires. <em>Polyadic functions</em> (with 3 or more parameters) should almost always be refactored to require fewer arguments. One way of achieving this is by breaking the function up into smaller ones that perform simpler chunks of functionality and need less information to execute; this change in abstraction can often add clarity to the intention behind the code. Another strategy for reducing a function&rsquo;s parameters is to wrap them up in a single data structure, removing the need to remember the parameter order completely and freeing up the reader to focus on what&rsquo;s pertinent to the function of the code.</p>
+
+<p>Good code should consist primarily of <em>monadic</em> and <em>dyadic</em> functions, or those with 1 and 2 parameters, respectively. Monadic functions typically take one of three forms:</p>
+
+<ul>
+<li>Asking a question or testing a particular condition. eg. <code>isRed(ball)</code></li>
+<li>Performing an action or transformation on a particular parameter. eg. <code>fileOpen(myFile)</code></li>
+<li>Handling an event where the function uses the argument to update the system&rsquo;s state. eg. <code>registerMouseEvent(mouseEvent)</code></li>
+</ul>
+
+
+<p>It should be noted that the first form need not return a boolean value. A function that returns a particular characteristic is also of this form. eg. <code>averageGrade(reportCard)</code>. Functions of the second form should also return the result of the action or transform wherever possible. <em>Output arguments</em>, or where functions perform an action on the argument instance itself and return either <code>null</code>/<code>void</code> or another value, are more difficult to follow. In the case of an action being performed on an instance, an object-oriented paradigm is better suited eg. <code>ball.bounce()</code> is clearer than a function <code>bounce(ball)</code> that returns the instance of <code>ball</code>.</p>
+
+<p>If a function or method meets one of the above descriptions and has more than a single parameter, it is a good sign that it is a candidate for refactoring.</p>
+
+<p>Dyadic functions are not as easily classified into categories and can perform many actions. Care should be taken with the ordering of the parameters when defining a function or method&rsquo;s signature so that is natural and easy to remember and should be evident from the name of the routine. If at all possible, the pairing of the two parameters should be wrapped in single argument to convert to a monadic function.</p>
+
+<p>The ideal function is a <em>niliadic function</em>, or a function without any parameters.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleck Greenham</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-08-20T21:04:08+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:04 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code-complete/'>code complete</a>, <a class='category' href='/blog/categories/complexity/'>complexity</a>, <a class='category' href='/blog/categories/function/'>function</a>, <a class='category' href='/blog/categories/method/'>method</a>, <a class='category' href='/blog/categories/parameter/'>parameter</a>, <a class='category' href='/blog/categories/simplicity/'>simplicity</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters/" data-via="" data-counturl="http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/08/21/ordering-and-labelling-code/" title="Next Post: Ordering and Labelling Code">Ordering and Labelling Code &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/08/21/reducing-code-complexity/">Reducing Code Complexity</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/21/ordering-and-labelling-code/">Ordering and Labelling Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/20/reducing-a-routines-parameters/">Reducing a Routine's Parameters</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greena13">@greena13</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greena13',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Aleck Greenham -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Reducing Code Complexity - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="I have already covered what I picked up from Steve McConnel&rsquo;s Code Complete and Robert C. Martin&rsquo;s Clean Code on packaging and labeling &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/08/21/reducing-code-complexity">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Key Shift in Cmd</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:greena13.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Reducing Code Complexity</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-21T16:00:53+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:00 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have already covered what I picked up from Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a> on <a href="blog/2014/08/21/ordering-and-labelling-code">packaging and labeling blocks of code</a> and <a href="blog/2014/08/20/reducing-a-routines-parameters/">simplifying their inputs</a>. Now I intend to cover what the two volumes offer in regards to reducing the complexity of the shape of, and relationships between, code segments. As is consistently emphasised through McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a>, the author of a piece of code is beholden to its reader and should write for readability and maintainability, as if often ends up being the same person or a colleague.</p>
+
+<p>To understand how a piece of code works, the reader must often hold in their mind the several steps they traversed along a particular execution path to reach a given point in the code. It is difficult to mentally retain these preconditions while juggling the cognitive task of interpreting the commands at the point the reader is currently at in parsing the code. A way of making this easier is to reduce the levels of nesting of conditional statements, or keeping the code as <em>flat</em> and as close to linear as possible; this better matches how the human brain works and plays to its strengths and aptitude for linear storytelling and reasoning patterns.</p>
+
+<p>One way to simplify a series of deeply nested conditions with many variables is to introduce a helpful level of abstraction by bundling up as many of those conditions as possible in descriptively named query methods or functions; <code>if isWeekDay(day)</code> is preferrable to <code>if(day != 'Saturday' &amp;&amp; day != 'Sunday')</code>.</p>
+
+<p>Another method is to attempt to simplify nested conditions using logic axioms such as <em>Demorgan&rsquo;s Law</em>. A series of if statements is often easier to navigate than a single chunk of nested logic. It also reduces the number of inputs to the block, providing greater opportunity to extract it out into separate methods or functions with clearer indications of what data influences its behaviour.</p>
+
+<p>When unwrapping nested conditional statements, the preconditions for an extracted piece of code may become less clear. This should be address by making any dependencies explicit. To illustrate: if one function must be called before another, have the first function return a data type that the second one requires as a parameter. For example, if a function <code>throwRock()</code> must be called before another <code>breakGlass()</code>, make <code>throwRock()</code> return an instance of <code>WallPosition</code> and have <code>breakGlass()</code> require an argument of type <code>WallPosition</code>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleck Greenham</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-08-21T16:00:53+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:00 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/clean-code/'>clean code</a>, <a class='category' href='/blog/categories/code-complete/'>code complete</a>, <a class='category' href='/blog/categories/complexity/'>complexity</a>, <a class='category' href='/blog/categories/simplification/'>simplification</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/08/21/reducing-code-complexity/" data-via="" data-counturl="http://greena13.github.io/blog/2014/08/21/reducing-code-complexity/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/21/ordering-and-labelling-code/" title="Previous Post: Ordering and Labelling Code">&laquo; Ordering and Labelling Code</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/08/21/reducing-code-complexity/">Reducing Code Complexity</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/21/ordering-and-labelling-code/">Ordering and Labelling Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/20/reducing-a-routines-parameters/">Reducing a Routine's Parameters</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greena13">@greena13</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greena13',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Aleck Greenham -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
