@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Key Shift in Cmd]]></title>
-  <link href="http://greena13.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Anki | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/anki/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
   <updated>2014-08-28T10:05:45+01:00</updated>
   <id>http://greena13.github.io/</id>
@@ -148,98 +148,6 @@
 <p>Material that is used regularly or is important for only a given period - perhaps while you complete a particular project - should be retired from your deck in favour of information more likely to be useful in the future. The excluded material can be re-included and rapidly re-learnt using Anki&rsquo;s drill feature, should there come a time when the material is required once more.</p>
 
 <p>You will need to find your own balance of how long you are prepared to spend revising each day, and how useful the information you&rsquo;re committing to memory is likely to be.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Separating Classes Into Smaller Ones]]></title>
-    <link href="http://greena13.github.io/blog/2014/08/22/separating-classes-into-smaller-ones/"/>
-    <updated>2014-08-22T09:05:53+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/08/22/separating-classes-into-smaller-ones</id>
-    <content type="html"><![CDATA[<p>One of the more useful things I took from Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> is a procedure for systematically extracting smaller classes from a large one.</p>
-
-<p>A common object oriented antipattern is the <em>God Class</em> or <em>Blob Class</em> which occurs when a class grows to become a large, monolithic blob with no clear single responsibility, leading to problems with maintenance and understandability. At this point, the corrective course of action is to refine the single unwieldy class into multiple smaller ones with a more manageable size and clear responsibility. The exact number and shape of these refined classes is not always immediately apparent, however it is possible to break the process up into smaller steps, allowing you to focus on one stage at a time.</p>
-
-<ol>
-<li><p>Begin by looking at the methods themselves rather than the class and identify any that are particularly long or deal with multiple responsibilities. Separate them out into smaller self-contained chunks using vertical whitespace (empty lines); it may be necessary to shift the order of statements, particularly moving the initialisation of variables to just before they are first used &ndash; be careful not to inadvertently change system behaviour here.</p></li>
-<li><p>The whitespace-separated chunks of functionality can now be extracted into their own methods. It can be helpful to first type out the reference to this new method immediately above the statements that it will contain. This makes it easier to see what parameters the method will need by going through its statements. Once you are comfortable with the method&rsquo;s name and parameters, copy the reference and method statements onto the class and convert it to a valid method definitions with an appropriate access modifier (usually <code>private</code> should be your first choice).</p></li>
-<li><p>Once you have extracted as much code as possible into class or instance methods, examine each method&rsquo;s parameters and try to remove as many of them as possible by promoting local variables and arguments to instance or class variables so they will not need to be passed around between methods.</p></li>
-<li><p>Once again, you should now attempt to separate out concerns, this time by grouping methods and instance and class variables concerned with the same functionality. Usually these can be identified simply as the methods that reference these variables.</p></li>
-<li><p>Once you have identified one or more separate concerns, define a new class to encapsulate the related methods and variables. Define an instance of the new class on the blob class and instantiate it an appropriate place so you will be able to evoke the functionality of the new class from the blob class. Begin moving methods and instance variables to the new class, searching each time in the blob class for any references you may need to update (by pointing to the variable containing the instance of the new class). Continue this until you have extracted all the methods and instance variables you need to simplify the blob class.</p></li>
-</ol>
-
-
-<p>Ideally, all refactoring should be completed with a set of comprehensive unit tests at your back to verify no functionality was changed or lost in the restructuring. This is often not the case, in no small part because God Classes are notoriously difficult to write tests for. However, the same is not true of the new, slimmer classes and it is a good idea to see the refactoring as an opportunity to outfit the new classes with the full unit test treatment; you will thank yourself when it comes time to maintain them in the future.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Reducing Code Complexity]]></title>
-    <link href="http://greena13.github.io/blog/2014/08/21/reducing-code-complexity/"/>
-    <updated>2014-08-21T16:00:53+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/08/21/reducing-code-complexity</id>
-    <content type="html"><![CDATA[<p>I have already covered what I picked up from Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a> on <a href="blog/2014/08/21/ordering-and-labelling-code">packaging and labeling blocks of code</a> and <a href="blog/2014/08/20/reducing-a-routines-parameters/">simplifying their inputs</a>. Now I intend to cover what the two volumes offer in regards to reducing the complexity of the shape of, and relationships between, code segments. As is consistently emphasised through McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a>, the author of a piece of code is beholden to its reader and should write for readability and maintainability, as if often ends up being the same person or a colleague.</p>
-
-<p>To understand how a piece of code works, the reader must often hold in their mind the several steps they traversed along a particular execution path to reach a given point in the code. It is difficult to mentally retain these preconditions while juggling the cognitive task of interpreting the commands at the point the reader is currently at in parsing the code. A way of making this easier is to reduce the levels of nesting of conditional statements, or keeping the code as <em>flat</em> and as close to linear as possible; this better matches how the human brain works and plays to its strengths and aptitude for linear storytelling and reasoning patterns.</p>
-
-<p>One way to simplify a series of deeply nested conditions with many variables is to introduce a helpful level of abstraction by bundling up as many of those conditions as possible in descriptively named query methods or functions; <code>if isWeekDay(day)</code> is preferrable to <code>if(day != 'Saturday' &amp;&amp; day != 'Sunday')</code>.</p>
-
-<p>Another method is to attempt to simplify nested conditions using logic axioms such as <em>Demorgan&rsquo;s Law</em>. A series of if statements is often easier to navigate than a single chunk of nested logic. It also reduces the number of inputs to the block, providing greater opportunity to extract it out into separate methods or functions with clearer indications of what data influences its behaviour.</p>
-
-<p>When unwrapping nested conditional statements, the preconditions for an extracted piece of code may become less clear. This should be address by making any dependencies explicit. To illustrate: if one function must be called before another, have the first function return a data type that the second one requires as a parameter. For example, if a function <code>throwRock()</code> must be called before another <code>breakGlass()</code>, make <code>throwRock()</code> return an instance of <code>WallPosition</code> and have <code>breakGlass()</code> require an argument of type <code>WallPosition</code>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ordering and Labelling Code]]></title>
-    <link href="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/"/>
-    <updated>2014-08-21T14:53:17+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code</id>
-    <content type="html"><![CDATA[<p>Reading Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, I encountered a subject that I previously hadn&rsquo;t given much thought to but is of great importance. McConnel talks of reducing the cognitive load of reading and understanding code by writing for humans first, computers second; where the reader of a piece of code should be the author&rsquo;s highest priority - if not only because these often end up being one and the same. An important part of this is facilitating quick code navigation to allow the reader to find what they need, and providing useful levels of abstraction so the reader need not concern themselves with irrelevant details.</p>
-
-<p>This is achieved by making considered choices with code order and placement. Two units of code that are related in some way - the most important and obvious being references between them or shared execution paths - should be placed nearby to each other. This is to allow a reader to easily refer between the two without having to jump between separate locations in a file. McConnel offers the analogy of a newspaper for guidance on how code should be ordered: the important concepts are featured at the top while the refinements or details can be found towards the bottom.</p>
-
-<p>Vertical whitespace should be used wisely to separate different ideas or functions in the code. Statements that perform actions that are part of the same larger action should be grouped together, while those that are not should be separated visually by one or more lines of whitespace. If a clear enough conceptual gap exists between a group of statements and the rest of the code, it can and often should be extracted out into a well-named method or function (and given the appropriate access modifier to correctly observe <em>Encapsulation</em>).</p>
-
-<p>Care should be taken when naming methods and functions to the make the reader&rsquo;s task easier. A well-named block of code should make clear what it is the code does, what input it expects or requires and in the case of <a href="blog/2014/08/20/reducing-a-routines-parameters/">multiple parameters</a>, what order the arguments should be given in. If named wisely, a function or method should require little or no further documentation.</p>
-
-<p>It is paramount that a piece of code only perform the functionality suggested by its name, free of hidden side effects or behaviour. To ignore this is to surely guarantee bugs that are difficult to diagnose and fix. However, something greater is at stake: if violated, the trust between the code&rsquo;s author and reader is broken and the reader is forced to then check every method or function for similarly concealed behaviour.</p>
-
-<p>If it is proving difficult to accurately name a method or function succinctly, often it is an indication of an inappropriate level of abstraction or confused intentions behind the code. For example, functions that perform queries or return a system status should be separated from those that execute and action, or alter the system state.</p>
-
-<p>Naming conventions can be used to imbue code with consistency and reduce the number of surprises the reader must negotiate in parsing the code. The merits of specific conventions are secondary to the benefits of consistency itself.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Reducing a Routine's Parameters]]></title>
-    <link href="http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters/"/>
-    <updated>2014-08-20T21:04:08+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters</id>
-    <content type="html"><![CDATA[<p>Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.</p>
-
-<p>First, a brief note on terminology: I will be using <em>routine</em>, <em>method</em> and <em>function</em> interchangeably to refer to a <em>piece of code that accepts or requires a given number of inputs, or parameters</em>.</p>
-
-<p>McConnel points out that code with a long list of parameters present problems to those who need to understand, maintain and use it. Multiple parameters are difficult to remember when the function needs to be called - as is the correct order to use them in. Code compliant with the mandates of <em>Defensive Programming</em> will also need to check the arguments have been provided in the correct order and have sensible values. While many IDEs and languages will do the recording of correct parameter order and type checking, this should not been seen as excuse for bad practices. Long parameter lists provide further headaches for maintenance if the method&rsquo;s signature needs to be later modified.</p>
-
-<p>A function can usually be improved by reducing the number of parameters it requires. <em>Polyadic functions</em> (with 3 or more parameters) should almost always be refactored to require fewer arguments. One way of achieving this is by breaking the function up into smaller ones that perform simpler chunks of functionality and need less information to execute; this change in abstraction can often add clarity to the intention behind the code. Another strategy for reducing a function&rsquo;s parameters is to wrap them up in a single data structure, removing the need to remember the parameter order completely and freeing up the reader to focus on what&rsquo;s pertinent to the function of the code.</p>
-
-<p>Good code should consist primarily of <em>monadic</em> and <em>dyadic</em> functions, or those with 1 and 2 parameters, respectively. Monadic functions typically take one of three forms:</p>
-
-<ul>
-<li>Asking a question or testing a particular condition. eg. <code>isRed(ball)</code></li>
-<li>Performing an action or transformation on a particular parameter. eg. <code>fileOpen(myFile)</code></li>
-<li>Handling an event where the function uses the argument to update the system&rsquo;s state. eg. <code>registerMouseEvent(mouseEvent)</code></li>
-</ul>
-
-
-<p>It should be noted that the first form need not return a boolean value. A function that returns a particular characteristic is also of this form. eg. <code>averageGrade(reportCard)</code>. Functions of the second form should also return the result of the action or transform wherever possible. <em>Output arguments</em>, or where functions perform an action on the argument instance itself and return either <code>null</code>/<code>void</code> or another value, are more difficult to follow. In the case of an action being performed on an instance, an object-oriented paradigm is better suited eg. <code>ball.bounce()</code> is clearer than a function <code>bounce(ball)</code> that returns the instance of <code>ball</code>.</p>
-
-<p>If a function or method meets one of the above descriptions and has more than a single parameter, it is a good sign that it is a candidate for refactoring.</p>
-
-<p>Dyadic functions are not as easily classified into categories and can perform many actions. Care should be taken with the ordering of the parameters when defining a function or method&rsquo;s signature so that is natural and easy to remember and should be evident from the name of the routine. If at all possible, the pairing of the two parameters should be wrapped in single argument to convert to a monadic function.</p>
-
-<p>The ideal function is a <em>niliadic function</em>, or a function without any parameters.</p>
 ]]></content>
   </entry>
   
