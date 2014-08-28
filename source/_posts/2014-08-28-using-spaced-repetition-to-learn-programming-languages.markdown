@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Using Spaced Repitition to Learn Programming Languages"
+title: "Using Spaced Repetition to Learn Programming Languages"
 date: 2014-08-28 09:58:41 +0100
 comments: true
 categories: [Spaced Repetition, Anki, learning, memorisation, programming]
