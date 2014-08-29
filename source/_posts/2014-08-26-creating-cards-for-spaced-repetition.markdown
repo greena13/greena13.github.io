@@ -44,7 +44,7 @@ Not only does breaking up concepts into their smallest constituents benefit your
 
 Sets, or groupings of items without a clear or predefined order, are very difficult to remember and encode. Where possible, these should be converted to *enumerations*, or ordered sets, by linking items up in a predefined and consistent order. Enumerations are easier to recall than sets because a clear link between consecutive items exists that you brain can easily traverse to retrieve all items in the group.  Order should be chosen carefully, however, as it is more difficult to retrieve individual items in an order different to the one you have encoded. This order can be arbitrary, but should be easy to remember and preferably have meaning within the context of the material you are memorising, or match the order in which you are likely to need to retrieve them.
 
-Enumerations are still difficult to memorise and should be avoided. Where possible, enumerations should be converted to *cloze deletions*, or sentences where some words have been omitted and you must fill in the blanks. These are typically easier to remember than sets and enumerations and are based on the concept of *iterative reading* - which is beyond the scope of this article.
+Enumerations are still difficult to memorise and should be avoided. Where possible, enumerations should be converted to *cloze deletions*, or sentences where some words have been omitted and you must fill in the blanks. These are typically easier to remember than sets and enumerations and are based on the concept of [*incremental reading*](http://www.supermemo.com/help/read.htm).
 
 ### Memory Conflicts
 
