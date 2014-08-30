@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2014-08-30T16:30:54+01:00</updated>
+  <updated>2014-08-30T22:42:05+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Structured Programming]]></title>
+    <link href="http://greena13.github.io/blog/2014/08/30/structured-programming/"/>
+    <updated>2014-08-30T22:11:41+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/08/30/structured-programming</id>
+    <content type="html"><![CDATA[<p>I have been recently trying to get a better handle on some terms I possess a casual understanding of and use regularly in conversation, but suspect I don&rsquo;t really have a full appreciation for. <em>Structured programming</em> was the first of these terms. What follows is a summary of the more interesting bits of the <a href="http://en.wikipedia.org/wiki/Structured_programming">Wikipedia article</a>.</p>
+
+<h2>Structured Programming</h2>
+
+<p>Structured programming emerged, at least in part, from the Edsger Dijkstra&rsquo;s paper &lsquo;<em>GOTO Considered Harmful</em>&rsquo;, warning of the propensity for the <code>goto</code> control statement to lead to <em>Spaghetti Code</em>.</p>
+
+<h3>Structured Programming Theory</h3>
+
+<p>Structured program theory offers 3 ways of connecting statements, which are sufficient to express any computable function, or all of the operations of a <em>Turing Machine</em>:</p>
+
+<ul>
+<li>As <strong>Sequences</strong>: sequentially executed statements and subroutines</li>
+<li>As <strong>Selections</strong>: conditionally executed statements and subroutines, depending on system state</li>
+<li>As <strong>Iterations</strong>: repeatedly executed statements and subroutines until some system state is achieved or all members of a collection are exhausted</li>
+</ul>
+
+
+<h3>Structured Programming</h3>
+
+<p>Structured programming implements the 3 ways of connecting statements using 3 control structures:</p>
+
+<ul>
+<li><strong>Subroutines</strong>: groupings of code that can be evoked using a single statement, eg. procedures, functions or methods</li>
+<li><strong>Block Structures</strong>: collection of statements evoked together under the same conditions, eg. blocks designated with <code>if</code> and <code>end</code>.</li>
+<li><strong>Loops</strong>: collection of statements that are evoked repeatedly together until a particular state is reached, eg <code>for</code> and <code>while</code> loops.</li>
+</ul>
+
+
+<h3>Single Exit Point Rule</h3>
+
+<p>Structured programming advocates a single entry and exit point for each subroutine to make reasoning about them easier and reduce the potential for particular types of bugs to occur. Many have argued trying to abide by this principle can add unnecessary complexity and many programming languages facilitate subroutines with multiple exit points, eg. <code>return</code>, <code>break</code> and <code>continue</code>.</p>
+
+<p>When coding subroutines with multiple exits, care must be taken to ensure that cleanup code is run at the end of all execution paths (think of the <code>finally</code> block provided by some programming languages for exception handling).</p>
+
+<p>The computer scientist David Watt considered the justification for avoiding <code>goto</code> statements (Watts termed them <em>jump sequencers</em>) in <a href="http://www.amazon.co.uk/Programming-Language-Concepts-Computer-Science/dp/0470853204">his textbook</a>. He suggests <code>goto</code> are harmful to the understandability of code because the reader must first go to the memory address or subroutine definition to find out the intent behind the jump; however, Watt argues the intent behind what he terms <em>escape sequencers</em> (<code>return</code>, <code>continue</code> and <code>break</code>) is much clearer and therefore do not create the same problem.</p>
+
+<h3>Exception Handling</h3>
+
+<p>Exceptions pose a particular challenge for trying to abide by the single exit point rule. Watts notes that <em>exception sequencers</em> usually need the exception handler to reside at a more contextually aware area of the code, away from the low-level code where it occurs (the exception is <em>thrown</em> or <em>raised</em>). Kenneth Louden and Lambert add in <a href="http://www.amazon.com/Programming-Languages-Principles-Kenneth-Louden/dp/1111529418">their textbook</a> that exception handling is not structured programming because the setup of control and the actual transfer of control happen in different places in the code. Furthermore, <a href="http://en.wikipedia.org/wiki/Structured_programming#cite_note-Bansal2013-13">it has been noted by some</a> that exceptions can even cause control structures that would normally conform to the single exit rule to violate it: for example, a <code>for</code> loop where an exception is thrown in the instantiation of the first iteration - the loop would not get to run and exit as intended.</p>
+
+<h3>Single Entry Point Rule</h3>
+
+<p>Routines can also have multiple entry points and violate the single entry rule, most notably as re-entry into a <em>coroutine</em>; this happens when a subroutine yields control to another but maintains its own state and can be resumed where it was left off. This has applications in input/output and network streams as well as concurrency and state machines in general.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Spaced Repetition to Learn Programming Languages]]></title>

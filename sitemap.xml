@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://greena13.github.io/blog/2014/08/30/structured-programming/</loc>
+    <lastmod>2014-08-30T22:11:41+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://greena13.github.io/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages/</loc>
     <lastmod>2014-08-28T09:58:41+01:00</lastmod>
     <priority>0.8</priority>
@@ -41,14 +47,14 @@
   
   <url>
     <loc>http://greena13.github.io/blog/archives/</loc>
-    <lastmod>2014-08-30T16:30:54+01:00</lastmod>
+    <lastmod>2014-08-30T22:42:05+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://greena13.github.io/</loc>
-    <lastmod>2014-08-30T16:30:54+01:00</lastmod>
+    <lastmod>2014-08-30T22:42:05+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
