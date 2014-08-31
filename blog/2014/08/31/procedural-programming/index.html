@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ordering and Labelling Code - Key Shift in Cmd</title>
+  <title>Procedural Programming - Key Shift in Cmd</title>
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="Reading Steve McConnel&rsquo;s Code Complete and Robert C. Martin&rsquo;s Clean Code, I encountered a subject that I previously hadn&rsquo;t given &hellip;">
+  <meta name="description" content="I have been recently trying to improve my understanding of some of the fundamental concepts in computer science. I looked at procedural programming &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code">
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/08/31/procedural-programming">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ordering and Labelling Code</h1>
+      <h1 class="entry-title">Procedural Programming</h1>
     
     
       <p class="meta">
@@ -77,26 +77,20 @@
 
 
 
-<time class='entry-date' datetime='2014-08-21T14:53:17+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:53 pm</span></time>
+<time class='entry-date' datetime='2014-08-31T08:42:16+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>8:42 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Reading Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, I encountered a subject that I previously hadn&rsquo;t given much thought to but is of great importance. McConnel talks of reducing the cognitive load of reading and understanding code by writing for humans first, computers second; where the reader of a piece of code should be the author&rsquo;s highest priority - if not only because these often end up being one and the same. An important part of this is facilitating quick code navigation to allow the reader to find what they need, and providing useful levels of abstraction so the reader need not concern themselves with irrelevant details.</p>
+<div class="entry-content"><p>I have been recently trying to improve my understanding of some of the fundamental concepts in computer science. I looked at <em>procedural programming</em> this time and attempted to extract the important points of the <a href="http://en.wikipedia.org/wiki/Procedural_programming">Wikipedia article</a>.</p>
 
-<p>This is achieved by making considered choices with code order and placement. Two units of code that are related in some way - the most important and obvious being references between them or shared execution paths - should be placed nearby to each other. This is to allow a reader to easily refer between the two without having to jump between separate locations in a file. McConnel offers the analogy of a newspaper for guidance on how code should be ordered: the important concepts are featured at the top while the refinements or details can be found towards the bottom.</p>
+<p>Procedural programming is derived from <a href="/blog/2014/08/30/structured-programming">structured programming</a> and based on the concept of a procedure being a sequence of steps to be executed to achieve a reported goal. In this respect, procedural languages are also imperative languages because they contain not only what to do, but how to do it, by referencing the system state.</p>
 
-<p>Vertical whitespace should be used wisely to separate different ideas or functions in the code. Statements that perform actions that are part of the same larger action should be grouped together, while those that are not should be separated visually by one or more lines of whitespace. If a clear enough conceptual gap exists between a group of statements and the rest of the code, it can and often should be extracted out into a well-named method or function (and given the appropriate access modifier to correctly observe <em>Encapsulation</em>).</p>
+<p>Structurally, there is considerable overlap between procedural programming and functional programming as they both originate in structured programming. Functional programs have <em>functions</em> as their routines while procedural programs have <em>procedures</em>. The intent behind functional languages is different, however, as most of the imperative elements are removed or made second-class citizens and functional control constructs are used instead. Procedural languages model programs as a list of imperative commands that may alter a system&rsquo;s state. Functional languages, on the other hand, are designed to support <em>pure functions</em>, or routines that depend <em>only on their inputs</em> and nothing else, and which <em>do not</em> alter the system state.</p>
 
-<p>Care should be taken when naming methods and functions to the make the reader&rsquo;s task easier. A well-named block of code should make clear what it is the code does, what input it expects or requires and in the case of <a href="blog/2014/08/20/reducing-a-routines-parameters/">multiple parameters</a>, what order the arguments should be given in. If named wisely, a function or method should require little or no further documentation.</p>
-
-<p>It is paramount that a piece of code only perform the functionality suggested by its name, free of hidden side effects or behaviour. To ignore this is to surely guarantee bugs that are difficult to diagnose and fix. However, something greater is at stake: if violated, the trust between the code&rsquo;s author and reader is broken and the reader is forced to then check every method or function for similarly concealed behaviour.</p>
-
-<p>If it is proving difficult to accurately name a method or function succinctly, often it is an indication of an inappropriate level of abstraction or confused intentions behind the code. For example, functions that perform queries or return a system status should be separated from those that execute and action, or alter the system state.</p>
-
-<p>Naming conventions can be used to imbue code with consistency and reduce the number of surprises the reader must negotiate in parsing the code. The merits of specific conventions are secondary to the benefits of consistency itself.</p>
+<p>Procedural programming differs from object-oriented in the way data and functionality are bundled. Procedural programming deals with variables, data structures and subroutines; object-oriented programming uses objects that expose behaviour (methods) and data (attributes) via interfaces. In procedural programming, procedures operate on data structures while in object-oriented programming methods and data attributes are bundled together.</p>
 </div>
 
 
@@ -112,21 +106,15 @@
 
 
 
-<time class='entry-date' datetime='2014-08-21T14:53:17+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:53 pm</span></time>
+<time class='entry-date' datetime='2014-08-31T08:42:16+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>8:42 am</span></time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/clean-code/'>clean code</a>, <a class='category' href='/blog/categories/code-complete/'>code complete</a>, <a class='category' href='/blog/categories/naming/'>naming</a>, <a class='category' href='/blog/categories/ordering/'>ordering</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/" data-via="" data-counturl="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/08/31/procedural-programming/" data-via="" data-counturl="http://greena13.github.io/blog/2014/08/31/procedural-programming/" >Tweet</a>
   
   
   
@@ -137,10 +125,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/20/reducing-a-routines-parameters/" title="Previous Post: Reducing a Routine's Parameters">&laquo; Reducing a Routine's Parameters</a>
+        <a class="basic-alignment left" href="/blog/2014/08/30/structured-programming/" title="Previous Post: Structured Programming">&laquo; Structured Programming</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/21/reducing-code-complexity/" title="Next Post: Reducing Code Complexity">Reducing Code Complexity &raquo;</a>
       
     </p>
   </footer>
@@ -249,8 +235,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/';
-        var disqus_url = 'http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/';
+        var disqus_identifier = 'http://greena13.github.io/blog/2014/08/31/procedural-programming/';
+        var disqus_url = 'http://greena13.github.io/blog/2014/08/31/procedural-programming/';
         var disqus_script = 'embed.js';
       
     (function () {
