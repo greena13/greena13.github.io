@@ -3,6 +3,18 @@
   
   
   <url>
+    <loc>http://greena13.github.io/blog/2014/09/01/functional-programming/</loc>
+    <lastmod>2014-09-01T09:52:42+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/</loc>
+    <lastmod>2014-08-31T10:37:39+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://greena13.github.io/blog/2014/08/31/procedural-programming/</loc>
     <lastmod>2014-08-31T08:42:16+01:00</lastmod>
     <priority>0.8</priority>
@@ -53,14 +65,14 @@
   
   <url>
     <loc>http://greena13.github.io/blog/archives/</loc>
-    <lastmod>2014-08-31T10:06:03+01:00</lastmod>
+    <lastmod>2014-09-01T16:27:53+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://greena13.github.io/</loc>
-    <lastmod>2014-08-31T10:06:03+01:00</lastmod>
+    <lastmod>2014-09-01T16:27:53+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

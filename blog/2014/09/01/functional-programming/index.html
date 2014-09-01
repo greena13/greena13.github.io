@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Function - Key Shift in Cmd</title>
+  <title>Functional Programming - Key Shift in Cmd</title>
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="Category: function">
+  <meta name="description" content="As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://greena13.github.io/blog/categories/function">
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/09/01/functional-programming">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
@@ -64,36 +64,102 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Function</h1>
+    
+      <h1 class="entry-title">Functional Programming</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-01T09:52:42+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:52 am</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of the <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> Wikipedia page.</p>
 
-  
-  <h2>2014</h2>
+<p>Functional programming is a <a href="/blog/2014/08/31/imperative-programming-vs-declarative-programming">declarative programming</a> paradigm that treats computations as evaluations of mathematical functions and avoids referencing a system state and mutable data. It was developed, primarily, as an attempt to avoid side effects and make subroutines much easier to reason about. It introduces a number of interesting and useful concepts that are not often encountered or emphasised in object-orient programming.</p>
 
-<article>
-  
-<h1><a href="/blog/2014/08/20/reducing-a-routines-parameters/">Reducing a Routine&#8217;s Parameters</a></h1>
-<time datetime="2014-08-20T21:04:08+01:00" pubdate><span class='month'>Aug</span> <span class='day'>20</span> <span class='year'>2014</span></time>
+<h2>Pure Functions</h2>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/code-complete/'>code complete</a>, <a class='category' href='/blog/categories/complexity/'>complexity</a>, <a class='category' href='/blog/categories/function/'>function</a>, <a class='category' href='/blog/categories/method/'>method</a>, <a class='category' href='/blog/categories/parameter/'>parameter</a>, <a class='category' href='/blog/categories/simplicity/'>simplicity</a></span>
-</footer>
+<p>Pure functions are those that have no side effects and depend only on their argument values, not on any system information; consequently, they return the same value for a given set of parameter values every time. They have some unique properties useful for code optimisation and reasoning:</p>
+
+<ul>
+<li><p>If the result of a pure expression is not used, it can be removed without altering the code&rsquo;s behaviour.</p></li>
+<li><p>If a pure function is called with arguments that are themselves pure functions, or don&rsquo;t have side effects, then the result can be cached and returned if the function is called with the same parameter values again.</p></li>
+<li><p>If there is no dependency amongst a collection of functions, they can be run in any order with the same result.</p></li>
+</ul>
 
 
-</article>
+<h2>Referential Transparency</h2>
 
+<p>Referential transparency is a property of code that refers to whether or not it can be replaced with its calculated value without changing its behaviour. If this is indeed the case, the code is said to be <em>referentially transparent</em>; if the code cannot be replaced with its value without altering system behaviour then it is <em>referentially opaque</em>.</p>
+
+<p>All pure function calls are referentially transparent as they do not depend on or change system behaviour and should always return the same result when given the same arguments.</p>
+
+<h2>First-class Functions</h2>
+
+<p>First-class functions are those which can appear anywhere in a program that other first-class entities (such as numbers) can. This notably includes as arguments and return values for other functions. They can also accept and return other functions.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Aleck Greenham</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-09-01T09:52:42+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:52 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/functional-programming/'>functional programming</a>, <a class='category' href='/blog/categories/programming-concepts/'>programming concepts</a>, <a class='category' href='/blog/categories/structured-programming/'>structured programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/09/01/functional-programming/" data-via="" data-counturl="http://greena13.github.io/blog/2014/09/01/functional-programming/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/31/imperative-programming-vs-declarative-programming/" title="Previous Post: Imperative Programming vs Declarative Programming">&laquo; Imperative Programming vs Declarative Programming</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -191,7 +257,10 @@
       var disqus_shortname = 'keyshiftincmd';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2014/09/01/functional-programming/';
+        var disqus_url = 'http://greena13.github.io/blog/2014/09/01/functional-programming/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

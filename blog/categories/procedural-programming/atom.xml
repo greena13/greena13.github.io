@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Procedural Programming | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/procedural-programming/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2014-09-01T16:27:53+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Procedural Programming]]></title>
+    <link href="http://greena13.github.io/blog/2014/08/31/procedural-programming/"/>
+    <updated>2014-08-31T08:42:16+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/08/31/procedural-programming</id>
+    <content type="html"><![CDATA[<p>I have been recently trying to improve my understanding of some of the fundamental concepts in computer science. I looked at <em>procedural programming</em> this time and attempted to extract the important points of the <a href="http://en.wikipedia.org/wiki/Procedural_programming">Wikipedia article</a>.</p>
+
+<p>Procedural programming is derived from <a href="/blog/2014/08/30/structured-programming">structured programming</a> and based on the concept of a procedure being a sequence of steps to be executed to achieve a reported goal. In this respect, procedural languages are also imperative languages because they contain not only what to do, but how to do it, by referencing the system state.</p>
+
+<p>Structurally, there is considerable overlap between procedural programming and functional programming as they both originate in structured programming. Functional programs have <em>functions</em> as their routines while procedural programs have <em>procedures</em>. The intent behind functional languages is different, however, as most of the imperative elements are removed or made second-class citizens and functional control constructs are used instead. Procedural languages model programs as a list of imperative commands that may alter a system&rsquo;s state. Functional languages, on the other hand, are designed to support <em>pure functions</em>, or routines that depend <em>only on their inputs</em> and nothing else, and which <em>do not</em> alter the system state.</p>
+
+<p>Procedural programming differs from object-oriented in the way data and functionality are bundled. Procedural programming deals with variables, data structures and subroutines; object-oriented programming uses objects that expose behaviour (methods) and data (attributes) via interfaces. In procedural programming, procedures operate on data structures while in object-oriented programming methods and data attributes are bundled together.</p>
+]]></content>
+  </entry>
+  
+</feed>

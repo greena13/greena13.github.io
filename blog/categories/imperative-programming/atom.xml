@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Imperative Programming | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/imperative-programming/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2014-09-01T16:27:53+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Imperative Programming vs Declarative Programming]]></title>
+    <link href="http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/"/>
+    <updated>2014-08-31T10:37:39+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming</id>
+    <content type="html"><![CDATA[<p>I was recently reading the Wikipedia articles of <a href="http://en.wikipedia.org/wiki/Imperative_programming">imperative programming</a> and <a href="http://en.wikipedia.org/wiki/Declarative_programming">declarative programming</a> to brush up on my understanding of the distinction.</p>
+
+<h2>Imperative Programming</h2>
+
+<p>Imperative programming is concerned with describing how a program should achieve its functionality; not only <em>what</em> should be done, but also <em>how</em> it should be done is encoded. The movement of data and execution of operations are explicitly specified, if only at an abstract level; that is to say, an imperative program is concerned with implementation as much as it is logic functionality.</p>
+
+<p>Imperative programming has its roots in assembly language and machine code, however, modern high-level languages offer more human-friendly syntax and aggregate functionality. <a href="/blog/2014/08/31/procedural-programming">Procedural programming</a> is a common paradigm that falls within imperative programming.</p>
+
+<h2>Declarative Programming</h2>
+
+<p>Declarative programming focuses on expressing the logic of a computation without needing to specify it in terms of low-level operations. Declarative programming emerged out of an attempt to minimise side-effects and focus on a program&rsquo;s primary function, leaving the implementation details to the language itself.</p>
+
+<p>Common examples of declarative programming are SQL, regular expressions and functional programming.</p>
+
+<p>It seems the difference between the two programming ideologies is largely concerned with the distribution of responsibility: in imperative programming the programmer is responsible for specifying logic functionality and implementation details while in declarative programming the language takes ownership of the implementation.</p>
+]]></content>
+  </entry>
+  
+</feed>
