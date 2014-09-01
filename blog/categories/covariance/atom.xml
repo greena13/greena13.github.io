@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Covariance | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/covariance/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2014-09-01T20:14:06+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Covariance and Contravariance]]></title>
+    <link href="http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance/"/>
+    <updated>2014-09-01T16:37:28+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance</id>
+    <content type="html"><![CDATA[<p>I have found variance one of the more difficult things to get my head around in computer science, so I have tried to document the basics as a learning tool.</p>
+
+<p><em>Variance</em> in object-oriented programming refers to how subtyping works between complex types. For example, if <em>B</em> is a subtype of <em>A</em> and <em>CA</em> and <em>CB</em> are enumerable collections (our complex types) that contain items of type <em>A</em> and <em>B</em>, respectively, is the collection <em>CB</em> a subtype of the collection <em>CA</em>?</p>
+
+<ul>
+<li>If the enumerable collection is <strong>covariant</strong> then <em>CB</em> is a subtype of <em>CA</em> and the subtyping relation is said to be <strong>preserved</strong>.</li>
+<li>If the enumerable collection is <strong>contravariant</strong> then <em>CB</em> is a subtype of <em>CA</em> and the subtyping relation is said to be <strong>reversed</strong>.</li>
+<li>If the enumerable collection is <strong>invariant</strong> then <em>CA</em> and <em>CB</em> are not related by type at all and the subtyping relation is said to be <strong>ignored</strong>.</li>
+</ul>
+
+
+<h2>Argument And Return Type Variance</h2>
+
+<p>When inheriting from a parent class and overwriting a method, a programmer is faced with a number of options for the argument and return types of that method, depending on the programming language being used.</p>
+
+<p>Considering the argument type first, programming languages will either offer invariant, contravariant or covariant argument types. A language that offers <em>invariant argument types</em> (C++, Java, C#) requires the arguments of the overriding method to be of the same type as the overridden method. Languages that offer <em>contravariant argument types</em> allow arguments to be supertypes of the overridden method&rsquo;s arguments. Similarly, languages offering <em>covariant argument types</em> permit arguments of subtypes of those for the overridden method.</p>
+
+<p>Return types are much the same; languages offer either covariant (C++, Java) or invariant (C#) return types.</p>
+]]></content>
+  </entry>
+  
+</feed>
