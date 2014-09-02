@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ordering and Labelling Code - Key Shift in Cmd</title>
+  <title>Dependency Injection - Key Shift in Cmd</title>
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="Reading Steve McConnel&rsquo;s Code Complete and Robert C. Martin&rsquo;s Clean Code, I encountered a subject that I previously hadn&rsquo;t given &hellip;">
+  <meta name="description" content="Dependency Injection is a software design pattern that works by injecting a reference to a dependency object into a dependent one, where it is stored &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code">
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/09/02/dependency-injection">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ordering and Labelling Code</h1>
+      <h1 class="entry-title">Dependency Injection</h1>
     
     
       <p class="meta">
@@ -77,26 +77,39 @@
 
 
 
-<time class='entry-date' datetime='2014-08-21T14:53:17+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:53 pm</span></time>
+<time class='entry-date' datetime='2014-09-02T10:56:14+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:56 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Reading Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, I encountered a subject that I previously hadn&rsquo;t given much thought to but is of great importance. McConnel talks of reducing the cognitive load of reading and understanding code by writing for humans first, computers second; where the reader of a piece of code should be the author&rsquo;s highest priority - if not only because these often end up being one and the same. An important part of this is facilitating quick code navigation to allow the reader to find what they need, and providing useful levels of abstraction so the reader need not concern themselves with irrelevant details.</p>
+<div class="entry-content"><p><em>Dependency Injection</em> is a software design pattern that works by <em>injecting</em> a reference to a dependency object into a dependent one, where it is stored and made part of the dependent object&rsquo;s state and behaviour. This separates the creation of the dependency object from the dependent object&rsquo;s code. In doing so, it more loosely couples the two objects and abides by the principles of <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Dependency Inversion</a> (because the dependent object is coupled with the dependency object&rsquo;s interface, rather than directly) and <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Single Responsibility</a> (because the dependent object is only responsible for its own behaviour, not the creation of the dependency object).</p>
 
-<p>This is achieved by making considered choices with code order and placement. Two units of code that are related in some way - the most important and obvious being references between them or shared execution paths - should be placed nearby to each other. This is to allow a reader to easily refer between the two without having to jump between separate locations in a file. McConnel offers the analogy of a newspaper for guidance on how code should be ordered: the important concepts are featured at the top while the refinements or details can be found towards the bottom.</p>
+<h2>Design Pattern Elements</h2>
 
-<p>Vertical whitespace should be used wisely to separate different ideas or functions in the code. Statements that perform actions that are part of the same larger action should be grouped together, while those that are not should be separated visually by one or more lines of whitespace. If a clear enough conceptual gap exists between a group of statements and the rest of the code, it can and often should be extracted out into a well-named method or function (and given the appropriate access modifier to correctly observe <em>Encapsulation</em>).</p>
+<p>The pattern involves 4 elements:</p>
 
-<p>Care should be taken when naming methods and functions to the make the reader&rsquo;s task easier. A well-named block of code should make clear what it is the code does, what input it expects or requires and in the case of <a href="blog/2014/08/20/reducing-a-routines-parameters/">multiple parameters</a>, what order the arguments should be given in. If named wisely, a function or method should require little or no further documentation.</p>
+<ul>
+<li><strong>Dependency Object</strong>: A concrete dependency object</li>
+<li><strong>Dependent Object</strong>: A concrete dependent object that relies on the dependency one</li>
+<li><strong>Dependency Interface</strong>: An interface used by the dependent object to communicate with the dependency object</li>
+<li><strong>Injector Object</strong>: A concrete injector object responsible for injecting the dependency object into the dependent one</li>
+</ul>
 
-<p>It is paramount that a piece of code only perform the functionality suggested by its name, free of hidden side effects or behaviour. To ignore this is to surely guarantee bugs that are difficult to diagnose and fix. However, something greater is at stake: if violated, the trust between the code&rsquo;s author and reader is broken and the reader is forced to then check every method or function for similarly concealed behaviour.</p>
 
-<p>If it is proving difficult to accurately name a method or function succinctly, often it is an indication of an inappropriate level of abstraction or confused intentions behind the code. For example, functions that perform queries or return a system status should be separated from those that execute and action, or alter the system state.</p>
+<p>The implementation of the Dependency Injection pattern is similar to that of the Strategy pattern, but the semantics differ. The same dependency object is intended to be used for the duration of the dependent object&rsquo;s lifetime, while a strategy often needs to be interchanged throughout an object&rsquo;s lifetime.</p>
 
-<p>Naming conventions can be used to imbue code with consistency and reduce the number of surprises the reader must negotiate in parsing the code. The merits of specific conventions are secondary to the benefits of consistency itself.</p>
+<h2>Depdency Injection Techniques</h2>
+
+<p>Martin Fowler defined 3 ways of injecting a dependency:</p>
+
+<ul>
+<li><strong>Constructor Injection</strong>: Dependencies are provided to the dependent object&rsquo;s constructor at the time of creation. This requires the dependency object to be instantiated before the dependent instance and is the preferred method because it avoids the dependent instance ever being in an invalid state. Dependencies injected in this way, however, don&rsquo;t permit the interchanging of the dependency instance.</li>
+<li><strong>Setter Injection</strong>: The dependent object provides a setter method that accepts the dependency. This can lead to the problem of needing to make sure the dependency has been set before the dependent object is used; furthermore, it does not explicitly state the relationship between the dependent and dependency object, which is <a href="/blog/2014/08/21/reducing-code-complexity">considered bad practice</a>. It does, however, allow changing the dependency object later in the dependent object&rsquo;s lifetime.</li>
+<li><strong>Interface Injection</strong>: The dependency interface provides a method that accepts the dependent object, for the dependency object to inject itself into the dependent object. For this to work, the dependent object must also have a setter method for the dependency object to use to inject itself. This differs from the <em>Setter Injection</em> technique because it goes one step further and makes the dependency object itself a <em>Dependency Injector</em>.</li>
+</ul>
+
 </div>
 
 
@@ -112,12 +125,12 @@
 
 
 
-<time class='entry-date' datetime='2014-08-21T14:53:17+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:53 pm</span></time>
+<time class='entry-date' datetime='2014-09-02T10:56:14+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:56 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/clean-code/'>clean code</a>, <a class='category' href='/blog/categories/code-complete/'>code complete</a>, <a class='category' href='/blog/categories/naming/'>naming</a>, <a class='category' href='/blog/categories/ordering/'>ordering</a>
+    <a class='category' href='/blog/categories/dependency-injection/'>dependency injection</a>, <a class='category' href='/blog/categories/design-patterns/'>design patterns</a>, <a class='category' href='/blog/categories/programming-concepts/'>programming concepts</a>
   
 </span>
 
@@ -126,7 +139,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/" data-via="" data-counturl="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/09/02/dependency-injection/" data-via="" data-counturl="http://greena13.github.io/blog/2014/09/02/dependency-injection/" >Tweet</a>
   
   
   
@@ -137,10 +150,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/20/reducing-a-routines-parameters/" title="Previous Post: Reducing a Routine's Parameters">&laquo; Reducing a Routine's Parameters</a>
+        <a class="basic-alignment left" href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming/" title="Previous Post: First Five Principles of Object-Oriented Programming">&laquo; First Five Principles of Object-Oriented Programming</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/21/reducing-code-complexity/" title="Next Post: Reducing Code Complexity">Reducing Code Complexity &raquo;</a>
       
     </p>
   </footer>
@@ -249,8 +260,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/';
-        var disqus_url = 'http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/';
+        var disqus_identifier = 'http://greena13.github.io/blog/2014/09/02/dependency-injection/';
+        var disqus_url = 'http://greena13.github.io/blog/2014/09/02/dependency-injection/';
         var disqus_script = 'embed.js';
       
     (function () {

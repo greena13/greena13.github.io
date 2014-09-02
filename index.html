@@ -9,7 +9,7 @@
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="SOLID is an acronym mnemonic coined by Michael Feathers for Robert C. Martin&rsquo;s &ldquo;first five principles&rdquo; for object-oriented &hellip;">
+  <meta name="description" content="Dependency Injection is a software design pattern that works by injecting a reference to a dependency object into a dependent one, where it is stored &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/02/dependency-injection/">Dependency Injection</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-02T10:56:14+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:56 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Dependency Injection</em> is a software design pattern that works by <em>injecting</em> a reference to a dependency object into a dependent one, where it is stored and made part of the dependent object&rsquo;s state and behaviour. This separates the creation of the dependency object from the dependent object&rsquo;s code. In doing so, it more loosely couples the two objects and abides by the principles of <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Dependency Inversion</a> (because the dependent object is coupled with the dependency object&rsquo;s interface, rather than directly) and <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Single Responsibility</a> (because the dependent object is only responsible for its own behaviour, not the creation of the dependency object).</p>
+
+<h2>Design Pattern Elements</h2>
+
+<p>The pattern involves 4 elements:</p>
+
+<ul>
+<li><strong>Dependency Object</strong>: A concrete dependency object</li>
+<li><strong>Dependent Object</strong>: A concrete dependent object that relies on the dependency one</li>
+<li><strong>Dependency Interface</strong>: An interface used by the dependent object to communicate with the dependency object</li>
+<li><strong>Injector Object</strong>: A concrete injector object responsible for injecting the dependency object into the dependent one</li>
+</ul>
+
+
+<p>The implementation of the Dependency Injection pattern is similar to that of the Strategy pattern, but the semantics differ. The same dependency object is intended to be used for the duration of the dependent object&rsquo;s lifetime, while a strategy often needs to be interchanged throughout an object&rsquo;s lifetime.</p>
+
+<h2>Depdency Injection Techniques</h2>
+
+<p>Martin Fowler defined 3 ways of injecting a dependency:</p>
+
+<ul>
+<li><strong>Constructor Injection</strong>: Dependencies are provided to the dependent object&rsquo;s constructor at the time of creation. This requires the dependency object to be instantiated before the dependent instance and is the preferred method because it avoids the dependent instance ever being in an invalid state. Dependencies injected in this way, however, don&rsquo;t permit the interchanging of the dependency instance.</li>
+<li><strong>Setter Injection</strong>: The dependent object provides a setter method that accepts the dependency. This can lead to the problem of needing to make sure the dependency has been set before the dependent object is used; furthermore, it does not explicitly state the relationship between the dependent and dependency object, which is <a href="/blog/2014/08/21/reducing-code-complexity">considered bad practice</a>. It does, however, allow changing the dependency object later in the dependent object&rsquo;s lifetime.</li>
+<li><strong>Interface Injection</strong>: The dependency interface provides a method that accepts the dependent object, for the dependency object to inject itself into the dependent object. For this to work, the dependent object must also have a setter method for the dependency object to use to inject itself. This differs from the <em>Setter Injection</em> technique because it goes one step further and makes the dependency object itself a <em>Dependency Injector</em>.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -617,43 +671,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/21/reducing-code-complexity/">Reducing Code Complexity</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-21T16:00:53+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:00 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have already covered what I picked up from Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a> on <a href="blog/2014/08/21/ordering-and-labelling-code">packaging and labeling blocks of code</a> and <a href="blog/2014/08/20/reducing-a-routines-parameters/">simplifying their inputs</a>. Now I intend to cover what the two volumes offer in regards to reducing the complexity of the shape of, and relationships between, code segments. As is consistently emphasised through McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a>, the author of a piece of code is beholden to its reader and should write for readability and maintainability, as if often ends up being the same person or a colleague.</p>
-
-<p>To understand how a piece of code works, the reader must often hold in their mind the several steps they traversed along a particular execution path to reach a given point in the code. It is difficult to mentally retain these preconditions while juggling the cognitive task of interpreting the commands at the point the reader is currently at in parsing the code. A way of making this easier is to reduce the levels of nesting of conditional statements, or keeping the code as <em>flat</em> and as close to linear as possible; this better matches how the human brain works and plays to its strengths and aptitude for linear storytelling and reasoning patterns.</p>
-
-<p>One way to simplify a series of deeply nested conditions with many variables is to introduce a helpful level of abstraction by bundling up as many of those conditions as possible in descriptively named query methods or functions; <code>if isWeekDay(day)</code> is preferrable to <code>if(day != 'Saturday' &amp;&amp; day != 'Sunday')</code>.</p>
-
-<p>Another method is to attempt to simplify nested conditions using logic axioms such as <em>Demorgan&rsquo;s Law</em>. A series of if statements is often easier to navigate than a single chunk of nested logic. It also reduces the number of inputs to the block, providing greater opportunity to extract it out into separate methods or functions with clearer indications of what data influences its behaviour.</p>
-
-<p>When unwrapping nested conditional statements, the preconditions for an extracted piece of code may become less clear. This should be address by making any dependencies explicit. To illustrate: if one function must be called before another, have the first function return a data type that the second one requires as a parameter. For example, if a function <code>throwRock()</code> must be called before another <code>breakGlass()</code>, make <code>throwRock()</code> return an instance of <code>WallPosition</code> and have <code>breakGlass()</code> require an argument of type <code>WallPosition</code>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -683,6 +700,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/02/dependency-injection/">Dependency Injection</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming/">First Five Principles of Object-Oriented Programming</a>
       </li>
     
@@ -696,10 +717,6 @@
     
       <li class="post">
         <a href="/blog/2014/08/31/imperative-programming-vs-declarative-programming/">Imperative Programming vs Declarative Programming</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/31/procedural-programming/">Procedural Programming</a>
       </li>
     
   </ul>

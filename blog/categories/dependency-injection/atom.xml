@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Dependency Injection | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/dependency-injection/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2014-09-02T22:24:28+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dependency Injection]]></title>
+    <link href="http://greena13.github.io/blog/2014/09/02/dependency-injection/"/>
+    <updated>2014-09-02T10:56:14+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/09/02/dependency-injection</id>
+    <content type="html"><![CDATA[<p><em>Dependency Injection</em> is a software design pattern that works by <em>injecting</em> a reference to a dependency object into a dependent one, where it is stored and made part of the dependent object&rsquo;s state and behaviour. This separates the creation of the dependency object from the dependent object&rsquo;s code. In doing so, it more loosely couples the two objects and abides by the principles of <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Dependency Inversion</a> (because the dependent object is coupled with the dependency object&rsquo;s interface, rather than directly) and <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Single Responsibility</a> (because the dependent object is only responsible for its own behaviour, not the creation of the dependency object).</p>
+
+<h2>Design Pattern Elements</h2>
+
+<p>The pattern involves 4 elements:</p>
+
+<ul>
+<li><strong>Dependency Object</strong>: A concrete dependency object</li>
+<li><strong>Dependent Object</strong>: A concrete dependent object that relies on the dependency one</li>
+<li><strong>Dependency Interface</strong>: An interface used by the dependent object to communicate with the dependency object</li>
+<li><strong>Injector Object</strong>: A concrete injector object responsible for injecting the dependency object into the dependent one</li>
+</ul>
+
+
+<p>The implementation of the Dependency Injection pattern is similar to that of the Strategy pattern, but the semantics differ. The same dependency object is intended to be used for the duration of the dependent object&rsquo;s lifetime, while a strategy often needs to be interchanged throughout an object&rsquo;s lifetime.</p>
+
+<h2>Depdency Injection Techniques</h2>
+
+<p>Martin Fowler defined 3 ways of injecting a dependency:</p>
+
+<ul>
+<li><strong>Constructor Injection</strong>: Dependencies are provided to the dependent object&rsquo;s constructor at the time of creation. This requires the dependency object to be instantiated before the dependent instance and is the preferred method because it avoids the dependent instance ever being in an invalid state. Dependencies injected in this way, however, don&rsquo;t permit the interchanging of the dependency instance.</li>
+<li><strong>Setter Injection</strong>: The dependent object provides a setter method that accepts the dependency. This can lead to the problem of needing to make sure the dependency has been set before the dependent object is used; furthermore, it does not explicitly state the relationship between the dependent and dependency object, which is <a href="/blog/2014/08/21/reducing-code-complexity">considered bad practice</a>. It does, however, allow changing the dependency object later in the dependent object&rsquo;s lifetime.</li>
+<li><strong>Interface Injection</strong>: The dependency interface provides a method that accepts the dependent object, for the dependency object to inject itself into the dependent object. For this to work, the dependent object must also have a setter method for the dependency object to use to inject itself. This differs from the <em>Setter Injection</em> technique because it goes one step further and makes the dependency object itself a <em>Dependency Injector</em>.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
