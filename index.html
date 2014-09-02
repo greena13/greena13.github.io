@@ -9,7 +9,7 @@
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="I have found variance one of the more difficult things to get my head around in computer science, so I have tried to document the basics as a way of &hellip;">
+  <meta name="description" content="SOLID is an acronym mnemonic coined by Michael Feathers for Robert C. Martin&rsquo;s &ldquo;first five principles&rdquo; for object-oriented &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming/">First Five Principles of Object-Oriented Programming</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-01T20:18:37+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>8:18 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>SOLID</strong> is an acronym mnemonic coined by Michael Feathers for Robert C. Martin&rsquo;s &ldquo;first five principles&rdquo; for object-oriented programming. Each concept is worth looking at briefly so I have tried to summarise the important points of each below.</p>
+
+<h2>Single Responsibility Principle</h2>
+
+<p>Robert C. Martin introduced in his book <a href="http://www.amazon.co.uk/Software-Development-Principles-Patterns-Practices/dp/0132760584">Agile Software Development, Principles, Patterns and Practices</a> the <em>Single Responsibility Principe</em>, which states code modules (whether they be classes, methods, variables, etc.) should have a single responsibility, or rather a single reason for the module to need updating if a program&rsquo;s specifications were ever to change. Examples of the application of this principle can be seen in the separation of <em>presentation</em> and <em>content</em> commonly performed in object-oriented systems.</p>
+
+<h2>Open/Closed Principle</h2>
+
+<p>The <em>Open/Closed Principle</em> has always referred to the fact that modules should &ldquo;be open for extension but closed for modification&rdquo;, but exactly what that meant has had two different interpretations.</p>
+
+<h3>Meyer&rsquo;s Open/Closed Principle</h3>
+
+<p>Bertrand Meyer is attributed with creating the term <em>open/closed principle</em> in the 1988 book, <a href="http://www.amazon.co.uk/Object-Oriented-Software-Construction-Prentice-Hall-Resource/dp/0136291554">Object Oriented Software Construction</a>. Meyer&rsquo;s definition of the rule prescribed that once a module had been coded it should only be altered directly to fix errors - all other modifications should be completed by creating a new class - usually via inheritance to reuse code from the original class. In this form of the open/closed principle, the new class need <em>not</em> reuse the interface of the old class.</p>
+
+<h3>Polymorphic Open/Closed Principle</h3>
+
+<p>In the 1990s the term was largely redefined to refer to the use of abstracted interfaces instead of concrete ones. In contrast to Meyer&rsquo;s version of the principle, concrete classes could be modified and swapped out, so long as the module&rsquo;s <em>interface</em> was closed to modifications. According to the rule, changes or extensions could be performed by altering the concrete implementations freely, so long as the original interface was persisted and only added to.</p>
+
+<p>Where Meyer&rsquo;s principle preserved <em>implementation</em> and allowed for the modification of interfaces, the polymorphic open/closed principle preserves <em>interfaces</em> and allows for the modification of implementations.</p>
+
+<p>Robert C. Martin&rsquo;s article in 1996, <em>The Open-Closed Principle</em>, was instrumental in forwarding this approach and it is the latter definition that is in common use today.</p>
+
+<h2>Liskov Substitution Principle</h2>
+
+<p>The <em>Liskov Substitution Principle</em> put forth by Barbara Liskov&rsquo;s 1987 &lsquo;<em>Data abstraction and hierarchy</em>&rsquo; states that a programmer should be able to substitute an object with an instance of one of its subtypes without altering the surrounding code&rsquo;s behaviour. This is another way of saying that any subtype of an object must completely honour the interface and observable behaviour of its supertype.</p>
+
+<p>To achieve this, a number of requirements must be met that govern the subtype&rsquo;s signature:</p>
+
+<ul>
+<li>It must have <a href="/blog/2014/09/01/covariance-and-contravariance">contravariant method arguments</a></li>
+<li>It must have <a href="/blog/2014/09/01/covariance-and-contravariance">covariant method return types</a></li>
+<li>No new exceptions should be thrown from subtype class&rsquo;s methods other than when they are themselves subtypes of exceptions thrown by the supertype</li>
+</ul>
+
+
+<p>Beyond maintaining the same interface, a number of behavioural conditions for the subtype must also be satisfied:</p>
+
+<ul>
+<li>Preconditions are not to be strengthened in the subtype, i.e. the subtype must not depend on any more prerequisites than its supertype</li>
+<li>Postconditions cannot be weakened in the subtype, i.e. the subtype must perform the same behaviour as the supertype</li>
+<li><a href="/blog/2014/09/01/covariance-and-contravariance">Method arguments invariants</a> and <a href="/blog/2014/09/01/covariance-and-contravariance">method return type invariants</a> of the supertype must be preserved in a subtype</li>
+<li>The introduction of new methods cannot allow the subtype to enter a state that would not have been possible in the supertype and thereby change its behaviour; This is often referred to as the <em>History Constraint</em>.</li>
+</ul>
+
+
+<h2>Interface Segregation Principle</h2>
+
+<p>The <em>Interface-Segregation Principle</em> states client code should not be able to see any interface points it does not need access to in order to function. Access should be done instead via a <em>role interface</em>, which is tailored to the particular needs of the client code. In short, many specific interfaces are better than a single general purpose one.</p>
+
+<h2>Dependency Inversion Principle</h2>
+
+<p><em>Dependency Inversion</em> is a design pattern that focuses on decoupling software components of different abstractions. Traditionally, high-level components defined functionality in broad strokes and low-level components grew to support the high level code.</p>
+
+<p>Dependency Inversion is based on the notion that rather than having code components with a high level of abstraction depending directly on code components with a low level of abstraction, both components should instead depend on an abstraction. The details of these components should be coded to the abstractions, and not the abstractions to the details.</p>
+
+<p>This design pattern separates the code responsible for connecting the high-level components to the low-level components into an abstract interface, simplifying each component and allowing greater reusability. Often the components are divided into different libraries where the high-level components and interfaces for the functionality needed of the low-level code are bundled together; the low level components are given their own package. Because the interfaces the low-level components implement (and thus depend on) are bundled with the high-level code, the dependency flows up and it is this inversion of dependency direction for which the design pattern gets its name.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -570,47 +654,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/21/ordering-and-labelling-code/">Ordering and Labelling Code</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-21T14:53:17+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:53 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Reading Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, I encountered a subject that I previously hadn&rsquo;t given much thought to but is of great importance. McConnel talks of reducing the cognitive load of reading and understanding code by writing for humans first, computers second; where the reader of a piece of code should be the author&rsquo;s highest priority - if not only because these often end up being one and the same. An important part of this is facilitating quick code navigation to allow the reader to find what they need, and providing useful levels of abstraction so the reader need not concern themselves with irrelevant details.</p>
-
-<p>This is achieved by making considered choices with code order and placement. Two units of code that are related in some way - the most important and obvious being references between them or shared execution paths - should be placed nearby to each other. This is to allow a reader to easily refer between the two without having to jump between separate locations in a file. McConnel offers the analogy of a newspaper for guidance on how code should be ordered: the important concepts are featured at the top while the refinements or details can be found towards the bottom.</p>
-
-<p>Vertical whitespace should be used wisely to separate different ideas or functions in the code. Statements that perform actions that are part of the same larger action should be grouped together, while those that are not should be separated visually by one or more lines of whitespace. If a clear enough conceptual gap exists between a group of statements and the rest of the code, it can and often should be extracted out into a well-named method or function (and given the appropriate access modifier to correctly observe <em>Encapsulation</em>).</p>
-
-<p>Care should be taken when naming methods and functions to the make the reader&rsquo;s task easier. A well-named block of code should make clear what it is the code does, what input it expects or requires and in the case of <a href="blog/2014/08/20/reducing-a-routines-parameters/">multiple parameters</a>, what order the arguments should be given in. If named wisely, a function or method should require little or no further documentation.</p>
-
-<p>It is paramount that a piece of code only perform the functionality suggested by its name, free of hidden side effects or behaviour. To ignore this is to surely guarantee bugs that are difficult to diagnose and fix. However, something greater is at stake: if violated, the trust between the code&rsquo;s author and reader is broken and the reader is forced to then check every method or function for similarly concealed behaviour.</p>
-
-<p>If it is proving difficult to accurately name a method or function succinctly, often it is an indication of an inappropriate level of abstraction or confused intentions behind the code. For example, functions that perform queries or return a system status should be separated from those that execute and action, or alter the system state.</p>
-
-<p>Naming conventions can be used to imbue code with consistency and reduce the number of surprises the reader must negotiate in parsing the code. The merits of specific conventions are secondary to the benefits of consistency itself.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -640,6 +683,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming/">First Five Principles of Object-Oriented Programming</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/01/covariance-and-contravariance/">Covariance and Contravariance</a>
       </li>
     
@@ -653,10 +700,6 @@
     
       <li class="post">
         <a href="/blog/2014/08/31/procedural-programming/">Procedural Programming</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/30/structured-programming/">Structured Programming</a>
       </li>
     
   </ul>
