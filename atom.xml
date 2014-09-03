@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2014-09-02T22:24:28+01:00</updated>
+  <updated>2014-09-03T10:58:43+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Inversion of Control]]></title>
+    <link href="http://greena13.github.io/blog/2014/09/03/inversion-of-control/"/>
+    <updated>2014-09-03T08:52:19+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/09/03/inversion-of-control</id>
+    <content type="html"><![CDATA[<p>Popularised by Robert C. Martin and Martin Fowler, <em>Inversion of Control</em> is a design principle where <em>custom code components</em> receive the control flow from general <em>library components</em>, similar to custom code modules being written for a larger general-purpose framework. This is an inversion of the traditional control flow found in <a href="http://greena13.github.io/blog/2014/08/31/procedural-programming">procedural programming</a> where the custom components encode the program&rsquo;s functionality in terms of general purpose libraries. The pattern offers the advantage of making the program more modular and extendable.</p>
+
+<p>Inversion of control is related to Martin&rsquo;s <a href="http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming">dependency inversion principle</a>, which is concerned with having high and low level code depend an abstraction, rather than directly on each other, thereby inverting the direction of dependency. This is analogous to the way high-level, general components yield control to the low-level specific code in Inversion of Control, thereby inverting the traditional flow of control.</p>
+
+<p>Although the term is most often used in the context of object-oriented programming, there are design patterns with wider applications that follow the Inversion of Control principle, such as software frameworks, callbacks and <a href="http://greena13.github.io/blog/2014/09/02/dependency-injection">dependency injection</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dependency Injection]]></title>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Imperative Programming vs Declarative Programming - Key Shift in Cmd</title>
+  <title>Inversion of Control - Key Shift in Cmd</title>
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="I was recently reading the Wikipedia articles of imperative programming and declarative programming to brush up on my understanding of the &hellip;">
+  <meta name="description" content="Popularised by Robert C. Martin and Martin Fowler, Inversion of Control is a design principle where custom code components receive the control flow &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming">
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/09/03/inversion-of-control">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Imperative Programming vs Declarative Programming</h1>
+      <h1 class="entry-title">Inversion of Control</h1>
     
     
       <p class="meta">
@@ -77,28 +77,18 @@
 
 
 
-<time class='entry-date' datetime='2014-08-31T10:37:39+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:37 am</span></time>
+<time class='entry-date' datetime='2014-09-03T08:52:19+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:52 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>I was recently reading the Wikipedia articles of <a href="http://en.wikipedia.org/wiki/Imperative_programming">imperative programming</a> and <a href="http://en.wikipedia.org/wiki/Declarative_programming">declarative programming</a> to brush up on my understanding of the distinction.</p>
+<div class="entry-content"><p>Popularised by Robert C. Martin and Martin Fowler, <em>Inversion of Control</em> is a design principle where <em>custom code components</em> receive the control flow from general <em>library components</em>, similar to custom code modules being written for a larger general-purpose framework. This is an inversion of the traditional control flow found in <a href="/blog/2014/08/31/procedural-programming">procedural programming</a> where the custom components encode the program&rsquo;s functionality in terms of general purpose libraries. The pattern offers the advantage of making the program more modular and extendable.</p>
 
-<h2>Imperative Programming</h2>
+<p>Inversion of control is related to Martin&rsquo;s <a href="/blog/2014/09/01/first-five-principles-of-object-oriented-programming">dependency inversion principle</a>, which is concerned with having high and low level code depend an abstraction, rather than directly on each other, thereby inverting the direction of dependency. This is analogous to the way high-level, general components yield control to the low-level specific code in Inversion of Control, thereby inverting the traditional flow of control.</p>
 
-<p>Imperative programming is concerned with describing how a program should achieve its functionality; not only <em>what</em> should be done, but also <em>how</em> it should be done is encoded. The movement of data and execution of operations are explicitly specified, if only at an abstract level; that is to say, an imperative program is concerned with implementation as much as it is logic functionality.</p>
-
-<p>Imperative programming has its roots in assembly language and machine code, however, modern high-level languages offer more human-friendly syntax and aggregate functionality. <a href="/blog/2014/08/31/procedural-programming">Procedural programming</a> is a common paradigm that falls within imperative programming.</p>
-
-<h2>Declarative Programming</h2>
-
-<p>Declarative programming focuses on expressing the logic of a computation without needing to specify it in terms of low-level operations. Declarative programming emerged out of an attempt to minimise side-effects and focus on a program&rsquo;s primary function, leaving the implementation details to the language itself.</p>
-
-<p>Common examples of declarative programming are SQL, regular expressions and functional programming.</p>
-
-<p>It seems the difference between the two programming ideologies is largely concerned with the distribution of responsibility: in imperative programming the programmer is responsible for specifying logic functionality and implementation details while in declarative programming the language takes ownership of the implementation.</p>
+<p>Although the term is most often used in the context of object-oriented programming, there are design patterns with wider applications that follow the Inversion of Control principle, such as software frameworks, callbacks and <a href="/blog/2014/09/02/dependency-injection">dependency injection</a>.</p>
 </div>
 
 
@@ -114,21 +104,15 @@
 
 
 
-<time class='entry-date' datetime='2014-08-31T10:37:39+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:37 am</span></time>
+<time class='entry-date' datetime='2014-09-03T08:52:19+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:52 am</span></time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/declarative-programming/'>declarative programming</a>, <a class='category' href='/blog/categories/imperative-programming/'>imperative programming</a>, <a class='category' href='/blog/categories/programming-concepts/'>programming concepts</a>, <a class='category' href='/blog/categories/structured-programming/'>structured programming</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/" data-via="" data-counturl="http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/09/03/inversion-of-control/" data-via="" data-counturl="http://greena13.github.io/blog/2014/09/03/inversion-of-control/" >Tweet</a>
   
   
   
@@ -139,10 +123,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/31/procedural-programming/" title="Previous Post: Procedural Programming">&laquo; Procedural Programming</a>
+        <a class="basic-alignment left" href="/blog/2014/09/02/dependency-injection/" title="Previous Post: Dependency Injection">&laquo; Dependency Injection</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/09/01/functional-programming/" title="Next Post: Functional Programming">Functional Programming &raquo;</a>
       
     </p>
   </footer>
@@ -251,8 +233,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/';
-        var disqus_url = 'http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/';
+        var disqus_identifier = 'http://greena13.github.io/blog/2014/09/03/inversion-of-control/';
+        var disqus_url = 'http://greena13.github.io/blog/2014/09/03/inversion-of-control/';
         var disqus_script = 'embed.js';
       
     (function () {
