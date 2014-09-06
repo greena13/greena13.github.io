@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Functional Programming - Key Shift in Cmd</title>
+  <title>Factories - Key Shift in Cmd</title>
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of &hellip;">
+  <meta name="description" content="The finer points of the different factory design patterns has always escaped me, so I decided to look it up recently and found this rather helpful &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://greena13.github.io/blog/2014/09/01/functional-programming">
+  <link rel="canonical" href="http://greena13.github.io/blog/2014/09/06/factories">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Functional Programming</h1>
+      <h1 class="entry-title">Factories</h1>
     
     
       <p class="meta">
@@ -77,37 +77,48 @@
 
 
 
-<time class='entry-date' datetime='2014-09-01T09:52:42+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:52 am</span></time>
+<time class='entry-date' datetime='2014-09-06T18:24:52+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:24 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of the <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> Wikipedia page.</p>
+<div class="entry-content"><p>The finer points of the different factory design patterns has always escaped me, so I decided to look it up recently and found <a href="http://stackoverflow.com/questions/4209791/design-patterns-abstract-factory-vs-factory-method">this rather helpful stackoverflow answer</a>. I thought I&rsquo;d summarise what I learnt below (all diagrams were generated using <a href="www.yuml.me">yUML</a>).</p>
 
-<p>Functional programming is a <a href="/blog/2014/08/31/imperative-programming-vs-declarative-programming">declarative programming</a> paradigm that treats computations as evaluations of mathematical functions and avoids referencing a system state and mutable data. It was developed, primarily, as an attempt to avoid side effects and make subroutines much easier to reason about. It introduces a number of interesting and useful concepts that are not often encountered or emphasised in object-orient programming.</p>
+<p>A factory design pattern in the most general sense is one that entrusts a class or object with the creation or instantiation of another object. Commonly, the class or object that does the creating is called the Factory object and the object being created is called the Product object. Bare this in mind when viewing the diagrams that follow.</p>
 
-<h2>Pure Functions</h2>
+<h2>Static Factories</h2>
 
-<p>Pure functions are those that have no side effects and depend only on their argument values, not on any system information; consequently, they return the same value for a given set of parameter values every time. They have some unique properties useful for code optimisation and reasoning:</p>
+<p>A <em>Static Factory</em> is a class that defines a static method that generates various subtypes of a Product. It accepts an argument to determine which Product subtype to generate (shown as a string here, but it could be just about anything). The static factory does not need to be instantiated in order to generate a Product subtype. In some languages, Product&rsquo;s constructor is typically made private so it can only be called within the Product class and thereby prevent the factory from being bypassed.</p>
 
-<ul>
-<li><p>If the result of a pure expression is not used, it can be removed without altering the code&rsquo;s behaviour.</p></li>
-<li><p>If a pure function is called with arguments that are themselves pure functions, or don&rsquo;t have side effects, then the result can be cached and returned if the function is called with the same parameter values again.</p></li>
-<li><p>If there is no dependency amongst a collection of functions, they can be run in any order with the same result.</p></li>
-</ul>
+<p>If the system is later updated and a new Product subtypes is added, the static factory class must be updated to include the new Product subtype.</p>
 
+<p><strong>NB:</strong> I&rsquo;ve used underscore here to indicate a static method as yUML doesn&rsquo;t appear to be able to underline text.</p>
 
-<h2>Referential Transparency</h2>
+<p><img src="http://www.yuml.me/1e74d10f" alt="Static Factory" /></p>
 
-<p>Referential transparency is a property of code that refers to whether or not it can be replaced with its calculated value without changing its behaviour. If this is indeed the case, the code is said to be <em>referentially transparent</em>; if the code cannot be replaced with its value without altering system behaviour then it is <em>referentially opaque</em>.</p>
+<h2>Simple Factories</h2>
 
-<p>All pure function calls are referentially transparent as they do not depend on or change system behaviour and should always return the same result when given the same arguments.</p>
+<p>While static factories define a static method for generating Product subtypes, a <em>Simple Factory</em> is a <em>separate</em> class that defines an <em>instance</em> method to generate instances of Product subtypes. Again, the method typically accepts an argument to indicate which Product subtype to generate. The Product constructor&rsquo;s visibility can be restricted to <em>package</em> if the simple factory and product are packaged together.</p>
 
-<h2>First-class Functions</h2>
+<p>The simple factory class must first be instantiated before it can be used to generate a Product instance. Similar to static factories, if a new Product subtype is added, the simple factory class needs to be updated to include it.</p>
 
-<p>First-class functions are those which can appear anywhere in a program that other first-class entities (such as numbers) can. This notably includes as arguments and return values for other functions. They can also accept and return other functions.</p>
+<p><img src="http://www.yuml.me/b1f57365" alt="Simple Factory" /></p>
+
+<h2>Factory Method</h2>
+
+<p>A <em>Factory Method</em> class introduces another level of abstraction by defining a <em>Factory Method</em> interface that includes a method to produce Product subtypes. Concrete factory method classes implement this interface and define the factory method to generate Product subtypes related to its (the concrete Factory Method class) own type. Again, you need to create an instance of the concrete Factory Method class before you can create an instance of a Product subtype.</p>
+
+<p>If a new Product subtype is added, each concrete factory method class that needs to be able to generate the new Product subtype, will need to be updated.</p>
+
+<p><img src="http://www.yuml.me/d7f2e8c3" alt="Factory Method" /></p>
+
+<h2>Abstract Factories</h2>
+
+<p>The <em>Abstract Factories</em> is useful when when you have several Product objects that are related conceptually, but not through inheritance. It adds a factory method to the interface for each Product object (each of which has its own set of Product subtypes). It can be thought of as overlapping two or more Factory Methods on top of each other.</p>
+
+<p><img src="http://www.yuml.me/989345bf" alt="Abstract Factory Method" /></p>
 </div>
 
 
@@ -123,21 +134,15 @@
 
 
 
-<time class='entry-date' datetime='2014-09-01T09:52:42+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:52 am</span></time>
+<time class='entry-date' datetime='2014-09-06T18:24:52+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:24 pm</span></time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/functional-programming/'>functional programming</a>, <a class='category' href='/blog/categories/programming-concepts/'>programming concepts</a>, <a class='category' href='/blog/categories/structured-programming/'>structured programming</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/09/01/functional-programming/" data-via="" data-counturl="http://greena13.github.io/blog/2014/09/01/functional-programming/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2014/09/06/factories/" data-via="" data-counturl="http://greena13.github.io/blog/2014/09/06/factories/" >Tweet</a>
   
   
   
@@ -148,10 +153,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/31/imperative-programming-vs-declarative-programming/" title="Previous Post: Imperative Programming vs Declarative Programming">&laquo; Imperative Programming vs Declarative Programming</a>
+        <a class="basic-alignment left" href="/blog/2014/09/03/inversion-of-control/" title="Previous Post: Inversion of Control">&laquo; Inversion of Control</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/09/01/covariance-and-contravariance/" title="Next Post: Covariance and Contravariance">Covariance and Contravariance &raquo;</a>
       
     </p>
   </footer>
@@ -260,8 +263,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://greena13.github.io/blog/2014/09/01/functional-programming/';
-        var disqus_url = 'http://greena13.github.io/blog/2014/09/01/functional-programming/';
+        var disqus_identifier = 'http://greena13.github.io/blog/2014/09/06/factories/';
+        var disqus_url = 'http://greena13.github.io/blog/2014/09/06/factories/';
         var disqus_script = 'embed.js';
       
     (function () {
