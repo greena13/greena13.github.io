@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Typing | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/typing/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2014-09-10T18:56:43+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Improving Typing Speed]]></title>
+    <link href="http://greena13.github.io/blog/2014/09/08/improving-typing-speed/"/>
+    <updated>2014-09-08T16:01:41+01:00</updated>
+    <id>http://greena13.github.io/blog/2014/09/08/improving-typing-speed</id>
+    <content type="html"><![CDATA[<p>Always in search of productivity gains in my programming work, recently I have been looking into improving my typing speed. I read Jeff Atwood&rsquo;s <a href="http://blog.codinghorror.com/we-are-typists-first-programmers-second/">We Are Typists First, Programmers Second</a> and was enthused, despite a few commenters pointing out that typing speed is rarely the bottleneck when it comes to coding. Atwood rightly responded that it is a matter of mental &ldquo;bandwidth&rdquo;: ideally, typing should be a function performed entirely autonomously without error or disruption - the mental interference of having to consider which keys should be pressed or what corrective action is needed to rectify a mistype can be detrimental to productivity and creativity. This mirrors a similar sentiment discussed in the highly recommended <a href="http://www.amazon.co.uk/Practice-Perfect-Rules-Getting-Better-ebook/dp/B007ZQ34V4">Practice Perfect</a> by Doug Lemov, Erica Woolway and Katie Yezzi. Lemov and his co-authors discuss practicing monotonous, formulaic and repetitive skills to the point of being able to execute them effortlessly and flawlessly provides more cognitive horsepower for creativity and efficacy.</p>
+
+<p>From working with colleague and peers, I gained the impression I had a pretty average typing speed for a regular computer user and programmer, but I wanted to try and find out a base line. I encountered many figures of average and exceptional typing speeds online, including some <a href="http://en.wikipedia.org/wiki/Words_per_minute">rather unbelievable world records</a>, but I could not find any information on the sort typing I was interested in: programming, using just about every key on the keyboard and not just the alphanumeric and punctuation keys. Unable to find the information I wanted, I resigned myself to using what I had. I took a few free typing tests I found online and got an average of about 60 WPM. This is, from what I can gather, above average and more than adequate to produce code efficiently.</p>
+
+<p>However, I knew that my typing speed slowed considerably when I had to code as opposed to writing an email but I was unsure by exactly how much. So I went in search of a tool that might help me find out. I found <a href="https://typing.io/">typing.io</a>, a service that allows you to type code from open source repositories for a number of different languages and frameworks while it measures your typing speed and error rate. Each code excerpt is broken down into chunks called <em>lessons</em>. The free version of the tool was enough to tell me my average typing speed for programming was close to 30 WPM - a rather concerning reduction of 50%. What wasn&rsquo;t available in the free version, however, was exactly which keys it was that was dragging down my typing speed.</p>
+
+<p>I decided to invest in the paid subscription to gain greater access to the lessons and more importantly, to identify which keystrokes were causing me the most problems. I thought if I could find the worst culprits, I could correct the <a href="http://en.wikipedia.org/wiki/Pareto_principle">fabled 20%</a> and get my 80% improvement.</p>
+
+<p>So, I started working through the lessons and one of the most interesting things I discovered was how I seem to deviated from the prescribed correct finger placements to suit my preferred style of typing. Typing.io provides a virtual keyboard on the bottom of the screen while you are typing, illustrating key placement on your keyboard and the correct fingers that should be used to press it. I have quite long fingers and I oftentimes use this length to my advantage by favouring the longer index and middle fingers to reach keys that are technically designated as the responsibility of the shorter, ring and little fingers.</p>
+
+<p>I wondered if perhaps this overuse of the fingers that sat in the center of the keyboard was contributing to the slower execution of keystrokes attached to keys located towards the outer edge of the board. So within the first 30 minutes of practice, after seeing no improvement in speed - and an increasing error rate as I tried to push myself out of frustration - I decided I would focus on returning to the correct form I had first learnt in highschool to see if it had any effect on my speed.</p>
+
+<p>Initially my error rate soared to around 35%, but gradually it began to come down as I focused on addressing each problem key individually and after more than 11 hours of practice over a period of a week or so, I began to arrive back at levels of ease similar to those I experienced before adjusting my technique and a nice little boost in my speed of 3 - 5 WPM.</p>
+
+<p>After almost 12 hours of use, I had a few observations of typing.io. While the report at the end of each &lsquo;lesson&rsquo; is helpful, it doesn&rsquo;t really tell me what I want to know and can be misleading at times. An infographic of a keyboard is shown and each key is coloured in increasingly warmer colours, with bright red being reserved for the keys you had mistyped the greatest percentage of times. This means that if you typed a key twice and mistyped it once, it appears redder than a key you typed 17 times and mistyped 8 times. This is obviously not useful for identifying the keys that you most often mistype. It would be more useful if data from previous lessons were included as well - perhaps weighted appropriately so the most recent previous lessons had a greater significance.</p>
+
+<p>The infographic also doesn&rsquo;t appear to display any information about how long it takes to press particular keys and therefor where improvement could to be made. It would be further helpful if the tool provided you the top five or ten slowest key transitions, so that you knew which sequences of keys to practice - assuming they occurred frequently enough to justify the effort.</p>
+
+<p>Another gripe is with the virtual keyboard that appears while you are typing, showing you the key and finger combination necessary to achieve the next keystroke. Often I mistyped something and was left confused as to where I had gone wrong; it would have been very helpful if the virtual keyboard had shown what key I had actually pressed so I could correct my form without having to glance down at the actual keyboard.</p>
+
+<p>Typing.io also did not distinguish between which shift key was being pressed and it accepted keystrokes that had been generated with the incorrect shift key. This made it especially difficult to recognise mistakes and correct them because the tool was giving feedback indicating they were correct.</p>
+
+<p>An interesting observation was that the greatest determinant of speed and error rate, was which language I was typing code for. It seems there are languages which lend themselves to be typed much quicker and with less errors. High-level languages with CamelCase variable and method naming conventions were by far the easiest to transcribe. They generally included less operator keystrokes, less opening and closing brackets and none of the dreaded shift + underscore key combination that is so slow and difficult to reach with you little finger. It has left with me with an interesting (but ultimately minor) consideration when selecting suitable languages for future projects.</p>
+
+<p>Overall, this was an curious experience that I would tentatively claim as a measured success. It remains unclear whether adjusting my technique to be more consistent with the suggested finger configurations has improved my typing speed, or whether I just got more accustom to the nuances of the program. I intend to continue with the program with a less intensive regime to see if more clearer results emerge after a longer time period.</p>
+]]></content>
+  </entry>
+  
+</feed>
