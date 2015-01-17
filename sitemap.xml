@@ -1,117 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  
+  <url>
+    <loc>http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job/</loc>
+    <lastmod>2015-01-17T08:35:20+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>http://greena13.github.io/blog/2014/09/08/improving-typing-speed/</loc>
     <lastmod>2014-09-08T16:01:41+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/09/06/factories/</loc>
     <lastmod>2014-09-06T18:24:52+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/09/03/inversion-of-control/</loc>
     <lastmod>2014-09-03T08:52:19+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/09/02/dependency-injection/</loc>
     <lastmod>2014-09-02T10:56:14+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming/</loc>
     <lastmod>2014-09-01T20:18:37+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance/</loc>
     <lastmod>2014-09-01T16:37:28+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/09/01/functional-programming/</loc>
     <lastmod>2014-09-01T09:52:42+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/</loc>
     <lastmod>2014-08-31T10:37:39+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/31/procedural-programming/</loc>
     <lastmod>2014-08-31T08:42:16+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/30/structured-programming/</loc>
     <lastmod>2014-08-30T22:11:41+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages/</loc>
     <lastmod>2014-08-28T09:58:41+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/26/creating-cards-for-spaced-repetition/</loc>
     <lastmod>2014-08-26T14:44:22+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/22/separating-classes-into-smaller-ones/</loc>
     <lastmod>2014-08-22T09:05:53+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/21/reducing-code-complexity/</loc>
     <lastmod>2014-08-21T16:00:53+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/</loc>
     <lastmod>2014-08-21T14:53:17+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters/</loc>
     <lastmod>2014-08-20T21:04:08+01:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
-  
   <url>
     <loc>http://greena13.github.io/blog/archives/</loc>
-    <lastmod>2014-09-10T18:56:43+01:00</lastmod>
+    <lastmod>2015-01-17T09:17:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
   <url>
     <loc>http://greena13.github.io/</loc>
-    <lastmod>2014-09-10T18:56:43+01:00</lastmod>
+    <lastmod>2015-01-17T09:17:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  
 </urlset>

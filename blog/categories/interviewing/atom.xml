@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Interviewing | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/interviewing/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2015-01-17T09:17:10+00:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Interview Questions for a Development Job]]></title>
+    <link href="http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job/"/>
+    <updated>2015-01-17T08:35:20+00:00</updated>
+    <id>http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job</id>
+    <content type="html"><![CDATA[<p>Last year I went through the rather exciting process of interviewing for a series of positions in search of a new development job. Having sat down and thought about what I had gained from my previous working environments, I compiled a list of questions that I thought would help me gauge the type of work I would be doing and the environment I would be a part of if I took the position.</p>
+
+<p>In the hope that they may assist others, I have decided to document them here. I do not claim to have come up with them all myself (some are from friends and family, others I ran across somewhere on the web), but most were inspired by my own previous experience.</p>
+
+<h2>People &amp; Company</h2>
+
+<ul>
+<li>What projects are currently on-going?</li>
+<li>What is the current team like?</li>
+<li>What sort of working environment do you offer?</li>
+<li>How does the company support people of different personality types and empower them to get the best from themselves within your working environment?</li>
+<li>How do you meet and communicate information within the company?</li>
+<li>How do you share knowledge and resources within the company?</li>
+<li>What sort of office hierarchy does the company use? How flexible is it?</li>
+<li>What parts about how the office is organised and run are open to suggestions? What things are not?</li>
+<li>What sized teams do people work in? How often do those teams change? How are they organised?</li>
+<li>How do you invest in and support your developers?</li>
+<li>What’s important to the company&rsquo;s culture?</li>
+<li>What is the company’s goals or road map for the next 12 months?</li>
+<li>What attracted you to the company?</li>
+<li>How do most people choose to get to work each morning?</li>
+</ul>
+
+
+<h2>Job Responsibilities</h2>
+
+<ul>
+<li>Does this position involve design as well as development?</li>
+<li>How much technical and creative freedom is to be expected?</li>
+<li>What would be my role here in the company for the first few weeks and how will it change in 3 months time?</li>
+<li>What is your best guess at the relative time spent developing new features and performing maintenance or bug fixing?</li>
+</ul>
+
+
+<h2>Technical</h2>
+
+<ul>
+<li>What technology could this role offer me the chance to work with?</li>
+<li>What sort of testing and quality management measures do you have in place?</li>
+<li>What software do you use in the office for version control, communication, deployment, data storage and bug tracking?</li>
+<li>What hardware do you use for development, networking, storage and presenting?</li>
+</ul>
+
+
+<h2>Procedures</h2>
+
+<ul>
+<li>How do you plan work, estimate risk and agree on deadlines and milestones?</li>
+<li>How involved are clients in the design process and in offering feedback?</li>
+<li>What sort of review opportunities do you offer, both technical and performance?</li>
+<li>How do you track development progress and allow developers to identify and raise problems early?</li>
+<li>How do you handle work that is not going to plan, is late or not going to meet a deadline?</li>
+<li>How does the company use data and data analysis in its day-to-day operation?</li>
+<li>How flexible are the work hours?</li>
+<li>Do you offer the freedom to occasionally work from home?</li>
+</ul>
+
+
+<h2>Feedback</h2>
+
+<ul>
+<li>Do you have any concerns with my ability to fulfil this role that I can address right now?</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
