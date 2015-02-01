@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Atlassian | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/atlassian/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2015-02-01T10:35:43+00:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SourceTree Keyboard Shortcuts]]></title>
+    <link href="http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts/"/>
+    <updated>2015-02-01T09:32:42+00:00</updated>
+    <id>http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts</id>
+    <content type="html"><![CDATA[<p>After wasting hours in search of a good list of keyboard shortcuts available in Atlassian&rsquo;s SourceTree and feeling utter despair at <a href="https://answers.atlassian.com/questions/238357/where-can-i-find-a-list-of-mac-keyboard-shortcuts-for-sourcetree">how slow Atlassian is being at delivering this information</a>, I thought I&rsquo;d share the ones that I discovered through brute force and determination.</p>
+
+<p>These were discovered and are only applicable on a Mac (although I am sure the Windows equivalents are easy to deduce), at the Commit All.. Screen (cmd + shift + c).</p>
+
+<p>I would be <em>extremely</em> interested in hearing about any that are not already listed. Please post in the comments below.</p>
+
+<h2>Navigation &amp; Menus</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>File Status Screen</strong> </td>
+<td style="text-align:right;"> cmd + 1 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Log Screen</strong> </td>
+<td style="text-align:right;"> cmd + 2 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Search Screen</strong> </td>
+<td style="text-align:right;"> cmd + 3 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Repo select window</strong>  </td>
+<td style="text-align:right;">  cmd + b  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>New repo</strong>  </td>
+<td style="text-align:right;">  cmd + n  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Command history</strong>  </td>
+<td style="text-align:right;">  cmd + shift + w </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Hide/show sidebar</strong>  </td>
+<td style="text-align:right;">  cmd + shift + k </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Spelling and grammar</strong>  </td>
+<td style="text-align:right;">  cmd + shift + ; </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Settings</strong>  </td>
+<td style="text-align:right;">  cmd + ,  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Help</strong>  </td>
+<td style="text-align:right;">  cmd + shift + / </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Staging &amp; Commit Operations</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Commit All&hellip; Screen</strong>  </td>
+<td style="text-align:right;">  cmd + shift + c </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Commit options</strong>  </td>
+<td style="text-align:right;">  cmd + shift + o </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Reset Selected File</strong> </td>
+<td style="text-align:right;">  cmd + shift + r </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Diff</strong>  </td>
+<td style="text-align:right;">  cmd + d  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Remove Selected File</strong> </td>
+<td style="text-align:right;"> cmd + delete </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Search</strong>  </td>
+<td style="text-align:right;">  cmd + shift + h </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Refresh</strong>  </td>
+<td style="text-align:right;">  cmd + r  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Find</strong>  </td>
+<td style="text-align:right;">  cmd + f  </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Branch  Operations</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Stash</strong>  </td>
+<td style="text-align:right;">  cmd + shift + s </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Add Tag</strong>  </td>
+<td style="text-align:right;">  cmd + shift + t </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Branch</strong>  </td>
+<td style="text-align:right;">  cmd + shift + b </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Merge</strong>  </td>
+<td style="text-align:right;">  cmd + shift + m </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Repository Operations</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Fetch</strong>  </td>
+<td style="text-align:right;">  cmd + shift + f </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Pull from repository</strong>  </td>
+<td style="text-align:right;">  cmd + shift + l </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Remotes</strong>  </td>
+<td style="text-align:right;">  cmd + shift + , </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Open Working Copy</strong>  </td>
+<td style="text-align:right;">  cmd + o  </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Window (Normal Mac Shortcuts)</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Quit</strong>  </td>
+<td style="text-align:right;">  cmd + q  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Close window</strong>  </td>
+<td style="text-align:right;">  cmd + w  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Hide</strong>  </td>
+<td style="text-align:right;">  cmd + h  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Minimise</strong>  </td>
+<td style="text-align:right;">  cmd + m  </td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+</feed>
