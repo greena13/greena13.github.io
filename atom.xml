@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2015-02-01T10:35:43+00:00</updated>
+  <updated>2015-02-21T11:23:08+00:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -12,6 +12,840 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on How to Start a Startup]]></title>
+    <link href="http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes/"/>
+    <updated>2015-02-13T07:54:06+00:00</updated>
+    <id>http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes</id>
+    <content type="html"><![CDATA[<p>I recently finished listening to the fantastic set of lectures <a href="http://startupclass.samaltman.com/">How to Start a Startup</a> and I thought I&rsquo;d share a few things I found interesting from each lecture. These notes are <strong>not</strong> complete or guaranteed to be accurate and should not be acted upon without first either listening to or reading the transcripts of the <a href="http://startupclass.samaltman.com/">source material</a> yourself. Some of this content is stuff I am only superficially familiar with, so terminology and concepts may be mangled or misunderstood. Saying that, I would appreciate any feedback on glaring errors or omissions, using the comments below.</p>
+
+<p>My intent is a summary of the content contained in the lectures that will serve as a quick reference for myself and others, but I do encourage experiencing the source material yourself if you are interested. It&rsquo;s very engaging and nuanced and features some fantastic speakers. It should be experienced firsthand to allow the content that resonates or is most applicable to you, to emerge. The original transcripts have been linked to for each lecture.</p>
+
+<h2>Lecture 1</h2>
+
+<h3>How to Start a Startup</h3>
+
+<h4>Sam Altman, President of Y Combinator, and Dustin Moskovitz, Cofounder of <a href="https://www.facebook.com/">Facebook</a>, <a href="https://asana.com/">Asana</a>, and <a href="http://www.goodventures.org/">Good Ventures</a>. [<a href="http://genius.com/Sam-altman-lecture-1-how-to-start-a-startup-annotated">Original Transcription</a>]</h4>
+
+<h2>Applicability</h2>
+
+<p><em>Trying to act upon the advice in the lectures will not work in big companies or non-startups.</em></p>
+
+<h2>Commitment and Motivation</h2>
+
+<p>Never begin a startup for the sake of doing so - there are far easier ways to get rich. If it all works out, you&rsquo;ll need to be prepared to commit 10 years of your life.</p>
+
+<h2>Prerequisites</h2>
+
+<p>There are 4 areas a startup needs to excel at:</p>
+
+<ul>
+<li>Idea</li>
+<li>Product</li>
+<li>Team</li>
+<li>Execution</li>
+</ul>
+
+
+<h2>The Idea</h2>
+
+<p>The first thing you need is an idea based on a real need or problem; the best start-ups are often mission-oriented and it’s usually easier to get support as a startup working on a hard, important problem than it is for an easy problem. The best ideas are very distinct from existing solutions and those that tackle a problem with an existing solution and small differentiators usually fail.</p>
+
+<p>Great ideas often seem bad (eg. the 13th search engine or a social network with college students as customers), but you need to be able to clearly articulate:</p>
+
+<ul>
+<li>Why it’s actually not a bad idea,</li>
+<li>Why now is a better time than ever before for your idea</li>
+<li>Why you are in a unique or privileged position to execute that idea</li>
+</ul>
+
+
+<p>It&rsquo;s because great ideas often sound bad that it&rsquo;s ok to tell people about them.</p>
+
+<p>It is always advised to start with something simple; the smallest and most important subset of a problem. From there you can expand the idea into a more sophisticated or comprehensive solution.</p>
+
+<p>There is an advantage to building something you yourself need so you can understand it without having to talk with customers first.</p>
+
+<h2>Market</h2>
+
+<p>In order to survive in the long run, you need to build a business model that is difficult to replicate. You want an idea that turns into a monopoly. This is easiest to achieve by finding a small market in which it&rsquo;s possible as a startup to achieve a monopoly; this then places you in a position to expand radially. You&rsquo;ll need to identify a market that’s going to be big in 10 years, preferably that few people have yet to recognise.</p>
+
+<p>Making something people only like is to fail - you must make something people love. It&rsquo;s better to build something a small number of users love than a large number of uses merely like. This is because it is easier to expand from a product that few users love to one that many users love, than a product that many uses like to something a lot of users love. You will know when your idea is working because it will be growing by word-of-mouth.</p>
+
+<p>Don’t worry about your competition - few start-ups die because of competition.</p>
+
+<h2>Initial Users</h2>
+
+<p>To get the first few users, you need to recruit by hand and do things that do not scale. Don’t put people between you and your customers - have as much contact with your customers as possible and use metrics to keep yourself honest on user numbers and adoption. Be sure to measure the things that matter to your startup and not get distracted by metrics that aren&rsquo;t aligned with your company&rsquo;s goals.</p>
+
+<h2>Founders&#8217; Share</h2>
+
+<p>At the end of things, founders are likely to have about 10% of the company.</p>
+
+<h2>Lecture 2</h2>
+
+<h3>Team and Execution</h3>
+
+<h4>Sam Altman, President of <a href="https://www.ycombinator.com/">Y Combinator</a> [<a href="http://genius.com/Sam-altman-lecture-2-ideas-products-teams-and-execution-part-ii-annotated">Original Transcription</a>]</h4>
+
+<h2>Finding Co-Founders</h2>
+
+<p>You should only start a company with people you know and like or respect. This matters enough that it&rsquo;s better to have no co-founder than a bad co-founder. However, it&rsquo;s still bad to have no co-founder. You want to hold out for a co-founder that is “relentlessly resourceful.&ldquo; It&rsquo;s also valuable to seek out a tough and calm person.</p>
+
+<p>The typical place to meet co-founders is in college, but if that is not an option, than you may choose to work in an interesting company to find co-founders.</p>
+
+<h2>Early Hiring</h2>
+
+<p>Hiring employees should be delayed until you no longer have a choice. Similar to a bad co-founder, the cost of a bad early hire is really high and very likely to be fatal.</p>
+
+<p>Hiring should take 0% or 25% of your time. No more. When onboarding new hires, be sure to see if they have anyone in their network that might be an asset to your company. It&rsquo;s common at Facebook and Google for HR to interrogate you sometime in the first few weeks for any potential talent you know.</p>
+
+<p>When considering applicants, you should assign appropriate importance to previous experience, depending on the role you are hiring for. Experience matters for hiring and management for large parts of business, but otherwise evaluate applicants solely on their aptitude - especially in the early days. You should be looking for people who are smart, good at getting things done, effective communicators, aren&rsquo;t afraid of risk and are someone you wouldn&rsquo;t mind spending a lot of time around.</p>
+
+<p>The best way to properly evaluate a potential hire is to work together on something small. Both of you will learn a lot about each other and how you each work.</p>
+
+<p>If you&rsquo;re planning on joining a startup yourself, you should pick a &ldquo;rocket ship&rdquo;: a company that is on a breakout trajectory but not many people have realised it yet.</p>
+
+<h2>Employee Shares</h2>
+
+<p>You should aim to give 10% of company to the first 10 employees. They will earn that over the first 4 years of employment, but if they leave within the first year they get nothing.</p>
+
+<h2>Employee Motivation</h2>
+
+<p><a href="http://www.ted.com/talks/dan_pink_on_motivation">Dan Pinker</a> lists the 3 things that motivate people to do great work as <em>autonomy</em>, <em>mastery</em> and <em>purpose</em>. Use this to inspire and motivate your employees.</p>
+
+<h2>Firing</h2>
+
+<p>You should quickly fire people causing office politics and who are always negative. They are toxic to the company.</p>
+
+<h2>Co-founder Relationship Failure</h2>
+
+<p><em>Co-founder vesting</em> is the pre-negotiation of what happens if one of the co-founders leaves, or is asked to leave the company. It is standard in Silicon Valley that it takes 4 years to earn all equity and if the founder leaves within the first 12 months, they receive nothing. If they leave after 12 months, they receive the 25% of their entitlement for the year they have stayed, plus whatever additional entitlement they have linearly accumulated beyond the first 12 months (up until the 4 years mark).</p>
+
+<h2>Jobs of a CEO</h2>
+
+<p>The typical responsibilities of a CEO can be summarised as:</p>
+
+<ul>
+<li>Subdivision of resources and work</li>
+<li>Raising money to sustain the company</li>
+<li>Promoting the product to people the company may be trying to recruit</li>
+<li>Hiring and managing a team</li>
+<li>Studying the execution bar and figuring out both what the company needs to do and how they can get it done</li>
+<li>Focusing the company and keeping everyone aligned towards the same goals</li>
+</ul>
+
+
+<p>A founder needs to be very conscious of the things that they spend their time and money on. They need to ensure that they work on the right things each day ( 2 - 3 things, maximum). A founder may only do one of three things to address something that demands their attention: work on it, ignore it, or delegate it.</p>
+
+<p>Clear goals are required and everyone in the company should execute off those goals.
+The best founders are known for repeating these goals ad nauseum and not giving their employees a chance to forget them. Growth and movement are paramount in the early stages of a startup, and should be present in a company&rsquo;s goals. Weekly meetings should address both metrics and discuss how the company is tracking, and how it may improve.</p>
+
+<h2>Growth</h2>
+
+<p>Momentum and growth are paramount to a startup&rsquo;s health. Getting distracted is the most common cause of stagnating growth. Competitors making news is the most common reason for disrupting a company&rsquo;s momentum. Don’t worry about competitors until they’re beating you with a shipped product.</p>
+
+<p>When you lose momentum, it is not helpful to give long speeches about the company&rsquo;s mission; save those for when things are going well. Instead, you must gain momentum back in the form of small wins. Sales fix everything, so focus on that.</p>
+
+<p>When things are going poorly, people start to disagree about what needs to be done. A useful framework is to agree to ask your users and use that to chart a course of action.</p>
+
+<p>Companies each grow in different ways so it is difficult to give general advice on how to maintain it. However, a good set of guidelines is to establish an operating rhythm: ship on a regular basis and review metrics weekly.</p>
+
+<h2>Execution Speed</h2>
+
+<p>The major advantage of startups are their execution speeds. They only work if a company and its founders have extremely intense focus and dedication. Small additional amounts of effort, work or insight can have a huge payoff: it can mean the difference between a recessive growth rate of 0.99 and an exponential one of 1.01. Outworking competitors by a small amount can yield a significant result on a company&rsquo;s longterm success.</p>
+
+<p>A successful founder has a decision-making paradigm that is biased towards action, not indecision. A founder&rsquo;s ability to break things down into small tasks and execute on them quickly is the best predictor of a company&rsquo;s success. They respond to emails the fastest and make decisions rapidly. They are also present when it&rsquo;s important; they show up at meetings and come prepared to make decisions, take actions and persuade.</p>
+
+<h2>An Obsession With Quality</h2>
+
+<p>A complementary prerequisite to an ability to execute fast that has enormous baring on the success of a startup is an obsession with quality. Facebook&rsquo;s mantra: <em>Move fast and break things</em> is qualified with the implicit clause <em>but be obsessed with quality</em>. Major companies like Apple, Facebook and Google are all obsessed with quality. Saying that, as a startup you need to be frugal in the right places.</p>
+
+<h2>Lecture 3</h2>
+
+<h3>Before the Startup</h3>
+
+<h4>Paul Graham, Founder, <a href="https://www.ycombinator.com/">Y Combinator</a> [<a href="http://genius.com/Paul-graham-lecture-3-counterintuitive-parts-of-startups-and-how-to-have-ideas-annotated">Original Transcription</a>]</h4>
+
+<p>Startups are so unusual that you can’t trust your instincts on many things. An area where you <em>can</em> trust your intuition is when dealing with people.</p>
+
+<p>What you need to a begin a successful startup is <em>not</em> expertise in startups, but expertise in your chosen domain, and in particular, in your users. Tricks or gaming the system will not work in the same way that they have worked in many other situation. You can’t fool users; you have to have something they want.</p>
+
+<p>An interesting anology for the growth of technology is to envision it as a fractal where each leading edge is the forefront of a technology. You need to be riding one of these edges to break into a truly new market.</p>
+
+<h2>Lecture 4</h2>
+
+<h3>Building Product, Talking to Users, and Growing</h3>
+
+<h4>Adora Cheung, Founder, <a href="https://www.homejoy.com">Homejoy</a> [<a href="http://tech.genius.com/Adora-cheung-lecture-4-building-product-talking-to-users-and-growing-annotated">Original Transcription</a>]</h4>
+
+<h2>Research and Feedback</h2>
+
+<p>It&rsquo;s really important to tell people about your idea if you are creating a product or service for users other than yourself. It can be disastrous to have a big product release and attract a lot of users only to have those users leave again because you have missed the mark by not getting any prior feedback. Friends and family members are great initial users for your production.</p>
+
+<p>If at all possible, immerse yourself in the industry that you want to disrupt. Find the opportunities for efficiencies and improvements that are not obvious from outside the domain. Take some time to investigate your potential competitors and their offerings to ensure you have truly spotted a gap in the market. There should be no doubt that you are experts in your domain when it comes time to interact with your customers.</p>
+
+<h2>Designing The User Experience</h2>
+
+<p>Storyboard the whole user experience: how users find out about you, what they see when they come to your site, how they sign up, how they use your product, how they review your site and even how they leave. To achieve the minimum viable product, is not to skimp on the user experience.</p>
+
+<p>The site should have a clear, short description or call-to-action to get users on board. Long or complicated descriptions confuse and dissuade users.</p>
+
+<h2>Getting The Word Out</h2>
+
+<p>Advertise your startup when you have a minimum viable product to get feedback from users: you can use <a href="https://news.ycombinator.com/show">Show Hacker News</a> and domain-specific mailing lists. A way to get rapid feedback before the monthly user retention data becomes available is to ask for user reviews. Use this information to calculate a <a href="http://www.netpromoter.com/why-net-promoter/know/">net promoter score</a>.</p>
+
+<p>When evaluating feedback, you need to be aware of the &ldquo;honesty curve&rdquo;. Your friends and family have a vested interest in making you happy, which can be at the expense of being honest about your product. Strangers do not have the same conflict. It&rsquo;s helpful to get to paying users as quickly as possible because they will give you more honest feedback - especially if they feel you&rsquo;ve taken their money and not delivered on your claims.</p>
+
+<h2>Prioritising Implementing User Feedback</h2>
+
+<p>At each stage of development and growth, it is important to optimise and build  only those features necessary for getting to the next milestone of customers. It&rsquo;s often a bad idea to automate everything from the start; perform tasks manually to get a proper appreciation for what is involved and reduce the risk of automating yourself in a bad direction.</p>
+
+<p>Prioritise your engineer&rsquo;s time by building only for the most common user. As you grow, the number of atypical users will grow and it will begin to make sense to spend time and resources on addressing their use cases.</p>
+
+<p>Don’t build all the features users request; instead, figure out why they’re requesting it and then act accordingly. Get to the bottom of the underlying problem your users have and craft a solution that makes sense in the grander scheme of your product. User problems can be categorised as either a problem that has emerged through using your product, or one that is in a similar or related domain that you may be able to help with.</p>
+
+<h2>Competitors</h2>
+
+<p>Imitation is cheaper than innovation and your competitors are always going to be close behind, ready to copy features. And so it&rsquo;s valuable to gain the market share as soon as possible because that is not something competitors can copy. To do this, you must ship as soon as possible.</p>
+
+<h2>Growth</h2>
+
+<p>There are three types of growth: <em>Sticky Growth</em>, <em>Viral Growth</em> and <em>Paid Growth</em>.</p>
+
+<p><em>Sticky growth</em> is when you get existing users to come back again or pay more for a superset of your product. Cohort Analysis can be used to examine your customer retention. It is most commonly performed by month. <em>Churn</em> refers to how many users you’re losing.</p>
+
+<p><em>Viral growth</em> comes from when users talk about you to their friends, family and social network. To optimise this sort of growth you really need to give a fantastic experience to your users. You also need good mechanics around how your users talking about your product. A good referral program has good <em>customer touch points</em> (where and when you ask them to share your product with their friends) and often offers rewards for referring your product to people (discounts, upgrades, coupons, etc). Finally, you need to optimise the experience a referred user has when they encounter your site to maximise the chance of onboarding them (mention it is their friend who is recommending your product).</p>
+
+<p><em>Paid growth</em> is that in which you pay for via advertising. The important metrics here are <em>Customer Acquisition Cost</em> (CAC), <em>Costs Per Click</em> (CPC) and conversion rate. CAC = CPC / conversion rate.</p>
+
+<p>You should not have a team for growth as a small company. As a founder you should try one strategy at a time and focus on executing on it for a week. If it ends up working by the end of the week, continue with it. Otherwise move on. Always iterate and refine your approach; advertising channels are always changing and should be reviewed periodically to evaluate whether they&rsquo;re viable or not.</p>
+
+<h2>Sustainability</h2>
+
+<p>Your goals should always be to achieve sustainable growth. If you&rsquo;ve been fully executing on an idea and growth strategies and you experience three or four weeks of no growth or backwards growth, then it may be time to consider pivoting.</p>
+
+<h2>Lecture 5</h2>
+
+<h3>Competition is For Losers</h3>
+
+<h4>Peter Thiel, Founder, <a href="www.paypal.com">Paypal</a>, Founder, <a href="www.palantir.com">Palantir</a>, and Founder, <a href="www.foundersfund.com/">Founders Fund</a> [<a href="http://genius.com/Peter-thiel-lecture-5-business-strategy-and-monopoly-theory-annotated">Original Transcription</a>]</h4>
+
+<h2>Business Value</h2>
+
+<p>What makes a business valuable is creating <em>X</em> dollars of value and capturing <em>Y</em> percent of that value. It is important to understand that <em>X</em> and <em>Y</em> are <em>independent</em> variables. A business can generate a small amount of <em>X</em> but capture a large percentage <em>Y</em> or a large <em>X</em> and capture a small percentage, <em>Y</em>.</p>
+
+<h2>Industry Types</h2>
+
+<p>Industries usually fall into one of two types: ones that are <em>perfectly competitive</em> and ones that are <em>monopolies</em>. It is often difficult to tell which industry a company is in because they have a vested interest in telling a narrative that places them in the other category. Perfectly competitive businesses risk being dismissed as a non-profitable company and companies that have a monopoly risk government regulation if identified as such.</p>
+
+<h2>Perfect Competition</h2>
+
+<p>In industries that are perfectly competitive, all consumer surplus is absorbed and all participants make very little money. Companies that are in a perfectly competitive market often tell a narrative that describes the business as doing something highly specific and therefore part of an industry that is not as competitive as it looks. This can be thought of as describing the company as the intersection of two sets of industries.</p>
+
+<p>Industries that have monopolies pretend not to have them for fear of government regulation by describing themselves as being in a market that is bigger than it looks and therefore includes many competitors. This can be thought of as describing the company as the union of two or more sets.</p>
+
+<h2>Achieving a Monopoly</h2>
+
+<p>To attain a monopoly, a startup must go pursue a large share of a small market and then expand that business in concentric circles to include related markets. One component of a monopoly is some sort of proprietary technology and you want that technology to be an order of magnitude better than the closest competitor. If you are lucky enough to have something totally new, this equates to an infinite improvement.</p>
+
+<p>Some of the benefits monopolies enjoy is a well established brand and significant network effects; economies of scale; and high fixed costs, but low marginal costs. Software businesses typically have low marginal cost and can grow quickly to keep up with the market.</p>
+
+<p>In order for a monopoly to be effective, a company must maintain it; it&rsquo;s not enough to have a monopoly that lasts a short amount of time. You should aim to be the <em>last</em> company in a particular category. Most of the value in such companies exists in the future: 75% - 80% is in going to come from 10 years and beyond and so you need to be able to explain either why your company will be the last breakthrough in an area or why you will be able to innovate ahead of anyone else.</p>
+
+<p>Humans naturally seek out things other people are doing; This tendency needs to be overcome in order to do something novel.</p>
+
+<h2>Lecture 6</h2>
+
+<h3>Growth</h3>
+
+<h4>Alex Schultz, VP Growth, <a href="www.facebook.com">Facebook</a> [<a href="http://genius.com/Alex-schultz-lecture-6-growth-annotated">Original Transcription</a>]</h4>
+
+<p>Start-ups should focus on getting their product market fit before worrying about growth. But once it comes time to be concerned about growth, the most important thing is retention rates. Pick your metrics wisely, whether they are <em>Confirmed Registered Users (CRU)</em> or <em>Activated Registered Users (ARUs)</em> or something else. Exactly what growth rates are needed for a startup depends on what industry they are in. E-commerce sites require a relatively low retention rate compared to social networks.</p>
+
+<p>A user&rsquo;s <em>magic moment</em> is the point in which they realise the value of your product. This is what you need to get right to increase your user retention. Users need to be shepherded to their magic moment as quickly as possible.</p>
+
+<p>To optimise your user experience, consider your power users. To improve your growth, focus on your marginal users.</p>
+
+<h2>Techniques</h2>
+
+<p>The point of conversion is important and every effort should be made to remove any friction from the work flow. New users should be made aware of your product and the value it offers in a way that it is then easy for the user to sign up and begin using your service.</p>
+
+<p>A company should only resort to large growth tactics when you have established a high retention rate so people don’t come to the website and then leave again.</p>
+
+<p>Ensure you are optimising your site for the right search terms. A useful tool for identifying the right terms is the <a href="https://adwords.google.co.uk/KeywordPlanner">Google keywords planner tool</a>. The most important technique for search engine optimisation is to get valuable links from high authority resources. Internal linking can further improve your ranking. Add a directory so Google can quickly access every page on the site.</p>
+
+<h2>Lecture 7</h2>
+
+<h3>How to Build Products Users Love</h3>
+
+<h4>Kevin Hale Founder of <a href="http://www.wufoo.com/">Wufoo</a> [<a href="http://genius.com/Kevin-hale-lecture-7-how-to-build-products-users-love-part-i-annotated">Original Transcription</a>]</h4>
+
+<p>Japanese has two ways in which to describe when you have finished something: <em>atarimae hinshitsu</em>, meaning <em>taken for granted quality</em> and <em>miryokuteki hinshitsh</em>, meaning <em>enchanting quality</em>. You want to aim for the latter.</p>
+
+<h2>Customers Contact</h2>
+
+<p>There are many opportunities in a product to first seduce the customer: the first email, the way the page links together, the first page load.</p>
+
+<p>Give users an avenue to express their emotional state when asking for feedback or helping them on support. This makes users feel as if you are factoring in their distress or annoyance into the problem-solving process. Reply to customer support requests as soon as possible.</p>
+
+<p>Time spent with direct exposure to customers is hugely beneficial to the quality of your software. <a href="https://www.uie.com/about/consultants/">Jared Spool</a>, founder of User Interface Engineering, found that there is a direct correlation between how much time engineers spend with direct exposure to users and how good their software&rsquo;s design is. The effect is only seen in instances of direct contact, where interaction happens more or less in real time and not through reports or graphs. It also has to be a minimum of every 6 weeks and for at least 2 hours. Otherwise, your software will get worse over time.</p>
+
+<h2>Knowledge Gap</h2>
+
+<p>The <em>knowledge gap</em> is the distance between the knowledge a customer has, and how much they need, to use your production. There are two ways to bridge this gap: get the user to increase their knowledge or decrease the amount of knowledge required to use your product by making it easier or more intuitive. You can teach users through constructs like FAQs, tooltips and documentation.</p>
+
+<h2>Decreasing Churn</h2>
+
+<p>Growth is a function of both user conversion and churn. A one percent increase in conversion and one percent decrease in churn does the same to your growth rate, but the latter is much easier and cheaper to achieve.</p>
+
+<p>It&rsquo;s a good idea to find ways of telling your users what you have done for them since their last login. This communicates people are actively working to make their experience better. This is better than a blog (which most users won&rsquo;t read).</p>
+
+<p>If at all possible, find a way to thank your users for using your product. When this becomes impossible to scale, focus on your highest-paying customers.</p>
+
+<p>Michael Treacy and Fred Wiersema wrote of the <a href="http://www.amazon.com/Discipline-Market-Leaders-Customers-Dominate/dp/0201407191/">three ways to achieve market dominance</a>: you can either have the best price and focus on logistics (eg. Walmart, Amazon), the best product and focus on R&amp;D (eg. Apple) or the best overall solution and focus on being intimate with your customers (eg. luxury brands). The last one is the only one everyone can do at any stage of a company.</p>
+
+<p>Focus on the ease of use of your product before adding polish. Marketing and promotion can be thought of as a tax you pay because your product isn’t fantastic.</p>
+
+<h2>King for a Day</h2>
+
+<p>Because hackathons result in a lot of wasted work that never ends up getting used, Wufoo decided to implement <em>King for a Day</em>, where a randomly selected employee gets the full resources of the company to fix the problems about the product that have been bothering them.</p>
+
+<h2>Remote Work &amp; Organisation</h2>
+
+<p>Wufoo uses remote employees that work four and a half days a week (Friday afternoon is for meetings). One of those days is to perform customer support. While in the three day work period, employees are not allowed to discuss anything for more than 15 minutes; it has to be shelved when the time limit is reached and scheduled for the Friday meeting. Often the problem resolves itself because those involved would sleep on it and come up with a solution or decide it was not really a problem at all.</p>
+
+<h2>Hiring</h2>
+
+<p>If you&rsquo;re going to hire someone to perform remote work for your company, hire them to work on a side project first.</p>
+
+<h2>Workload</h2>
+
+<p>As a manager, you must ride your engineers in a sustainable way so as to avoid burnout.</p>
+
+<h2>Lecture 8</h2>
+
+<h3>How to Get Started, Doing Things that Don&rsquo;t Scale</h3>
+
+<h4>Stanley Tang, Founder of <a href="https://www.doordash.com/">Doordash</a> and Walker Williams of <a href="http://teespring.com/">TeeSpring</a> [<a href="http://genius.com/Walker-williams-lecture-8-doing-things-that-dont-scale-pr-and-how-to-get-started-annotated">Original Transcription</a>]</h4>
+
+<p>A company should aim to turn users into champions for its product.</p>
+
+<h2>Press</h2>
+
+<p>A startup needs to have a goal beyond just being in the press, otherwise you will not end up getting what you want from the coverage.</p>
+
+<p>There are many types of press stories:</p>
+
+<ul>
+<li>Product launches</li>
+<li>Fundraising</li>
+<li>Milestones or metrics</li>
+<li>Business stories (New Yorker wants to cover the history of your company)</li>
+<li>Stunts</li>
+<li>Hiring Announcements</li>
+<li>Contributed articles (opinion piece on tech blogs or similar)</li>
+</ul>
+
+
+<p>The mechanics of getting a press release involve evaluating whether people will be interested in hearing about what you want reported. It doesn&rsquo;t need to be ground-breaking - just interesting or new enough. Approaching reporters is like a sales call, so don&rsquo;t get disappointed if individual reporters are not interested in covering you. It&rsquo;s easier to get in touch through someone you know rather than cold calling a reporter.</p>
+
+<p>You must contact reporters far enough in advance that they have enough time to write about your story and publish by your deadline - at least a week before. Once you have a reporter that is interested, you should have as much contact with them as possible (face-to-face or phone calls - not email). You want reporters to invest time in you to increase the chance of them writing about you.</p>
+
+<p>It&rsquo;s helpful to outline the story you want published and go through it over the phone when you speak to the reporter. This is a great way to make sure you don&rsquo;t forget any of the important points</p>
+
+<p>Send a followup email a few days before the story is due to be published with the important information in bold to ensure that nothing is missed or mistakenly reported. This also a time when you should be providing videos, pictures or other accompanying media.</p>
+
+<p>Getting press coverage doesn’t mean you’re successful; you&rsquo;re not getting money or making users happy. Press coverage can be good for getting the first few hundred users, but people do get sick of hearing about you. Saying that, you do want to have a regular PR presence to prevent people from forgetting about you.</p>
+
+<p>After you have laid out your roadmap, you should see if any of it meets any of the 7 story types above. Spacing stories out intelligently can prevent people from getting bored of hearing about you or forgetting about you completely.</p>
+
+<p>It is worth going back to the same reporters and each time offering them leads to other startups or things they may be interested. It will strengthen your relationship and make their job easier.</p>
+
+<p>Some good literature on the subject is stuff by <a href="https://www.google.co.uk/search?q=Startup+PR+Advice+from+former+TechCrunch+writer">Jason Concape</a> (former tech crunch reporter) and the book <a href="http://www.amazon.co.uk/Trust-Me-Lying-Confessions-Manipulator-ebook/dp/B0074VTHH0/ref=tmm_kin_swatch_0?_encoding=UTF8&amp;sr=&amp;qid=">Trust Me, I’m Lying</a> by Ryan Holiday, a former marketer at American Apparel, for the darker side of marketing.</p>
+
+<h2>Lecture 9</h2>
+
+<h3>How to Raise Money</h3>
+
+<h4>Marc Andreessen, Founder of Netscape and Andreessen Horowitz, Ron Conway, Founder of <a href="https://angel.co/silicon-valley-growth-syndicate-1">SV Angel</a>, and Parker Conrad, Founder of <a href="http://www.zenefits.com/">Zenefits</a> [<a href="http://genius.com/Marc-andreessen-lecture-9-how-to-raise-money-annotated">Original Transcription</a>]</h4>
+
+<p><em><em>NB</em>: This was a panel lecture and the views expressed by one or two panel members have been generalised here for simplicity. Please see the <a href="http://genius.com/Marc-andreessen-lecture-9-how-to-raise-money-annotated">source material</a> for a higher-fidelity account of the information contained within.</em></p>
+
+<h2>What Investors Look For</h2>
+
+<p>The things that a venture capitalist considers when contemplating investing in a company are do the founders seem like leaders? And are they highly focused and obsessed with the product? A question that is also often asked of the founders is what inspired them to create the product. Investors are usually looking for a personal problem the founders had. Good communication skills are considered highly important.</p>
+
+<p>Venture capitalism is a business of outliers and extreme exceptions. Of the 4000 venture-fundable companies a year, 200 are funded by top-tier VCs, 15 of those will someday get to a 100 million dollars in revenue and will go on to generate 97% of all returns.</p>
+
+<p>Investors will search for strength, rather than a lack of weakness. Companies that checks all the boxes may still be missing what makes them something special. Companies that have an extreme strength, however, may often have big flaws that investors are willing to tolerate.</p>
+
+<p>When a founder first meets an investor, they must be able to say what their product does in a single sentence.</p>
+
+<p>Founders that attract investor&rsquo;s interest are decisive: decisive to hire, fire and chose direction.</p>
+
+<h2>Investor Risk</h2>
+
+<p>A start-up at the very start just represents a list of risks:</p>
+
+<ul>
+<li>Founding team risk</li>
+<li>Product risk</li>
+<li>Technical risk</li>
+<li>Launch risk</li>
+<li>Market acceptance risk</li>
+<li>Revenue risk</li>
+<li>Cost of sale risk</li>
+<li>Viral growth risk</li>
+</ul>
+
+
+<p>The <a href="http://pmarchive.com/guide_to_startups_part2.html">onion theory of risk</a> models these risks as a series of layers. The company raises money to peel away layers of risk: raising seed money peels away founding team risk, product risk and initial launch risk; A Round investment peels away product risk, recruiting risk and customer risk. As a founder seeking additional funding, you must be able to illustrate how you&rsquo;ve used previous investments to peel away risks by achieving milestones. You have to calibrate the amount of money you raise and spend to the risk you&rsquo;re facing.</p>
+
+<h2>Fundraising</h2>
+
+<p>Don’t ask for a NDA, it makes investors feel untrusted, but do get things in writing; type an email after investment meetings to confirm what was just said.</p>
+
+<p>Fundraise as efficiently as possible. It&rsquo;s a small step on the way to building your company and should be done quickly so that you may focus on the real work.</p>
+
+<h2>Seed Investments</h2>
+
+<p>Seed investments are generally the first round of funding and are typically in the range of one or two million dollars. The SVG syndicate invest in one of the 30 companies they see every week.</p>
+
+<p>The selection process begins with sending in an executive summary. The investment team votes on whether to make a phone call to proceed with the process. The call is made by someone on the team with the relevant domain knowledge. Background checks are performed on the founders and the market in question is investigated. After a meeting, if the syndicate is interested they try and get other value-add investors involved.</p>
+
+<h2>Venture Stage: Series A Stage</h2>
+
+<p>The top tier venture capitalists usually only invest in two kinds of companies: those that have previously raised a seed round or those with proven founders. The best way to get an introduction is through the seed investors referral network.</p>
+
+<p>Don’t waste time and effort by make it difficult for yourself and seeking more money than you need.</p>
+
+<p>There are limits to how much of the company you should be selling at each stage of fundraising: 10 - 15% at the seed stage and 20 - 30% at the venture stage (venture capitalises tend to be ownership focused). It&rsquo;s important for founders to ask themselves at what point a loss of ownership will start to demotivate them.</p>
+
+<p>Venture capitalises will invest in team first, and the product second. This is in no small part because products often change, but the team does not.</p>
+
+<h2>Lecture 10</h2>
+
+<h3>Culture</h3>
+
+<h4>Brian Chesky, Founder of <a href="www.airbnb.com">Airbnb</a> and Alfred Lin, Former COO of <a href="http://www.zappos.com/">Zappos</a> and partner at Sequoia Capital [<a href="http://genius.com/Alfred-lin-lecture-10-company-culture-and-building-a-team-part-i-annotated">Original Transcription</a>]</h4>
+
+<h2>Defining Company Culture</h2>
+
+<p>It&rsquo;s important to define your company&rsquo;s culture. This can be achieved by a sentence similar to <em>Every day the <strong>blank</strong> and <strong>blank</strong> of each member of the team in pursuit of our company <strong>blank</strong></em>. One set of values to fill in the blanks is: <em>core behaviours, real action, mission</em>.</p>
+
+<p>As a founder, you have to ask yourself what your personal values are: what&rsquo;s most important to you, the business and the people you work with. You should also realise that what <em>not</em> to do is more important than what to do: what are the opposites of the values of the people you don’t like working with? A good culture will allow you to figure out what employees you don’t want to retain.</p>
+
+<p>Define the company culture before you get too big. You must be specific and in-depth when defining the company&rsquo;s goals and values. Good culture values will be supportive of the company’s mission and must be both <em>credible</em> and <em>uniquely tied to</em> the company&rsquo;s mission - not too vague or broad.</p>
+
+<h2>Dysfunctional Teams</h2>
+
+<p>In his book, <a href="http://www.amazon.com/The-Five-Dysfunctions-Team-Leadership/dp/0787960756">The 5 Dysfunctions of a Team</a>, Patrick Lencioni discusses how a lack of trust can derail a company. A healthy team needs conflict and debate to arrive at the right answer and be sure it&rsquo;s the right answer. A reluctance to commit is another problem common in teams - usually because of a lack of confidence in an answer due to the absence of debate. A third failure is people not being held accountable for the things they have committed to.</p>
+
+<p>Companies should interview for both tech and culture fit. You want diversity of background, <em>not</em> diversity of values. AirBnB actually has separate core values interviewers as part of their hiring process.</p>
+
+<h2>Cultural Maintenance</h2>
+
+<p>Culture should be maintained daily by the founders. The first phase of a start-up is building a great product; the second and much longer phase is building and maintaining a great company. Companies that are around a long time have a clear mission, sense of values and a way of doing things that is unique to them. There are usually three to five things that are specific to the company (not nebulous concepts like <em>integrity</em>). Two of AirBnB&rsquo;s values are <em>Champion The Mission</em> and <em>Creative and Frugal</em>.</p>
+
+<p>Being particular about culture is about a long-term investment and can actually slow down progress in the short term. There is no such thing as a good or bad culture; just a strong or weak one.</p>
+
+<p>If there isn’t a deeper core belief within your company, it becomes merely a utility and utilities get sold at commodity prices.</p>
+
+<h2>Lecture 11</h2>
+
+<h3>Hiring and Culture</h3>
+
+<h4>Ben Silberman (Founder of <a href="https://www.pinterest.com/">Pinterest</a> and John and Patrick Collison (Founders of <a href="www.stripe.com">Stripe</a>) [<a href="http://genius.com/Patrick-collison-lecture-11-company-culture-and-building-a-team-part-ii-annotated">Original Transcription</a>]</h4>
+
+<p>The core pieces of culture are:</p>
+
+<ul>
+<li>Who do you hire (and what are their values)</li>
+<li>What do you do each day (and why do you do it)</li>
+<li>What do you choose to communicate (internally and externally)</li>
+<li>What do you choose to celebrate</li>
+</ul>
+
+
+<h2>Hiring</h2>
+
+<p>Culture is more like gardening than architecture: you plant seeds and remove weeds.</p>
+
+<p>When hiring the first 10 people of a startup, they should be treated as if each will bring another 10 people along like themselves. The things that are important in the first few employees are:</p>
+
+<ul>
+<li>They are genuine and intellectually honest</li>
+<li>They are people that others will want to work with and trust</li>
+<li>They like to get things finished and care about things deeply.</li>
+</ul>
+
+
+<p>Hiring people off Github resumes or similar is not usually a good idea because it puts a premium on having many shallow projects. You want people who have committed and succeed at deep, significant projects.</p>
+
+<p>Seek people who are doing things differently. You should be trying to hire people who are under-valued or early in their careers. Have a good elevator pitch and perfect your ability to get people excited about your company, quickly. Everyone you speak to may be potential future employees once you have grown your company a little more.</p>
+
+<p>It&rsquo;s often the most difficult to hire people to work on niche or overly specific things. Be upfront about the risks of your business so potential hires are informed are prepared.</p>
+
+<p>When interviewing, have a list of questions you can rotate through and constantly reevaluate whether they are good differentiators between good and bad candidates. Try turning qualitative questions into quantitative ones. Ask references <em>Is this person in the top 1%, 5%, or 10% of the people you’ve worked?</em> rather than <em>What&rsquo;s the best thing about this person?</em>. Ask candidates about their references: <em>If I asked <strong>blank</strong> what it is that you’re best at, what would they say?</em></p>
+
+<p>When hiring a new employee, make sure you give them an overview and don’t let them just think your company is the little problem they’ve been hired to help solve. Get a new hire up and running as quickly as possible to find and resolve problems early. Give constant feedback to new additions to the company. In start-up companies, you need every employee to be able to start contributing value immediately.</p>
+
+<h2>Scaling</h2>
+
+<p>When scaling the business, established self-contained units; think of them as mini-start-ups. Be sure to give them the resources they need to achieve their goals and make sure they understand their objectives.</p>
+
+<p>The time ahead for which you plan grows as the business does. In the first few months, you are often thinking only a month or so in advance while after the first 12 or 18 months, you should be planning 12 months in advance.</p>
+
+<p>As your company grows, you need to be aware that what is optimal for you is not necessarily optimal of the business or the other employees working for it.</p>
+
+<h2>Lecture 12</h2>
+
+<h3>Building the Enterprise</h3>
+
+<h4>Aaron Levie - CEO &amp; Cofounder of <a href="www.box.com">Box</a> [<a href="http://genius.com/Aaron-levie-lecture-12-sales-and-marketing-annotated">Original Transcription</a>]</h4>
+
+<p>Enterprise software is traditionally very competitive and difficult to build a business out of. It was very slow moving (couldn&rsquo;t break anything for existing customers) and the sales took a long time to execute. Customers could take a long time to spend any money - it could be years before they decide to buy - and it could take several more years before it was implemented and used. It was also difficult and costly to sell. The technology was usually complex and little thought was put into UI design.</p>
+
+<p>Enterprise software has now moved largely into the cloud. This shift means it can now make sense for much smaller companies to produce enterprise software. Enterprise software has also become more user-led, rather than IT lead. This is great news because when tech decisions are IT-lead, the incumbents generally win the business because they already have relationships. With user-lead tech, users are bringing in their own software. This creates an opportunity to sell to the enterprise that wants to have better control or consistency across their system. With the introduction of mobile phones, enterprises now have to monitor their full network.</p>
+
+<p>Another significant change is that enterprises are now changing how they’re getting their products to people and they need platforms to be able to do that. The customers enterprises go after need new experiences of working with the enterprises&#8217; products for them to remain engaged or connected.</p>
+
+<p>When considering building enterprise software, always look for environments with changing technology factors. The moments of opportunity where a tech revolution is about to happen in an industry occur when the raw materials change: for example, the cost of data storage going down and an increase in connection speeds make it easier to centralise data storage and services and let users access them on demand. Enterprises are not looking for the cheapest solution, but overall efficiency; they have a different value equation to commercial software.</p>
+
+<p>Enterprises have to adapt to disruptions to their industries. All industries are currently going through business model and technology-oriented disruptions and they are going to need startup software to survive. One area of interest is <em>omni-channel commerce</em>, or the ability for customers to shop online, on your phone or in store and have things delivered. Another such area is <em>Telemedicine</em>: transferring health records, offering health monitoring and purchasing wellness programs. Similarly, entertainment is now moving from linear programming to on-demand; media companies will want big data to find their target viewers.</p>
+
+<p>To identify technology disruptions, look for new enabling technologies or trends that create a wide gap between how things are currently done and how they can be improved.</p>
+
+<p>Businesses try the same ideas that were trialed 10 - 15 years ago, but with the current technology. Take note of when a technology becomes available that makes an old idea now possible. You need to find gaps that are significant enough and that you can provide a solution to, where incumbents offering a whole solution cannot compete because it does not make technical or financial sense. A great example is building software that is platform agnostic: incumbents want software that is only compatible with their other offerings, to form a vertical stack.</p>
+
+<p>You want to modularise your enterprise software, rather than customise. Build a platform rather than a custom vertical experience. Give thought to openness and APIs to work with other software the company may wish to use.</p>
+
+<p>Going forward, every enterprise will have a software component. They will form lots of partnerships to work faster rather than trying to acquire the necessary expertise in all the necessary areas, themselves.</p>
+
+<h2>Securing Customers</h2>
+
+<p>Find potential customers that are at the edge of their group and leverage them as your first users. Focus on the user and hire salespeople that are domain space oriented to help potential customers navigate your product and landscape.</p>
+
+<p>Some suggested reading is <a href="http://www.amazon.co.uk/Crossing-Chasm-Marketing-Technology-Mainstream/dp/1841120634">Crossing the Chasm</a>, <a href="http://www.amazon.co.uk/Innovators-Dilemma-Technologies-Management-Innovation-ebook/dp/B00E257S86/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1424295512&amp;sr=1-1&amp;keywords=innovators+dilemma">The Innovator&rsquo;s Dilemma</a> and <a href="http://www.amazon.co.uk/Behind-Cloud-Salesforce-com-Billion-Dollar-Company--ebook/dp/B002PJ4SU2/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1424295563&amp;sr=1-1&amp;keywords=behind+the+cloud">Behind the Cloud</a>.</p>
+
+<h2>Lecture 13</h2>
+
+<h3>How to be a Great Founder</h3>
+
+<h4>Reid Hoffman founder of <a href="www.linkedin.com">LinkedIn</a> [<a href="http://genius.com/Reid-hoffman-lecture-13-how-to-be-a-great-founder-annotated">Original Transcription</a>]</h4>
+
+<h2>Team</h2>
+
+<p>It&rsquo;s more appealing to investors if you’re a team of two or three to spread expertise and skills across multiple people and compensate for any one founder&rsquo;s weaknesses. Investors will pay special attention to what domain you’re in and which co-founders are important for that domain. The founding team will need to adapt the company as is needed. A high degree of trust between co-founders is essential.</p>
+
+<p>Founders should be willing to relocate to wherever maximises their chances of success for the company’s product. This is to take advantage of network effects.</p>
+
+<p>Being contrarian, or contrary in your views, is easy, but being contrarian and right is difficult. To be contrarian is to be contrary within a particular context or audience. You need to know and be able to articulate what it is that you know that others do not.</p>
+
+<h2>Investment Thesis</h2>
+
+<p>As a founder, you must navigate a good many paradoxes people tell you about what you’re supposed to be doing and how you&rsquo;re supposed to be behaving. Examples include: you have to do things yourself <em>and</em> recruit people to do those things; you must be flexible <em>and</em> persistent; you must have vision <em>and</em> stay firm; listen to data, listen to customers <em>and</em> pivot.</p>
+
+<p>To guide you as to when you should do each, you need an investment thesis that includes what you know that you think other people don’t know. Use this thesis to evaluate whether what you&rsquo;re doing is <em>increasing</em> confidence in your thesis, or <em>decreasing</em> it. If what you’re doing is not increasing confidence in your investment thesis, you can use it to guide you on what you should do to get back on track. This will allow you to hold your beliefs, but still listen to criticism, hear negative feedback, and evaluate competitive entries and see whether each changes your investment thesis, or strengthens it.</p>
+
+<p>Your investment thesis will focus you both internally, when building the product and ignoring competitors, and externally when recruiting, meeting people and gathering domain intelligence. If you are creating a market rather than discovering one, you need to include in your investment thesis how you’re going to get early adoption and why that market should exist.</p>
+
+<p>You should be always combining your vision with the available data. It&rsquo;s important to understand that the data exists within the framework of your vision and sometimes the data can change end up changing it.</p>
+
+<h2>Risk</h2>
+
+<p>Entrepreneurs are often seen as risk-takers and the greatest opportunities exist when there is considerable risk. However, you must pick the important risks and minimise others. Think through minimising the risks as you&rsquo;re executing.</p>
+
+<h2>Strategy</h2>
+
+<p>You should always be focused on solving the problem that is immediately in front of you, but also making sure you’re largely working in your intended direction.</p>
+
+<p>The levels of strategy you should be thinking in are (in order):</p>
+
+<ol>
+<li>Product</li>
+<li>Distribution: it should be specialised, <em>what is the hack that I know that other people don’t know?</em></li>
+<li>Finance</li>
+</ol>
+
+
+<p>You must execute with all aspects of your strategy in mind. It can be helpful to be paranoid about whether you’re tracking against your investment thesis or not.</p>
+
+<h2>Lecture 14</h2>
+
+<h3>How to Operate</h3>
+
+<h4>Keith Rabois Partner at Khosla Ventures and former COO of Square [<a href="http://tech.genius.com/Keith-rabois-lecture-14-how-to-operate-annotated">Original Transcription</a>]</h4>
+
+<h2>Process</h2>
+
+<p>You want to eventually get a company that “idiots could run”; eventually you want to be at a point where all procedures are either automated or easily executable.</p>
+
+<p>Your role as a leader is to maximise output of your group (and those that are dependent on your group). A good book to read on the subject is by <a href="http://www.amazon.com/High-Output-Management-Andrew-Grove/dp/0679762884/ref=la_B000AQ48KW_1_1?s=books&amp;ie=UTF8&amp;qid=1424297526&amp;sr=1-1">High Output Management</a>. There is an old adage warning about measuring motion and confusing it with progress. You want to focus on output, not input.</p>
+
+<p>When you start out as a company, everything should feel like a mess (otherwise you&rsquo;re likely not moving or innovating fast enough). You shouldn’t have too much process or predictability. Your role as a leader is to triage problems and decide what problems need to be addressed and what will likely go away on their own.</p>
+
+<h2>Being an Editor</h2>
+
+<p>An apt metaphor for categorising different jobs is as either one of two tasks: editing or writing. The most important task of an editor is to simplify things; you need to boil most things down to a framework of two or three things so people can easily keep it in mind and apply it. Editors also ask questions and search for ambiguities and seek out clarifications. It&rsquo;s helpful to find the three or four most important questions to ask for a given situation and not get bogged down in extraneous details and unknowns. Editors also work to establish a consistent voice across a product or company.</p>
+
+<p>Rather importantly, editors also allocate resources and delegate tasks. A side effect of this is that you become responsible for every task you have delegated. The trick is to be able to delegate but not abdicate by managing intelligently, based on the colleague and the task. The more the person you are delegating to has done similar work before, the more freedom you should award. In this respect, your management style should be dictated by your employees, not you. Deciding when you should perform a task yourself or delegate it can be resolved by considering your own confidence in the task and how important it is that it not be done wrong. If you are confident in your own abilities and the importance of the task is great, complete it yourself. If you have low confidence in your abilities or the task is of low importance, delegate it.</p>
+
+<h2>Two Types of Employees</h2>
+
+<p>The team is also something that will require editing from time to time. People can be considered either <em>barrels</em> (of weapons, not containers) or <em>ammunition</em>. You can only &ldquo;shoot through the number of barrels you have&rdquo;; barrels can take an idea from conception to execution and align others in the same direction. You can identify barrels by expanding the responsibilities of employees to see what they can cope with.</p>
+
+<h2>Managing Focus</h2>
+
+<p>You often need to spend a lot of time focusing people. Peter Thiel of Paypal insisted everyone just focus on one thing because most people will solve “B+” problems instead of “A+” problems if they have multiple responsibilities. You need to give them no other choice but to solve the hard, important problems for the business.</p>
+
+<h2>Automation Tools and Metrics</h2>
+
+<p>Your goal as a editor is to use “less red ink” over time; this is a good way to gauge how effectively you are communicating with your colleagues. You don’t want to have to make all decisions yourself, you want to aim for procedures and tools that make the same decisions you would, with a high fidelity. This can be achieved by building a dashboard, which must be drafted by the founder. It will feature metrics for what is important to the company because everyone in the company should have access to this information to see how the company is tracking. Notes for every meeting can also be sent to staff to keep everyone abridge of what is going on.</p>
+
+<p>It&rsquo;s important to ensure you capture paired metrics for all measures of progress to fight against measuring only one dimension, to the detriment of another. An example is if you wished to reduce the fraud rate in your system, you must also measure how many false positives occur to ensure you have the full picture. Keep an eye out for anomalies or deviations from the expected behaviour.</p>
+
+<p>Try to get all the details right to improve the how the company is executing overall. Perform calendar audits and compare your priorities with how much time you’re spending addressing each.</p>
+
+<h2>Lecture 15</h2>
+
+<h3>How to Manage</h3>
+
+<h4>Ben Horowitz founder of <a href="http://a16z.com/">Andreessen Horowitz</a> and <a href="https://www.crunchbase.com/organization/opsware">Opsware</a> [<a href="http://genius.com/B-horowitz-lecture-15-how-to-manage-annotated">Original Transcription</a>]</h4>
+
+<p>When you are making a management decision, you have to understand how it’s going to be interpreted by all points of view. You need to add up to all employees&#8217; views and incorporate that into your decision.</p>
+
+<h2>Case Study 1</h2>
+
+<p>To illustrate, a case study: dealing with an executive that is a hard worker, but isn’t working out. First option: fire them. It&rsquo;s harder for an employee to explain to future employers that they&rsquo;ve been fired than demoted. Second option: demotion.
+If the employee has high equity, people aren’t going to think it’s fair that a non-executive has so much equity. Third option: revoke some of his equity when you demote him. It&rsquo;s likely that an ex-executive is no longer going to be productive after their equity has been revoked. And now people will see him in his new position as less important and not worth listening to.</p>
+
+<h2>Case Study 2</h2>
+
+<p>A second case study: an employee asks for a raise. Employees asks for raises for a reason and you want to be fair to your good employees. First option: give them a raise. The employee will feel great, but suddenly other employees will be pressured to ask for a raise because maybe they are missing out on money. It seems that you’re not evaluating performance, but instead rewarding those who just ask for a raise. Second option: user a transparent, structured and periodic review process. A process protects the culture because it lets employees know that you will evaluate performance by incorporating different views from within the company, on your own schedule. The rest of the time they don&rsquo;t have to worry about whether they should be asking for a raise or not.</p>
+
+<h2>Employee Shares</h2>
+
+<p>Reviewing one of Sam Atlman’s blog posts: when an employee leave a company, they often don’t have the money to buy stock options before the required 90 days before forfeiture, so they are stuck at the company or are helpless if they get fired. Sam suggests a 10 year time span to buy the shares, instead.</p>
+
+<h2>Firing</h2>
+
+<p>As a hirer it’s your job to hire someone capable for the job and to match the hire’s abilities with the needs of the company. If it doesn&rsquo;t work out and they need to be fired, you need to explain the situation you are in and what you didn’t know or understand at the point when they were hired.</p>
+
+<h2>Lecture 16</h2>
+
+<h3>How to Run a User Interview</h3>
+
+<h4>Emmett Shear, Founder and CEO of <a href="http://justin.tv/">Justin.tv</a> and <a href="http://www.twitch.tv/">Twitch</a> [<a href="http://genius.com/Emmett-shear-lecture-16-how-to-run-a-user-interview-annotated">Original Transcription</a>]</h4>
+
+<h2>Choosing Your Inteviews</h2>
+
+<p>Talk to all the different users that are going to use your service, but focus on the important users and figuring out who they are. Talk to six or seven different people who represent different potential user types. In your discussions, focus on the problems that they face and their current usage habits. Stay as far away from features as possible because you end up getting feature requests. You just want to understand how they solve their problem using their current approach.</p>
+
+<h2>Getting Feedback and Commitment</h2>
+
+<p>You need to come up with that special thing that will get users to switch from what they’re already using to your product. You want to get a prototype in front of users as quick as possible to get feedback. While people will agree a feature sounds great, often they’re unwilling to switch to get it and a prototype helps identify how persuasive the product really is at luring users from other approaches. You can use whether or not people are willing to pay for the service to quickly clarify whether you’re onto something or not.</p>
+
+<h2>Identifying Product Problems</h2>
+
+<p>The problems people using your service raise are probably not really your product&rsquo;s big problems because people are using your service despite them. Feedback from people who are using competitor products will tell you the problems that are so bad that they are preventing users from using your service. Non-users are also good to talk to, to find out what would make them start using a service like yours. It will help you learn the things that allow you to expand the size of your market.</p>
+
+<p>A good way to get buy in from your colleagues about new directions or feedback is to record interviews. Taking notes is disruptive in the interview and are not as persuasive once you get back to the company.</p>
+
+<h2>Interview Mistakes</h2>
+
+<p>A mistake often made in user interviews is showing people your product. You&rsquo;re interested in what&rsquo;s already in their heads and habits. Another mistake is asking users about a feature <em>you</em> really want to build. A third is talking to who’s available rather than who you need to be talking to. Really put effort into getting to talk to people that will give different dimensions to who might your use your production.</p>
+
+<p>You should be conducting interview that are interactive in person, on the phone or over Skype, so that you can invite elaboration on points of interest. Email is not a good tool for conducting an interview.</p>
+
+<h2>Lecture 17</h2>
+
+<h3>How to Design Hardware Products</h3>
+
+<h4>Hosain Rahman, CEO and Founder of <a href="https://jawbone.com/">Jawbone</a> [<a href="http://tech.genius.com/Hosain-rahman-lecture-17-how-to-build-products-users-love-part-ii-annotated">Original Transcription</a>]</h4>
+
+<h2>The Internet of Things</h2>
+
+<p>The <em>Internet of Things</em> is a bit of a mess; everything has a wireless connection and an app, but there is little connectivity between devices. It needs organising principles and the focus needs to shift from the <em>Internet of Things</em> and to the individual users.</p>
+
+<p>Your smart devices can become a “perfect context engine” for your life and your health. To do well as the industry moves in this direction, you need to be good at the full stack. You need to build hardware that is comfortable and non-intrusive and software that is pleasant and informative to use, and bring it together with data analysis that is able to discern and present useful information.</p>
+
+<h2>The Hardware Creation Process</h2>
+
+<p>The process of hardware creation has the following phases:</p>
+
+<ul>
+<li>Exploration</li>
+<li>Early Validation</li>
+<li>Conception</li>
+<li>Heavy Planning</li>
+<li>Launch</li>
+<li>Iteration</li>
+</ul>
+
+
+<p>During the Exploration Phase, you need to think about where the world&rsquo;s going, what the company&rsquo;s strategy is, and what the brand stands for. You need to imagine the future and how you’re going to disrupt the status quo. It&rsquo;s much like a building and tinkering phase.</p>
+
+<p>In the Early Validation Phase, you try and prove the concepts you came up with and perform empirical data collection to see where you think the ideas might go. The Conception Phase occurs once you&rsquo;ve proven some of your theories and is the opportunity for innovation about how the product’s going to work.</p>
+
+<p>The Heavy Planning Phase involves deciding on all the necessary trade-offs across  all levels of the stack to make your product possible. And then its the Development Phase and you&rsquo;re solving problems as you implement the product.</p>
+
+<p>During the Launch Phase you learn what users think and are able to reevaluate where the product sits in the <em>experience continum</em>. This is when you examine what you achieved and where you failed. It&rsquo;s using this insight that you iterate and begin the process again.</p>
+
+<h2>Lecture 18</h2>
+
+<h3>Legal and Accounting Basics for Startups</h3>
+
+<h4>Kirsty Nathoo, CFO at Y Combinator, and Carolynn Levy, General Counsel at Y Combinator [<a href="http://genius.com/Kirsty-nathoo-lecture-18-mechanics-legal-finance-hr-etc-annotated">Original Transcription</a>]</h4>
+
+<h2>Formation</h2>
+
+<p>A company is a separate legal entity and insulates the founders from personal financial liability. An online service that can help you get incorporated is <a href="www.clerky.com">clerky</a>. The easiest place in America to form a company is Delaware.</p>
+
+<p>You need to assign all intellectual property to the company, or establish that all code you or any employees write belongs to the company, otherwise the company has no value.</p>
+
+<h2>Equity Allocation</h2>
+
+<p>The equity should be about even. The execution of an idea has greater value than the idea itself. Don&rsquo;t over-assign equity to the founder that is credited with coming up with the idea for the company.</p>
+
+<p>Vesting is when a founder gets full ownership over their shares over a period of time (usually 4 years). If they leave early the company can buy back some of the shares. The arrangement is also usually conditioned by a 1 year cliff; if the individual leaves before 1 year, they receive none of their shares. The company purchases back shares at the same price per share as the founder paid.</p>
+
+<p>Vesting protects the founders who stay in the company for the long haul from their co-founders leaving early and taking a large part of the company with them. It also invests the founders in the success of the company.</p>
+
+<h2>Raising Money</h2>
+
+<p>There are two ways of raising money: when the price or value of the company is set, typically in the &ldquo;series &#8220;A or &#8220;series B&rdquo; rounds; or when the price isn&rsquo;t set, typically in the &ldquo;seed round&rdquo;. But people can call rounds whatever they want. Not setting the price is the most straightforward and fast way of raising money. This is usually done using convertible notes or safes, meaning the investor is paying money up front for the right to receive stock at a later date when price is set by investors in a priced round. In this instance, the investor is not a shareholder and therefor has no voting rights. A <em>valuation pack</em> sets the cap on the price for conversion into shares when it comes time to receive the stock.</p>
+
+<p>Investors should be sophisticated; they should have money to invest and understand the nature of investing. Such investors are typically termed <em>accredited investors</em>.</p>
+
+<h2>Common Investor Requests</h2>
+
+<p>Commonly investors will request a board seat, either to keep a close eye on their money or because they believe they can add value to the business through their expertise. Usually, you should decline. Investors should take on the role of defacto advisor with no official title.</p>
+
+<p>Investors may also request pro-rata rights, or the right to maintain a given percentage ownership of a company by being able to buy more shares. This is a common request and not necessarily a bad thing. It often ultimately means dilution of the founder&rsquo;s ownership, though.</p>
+
+<p>Investors can also request information rights. While monthly updates are good, giving updates that are more often or more invasive than that is a cause for concern.</p>
+
+<h2>Founder Payroll</h2>
+
+<p>Founders are really just employees of the company. As working for free is illegal, the founders must be paid (at least minimum wage) and the company must pay payroll taxes.</p>
+
+<h2>Firing</h2>
+
+<p>Fire quickly and don’t let a bad employee linger. Be sure to communicate effectively and make clear statements. Don&rsquo;t apologise. Fire employees face-to-face and in the presence of a third party. When the ex-employee leaves, cut off access to all systems and purchase the shares they have now forfeited, immediately.</p>
+
+<h2>Metrics</h2>
+
+<p>The key financial metrics for a start-up are <em>cash position</em> and <em>burn rate</em> or how quickly you are going through your funding.</p>
+
+<h2>Lecture 19</h2>
+
+<h3>Sales and Marketing; How to Talk to Investors</h3>
+
+<h4>Tyler Bosmeny, founder and CEO of <a href="https://clever.com/">Clever</a> and Michael Seibel, founder of <a href="http://justin.tv/">Justin.tv</a> and <a href="https://socialcam.com/">Socialcam</a> and Partner at Y Combinator [<a href="http://genius.com/Tyler-bosmeny-lecture-19-sales-and-marketing-how-to-pitch-and-investor-meeting-roleplaying-annotated">Original Transcription</a>]</h4>
+
+<p>At the early stages of your startup you’re either talking to users or building your product. Talking to users is sales and your advantages as a founder are your passion and domain knowledge.</p>
+
+<h2>Finding and Approaching Potential Customers</h2>
+
+<p>The stages of sales can be thought of as a funnel that you move customers through. The first stage is <em>Prospecting</em> or figuring out who&rsquo;s interested.</p>
+
+<p>Everett Rogers&#8217; adoption curve illustrates that only 2.5% of companies are early adopters and will even consider buying a service from a startup. Use your personal network and industry conferences to find some members of that 2.5%. You can use emails to approach potential clients and keep them really concise and to the point; it makes it possible to customise each to the recipient. Tell them who you are, what you do and extend an invitation to meet and talk more.</p>
+
+<p>During phone conversations, shut up and listen. Some sellers aim for as low as 30% talking, 70% listening. Ask questions such as why they even took your call and find out as much as you can from the potential customers. <a href="https://www.uberconference.com/">UberConference</a> is a tool that can tell you how much time you spent talking on each phone call.</p>
+
+<p>Followup emails and have a drive to seek closure. Finding out who is really serious about buying your production. Get people to a <em>yes</em> or <em>no</em> as quickly as possible; <em>maybes</em> are a drain on your resources.</p>
+
+<p><em>Redlining</em> is the process of negotiating details of the purchase of your product. One of the closing traps companies fall into are quibbling over minor details, or encountering customers that saying they would commit to buying your product if there was just one more feature. If this occurs you should either get them to sign on the condition that you include in the contract that you will build the feature or pass on them completely. Another mistake is falling into the <em>free trial trap</em>; if a customer asks for a free trial, instead offer them a period in which they are able to opt-out if they don&rsquo;t like your product.</p>
+
+<h2>Revenue</h2>
+
+<p>Do things that don’t scale and find the things that can be adapted to scale.
+<a href="http://christophjanz.blogspot.co.uk/2014/10/five-ways-to-build-100-million-business.html">5 Ways to Build a 100 Million Dollary Company</a> explains how you can sell 1000 products at $100,000 or 10,000 products at $10,000 or 100,000 products at $1000, etc. You need to know which bucket your company is going to fall into and scale your price and approach accordingly.</p>
+
+<h2>Pitch</h2>
+
+<p>The best way to improve your pitch is to make your company better.</p>
+
+<p>You have to be able to simply explain what you do and why you need money. You should have two pitches: A thirty second patch and a two minute pitch. In the thirty seconds pitch, you should have three sentences. The first should be what your company does, assuming the listener knows nothing about your industry or technology. The second sentence should reveal how big your market is. The third is how much traction your company has - you must convince people that you&rsquo;re moving fast.</p>
+
+<p>The two minute pitch should be reserved for people who are interested. This is for people who may wish to give you money or work for you. Here you must provide a unique insight about your market; tell the investors something they, or the major players in your market, don&rsquo;t already know. You need to also discuss your business model: how you&rsquo;re going to make money. There is no need to be original and no one will hold you to your ideas for a revenue stream down the line.</p>
+
+<p>Investors will also want to know about your team: only mention impressive things your team has done that may have made other investors money. Explain how many founders there are (hopefully between 2 and 4), how many of them are technical (hopefully > 50%), how you know each other (hopefully for at least 6 months) and how much time you are all dedicating to the company (hopefully all full time).</p>
+
+<p>You need to know what you&rsquo;re asking for from investors. You need to be able to articulate whether you want convertible notes, or safes or something else; what the cap of that safe is; how much money you&rsquo;re seeking to raise and what&rsquo;s the minimum cheque size.</p>
+
+<p>Tell a narrative about your company and the problem it is trying to solve that make sense to people. Ask for money and be specific. Anything other than a cheque or wired funds is a &lsquo;No&rsquo;. Do due diligence on investors and confirm they are the sort of investors you want for your company.</p>
+
+<h2>When to Fundraise</h2>
+
+<p>Raise money when you have more traction, not less. Talk to people about your startup to get the word out and build traction and have a plan to get your product to market with very little money. Schedule all fundraising during the same week and get it over and done with quickly. And know when to stop fundraising.</p>
+
+<h2>Lecture 20</h2>
+
+<h3>Later-stage Advice</h3>
+
+<h4>Sam Altman [<a href="http://genius.com/Sam-altman-lecture-20-closing-thoughts-and-later-stage-advice-annotated">Original Transcription</a>]</h4>
+
+<p>There are some things you need to think about as your company scales (after you have product market fit) and become important between months 12 and 24 - usually when you&rsquo;re about 25 people.</p>
+
+<h2>Management</h2>
+
+<p>When you start, management is totally flat and everyone reports to the founders. This works best in the beginning and allows you to move fast. However, when this communication structure fails, it will fail all at once. You need to replace this with a system in which all employees know who the exactly one person that they report to, is. Clarity and simplicity in a management structure are paramount. As a founder, when you reach about 25 people, the focus shifts from creating a great product to creating a great company, which is much harder.</p>
+
+<h2>Common Mistakes</h2>
+
+<p>A common mistakes made by founders is being afraid to hire senior employees. In the beginning, hiring senior people is usually a mistake. However, when it comes time to implement more structure, it&rsquo;s valuable to hire senior executives who will take over and run parts of the company so the founder can focus on what&rsquo;s important.</p>
+
+<p><em>Hero Mode</em> is the extreme of leading by example. You should not continue to burn the midnight oil to get all the work done as it grows with your company. Its ok to get behind on work temporarily why you go off and hire people to help do that work. Hire enough people that based on your trajectory, they will handle the workload for quite a while.</p>
+
+<p>Delegation is sometimes difficult to do correctly. Be sure to allow managers the  autonomy to make important decisions; it&rsquo;s better to explain your considerations and the importance of the decision and let them make it.</p>
+
+<p>Another problem is not getting your personal organisation right. Be sure that how you&rsquo;re spending your time matches your priorities. It&rsquo;s helpful to write down how you do things and why. An internal wiki is the only way of scaling the company&rsquo;s core processes and rationale to all employees as you grow.</p>
+
+<p>Generally as a company grows, employees don’t get as clear feedback about performance. If they’re doing well, there should be a clear path to how it relates to compensation. Compensation bands are useful as a company grows to create a clear path or progression for employees.</p>
+
+<h2>Equity</h2>
+
+<p>As a founder, you should be giving out equity to employees. You should plan to give out between three and five percent of the company every year. You should also stay in front of people’s vesting and have refresh packages available to keep good employees as they approach the end of their vesting.</p>
+
+<p>You should be aware that when you cross a certain number of employees, your company will have new legal standards to meet (sexual harassment, etc).</p>
+
+<p>Monitor employees for burnout and schedule work accordingly.</p>
+
+<p>Announce potential new hires internally before extending an offer to see what your current employees may already know about the new hire. Have a good on-boarding program to get new hires set up and running as quickly as possible.</p>
+
+<p>A company suffers without diversity and you should make a special effort to introduce diversity of perspective before you reach 25 people. You want diversity of backgrounds, but <em>not</em> diversity of vision. Hire people that are complementary and aligned towards the same goal.</p>
+
+<h2>Company Productivity</h2>
+
+<p>As a company grows, the productivity of its employees goes down. You need to keep the company aligned in the same direction and every employee should know the roadmap for the next three to six months. It&rsquo;s important to simplify and reiterate the company&rsquo;s goals and not give your employees a chance to forget.</p>
+
+<p>Establish and maintain transparency and rhythm within your company. Have a management meeting every week and an all-hands meeting once a month.</p>
+
+<h2>IP and Trademarks</h2>
+
+<p>In America, 11 months after you announce something it is a good time to file a provisional patent - this buys you an addition 12 months to file a full patent if you decide you need one and is much cheaper than purchasing that patent upfront. This is also a good time to file trademarks and collect domains.</p>
+
+<h2>Finance and Tax</h2>
+
+<p>Create a <em>Financial Planning and Analysis (FP&amp;A)</em> model of the business and hire a full-time fundraiser. Set up the tax structure of the organisation.</p>
+
+<h2>Losing Focus</h2>
+
+<p>As you grow, your customers and the media start to turn against you. Be prepare for this and don&rsquo;t lose focus. Losing focus can also be a sign of burnout. When this happens, you start to want to do easy or gratifying things rather than the important ones.</p>
+
+<h2>Business Development</h2>
+
+<p>Try to develop a relationship with the people you’re doing business with and find a way to connect with them beyond the deal. Always try to have alternative options. Be persistent and ask for what you want.</p>
+
+<h2>Failing</h2>
+
+<p>The overwhelming majority of startups fail. If you are going to fail, tell your investors you&rsquo;re failing - they expect most of their investments to fail. You don&rsquo;t want it to come as a shock to your employees. Help them find new jobs and offer three to four weeks severance pay.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SourceTree Keyboard Shortcuts]]></title>
