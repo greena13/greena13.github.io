@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Review | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/review/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2016-01-18T07:43:40+00:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Getting to Better Code Reviews]]></title>
+    <link href="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/"/>
+    <updated>2016-01-17T12:36:29+00:00</updated>
+    <id>http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews</id>
+    <content type="html"><![CDATA[<p>I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic and getting  consistent results for the time investment.</p>
+
+<p>The reviews I was doing appeared to be going well enough: they were picking up problems and I was making sensible suggestions for how to improve code quality; less bugs seemed to be finding their way into the final product when I did the reviews than when I didn&rsquo;t and I felt more confident about code that had been through review. But I began to suspect that the quality of these reviews were variable and subject to random and unpredictable human factors.</p>
+
+<p>And although previous attempts to address this had left me with a checklist of common problems to look for, holding all thirty or so items on that checklist in my mind at once and trying to search for them all at the same time was too much complexity to effectively handle. I was applying this list in an attempt to be more consistent, but becoming overwhelmed and developing only a superficial familiarity with the code. Too often I was falling back on heuristics, like whether it looked correct, or whether I could spot anything obviously wrong with it (which are two ways of saying the same thing).</p>
+
+<p>What&rsquo;s more, once the review was complete, there was no clear indication of the relative importance of the problems identified. Just because some problem had jumped out at me, there was no guarantee that it was the most important deficiency in the code and there wasn&rsquo;t a greater problem further upstream.</p>
+
+<p>So I developed a system that simplified the list by grouping it into phases that made sense and allowed me to focus on looking for a single class of problem at each point in the process by running each piece of code through a series of three mental filters.</p>
+
+<h1>Motivations and context</h1>
+
+<p>The first phase is about establishing a high-level understanding of what the code change is, and why it&rsquo;s being made.</p>
+
+<p>There are three reasons for making a change to a software system:</p>
+
+<ul>
+<li>To fix a bug (when the system currently performs in a way that is considered undesirable and a change to the way the code functions is required)</li>
+<li>To add a new feature (when new functionality needs to be added, usually leaving the existing functionality intact)</li>
+<li>To make a code improvement (when the current code functions correctly, however it can be cleaned up or made to function more efficiently, but still give the same behavior)</li>
+</ul>
+
+
+<p>Generally speaking each code change should attempt to do only one of the above, to avoid losing sight of why the change is being made. If you attempt two or more, it is much harder to verify the change is correct and has no unintended consequences.</p>
+
+<p>I try to ask myself three questions:</p>
+
+<ul>
+<li>What changes need to be made to get the desired result?</li>
+<li>How do I know the right changes have been made and I am getting the right result?</li>
+<li>How do I know that nothing else has been broken as a consequence of the change?</li>
+</ul>
+
+
+<p>During this phase you can be looking for opportunities to increase how easy the code is to understand. Be on the look out for:</p>
+
+<ul>
+<li>Code that needs commenting</li>
+<li>Poor naming of variables, classes and functions</li>
+<li>Missing whitespace that could help group together code concerning the same semantic operation</li>
+</ul>
+
+
+<h1>Functional concerns</h1>
+
+<p>The second phase is where you mentally break up the code into sequences, selections and iterations to get an overview of the structure and how the program flows. It&rsquo;s important to get a sense of:</p>
+
+<ul>
+<li>The full domain of input values</li>
+<li>The number of execution paths and the conditions that must be satisfied for each</li>
+<li>The stopping conditions for loops</li>
+<li>All of the possible exit points, including those from exceptions that may be thrown</li>
+</ul>
+
+
+<p>Once you have this understanding, it is much easier to identify:</p>
+
+<ul>
+<li>Logic errors</li>
+<li>Boundary errors</li>
+<li>Failures to handle exceptions and error conditions</li>
+<li>Implicit assumptions that may not always be true</li>
+</ul>
+
+
+<h1>Non-functional concerns</h1>
+
+<p>Once you have convinced yourself that the code does what it is intended to do and that it is as readable and understandable as possible, then you can concern yourself with whether it is optimal from a performance, security and reliability perspective.</p>
+
+<ul>
+<li>Describe routines in terms of Big O notation</li>
+<li>Consider which parameters are user input or from other sources that should be considered unsafe</li>
+<li>Identify the scope of each variable and piece of data</li>
+<li>External dependencies that may fail and how they are handled</li>
+</ul>
+
+
+<p>This makes it easier to locate:</p>
+
+<ul>
+<li>Any gross inefficiencies (this is not the time for micro-optimisations)</li>
+<li>Poor choices of data structures and algorithms</li>
+<li>Scope leakes</li>
+<li>Security vulnerabilities</li>
+</ul>
+
+
+<p>And that&rsquo;s it. At first this list took a long time to run through, but it quickly became much faster to execute while still detecting a lot more problems.</p>
+]]></content>
+  </entry>
+  
+</feed>

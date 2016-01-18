@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Getting to Better Code Reviews - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Key Shift in Cmd</a></h1>
+  
+    <h2>An attempt at flushing out inert knowledge through explanation.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:greena13.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Getting to Better Code Reviews</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-17T12:36:29+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:36 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic and getting  consistent results for the time investment.</p>
+
+<p>The reviews I was doing appeared to be going well enough: they were picking up problems and I was making sensible suggestions for how to improve code quality; less bugs seemed to be finding their way into the final product when I did the reviews than when I didn&rsquo;t and I felt more confident about code that had been through review. But I began to suspect that the quality of these reviews were variable and subject to random and unpredictable human factors.</p>
+
+<p>And although previous attempts to address this had left me with a checklist of common problems to look for, holding all thirty or so items on that checklist in my mind at once and trying to search for them all at the same time was too much complexity to effectively handle. I was applying this list in an attempt to be more consistent, but becoming overwhelmed and developing only a superficial familiarity with the code. Too often I was falling back on heuristics, like whether it looked correct, or whether I could spot anything obviously wrong with it (which are two ways of saying the same thing).</p>
+
+<p>What&rsquo;s more, once the review was complete, there was no clear indication of the relative importance of the problems identified. Just because some problem had jumped out at me, there was no guarantee that it was the most important deficiency in the code and there wasn&rsquo;t a greater problem further upstream.</p>
+
+<p>So I developed a system that simplified the list by grouping it into phases that made sense and allowed me to focus on looking for a single class of problem at each point in the process by running each piece of code through a series of three mental filters.</p>
+
+<h1>Motivations and context</h1>
+
+<p>The first phase is about establishing a high-level understanding of what the code change is, and why it&rsquo;s being made.</p>
+
+<p>There are three reasons for making a change to a software system:</p>
+
+<ul>
+<li>To fix a bug (when the system currently performs in a way that is considered undesirable and a change to the way the code functions is required)</li>
+<li>To add a new feature (when new functionality needs to be added, usually leaving the existing functionality intact)</li>
+<li>To make a code improvement (when the current code functions correctly, however it can be cleaned up or made to function more efficiently, but still give the same behavior)</li>
+</ul>
+
+
+<p>Generally speaking each code change should attempt to do only one of the above, to avoid losing sight of why the change is being made. If you attempt two or more, it is much harder to verify the change is correct and has no unintended consequences.</p>
+
+<p>I try to ask myself three questions:</p>
+
+<ul>
+<li>What changes need to be made to get the desired result?</li>
+<li>How do I know the right changes have been made and I am getting the right result?</li>
+<li>How do I know that nothing else has been broken as a consequence of the change?</li>
+</ul>
+
+
+<p>During this phase you can be looking for opportunities to increase how easy the code is to understand. Be on the look out for:</p>
+
+<ul>
+<li>Code that needs commenting</li>
+<li>Poor naming of variables, classes and functions</li>
+<li>Missing whitespace that could help group together code concerning the same semantic operation</li>
+</ul>
+
+
+<h1>Functional concerns</h1>
+
+<p>The second phase is where you mentally break up the code into sequences, selections and iterations to get an overview of the structure and how the program flows. It&rsquo;s important to get a sense of:</p>
+
+<ul>
+<li>The full domain of input values</li>
+<li>The number of execution paths and the conditions that must be satisfied for each</li>
+<li>The stopping conditions for loops</li>
+<li>All of the possible exit points, including those from exceptions that may be thrown</li>
+</ul>
+
+
+<p>Once you have this understanding, it is much easier to identify:</p>
+
+<ul>
+<li>Logic errors</li>
+<li>Boundary errors</li>
+<li>Failures to handle exceptions and error conditions</li>
+<li>Implicit assumptions that may not always be true</li>
+</ul>
+
+
+<h1>Non-functional concerns</h1>
+
+<p>Once you have convinced yourself that the code does what it is intended to do and that it is as readable and understandable as possible, then you can concern yourself with whether it is optimal from a performance, security and reliability perspective.</p>
+
+<ul>
+<li>Describe routines in terms of Big O notation</li>
+<li>Consider which parameters are user input or from other sources that should be considered unsafe</li>
+<li>Identify the scope of each variable and piece of data</li>
+<li>External dependencies that may fail and how they are handled</li>
+</ul>
+
+
+<p>This makes it easier to locate:</p>
+
+<ul>
+<li>Any gross inefficiencies (this is not the time for micro-optimisations)</li>
+<li>Poor choices of data structures and algorithms</li>
+<li>Scope leakes</li>
+<li>Security vulnerabilities</li>
+</ul>
+
+
+<p>And that&rsquo;s it. At first this list took a long time to run through, but it quickly became much faster to execute while still detecting a lot more problems.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Aleck Greenham</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-01-17T12:36:29+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:36 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/review/'>review</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/" data-via="" data-counturl="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/02/13/how-to-start-a-startup-notes/" title="Previous Post: Notes on How to Start a Startup">&laquo; Notes on How to Start a Startup</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/" title="Next Post: How I taught myself the Colemak keyboard over a weekend">How I taught myself the Colemak keyboard over a weekend &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section id="about">
+    <div id="about-picture">
+        <img class="left" src="/images/display_picture.jpg" width="350" height="350" title="image" alt="images">
+    </div>
+    <div id="about-body">
+    <p>
+        Aleck is interested in great ways to write great software.
+    </p>
+
+    <p>
+        He blogs with the hope it will be useful for others and his future self.
+    </p>
+    </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/">How I Taught Myself the Colemak Keyboard Over a Weekend</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/17/getting-to-better-code-reviews/">Getting to Better Code Reviews</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/13/how-to-start-a-startup-notes/">Notes on How to Start a Startup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/01/sourcetree-keyboard-shortcuts/">SourceTree Keyboard Shortcuts</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/17/interview-questions-for-a-development-job/">Interview Questions for a Development Job</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/greena13">@greena13</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'greena13',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Aleck Greenham -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/';
+        var disqus_url = 'http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

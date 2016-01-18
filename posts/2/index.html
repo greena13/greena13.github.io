@@ -9,7 +9,7 @@
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="I was recently reading the Wikipedia articles of imperative programming and declarative programming to brush up on my understanding of the &hellip;">
+  <meta name="description" content="I have found variance one of the more difficult things to get my head around in computer science, so I have tried to document the basics as a way of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,104 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/01/covariance-and-contravariance/">Covariance and Contravariance</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-01T16:37:28+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:37 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have found variance one of the more difficult things to get my head around in computer science, so I have tried to document the basics as a way of teaching myself.</p>
+
+<p><em>Variance</em> in object-oriented programming refers to how subtyping works between complex types. For example, if <em>B</em> is a subtype of <em>A</em> and <em>CA</em> and <em>CB</em> are enumerable collections (our complex types) that contain items of type <em>A</em> and <em>B</em>, respectively, is the collection <em>CB</em> a subtype of the collection <em>CA</em>?</p>
+
+<ul>
+<li>If the enumerable collection is <strong>covariant</strong> then <em>CB</em> is a subtype of <em>CA</em> and the subtyping relation is said to be <strong>preserved</strong>.</li>
+<li>If the enumerable collection is <strong>contravariant</strong> then <em>CB</em> is a subtype of <em>CA</em> and the subtyping relation is said to be <strong>reversed</strong>.</li>
+<li>If the enumerable collection is <strong>invariant</strong> then <em>CA</em> and <em>CB</em> are not related by type at all and the subtyping relation is said to be <strong>ignored</strong>.</li>
+</ul>
+
+
+<h2>Argument And Return Type Variance</h2>
+
+<p>When inheriting from a parent class and overwriting a method, a programmer is faced with a number of options for the argument and return types of that method, depending on the programming language being used.</p>
+
+<p>Considering the argument type first, programming languages will either offer invariant, contravariant or covariant argument types. A language that offers <em>invariant argument types</em> (C++, Java, C#) requires the arguments of the overriding method to be of the same type as the overridden method. Languages that offer <em>contravariant argument types</em> allow arguments to be supertypes of the overridden method&rsquo;s arguments. Similarly, languages offering <em>covariant argument types</em> permit arguments of subtypes of those for the overridden method.</p>
+
+<p>Return types are much the same; languages offer either covariant (C++, Java) or invariant (C#) return types.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/01/functional-programming/">Functional Programming</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-01T09:52:42+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:52 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of the <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> Wikipedia page.</p>
+
+<p>Functional programming is a <a href="/blog/2014/08/31/imperative-programming-vs-declarative-programming">declarative programming</a> paradigm that treats computations as evaluations of mathematical functions and avoids referencing a system state and mutable data. It was developed, primarily, as an attempt to avoid side effects and make subroutines much easier to reason about. It introduces a number of interesting and useful concepts that are not often encountered or emphasised in object-orient programming.</p>
+
+<h2>Pure Functions</h2>
+
+<p>Pure functions are those that have no side effects and depend only on their argument values, not on any system information; consequently, they return the same value for a given set of parameter values every time. They have some unique properties useful for code optimisation and reasoning:</p>
+
+<ul>
+<li><p>If the result of a pure expression is not used, it can be removed without altering the code&rsquo;s behaviour.</p></li>
+<li><p>If a pure function is called with arguments that are themselves pure functions, or don&rsquo;t have side effects, then the result can be cached and returned if the function is called with the same parameter values again.</p></li>
+<li><p>If there is no dependency amongst a collection of functions, they can be run in any order with the same result.</p></li>
+</ul>
+
+
+<h2>Referential Transparency</h2>
+
+<p>Referential transparency is a property of code that refers to whether or not it can be replaced with its calculated value without changing its behaviour. If this is indeed the case, the code is said to be <em>referentially transparent</em>; if the code cannot be replaced with its value without altering system behaviour then it is <em>referentially opaque</em>.</p>
+
+<p>All pure function calls are referentially transparent as they do not depend on or change system behaviour and should always return the same result when given the same arguments.</p>
+
+<h2>First-class Functions</h2>
+
+<p>First-class functions are those which can appear anywhere in a program that other first-class entities (such as numbers) can. This notably includes as arguments and return values for other functions. They can also accept and return other functions.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -513,59 +611,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/08/20/reducing-a-routines-parameters/">Reducing a Routine's Parameters</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-20T21:04:08+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:04 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.</p>
-
-<p>First, a brief note on terminology: I will be using <em>routine</em>, <em>method</em> and <em>function</em> interchangeably to refer to a <em>piece of code that accepts or requires a given number of inputs, or parameters</em>.</p>
-
-<p>McConnel points out that code with a long list of parameters present problems to those who need to understand, maintain and use it. Multiple parameters are difficult to remember when the function needs to be called - as is the correct order to use them in. Code compliant with the mandates of <em>Defensive Programming</em> will also need to check the arguments have been provided in the correct order and have sensible values. While many IDEs and languages will do the recording of correct parameter order and type checking, this should not been seen as excuse for bad practices. Long parameter lists provide further headaches for maintenance if the method&rsquo;s signature needs to be later modified.</p>
-
-<p>A function can usually be improved by reducing the number of parameters it requires. <em>Polyadic functions</em> (with 3 or more parameters) should almost always be refactored to require fewer arguments. One way of achieving this is by breaking the function up into smaller ones that perform simpler chunks of functionality and need less information to execute; this change in abstraction can often add clarity to the intention behind the code. Another strategy for reducing a function&rsquo;s parameters is to wrap them up in a single data structure, removing the need to remember the parameter order completely and freeing up the reader to focus on what&rsquo;s pertinent to the function of the code.</p>
-
-<p>Good code should consist primarily of <em>monadic</em> and <em>dyadic</em> functions, or those with 1 and 2 parameters, respectively. Monadic functions typically take one of three forms:</p>
-
-<ul>
-<li>Asking a question or testing a particular condition. eg. <code>isRed(ball)</code></li>
-<li>Performing an action or transformation on a particular parameter. eg. <code>fileOpen(myFile)</code></li>
-<li>Handling an event where the function uses the argument to update the system&rsquo;s state. eg. <code>registerMouseEvent(mouseEvent)</code></li>
-</ul>
-
-
-<p>It should be noted that the first form need not return a boolean value. A function that returns a particular characteristic is also of this form. eg. <code>averageGrade(reportCard)</code>. Functions of the second form should also return the result of the action or transform wherever possible. <em>Output arguments</em>, or where functions perform an action on the argument instance itself and return either <code>null</code>/<code>void</code> or another value, are more difficult to follow. In the case of an action being performed on an instance, an object-oriented paradigm is better suited eg. <code>ball.bounce()</code> is clearer than a function <code>bounce(ball)</code> that returns the instance of <code>ball</code>.</p>
-
-<p>If a function or method meets one of the above descriptions and has more than a single parameter, it is a good sign that it is a candidate for refactoring.</p>
-
-<p>Dyadic functions are not as easily classified into categories and can perform many actions. Care should be taken with the ordering of the parameters when defining a function or method&rsquo;s signature so that is natural and easy to remember and should be evident from the name of the routine. If at all possible, the pairing of the two parameters should be wrapped in single argument to convert to a monadic function.</p>
-
-<p>The ideal function is a <em>niliadic function</em>, or a function without any parameters.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -594,6 +642,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/">How I Taught Myself the Colemak Keyboard Over a Weekend</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/17/getting-to-better-code-reviews/">Getting to Better Code Reviews</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/13/how-to-start-a-startup-notes/">Notes on How to Start a Startup</a>
       </li>
     
@@ -603,14 +659,6 @@
     
       <li class="post">
         <a href="/blog/2015/01/17/interview-questions-for-a-development-job/">Interview Questions for a Development Job</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/08/improving-typing-speed/">Improving Typing Speed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/06/factories/">Factories</a>
       </li>
     
   </ul>
@@ -655,7 +703,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Aleck Greenham -
+  Copyright &copy; 2016 - Aleck Greenham -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
