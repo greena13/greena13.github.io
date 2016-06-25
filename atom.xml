@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-06-25T12:36:29+01:00</updated>
+  <updated>2016-06-25T14:09:24+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Best Tim Ferriss Show Podcast Episodes]]></title>
+    <link href="http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes/"/>
+    <updated>2016-06-25T13:37:11+01:00</updated>
+    <id>http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes</id>
+    <content type="html"><![CDATA[<p>I have been needing an easy way of recommending episodes of the fantastic Tim Ferriss Show podcast for a while now. What follows is a list of the episodes I found the most value in, but your results may vary. You can see the entire episode list on <a href="http://fourhourworkweek.com/podcast/">the podcast&rsquo;s website</a>.</p>
+
+<p>The easiest way of listening to the episodes is to either go to the <a href="http://fourhourworkweek.com/podcast/">website</a> and search the episode titles or search on your favourite podcast app. Google will work, also.</p>
+
+<p>Episodes are in the <em>approximate</em> order of strength of recommendation.</p>
+
+<h2>Highly Actionable</h2>
+
+<p>These podcasts are Tim talking to his audience, often answering up-voted questions or short verbal essays on a particular subject. They are generally shorter and immediately useful and actionable. Pausing and taking notes is highly recommended.</p>
+
+<h3>Personal Focus</h3>
+
+<ul>
+<li>How to 10X Your Results, One Tiny Tweak at a Time</li>
+<li>The 9 Habits to Stop Now — The Not-To-Do List 
+Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) </li>
+<li>5 Morning Rituals That Help Me Win The Day</li>
+<li>What I’d Add To The 4-Hour Workweek for 2015 (And Much More)</li>
+<li>How to Avoid the Busy Trap (and Other Misuses of Your Time)</li>
+<li>Drunk Dialing Fans–Celebrating The 100th Podcast Episode!</li>
+<li>25 Great Things I Learned from Podcast Guests in 2015</li>
+<li>On Zero-to-Hero Transformations</li>
+<li>The Unusual Books That Shaped Billionaires, Mega-Bestselling Authors, and Other Prodigies</li>
+</ul>
+
+
+<h3>Professional Focus</h3>
+
+<ul>
+<li>How Creatives should negotiate</li>
+<li>Should You Start a ‘Startup’ or Build a Cash-Flow Business?</li>
+<li>How to Build a Large Audience From Scratch (And More)</li>
+<li>How to Build a World-Class Network in Record Time</li>
+<li>The 5 Things I Did To Become a Better Investor</li>
+</ul>
+
+
+<h2>Guests - Actionable Advice</h2>
+
+<p>These episodes are Tim interviewing guests, or guests answering listeners&#8217; questions. Generally they are much longer, and with more space between useful takeaways, but the podcast guests remain interesting or entertaining throughout. Note taking is encouraged, but not essential.</p>
+
+<ul>
+<li>Scott Adams: The Man Behind Dilbert</li>
+<li>Derek Sivers on Developing Confidence, Finding Happiness, and Saying “No” to Millions</li>
+<li>Derek Sivers Reloaded – On Success Habits and Billionaires with Perfect Abs</li>
+<li>Ed Cooke, Grandmaster of Memory, on Mental Performance, Imagination, and Productive Mischief</li>
+<li>Episode 2: JOSH WAITZKIN</li>
+<li>What Evernote’s Phil Libin Learned from Jeff Bezos, Reid Hoffman, and Others</li>
+<li>How One Computer Hacker Conquered Online Dating, Opens Locked Cars, and More</li>
+<li>The Tim Ferriss Show: Interview with Peter Thiel, Billionaire Investor and Company Creator</li>
+<li>The Tim Ferriss Show, Episode 18: James Altucher on How to Say “No”, Fail Better, and Build Businesses</li>
+</ul>
+
+
+<h2>Guests - Interesting People and Careers</h2>
+
+<p>These interviews are with usually highly visible and always interesting people. Listen when you wish to be entertained and engaged, but don&rsquo;t necessarily want to have some useful takeaways.</p>
+
+<ul>
+<li>Tim Ferriss Interviews Arnold Schwarzenegger on Psychological Warfare (And Much More)</li>
+<li>Jamie Foxx on Workout Routines, Success Habits, and Untold Hollywood Stories</li>
+<li>The Tim Ferriss Show: Interview of Kevin Kelly, Co-Founder of WIRED, Polymath, - Most Interesting Man In The World?</li>
+<li>Kevin Kelly on Artificial Intelligence and Designer Babies</li>
+<li>Marc Goodman, FBI Futurist, on High-Tech Crime and How to Protect Yourself</li>
+<li>Dissecting the success of Malcom Gladwell</li>
+<li>Meet “Scorpion,” The Real-Life Santa Claus</li>
+<li>The Tim Ferriss Show, Episode 22: Ed Catmull, President of Pixar, on Steve Jobs, Stories, and Lessons Learned</li>
+<li>Tony Robbins on Morning Routines, Peak Performance, and Mastering Money</li>
+<li>The Maverick of Brain Optimization</li>
+<li>The Rags to Riches Philosopher: Bryan Johnson’s Path to $800 Million</li>
+<li>How Facebook’s #30 Employee Quickly Built 4 Businesses and Gained 40 Pounds with Weight Training</li>
+<li>Will MacAskill on Effective Altruism, Y Combinator, and Artificial Intelligence</li>
+<li>Matt Mullenweg on Polyphasic Sleep, Tequila, and Building Billion-Dollar Companies</li>
+<li>General Stan McChrystal on Anti-War Americans, Pushing Your Limits, and The - Three Military Tests You Should Take</li>
+<li>The Tim Ferriss Podcast, Ep 15: Neil Strauss, Author of The Game</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How I Taught Myself the Colemak Keyboard Over a Weekend]]></title>
@@ -1773,27 +1858,6 @@ If the employee has high equity, people aren’t going to think it’s fair that
 <p>Another method is to attempt to simplify nested conditions using logic axioms such as <em>Demorgan&rsquo;s Law</em>. A series of if statements is often easier to navigate than a single chunk of nested logic. It also reduces the number of inputs to the block, providing greater opportunity to extract it out into separate methods or functions with clearer indications of what data influences its behaviour.</p>
 
 <p>When unwrapping nested conditional statements, the preconditions for an extracted piece of code may become less clear. This should be address by making any dependencies explicit. To illustrate: if one function must be called before another, have the first function return a data type that the second one requires as a parameter. For example, if a function <code>throwRock()</code> must be called before another <code>breakGlass()</code>, make <code>throwRock()</code> return an instance of <code>WallPosition</code> and have <code>breakGlass()</code> require an argument of type <code>WallPosition</code>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ordering and Labelling Code]]></title>
-    <link href="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/"/>
-    <updated>2014-08-21T14:53:17+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code</id>
-    <content type="html"><![CDATA[<p>Reading Steve McConnel&rsquo;s <a href="http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670">Code Complete</a> and Robert C. Martin&rsquo;s <a href="http://www.amazon.co.uk/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, I encountered a subject that I previously hadn&rsquo;t given much thought to but is of great importance. McConnel talks of reducing the cognitive load of reading and understanding code by writing for humans first, computers second; where the reader of a piece of code should be the author&rsquo;s highest priority - if not only because these often end up being one and the same. An important part of this is facilitating quick code navigation to allow the reader to find what they need, and providing useful levels of abstraction so the reader need not concern themselves with irrelevant details.</p>
-
-<p>This is achieved by making considered choices with code order and placement. Two units of code that are related in some way - the most important and obvious being references between them or shared execution paths - should be placed nearby to each other. This is to allow a reader to easily refer between the two without having to jump between separate locations in a file. McConnel offers the analogy of a newspaper for guidance on how code should be ordered: the important concepts are featured at the top while the refinements or details can be found towards the bottom.</p>
-
-<p>Vertical whitespace should be used wisely to separate different ideas or functions in the code. Statements that perform actions that are part of the same larger action should be grouped together, while those that are not should be separated visually by one or more lines of whitespace. If a clear enough conceptual gap exists between a group of statements and the rest of the code, it can and often should be extracted out into a well-named method or function (and given the appropriate access modifier to correctly observe <em>Encapsulation</em>).</p>
-
-<p>Care should be taken when naming methods and functions to the make the reader&rsquo;s task easier. A well-named block of code should make clear what it is the code does, what input it expects or requires and in the case of <a href="blog/2014/08/20/reducing-a-routines-parameters/">multiple parameters</a>, what order the arguments should be given in. If named wisely, a function or method should require little or no further documentation.</p>
-
-<p>It is paramount that a piece of code only perform the functionality suggested by its name, free of hidden side effects or behaviour. To ignore this is to surely guarantee bugs that are difficult to diagnose and fix. However, something greater is at stake: if violated, the trust between the code&rsquo;s author and reader is broken and the reader is forced to then check every method or function for similarly concealed behaviour.</p>
-
-<p>If it is proving difficult to accurately name a method or function succinctly, often it is an indication of an inappropriate level of abstraction or confused intentions behind the code. For example, functions that perform queries or return a system status should be separated from those that execute and action, or alter the system state.</p>
-
-<p>Naming conventions can be used to imbue code with consistency and reduce the number of surprises the reader must negotiate in parsing the code. The merits of specific conventions are secondary to the benefits of consistency itself.</p>
 ]]></content>
   </entry>
   
