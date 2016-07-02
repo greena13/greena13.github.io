@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Origami | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/origami/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-02T19:17:56+01:00</updated>
+  <updated>2016-07-02T19:23:46+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -171,9 +171,7 @@
 
 <p>By hovering the cursor over a port and pressing the appropriate keyboard shortcut for the patch you want, the patch is automatically created and named based on the port that it is connected to.</p>
 
-<h2>Patch Types</h2>
-
-<h3>User Interaction</h3>
+<h2>User Interaction Patches</h2>
 
 <p>User interaction patches don&rsquo;t really have input ports and instead listen for events that occur when the user interacts with the prototype. They produce a signal on their output ports when a user event occurs that matches the patches type and options.</p>
 
@@ -225,7 +223,7 @@
 
 <p>Limits the user input captured to a particular area of screen. You need to connect the hit area patch to the interaction patch via the interaction port at the top of the patch, to the right of the title.</p>
 
-<h3>Transforms</h3>
+<h2>Transform Patches</h2>
 
 <p>These patches are used to modify and combine the signals from the interaction patches. They are like the components of a circuit: the resistors, capacitors, transistors and transformers.</p>
 
