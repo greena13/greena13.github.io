@@ -94,9 +94,7 @@ Patches are created by using the corresponding keyboard shortcut or bringing up 
 By hovering the cursor over a port and pressing the appropriate keyboard shortcut for the patch you want, the patch is automatically created and named based on the port that it is connected to.
 
 
-## Patch Types
-
-### User Interaction
+## User Interaction Patches
 
 User interaction patches don't really have input ports and instead listen for events that occur when the user interacts with the prototype. They produce a signal on their output ports when a user event occurs that matches the patches type and options.
 
@@ -128,7 +126,7 @@ The **jump to start** option is used for programatically triggering a swipe acti
 
 Limits the user input captured to a particular area of screen. You need to connect the hit area patch to the interaction patch via the interaction port at the top of the patch, to the right of the title.
 
-### Transforms
+## Transform Patches
 
 These patches are used to modify and combine the signals from the interaction patches. They are like the components of a circuit: the resistors, capacitors, transistors and transformers.
 
