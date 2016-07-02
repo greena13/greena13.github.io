@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cheat | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/cheat/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2016-07-02T19:09:31+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Facebook Origami Cheat Sheet]]></title>
+    <link href="http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet/"/>
+    <updated>2016-06-30T13:36:51+01:00</updated>
+    <id>http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet</id>
+    <content type="html"><![CDATA[<p><a href="http://facebook.github.io/origami/">Facebook&rsquo;s Origami</a> is an interesting UI prototyping tool that integrates nicely with <a href="https://www.sketchapp.com/">Sketch</a> and offers the ability to interact with your prototypes in a simulator or right on your mobile or tablet device.</p>
+
+<p>This is a summary of the information I picked up from watching the <a href="http://facebook.github.io/origami/tutorials/">Origami video tutorials</a>. It&rsquo;s not a complete reference, but it succinctly captures most of the information contained in the video and can serve as a quick reference.</p>
+
+<p>First, a note on terminology: as I am still learning my way around the Origami and Quartz Composer nomenclature, I may have incorrectly used some of the terminology concerned with what each of the components or widgets are called. I have also introduced groupings of layers and patches by function that were not suggested in the tutorials, but added clarity for me. They may, however, not necessarily correspond with discussion you read elsewhere.</p>
+
+<h2>Overview</h2>
+
+<p>Origami has two main concepts: patches and layers. Layers control what is rendered on the screen and can be thought of as the outputs of the prototype you are building. They take their input values from patches, which contain the logic of the prototype. And the patches take <em>their</em> input from user actions either on the simulator or the device that is running the prototype.</p>
+
+<p>You connect patches and layers together by dragging lines between the inputs and outputs of components, in a fashion that is analogous to wiring an electrical circuit, or creating a flow chart.</p>
+
+<p>So, the user interacts with the prototype, by scrolling, tapping or some other gesture. This gets relayed to your canvas of components using an interaction patch (discussed later) which represents the event as a binary value (1 when it&rsquo;s happening, otherwise 0) and you are free to perform any number of operations on this signal, like scale it, remap it, combine it, delay it or shape it, by connecting different transform patches together. When you are done, you should have a signal that can control one or more properties of the layers, like alpha, position, or size.</p>
+
+<p>This is best represented visually, so it&rsquo;s probably worth watching the <a href="http://facebook.github.io/origami/tutorials/">first video tutorial</a> to get a feel for what this looks like. Once you have watched the first video, however, the remaining videos are more or less the same thing, using different patches. You can find a catalogue of the patches used in the videos below.</p>
+
+<h2>Layers</h2>
+
+<p>Layers describe how each content gets rendered on the device, by setting properties like:</p>
+
+<ul>
+<li>position</li>
+<li>dimensions</li>
+<li>rotation</li>
+<li>image/mask image</li>
+<li>colour</li>
+<li>opacity</li>
+<li>scale</li>
+</ul>
+
+
+<h3>Fixed Layer Components</h3>
+
+<p>These components can&rsquo;t be changed by user interaction and represent constant properties of the simulation.</p>
+
+<p><strong>Viewer</strong></p>
+
+<p>Represents the output of the prototype, or the simulated device.</p>
+
+<p><strong>Viewer Size</strong></p>
+
+<p>Allows changing the simulated device (mobile devices, tablets or watch) and determines the dimensions of the layer group (see below).</p>
+
+<h3>Dynamic Layer Components</h3>
+
+<p>These components receive input signals from patches to control their values and are used to create the interactivity of the prototype.</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> Key </th>
+<th style="text-align:left;"> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"> G </td>
+<td style="text-align:left;"> Create layer group from selected </td>
+</tr>
+<tr>
+<td style="text-align:center;"> Cmd + [, Cmd + ] </td>
+<td style="text-align:left;"> Increment or decrement a selected layer&rsquo;s layer number </td>
+</tr>
+<tr>
+<td style="text-align:center;"> Right click </td>
+<td style="text-align:left;"> Quick alignment options </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Layer Group</strong></p>
+
+<p>Layer groups contain the things that will appear on the screen. They have square corners to distinguish them from non-groups. You enter a layer group by double clicking on them and exit them by clicking the up caret button in the top right of the screen.</p>
+
+<p><strong>Image Patch</strong></p>
+
+<p>The easiest way to add an asset is by dragging the image from Finder into the layer group on the screen and Origami will create an image patch and assigns a layer to it, which allows you to customise how it appears.</p>
+
+<p><strong>Fill Layer</strong></p>
+
+<p>Fill layers allow you to specify the colour and opacity of a fill.</p>
+
+<p><strong>Text Layer</strong></p>
+
+<p>Text layers displays font on screen and provide properties for changing position and styling.</p>
+
+<h2>Patch creation</h2>
+
+<p>Patches are created by using the corresponding keyboard shortcut or bringing up the patch list dialogue and either searching or clicking on the patch that you are looking for. Be careful not to select patches outside of the Origami package as some have very similar names to Origami ones.</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> Key </th>
+<th style="text-align:left;"> Patch </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"> Cmd + Enter </td>
+<td style="text-align:left;"> Patch list dialogue </td>
+</tr>
+<tr>
+<td style="text-align:center;"> T </td>
+<td style="text-align:left;"> Transition </td>
+</tr>
+<tr>
+<td style="text-align:center;"> I </td>
+<td style="text-align:left;"> Interaction 2 </td>
+</tr>
+<tr>
+<td style="text-align:center;"> A </td>
+<td style="text-align:left;"> Pop animation </td>
+</tr>
+<tr>
+<td style="text-align:center;"> L </td>
+<td style="text-align:left;"> Layer </td>
+</tr>
+<tr>
+<td style="text-align:center;"> C </td>
+<td style="text-align:left;"> Conditional </td>
+</tr>
+<tr>
+<td style="text-align:center;"> D </td>
+<td style="text-align:left;"> Delay </td>
+</tr>
+<tr>
+<td style="text-align:center;"> W </td>
+<td style="text-align:left;"> Wireless </td>
+</tr>
+<tr>
+<td style="text-align:center;"> Shift + S </td>
+<td style="text-align:left;"> Switch </td>
+</tr>
+<tr>
+<td style="text-align:center;"> Shift + A </td>
+<td style="text-align:left;"> Logic </td>
+</tr>
+<tr>
+<td style="text-align:center;"> R </td>
+<td style="text-align:left;"> Reverse progress patch under cursor </td>
+</tr>
+<tr>
+<td style="text-align:center;"> Alt + Click &amp; Drag </td>
+<td style="text-align:left;"> Duplicate patch </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>By hovering the cursor over a port and pressing the appropriate keyboard shortcut for the patch you want, the patch is automatically created and named based on the port that it is connected to.</p>
+
+<h2>Patch Types</h2>
+
+<h3>User Interaction</h3>
+
+<p>User interaction patches don&rsquo;t really have input ports and instead listen for events that occur when the user interacts with the prototype. They produce a signal on their output ports when a user event occurs that matches the patches type and options.</p>
+
+<p><strong>Interaction 2 Patch</strong></p>
+
+<p>Converts the user&rsquo;s simulated gestures to 1 or 0.</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> Option </th>
+<th style="text-align:left;"> Output Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> down </td>
+<td style="text-align:left;"> 1 if finger held down, else 0 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> up </td>
+<td style="text-align:left;"> 1 for a single frame following a finger release, else 0 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> tap </td>
+<td style="text-align:left;"> 1 when finger is released from the screen and the finger is stationary, else 0 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> drag </td>
+<td style="text-align:left;"> 1 when finger goes down to drag and remains 1 while dragging, else 0 </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Scroll Patch</strong></p>
+
+<p>Outputs 1 when a user scrolls an area.</p>
+
+<p><strong>Swipe Patch</strong></p>
+
+<p>Outputs 1 when a user swipes on an area.</p>
+
+<p>The <strong>jump to start</strong> option is used for programatically triggering a swipe action, which is useful for back buttons and those that trigger swipe transitions.</p>
+
+<p><em>Beware not to get the non-Origami one of the same name</em>.</p>
+
+<p><strong>Hit Area Patch</strong></p>
+
+<p>Limits the user input captured to a particular area of screen. You need to connect the hit area patch to the interaction patch via the interaction port at the top of the patch, to the right of the title.</p>
+
+<h3>Transforms</h3>
+
+<p>These patches are used to modify and combine the signals from the interaction patches. They are like the components of a circuit: the resistors, capacitors, transistors and transformers.</p>
+
+<h3>Binary patches</h3>
+
+<p>These are patches that output binary values: 0 or 1.</p>
+
+<p><strong>Logic Patch</strong></p>
+
+<p>These allow you to combine to signals in a logic operation. Invaluable when you need 2 things to be happening at once for a transition to occur, or to disable a behaviour if another is currently occurring.</p>
+
+<p><strong>Conditional Patch</strong></p>
+
+<p>Outputs 1 when the input signal satisfies a given constraint. Useful for waiting for a given threshold to be exceeded before setting off an event.</p>
+
+<p><strong>Switch Patch</strong></p>
+
+<p>Like a switch, it remembers and maintains its own internal state and uses its input signal to decide when to toggle that state. Useful for remembering if a user has already done something and triggering upstream events, accordingly.</p>
+
+<p>There is a convention of naming these patches according to what the <em>on</em> state represents.</p>
+
+<h3>Digital patches</h3>
+
+<p>These are patches that output continuous data and are not limited to 0 or 1.</p>
+
+<p><strong>Transition Patch</strong></p>
+
+<p>Takes input between 0 and 1 and proportionally outputs a value within a different range. For example, for an output range between 1 and 10:</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> Input </th>
+<th style="text-align:left;"> Output </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> 0 </td>
+<td style="text-align:left;"> 1 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> 0.5 </td>
+<td style="text-align:left;"> 5 </td>
+</tr>
+<tr>
+<td style="text-align:left;"> 1 </td>
+<td style="text-align:left;"> 10 </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Pop Animation Patch</strong></p>
+
+<p>Does the same thing as a transition patch, but using a more complex relationship. You can specify the bounciness and speed of the transition, so the equivalent value for a given input is not immediately available on the output. This is an effective way of converting a binary signal to an a digital one.</p>
+
+<p><strong>Progress Patch</strong></p>
+
+<p>A progress patch does the reverse of the transition patch: takes a range of input values and outputs value between 0 and 1.</p>
+
+<p><strong>Reverse Progress Patch</strong></p>
+
+<p>A reverse progress patch complements the signal of a progress patch it is plugged into. This is great for representing inverse relationships - say you want one component to fade in as another is fading out.</p>
+
+<p><strong>Range Patch</strong></p>
+
+<p>A range patch limits the possible set of values it receives. It outputs a clipped value and a rolled over value (how much the input has exceeded the specified range). This is good if you want to, have a widget change position relative to an input value, but limit its movement so it cannot go off the screen.</p>
+
+<p><strong>Delay Patch</strong></p>
+
+<p>Delay patches output their input signals after a specified delay. Useful for delaying animation and sequencing events.</p>
+
+<h1>Keeping your canvas organised</h1>
+
+<p>Patches and layers can be placed into layer groups in the same way files can be placed in directories to keep them organised. You can nest layer groups as deep as you like and give them useful names to help you navigate. It is useful to contain different screens and widgets in their own layer groups to keep them contained.</p>
+
+<p>You can select patches and layers and cut and paste them inside your layer groups as you go along, or you can drag selected components on top of a layer group and they will be moved inside.</p>
+
+<h2>Connecting patches</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> Key </th>
+<th style="text-align:left;"> Description </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> option + drag </td>
+<td style="text-align:left;"> Drag from last selected input/output </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>You can make a patch’s output port available as input for patches contained inside a layer group by dragging the output port onto the layer group and giving it a name in the dialogue that appears.</p>
+
+<p>The reverse is possible as well: you can make a patch’s output available outside of the layer group that contains it by doing one of the following:</p>
+
+<h3>Passing it up one layer at a time</h3>
+
+<ul>
+<li>Hover the cursor over the output port and press P and name the port</li>
+<li>Navigate up one level</li>
+<li>Connect another patch to the new output port that has appeared on the layer group</li>
+</ul>
+
+
+<h3>Use a Wireless Patch</h3>
+
+<ul>
+<li>Press W with the cursor hovered over the patch&rsquo;s output port</li>
+<li>Click and rename the new wireless patch that appears on the canvas</li>
+<li>Navigate up as many levels as you need</li>
+<li>Press W while over the input port of the patch you wish to connect to OR shift + W with the cursor over the canvas (and not over a patch)</li>
+<li>Select the wireless patch that appears and press Cmd + 2 to go into the settings panel and select the name of the wireless patch</li>
+</ul>
+
+
+<h2>Values</h2>
+
+<p>You can long click on any value field to get a slider rather trying to calibrate numerical values to get what you are looking for.</p>
+]]></content>
+  </entry>
+  
+</feed>
