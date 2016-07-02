@@ -184,13 +184,13 @@ A range patch limits the possible set of values it receives. It outputs a clippe
 
 Delay patches output their input signals after a specified delay. Useful for delaying animation and sequencing events.
 
-# Keeping your canvas organised
+## Keeping your canvas organised
 
 Patches and layers can be placed into layer groups in the same way files can be placed in directories to keep them organised. You can nest layer groups as deep as you like and give them useful names to help you navigate. It is useful to contain different screens and widgets in their own layer groups to keep them contained.
 
 You can select patches and layers and cut and paste them inside your layer groups as you go along, or you can drag selected components on top of a layer group and they will be moved inside.
 
-## Connecting patches
+### Connecting patches
 
 | Key | Description |
 | :------------- | :------------- |
@@ -200,14 +200,14 @@ You can make a patch’s output port available as input for patches contained in
 
 The reverse is possible as well: you can make a patch’s output available outside of the layer group that contains it by doing one of the following:
 
-### Passing it up one layer at a time
+#### Passing it up one layer at a time
 
 - Hover the cursor over the output port and press P and name the port
 - Navigate up one level
 - Connect another patch to the new output port that has appeared on the layer group
 
 
-### Use a Wireless Patch
+#### Use a Wireless Patch
 
 - Press W with the cursor hovered over the patch's output port
 - Click and rename the new wireless patch that appears on the canvas

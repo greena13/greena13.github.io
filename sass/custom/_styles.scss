@@ -16,15 +16,21 @@ body > header[role='banner'] {
   margin-top: 1em;
 }
 
-.entry-content table {
-  margin-top: 10px;
-  margin-bottom: 25px;
-
-  td, th {
-    padding: 10px;
+.entry-content {
+  h2 {
+    font-size: 28px;
   }
 
-  th {
-    font-weight: bold;
+  table {
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+    td, th {
+      padding: 10px;
+    }
+
+    th {
+      font-weight: bold;
+    }
   }
 }
