@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-02T21:13:16+01:00</updated>
+  <updated>2016-07-17T18:41:49+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How I Learned to Learn]]></title>
+    <link href="http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/"/>
+    <updated>2016-07-17T18:23:35+01:00</updated>
+    <id>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn</id>
+    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, it is not as insurmountable a task as I have made it sound, as there are common rules and patterns shared amongst them all. As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
+
+<h2>The realisation</h2>
+
+<p>I initially thought the road to mastery was through rote memorisation. My reasoning was if I got faster at mentally retrieving syntax to make my thoughts a reality, I would reduce the cognitive barrier to truly efficient expression. In their book, <em>Made to Stick</em>, Dan and Chip Heath explain this is common for novices. People inexperienced in an area see concrete details as suitable to build a greater understanding upon, but lack knowledge of the larger context. Experts instead see the same details as examples of greater patterns and appreciate that by themselves, these details have limited applicability outside the context that they were encountered. Their experience causes them to focus on recognising and remembering those larger patterns, which have a much wider applicability.</p>
+
+<p>I came to see this myself. The languages I used changed; my understanding of what paradigms and constructs were important shifted; and APIs and interfaces evolved. It turns out that most of software development is understanding and adapting code, not long periods of synthesis. It’s more like editing than writing, and although an understanding of the proper grammar and vocabulary remain essential, its not the bottleneck in taking the code that you have and making it the code that you need.</p>
+
+<p>When writing new code, a responsible developer will use well-established modules already written and tested by many contributors, whenever possible. So development often involves connecting components together, placing them within a larger architecture and wrapping them in logic to serve your needs. Each module has its own interface and must be adapted to work in harmony with the rest of your system, so you must learn its capabilities and limitations.</p>
+
+<p>However, a developer’s job is often not to learn a software tool or component deeply and completely, but to establish a working understanding as quickly as possible: to see the utility of a tool, it’s limitations,  stability and how it compares to its alternatives. It also helps to learn compatible design patterns, paradigms and conventions to ensure you are using the tool as intended. This process involves holding a great many things in your mind at once, just long enough to make the necessary design decisions or implementations before moving on and establishing an entirely new mental context with different requirements and options.</p>
+
+<p>I realised it wasn&rsquo;t an effective use of my time to memorise the minutiae of the components I was using. It was slow and the value was often more short-lived than I anticipated. It was better to leave this to the syntax highlighting and auto completion of a good IDE and linter. Instead I found it more efficient to memorise where to retrieve important information when I needed it: valuable resources, search terms and people that I could consult. Eventually I grew comfortable with knowing I knew where to find something, but couldn&rsquo;t recall it immediately - even if it made me sound less intelligent in conversation.</p>
+
+<h2>The system</h2>
+
+<p>I maintain a collection of bookmarks, carefully organised and labelled by the value it offers to help find what I am looking for when I need it. I drew inspiration from David Allen&rsquo;s description of a reference system in his book, <em>Getting Things Done</em>. In particular, there are no time-sensitive or actionable items included (these go into a separate system). There are no front pages of news outlets or blogs, or any other site that favours new content over the valuable - direct links to articles are fine. This is also in accordance with the idea of <em>Just In Time Information</em> as opposed to <em>Just In Case Information</em>, I first encountered listening to the <em>Tim Ferris Show</em> podcast. I do not want to be distracted by the bleeding edge of a technology I do not currently need. I review the collection to prune links no longer of use and to maintain an awareness of what sort of information is available.</p>
+
+<p>Bookmarks are quick to create and maintain, but they point to entire documents and don’t help with digesting the information they contain. Each time I read something, I want it to be easier to retrieve the information I need or I am not much better off than using a good search engine. I use highlighting and virtual sticky notes for this.</p>
+
+<p>For a while I worked with this combination of bookmarks and annotations with measured success. I  organised the bookmarks by situations and each document was annotated so it was trivial to locate what I was looking for. But the list of bookmarks quickly grew and I began to realise a problem. I discovered I would often need several bookmarks to provide an adequate explanation complete with all important caveats or limitations. It became harder to organise these similar bookmarks as they each provided part of a larger truth and were incomplete without the others.</p>
+
+<p>In Peter Sim’s book, <em>Little Bets</em>, he writes of how innovation more closely resembles gathering insights rather than isolated acts of inspiration. He challenges the notion that these insights are siloed within a small number of resources and argues they are instead far more distributed across domains, and experts and novices alike. I was having a hard time connecting these insights from different sources as they were modelled as separate links, with no relationship information between them. So I started using  Evernote to create summaries of the highlights and notes I was making on some of the more important documents I was linking to. This allowed me to rephrase, reorder, compare and juxtapose ideas and information and organise them in ways that best served me and my needs.</p>
+
+<p>These notes are like living documentation and are constantly updated with additions and modifications as with each revisit of a subject I strengthen my understanding and I want this reflected in my notes for the next time around. Occasionally, they cover a subject that changes regularly and the information must be updated to avoid being out of date.</p>
+
+<p>This system has worked well, helping me to reach a better understanding of many concepts in a shorter period of time. And whenever I need to revisit a subject, I have a handy set of cheatsheets to get me back up to speed quickly without having to consult the source material once more.</p>
+
+<h2>The process</h2>
+
+<p>I annotate almost every page that I read when I am looking for particular information. It helps me keep track of where I am and makes me more resilient against disruptions. It also gives me the freedom to skim a document without losing track of where I have and have not read in-depth. If the document is a concise summary of a particular concept or piece of information that I believe I will need again, I add it to my bookmarks, labelled as what was useful about it. If the page forms part of a larger series of documents I have consulted on the subject that have yielded useful information, I start a new set of notes in Evernote to summarise and reorganise the information. If I end up doing this, I save a link to the original document in the notes for further reference.</p>
+
+<p>I try not to copy information verbatim from the source material. This is not conducive to deeper learning and is an indication of time poorly spent. Unless I know I need information from a document available offline, it is better to simply link the original document rather than copy it out exactly, as little is gained in doing so.</p>
+
+<p>When faced with a new library or language, I attempt to gain an understanding of what the entire documentation covers. I apply the 80/20 rule and spend a relatively large amount of time learning a relatively small amount: the fundamentals. It is here that I am looking for the patterns and the similarities and differences with the things I already know. I am not concerned with the details, as these are often unimportant until I have a better idea of what I need to know. I make highlights and annotations and then notes which I perform multiple parses on to make more concise. I then spend a little time getting to know what the rest of the documentation covers, so I know where to find this information when I need it. I may create some further bookmarks at this point to help remind me of what resources are available and what they contain.</p>
+
+<p>In hindsight, taking notes on what is important and not wasting resources committing irrelevant details to memory seems obvious, but I wish someone had explained to me when I was starting out the dynamic nature of full stack development. Or perhaps warned me that mastering a single area of expertise and then expanding radially was likely to be costly in time and effort, as much of what I learned was  rendered inapplicable when external requirements inevitably changed. Or that no matter how dedicated I was towards learning and remembering new information, the rate I would forget things - especially when switching between similar contexts - would barely be outpaced by the rate at which I learnt new information, so I needed a way of externally recording it to be able to quickly refresh my memory. But above all, that learning how to learn and re-learn things quickly would be the most valuable skill I could attain.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Best Still Untitled: The Adam Savage Podcast Episodes]]></title>
@@ -2102,113 +2147,6 @@ If the employee has high equity, people aren’t going to think it’s fair that
 <h2>Process Information Can Be Difficult to Encode</h2>
 
 <p>Processes and ordered information is difficult to store and remember in Anki because it suffers from the same problems as sets and enumerations. The process should be encoded as clozed deletions, or care should be taken to encoding a clear link between each step in the process.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Creating Cards for Spaced Repetition]]></title>
-    <link href="http://greena13.github.io/blog/2014/08/26/creating-cards-for-spaced-repetition/"/>
-    <updated>2014-08-26T14:44:22+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/08/26/creating-cards-for-spaced-repetition</id>
-    <content type="html"><![CDATA[<p><em>Spaced repetition</em> is a revision technique that minimises the number of exposures to a piece of subject matter required to commit it to longterm memory. This is achieved by altering the frequency in which items of revision material are shown to the user based on how easily it was recalled last time; the content is shown to the user right before he or she is due to forget it - and not before, avoiding wasting time on premature revision. <a href="http://ankisrs.net/">Anki</a> is a free and popular tool available on Windows, Mac and mobile devices that allows you to synchronise your progress between all your devices via <a href="https://ankiweb.net">Ankiweb</a>.</p>
-
-<p>Anki works by showing a user a series of <em>flash cards</em> in a <em>deck</em> and prompting for a response for each one. When the user comes up with an answer (or gives up), they press a button to reveal the correct response. The user then selects whether they wish to be quizzed on this again soon (because they got it wrong, or were not satisfied with how quickly they came up with the answer) or some time further in the future (because it was too easy). The algorithm for managing what material is presented and when, is very effective and can be customised based on the user&rsquo;s preferred amount of material and time available for revision each day. Anki also includes a number of more advanced features that won&rsquo;t really be covered here.</p>
-
-<p>I have recently been looking into spaced repetition to <a href="http://www.smashingmagazine.com/2014/08/19/mastering-a-programming-language-using-spaced-repetition/">improve my recall of a number of programming languages</a>. I have encountered good advice on maximising the effectiveness of spaced repetition by ensuring the content and format of flashcards is conducive to fast and meaningful memorisation. Here is a summary of the advice that stood out to me, taken primarily from Mattan Griffel&rsquo;s <a href="http://www.smashingmagazine.com/2014/08/19/mastering-a-programming-language-using-spaced-repetition/">Tips For Mastering A Programming Language Using Spaced Repetition</a>, Jack Kinsella&rsquo;s <a href="http://www.jackkinsella.ie/2011/12/05/janki-method.html">Janki Method</a>, Derek Sivers&#8217; <a href="http://sivers.org/srs">Memorizing a programming language using spaced repetition software</a> and Dr Piotr Wozniak&rsquo;s <a href="http://www.supermemo.com/articles/20rules.htm">Twenty rules of formulating knowledge</a>. Each should be consulted in addition to reading this article for further examples and discussion.</p>
-
-<h2>Common Memorisation Mistakes</h2>
-
-<h3>Avoiding Activated Ignorance</h3>
-
-<p>Spaced repetition and flash cards are for remembering things, <em>not learning them</em>. Subject material should only ever been encoded in cards after you have understood it. Committing anything that is poorly comprehended or misunderstood can be very damaging and will likely lead to <em>activated ignorance</em>, or information that has been memorised but is false or not completely true. This is a waste of time and will lead to the wrong information making itself available in your mind when it matters most; it also has the secondary and perhaps more damaging effect of providing you with a erroneous foundation in which to receive and process new information, creating more far-reaching errors in comprehension.</p>
-
-<h3>Avoiding Inert Information</h3>
-
-<p>Only add cards to your deck for knowledge you understand to avoid <em>inert information</em>, or information that is although memorised, has not been correctly understood &ndash; despite being under the impression you understand it. These facts or figures sit in your memory and dutifully present themselves when recalled, but when push comes to shove, offer no deeper understanding. An example of this would be slavishly memorising that TCP stands for <em>Transmission Control Protocol</em>, but having no knowledge of how this protocol actually functions or its place in communication.</p>
-
-<p>To avoid this, you should develop a sound understanding of the full context of a subject before settling down to memorise its finer points. Particular attention and time should be spent on understanding the fundamentals to ensure a strong mental framework is in place to receive and evaluate new knowledge as it is encountered and memorised.</p>
-
-<p>Spaced repetition should not be performed alone and content should not be memorised in isolation - learning without practicing the skills and information you are committing to memory will divorce the knowledge from its use and make it difficult to reconcile with how to make it work for you in your work and life. You need to use what you learn to discover important nuances or details in applying what you&rsquo;re memorising.</p>
-
-<h2>Encoding Knowledge</h2>
-
-<h3>Abstraction and Chunking</h3>
-
-<p>Effectively encoding knowledge into Anki cards is vital to optimising how effective your revision sessions are. It is no surprise that simple material is easier to commit to memory and recall once its there, and so information should be formulated as simply and succinctly as possible. The number of words and concepts involved in each card should be kept to an absolute minimum.</p>
-
-<p>It is possible to break a complicated concept up into smaller conceptual units through a process known as <em>chunking</em>. Your goal should be to create simple, unambiguous mental associations and neural pathways to follow each time you wish to recall something. Note that this is not the same as creating a single representation or association of a concept in your mind. On the contrary, it is beneficial to have as many of these simple pathways to the same concept as possible, to increase your chances and the number of contexts in which it is easy to recall the material.</p>
-
-<p>Further to this end, concrete examples of concepts are better to encode on your cards than the abstract concepts themselves. Concrete examples stick in memory longer and if a series of examples are chosen wisely, it should be easier to induce the abstract concept when required rather than having to memorise it and use it to deduce applications later on. However, several similar cards should be created with slightly different answers when there is an important or subtle conceptual distinction or <em>gotcha</em> that you should know.</p>
-
-<p>Not only does breaking up concepts into their smallest constituents benefit your brain&rsquo;s ability to recall it later, but it actually helps Anki&rsquo;s algorithm perform  more effectively because simple concepts are easier to schedule efficiently than larger, more abstract ones. This is because Anki is able to remind you of ony the concepts you have likely forgotten, leaving the ones you have memorised out. You are also more likely to forget all or part of a complicated idea and will need to be reminded of it more frequently, despite knowing some or most of the concept.</p>
-
-<h3>Things You Should Avoid Memorising</h3>
-
-<p>Sets, or groupings of items without a clear or predefined order, are very difficult to remember and encode. Where possible, these should be converted to <em>enumerations</em>, or ordered sets, by linking items up in a predefined and consistent order. Enumerations are easier to recall than sets because a clear link between consecutive items exists that you brain can easily traverse to retrieve all items in the group.  Order should be chosen carefully, however, as it is more difficult to retrieve individual items in an order different to the one you have encoded. This order can be arbitrary, but should be easy to remember and preferably have meaning within the context of the material you are memorising, or match the order in which you are likely to need to retrieve them.</p>
-
-<p>Enumerations are still difficult to memorise and should be avoided. Where possible, enumerations should be converted to <em>cloze deletions</em>, or sentences where some words have been omitted and you must fill in the blanks. These are typically easier to remember than sets and enumerations and are based on the concept of <a href="http://www.supermemo.com/help/read.htm"><em>incremental reading</em></a>.</p>
-
-<h3>Memory Conflicts</h3>
-
-<p>When memorising many concepts, you need to be aware of inadvertantly memorising something that may conflict with something you already know. This often happens when memorising a lot of numbers, whether dates or quantities, people often find a long-held memory difficult or impossible to retrieve after learning a new peice of information. These conflicts are difficult to predict and are better to be avoided by making concepts you memorised as unambiguous and explicit as possible to minimise the chance of inadvertently reallocating a particular neural pathway to new conflicting information.</p>
-
-<h3>Strengthening Memories</h3>
-
-<p>A number of techniques exist for strengthening memories and increasing their intensity and duration. There is a great body of literature on mnemonics available for associating and linking items to make them easier to recall at later date. Alternatively, you may attempt to consciously integrate a new piece of information into you memory by linking it to a memory or memories you already have. Concepts are often easier to recall when they are defined relative to things we are already familiar with.</p>
-
-<p>Furthermore, you can personalise information with experience or examples from your own life. The brain gives highest priority to information that has the greatest relevance to your life and relationships. By hooking a new piece of information to an existing memory with special significance or associated emotion, you are capitalising on this inherent prioritisation.</p>
-
-<p>Memories can also be linked to contexts by creating something akin to different modes or domains for which your brain should draw memories from, given a certain environment or context. This often allows concepts to be expressed in fewer words and relative to other concepts already in a given context&rsquo;s conceptual landscape.</p>
-
-<h3>Formatting</h3>
-
-<p>The formatting of cards should aim to convey concepts as quickly and richly as possible. Key concepts or words should be <strong>emboldened</strong> to help them stand out and create a unique visual stimulus the brain can recognise from previous revision sessions and automatically retrieve the memory of what is on the card.</p>
-
-<p>The usage of imagery enriches stimulus where text cannot and produces memories that are not only more evocative but more easily recalled due to the added sensory dimensions of sight embedded in the memory. Sounds and short video clips can be used to capitalise on this effect even further. Many individuals have predilections for certain sense and you may find, for example, auditory memories are stronger than visual ones.</p>
-
-<h3>Prompts (Front of the Card)</h3>
-
-<p>The question or prompt on the front of each card should be phrased to mimic how it will likely be retrieved when needed. The solution to a problem should be encoded with a prompt that matches how you are likely to encounter that problem during your day-to-day work, rather than extracted into an abstraction that is likely to require cognitive effort to rework it into actionable knowledge. This is a corollary of the fact that memories stored using simple and strong neural pathways are easiest to retrieve.</p>
-
-<p>Jack Kinsella <a href="http://www.oxbridgenotes.co.uk/articles/janki_method_refined">suggests</a> that before creating a card, brainstorm possible uses for the knowledge and use this insight to cater how you record the information. This can be particularly effective when combined with cloze deletion; phrases can be created based on problems or situations you are likely face where you will need the information you are encoding. If it is proving difficult to come up with a situation where the material will be needed - it is probably the case that this information will not be worth remembering.</p>
-
-<h3>Answer (Back of the Card)</h3>
-
-<p>The amount of cognitive effort required to decide if you got the correct answer or not on a card should be kept at a minimum. Answers that take too long to confirm as correct (usually because of ambiguity or concepts expressed in a wordy way) will eat into your cognitive reserves and draw out revision sessions to be longer than they need to. It is also an indication that the concept being encoded is too complicated and should be broken down into smaller, simpler ones.</p>
-
-<p>If the material cannot be simplified and it is still taking too long to confirm as correct, try putting the important parts in <strong>bold</strong> or a larger font size to stand out more.</p>
-
-<h2>What to Encode</h2>
-
-<h3>Finding Things to Remember</h3>
-
-<p>To get the most out of revising, you should first decide what material is most useful to have memorised. This is usually things that will save you time and resources you would otherwise spend to look it up or find out; it is a good idea to save things you would normally have to bookmark or search for on a regular basis, or insights that save you considerable time but are difficult to remember because they are rarely used.</p>
-
-<p>It is good to get into the habit of creating new Anki cards for every time you learn something new or are reminded of something important. It is often worth tagging these cards to describe their content to allow for focused review when the need later arrives.</p>
-
-<p>It is also a good idea to create cards with what you learn from your mistakes; performing a post-mortem after a big project to identify what went well and what did not is a good way to identify lessons to be learnt (and remembered) to put in your Anki deck. It is an even better idea to analyse progress during regular intervals throughout a project to make sure you have not lost sight of a greater picture and add these insights to your deck. A similar approach can be applied to errors encountered in every day work; solutions to common or time-consuming problems are terrifically useful things to have memorised.</p>
-
-<p>Restricting what you memorise to only what you need to complete a particular project is a good way to help focus your memorisation and avoid wasting time on material that will ultimately prove of little or no use.</p>
-
-<h2>Practicing</h2>
-
-<p>Spaced repetition software works by offering you a reminder of information just before you are most likely to forget it, both preventing you from wasting time revising the material before you need to, and avoiding you forgetting the concept completely and having to relearn it. In order for the algorithm to be the most effective, you must complete the suggested revision <em>every day</em>. This is less challenging than it sounds when you incorporate checking your deck into your daily routine. If left neglected for too long, the number of items due to be revised grows and it quickly becomes too difficult to catch up.</p>
-
-<h2>Deck Maintenance</h2>
-
-<p>A spaced repetition deck should not be thought of as a static resource, but instead should be maintained continuously. Cards should be updated that are no longer true or, given new insight, can be improved, split or merged.</p>
-
-<p>Material that is proving difficult to memorise should be rephrased, reformatted or reworked to try and make it easier to remember. Conceptual links to related material should be highlighted to strengthen associations. The content should be carefully considered, practiced or tested to help find more effective ways of encoding it in the deck and make it easier to remember.</p>
-
-<p>When creating cards, it is a good idea to provide references to the sources you used and the date you last checked or review it. This is to record where to go to get more information and to clarify or expand your knowledge of a given subject  and to guage how stable or obsolete a particular piece of knowledge is.</p>
-
-<h2>Prioritising What You Should Practice</h2>
-
-<p>Unless you want to be spending hours each day reviewing - and likely not even then - you will not have enough time to memorised every piece of knowledge you ever wanted at your fingertips. Material must be prioritised and those priorities, like the deck itself, should be regularly reviewed and adjusted. Anki&rsquo;s tags system can be used to filter out which cards are included or filtered out of your deck.</p>
-
-<p>Material that is used regularly or is important for only a given period - perhaps while you complete a particular project - should be retired from your deck in favour of information more likely to be useful in the future. The excluded material can be re-included and rapidly re-learnt using Anki&rsquo;s drill feature, should there come a time when the material is required once more.</p>
-
-<p>You will need to find your own balance of how long you are prepared to spend revising each day, and how useful the information you&rsquo;re committing to memory is likely to be.</p>
 ]]></content>
   </entry>
   
