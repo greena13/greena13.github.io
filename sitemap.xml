@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do/</loc>
+    <lastmod>2016-07-21T19:08:15+01:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/</loc>
     <lastmod>2016-07-17T18:23:35+01:00</lastmod>
     <priority>0.8</priority>
@@ -127,13 +132,13 @@
   </url>
   <url>
     <loc>http://greena13.github.io/blog/archives/</loc>
-    <lastmod>2016-07-17T18:41:49+01:00</lastmod>
+    <lastmod>2016-07-21T19:23:20+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://greena13.github.io/</loc>
-    <lastmod>2016-07-17T18:41:49+01:00</lastmod>
+    <lastmod>2016-07-21T19:23:20+01:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
