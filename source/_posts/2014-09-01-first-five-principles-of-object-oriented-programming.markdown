@@ -7,7 +7,7 @@ categories:
 ---
 
 **SOLID** is an acronym mnemonic coined by Michael Feathers for Robert C. Martin's "first five principles" for object-oriented programming. Each concept is worth looking at briefly so I have tried to summarise the important points of each below.
-
+<!--more-->
 ## Single Responsibility Principle
 
 Robert C. Martin introduced in his book [Agile Software Development, Principles, Patterns and Practices](http://www.amazon.co.uk/Software-Development-Principles-Patterns-Practices/dp/0132760584) the *Single Responsibility Principe*, which states code modules (whether they be classes, methods, variables, etc.) should have a single responsibility, or rather a single reason for the module to need updating if a program's specifications were ever to change. Examples of the application of this principle can be seen in the separation of *presentation* and *content* commonly performed in object-oriented systems.

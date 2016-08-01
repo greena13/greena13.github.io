@@ -5,7 +5,10 @@ date: 2016-07-17 18:23:35 +0100
 comments: true
 categories: learning programming research documentation
 ---
-Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, it is not as insurmountable a task as I have made it sound, as there are common rules and patterns shared amongst them all. As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.
+Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, there are common rules and patterns shared amongst them all.
+<!--more-->
+ As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.
+
 
 ## The realisation
 

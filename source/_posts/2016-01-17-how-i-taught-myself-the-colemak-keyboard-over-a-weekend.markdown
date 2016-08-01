@@ -9,7 +9,7 @@ categories: keyboard Colemak
 # Getting started
 
 The first step was to make little stickers, one for each key that had a different placement, and attach them to the keys on the keyboard. Then I went to Google to search for a typing program that could help me remap the muscle memory I already had established using qwerty for all those years.
-
+<!--more-->
 I found a site that let me type sequences of strings that at first had only a few different characters but slowly expanded to include more and more as I progressed through the lessons. This worked well enough in the beginning and let me quickly get a feel for how different the Colemak layout would be. But it had a number of flaws.
 
 # Encountering some problems
@@ -38,10 +38,10 @@ As I continued to practice, I found myself beginning to add syllables to muscle 
 
 The next breakthrough happened when I realised I was thinking in terms of finger placement: mapping keys to which finger should I place where when instead I should have been thinking in terms of the space the keyboard occupied. When I started to think about where the key was on the keyboard and not how to place my hands, my brain automatically did half the work for me and I saw another jump in progress.
 
-I also became aware of how delicate my rote learning seemed to be. After a session of practicing using a program for improving my typing speed (which had me looking at the centre of the screen with no distractions) my accuracy would go up. However, when I then switched to a word processor where the cursor was more towards the bottom of the screen, I would struggle to find the keys that were so easy only moments ago. When I rearranged the word processor window to be positioned more like the typing program, then some of that difficulty dissipated. 
+I also became aware of how delicate my rote learning seemed to be. After a session of practicing using a program for improving my typing speed (which had me looking at the centre of the screen with no distractions) my accuracy would go up. However, when I then switched to a word processor where the cursor was more towards the bottom of the screen, I would struggle to find the keys that were so easy only moments ago. When I rearranged the word processor window to be positioned more like the typing program, then some of that difficulty dissipated.
 
 # At the end of all things
 
-By the end of the weekend I am back to being almost as fast as I was with the qwerty keyboard. I can find each of the keys without consciously thinking about it, but not all of the little shortcuts for common letter combinations that I developed using the qwerty system have returned yet. 
+By the end of the weekend I am back to being almost as fast as I was with the qwerty keyboard. I can find each of the keys without consciously thinking about it, but not all of the little shortcuts for common letter combinations that I developed using the qwerty system have returned yet.
 
 Although I have yet to see the speed improvements Colemak boasts, I am already aware of how much less my fingers are moving and can see with a little more work on reducing the time to recall key placements, this will probably become my preferred and most efficient method of typing.  

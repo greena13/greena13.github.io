@@ -5,7 +5,9 @@ date: 2016-07-21 19:08:15 +0100
 comments: true
 categories: front-end development
 ---
-Without getting into the details of JavaScript, HTML, CSS, or any particular framework, there are some general things that most good front-end developers do and understand. The list that follows is intended as a jumping off point. Googling each concept will help you locate more context and the original authors; most originated from well renowned books on software engineering from the last century and are not new ideas.
+Without getting into the details of JavaScript, HTML, CSS, or any particular framework, there are some general things that most good front-end developers do and understand.
+<!--more-->
+The list that follows is intended as a jumping off point. Googling each concept will help you locate more context and the original authors; most originated from well renowned books on software engineering from the last century and are not new ideas.
 
 ## Know what you are doing
 

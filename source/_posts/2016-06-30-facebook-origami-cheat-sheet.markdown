@@ -8,7 +8,10 @@ categories: Facebook Origami cheat sheet
 
 [Facebook's Origami](http://facebook.github.io/origami/) is an interesting UI prototyping tool that integrates nicely with [Sketch](https://www.sketchapp.com/) and offers the ability to interact with your prototypes in a simulator or right on your mobile or tablet device.
 
-This is a summary of the information I picked up from watching the [Origami video tutorials](http://facebook.github.io/origami/tutorials/). It's not a complete reference, but it succinctly captures most of the information contained in the video and can serve as a quick reference.
+This is a summary of the information I picked up from watching the [Origami video tutorials](http://facebook.github.io/origami/tutorials/).
+<!--more-->
+
+It's not a complete reference, but it succinctly captures most of the information contained in the video and can serve as a quick reference.
 
 First, a note on terminology: as I am still learning my way around the Origami and Quartz Composer nomenclature, I may have incorrectly used some of the terminology concerned with what each of the components or widgets are called. I have also introduced groupings of layers and patches by function that were not suggested in the tutorials, but added clarity for me. They may, however, not necessarily correspond with discussion you read elsewhere.
 

@@ -9,6 +9,7 @@ categories: podcast recommendations best "Still Untitled"
 The Still Untitled: The Adam Savage podcast was one of the very first that I got into. Its conversational style and the fact that Adam regular answers listeners' questions makes for a welcoming and engaging listening experience.
 
 Like many long-running, lightly produced podcasts, however, Still Untitled has touched on a great many subjects - some much more interesting than others. Here is a list of my favourite episodes, broken down into two categories.
+<!--more-->
 
 ## Actionable Advice for Creative Work
 

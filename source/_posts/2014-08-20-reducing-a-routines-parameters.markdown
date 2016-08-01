@@ -7,7 +7,7 @@ categories: [Code Complete, complexity, simplicity, function, method, parameter]
 ---
 
 Steve McConnel's [Code Complete](http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670) provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.
-
+<!--more-->
 First, a brief note on terminology: I will be using *routine*, *method* and *function* interchangeably to refer to a *piece of code that accepts or requires a given number of inputs, or parameters*.
 
 McConnel points out that code with a long list of parameters present problems to those who need to understand, maintain and use it. Multiple parameters are difficult to remember when the function needs to be called - as is the correct order to use them in. Code compliant with the mandates of *Defensive Programming* will also need to check the arguments have been provided in the correct order and have sensible values. While many IDEs and languages will do the recording of correct parameter order and type checking, this should not been seen as excuse for bad practices. Long parameter lists provide further headaches for maintenance if the method's signature needs to be later modified.

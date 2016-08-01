@@ -6,7 +6,10 @@ comments: true
 categories: ["Startup", "Entrepreneur"]
 ---
 
-I recently finished listening to the fantastic set of lectures [How to Start a Startup](http://startupclass.samaltman.com/) and I thought I'd share a few things I found interesting from each lecture. These notes are __not__ complete or guaranteed to be accurate and should not be acted upon without first either listening to or reading the transcripts of the [source material](http://startupclass.samaltman.com/) yourself. Some of this content is stuff I am only superficially familiar with, so terminology and concepts may be mangled or misunderstood. Saying that, I would appreciate any feedback on glaring errors or omissions, using the comments below.
+I recently finished listening to the fantastic set of lectures [How to Start a Startup](http://startupclass.samaltman.com/) and I thought I'd share a few things I found interesting from each lecture.
+<!--more-->
+
+These notes are __not__ complete or guaranteed to be accurate and should not be acted upon without first either listening to or reading the transcripts of the [source material](http://startupclass.samaltman.com/) yourself. Some of this content is stuff I am only superficially familiar with, so terminology and concepts may be mangled or misunderstood. Saying that, I would appreciate any feedback on glaring errors or omissions, using the comments below.
 
 My intent is a summary of the content contained in the lectures that will serve as a quick reference for myself and others, but I do encourage experiencing the source material yourself if you are interested. It's very engaging and nuanced and features some fantastic speakers. It should be experienced firsthand to allow the content that resonates or is most applicable to you, to emerge. The original transcripts have been linked to for each lecture.
 

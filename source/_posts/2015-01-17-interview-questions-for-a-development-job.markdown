@@ -7,7 +7,7 @@ categories: ["Interviewing", "Interview", "Job"]
 ---
 
 Last year I went through the rather exciting process of interviewing for a series of positions in search of a new development job. Having sat down and thought about what I had gained from my previous working environments, I compiled a list of questions that I thought would help me gauge the type of work I would be doing and the environment I would be a part of if I took the position.
-
+<!--more-->
 In the hope that they may assist others, I have decided to document them here. I do not claim to have come up with them all myself (some are from friends and family, others I ran across somewhere on the web), but most were inspired by my own previous experience.
 
 ## People & Company

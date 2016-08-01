@@ -7,7 +7,7 @@ categories: ["Keyboard Shortcuts", "Efficiency", "SourceTree", "Atlassian", "Ver
 ---
 
 After wasting hours in search of a good list of keyboard shortcuts available in Atlassian's SourceTree and feeling utter despair at [how slow Atlassian is being at delivering this information](https://answers.atlassian.com/questions/238357/where-can-i-find-a-list-of-mac-keyboard-shortcuts-for-sourcetree), I thought I'd share the ones that I discovered through brute force and determination.
-
+<!--more-->
 These were discovered and are only applicable on a Mac (although I am sure the Windows equivalents are easy to deduce), at the Commit All.. Screen (cmd + shift + c).
 
 I would be _extremely_ interested in hearing about any that are not already listed. Please post in the comments below.
@@ -63,4 +63,3 @@ I would be _extremely_ interested in hearing about any that are not already list
 | __Close window__  |  cmd + w  |
 | __Hide__  |  cmd + h  |
 | __Minimise__  |  cmd + m  |
-

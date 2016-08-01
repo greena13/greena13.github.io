@@ -7,7 +7,7 @@ categories: ["Programming Concepts", "Structured Programming", "Functional Progr
 ---
 
 As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of the [functional programming](http://en.wikipedia.org/wiki/Functional_programming) Wikipedia page.
-
+<!--more-->
 Functional programming is a [declarative programming](/blog/2014/08/31/imperative-programming-vs-declarative-programming) paradigm that treats computations as evaluations of mathematical functions and avoids referencing a system state and mutable data. It was developed, primarily, as an attempt to avoid side effects and make subroutines much easier to reason about. It introduces a number of interesting and useful concepts that are not often encountered or emphasised in object-orient programming.
 
 ## Pure Functions
@@ -29,5 +29,3 @@ All pure function calls are referentially transparent as they do not depend on o
 ## First-class Functions
 
 First-class functions are those which can appear anywhere in a program that other first-class entities (such as numbers) can. This notably includes as arguments and return values for other functions. They can also accept and return other functions.
-
-

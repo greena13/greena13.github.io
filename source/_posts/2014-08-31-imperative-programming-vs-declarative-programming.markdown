@@ -7,7 +7,7 @@ categories: ["Programming Concepts", "Structured Programming", "Imperative Progr
 ---
 
 I was recently reading the Wikipedia articles of [imperative programming](http://en.wikipedia.org/wiki/Imperative_programming) and [declarative programming](http://en.wikipedia.org/wiki/Declarative_programming) to brush up on my understanding of the distinction.
-
+<!--more-->
 ## Imperative Programming
 
 Imperative programming is concerned with describing how a program should achieve its functionality; not only *what* should be done, but also *how* it should be done is encoded. The movement of data and execution of operations are explicitly specified, if only at an abstract level; that is to say, an imperative program is concerned with implementation as much as it is logic functionality.

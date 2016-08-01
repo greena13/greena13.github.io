@@ -5,7 +5,11 @@ date: 2016-06-25 13:37:11 +0100
 comments: true
 categories: podcast recommendations best "Tim Ferris"
 ---
-I have been needing an easy way of recommending episodes of the fantastic Tim Ferriss Show podcast for a while now. What follows is a list of the episodes I found the most value in, but your results may vary. You can see the entire episode list on [the podcast's website](http://fourhourworkweek.com/podcast/).
+I have been needing an easy way of recommending episodes of the fantastic Tim Ferriss Show podcast for a while now. What follows is a list of the episodes I found the most value in.
+
+<!--more-->
+
+You can see the entire episode list on [the podcast's website](http://fourhourworkweek.com/podcast/).
 
 The easiest way of listening to the episodes is to either go to the [website](http://fourhourworkweek.com/podcast/) and search the episode titles or search on your favourite podcast app. Google will work, also.
 

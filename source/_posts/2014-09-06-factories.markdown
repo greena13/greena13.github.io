@@ -7,6 +7,7 @@ categories:
 ---
 
 The finer points of the different factory design patterns has always escaped me, so I decided to look it up recently and found [this rather helpful stackoverflow answer](http://stackoverflow.com/questions/4209791/design-patterns-abstract-factory-vs-factory-method). I thought I'd summarise what I learnt below (all diagrams were generated using [yUML](www.yuml.me)).
+<!--more-->
 
 A factory design pattern in the most general sense is one that entrusts a class or object with the creation or instantiation of another object. Commonly, the class or object that does the creating is called the Factory object and the object being created is called the Product object. Bare this in mind when viewing the diagrams that follow.
 

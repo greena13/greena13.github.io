@@ -7,7 +7,7 @@ categories: [Code Complete, classes]
 ---
 
 One of the more useful things I took from Steve McConnel's [Code Complete](http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670) is a procedure for systematically extracting smaller classes from a large one.
-
+<!--more-->
 A common object oriented antipattern is the *God Class* or *Blob Class* which occurs when a class grows to become a large, monolithic blob with no clear single responsibility, leading to problems with maintenance and understandability. At this point, the corrective course of action is to refine the single unwieldy class into multiple smaller ones with a more manageable size and clear responsibility. The exact number and shape of these refined classes is not always immediately apparent, however it is possible to break the process up into smaller steps, allowing you to focus on one stage at a time.
 
 1. Begin by looking at the methods themselves rather than the class and identify any that are particularly long or deal with multiple responsibilities. Separate them out into smaller self-contained chunks using vertical whitespace (empty lines); it may be necessary to shift the order of statements, particularly moving the initialisation of variables to just before they are first used -- be careful not to inadvertently change system behaviour here.
