@@ -19,3 +19,16 @@
 //$sidebar-pad-medium: 15px;
 //$sidebar-pad-wide: 20px;
 //$sidebar-width-wide: 300px;
+.article-list, .full-single-article {
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  li {
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}
