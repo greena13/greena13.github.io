@@ -28,4 +28,7 @@ When you encounter a good piece of code - perhaps from a well-maintained open so
 
 ## Process Information Can Be Difficult to Encode
 
-Processes and ordered information is difficult to store and remember in Anki because it suffers from the same problems as sets and enumerations. The process should be encoded as clozed deletions, or care should be taken to encoding a clear link between each step in the process.
+Processes and ordered information is difficult to store and remember in Anki because it suffers from the same problems as sets and enumerations. The process should be encoded as closed deletions, or care should be taken to encoding a clear link between each step in the process.
+
+### Related
+- [Creating Cards for Spaced Repetition](/blog/2014/08/26/creating-cards-for-spaced-repetition)

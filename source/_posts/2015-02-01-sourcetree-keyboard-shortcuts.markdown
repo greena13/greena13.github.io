@@ -63,3 +63,6 @@ I would be _extremely_ interested in hearing about any that are not already list
 | __Close window__  |  cmd + w  |
 | __Hide__  |  cmd + h  |
 | __Minimise__  |  cmd + m  |
+
+### Related
+- [Facebook Origami Cheat Sheet](/blog/2016/06/30/facebook-origami-cheat-sheet)

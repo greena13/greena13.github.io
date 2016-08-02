@@ -34,3 +34,7 @@ Typing.io also did not distinguish between which shift key was being pressed and
 An interesting observation was that the greatest determinant of speed and error rate, was which language I was typing code for. It seems there are languages which lend themselves to be typed much quicker and with less errors. High-level languages with CamelCase variable and method naming conventions were by far the easiest to transcribe. They generally included less operator keystrokes, less opening and closing brackets and none of the dreaded shift + underscore key combination that is so slow and difficult to reach with you little finger. It has left with me with an interesting (but ultimately minor) consideration when selecting suitable languages for future projects.
 
 Overall, this was an curious experience that I would tentatively claim as a measured success. It remains unclear whether adjusting my technique to be more consistent with the suggested finger configurations has improved my typing speed, or whether I just got more accustom to the nuances of the program. I intend to continue with the program with a less intensive regime to see if more clearer results emerge after a longer time period.
+
+
+### Related
+- [How I taught myself the Colemak keyboard over a weekend](/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend)

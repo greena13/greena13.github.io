@@ -19,3 +19,7 @@ It is paramount that a piece of code only perform the functionality suggested by
 If it is proving difficult to accurately name a method or function succinctly, often it is an indication of an inappropriate level of abstraction or confused intentions behind the code. For example, functions that perform queries or return a system status should be separated from those that execute and action, or alter the system state.
 
 Naming conventions can be used to imbue code with consistency and reduce the number of surprises the reader must negotiate in parsing the code. The merits of specific conventions are secondary to the benefits of consistency itself.
+
+
+### Related
+- [10 things good front-end developers do](/blog/2016/07/21/10-things-good-front-end-developers-do)

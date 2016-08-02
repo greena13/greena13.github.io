@@ -15,3 +15,6 @@ One way to simplify a series of deeply nested conditions with many variables is 
 Another method is to attempt to simplify nested conditions using logic axioms such as *Demorgan's Law*. A series of if statements is often easier to navigate than a single chunk of nested logic. It also reduces the number of inputs to the block, providing greater opportunity to extract it out into separate methods or functions with clearer indications of what data influences its behaviour.
 
 When unwrapping nested conditional statements, the preconditions for an extracted piece of code may become less clear. This should be address by making any dependencies explicit. To illustrate: if one function must be called before another, have the first function return a data type that the second one requires as a parameter. For example, if a function `throwRock()` must be called before another `breakGlass()`, make `throwRock()` return an instance of `WallPosition` and have `breakGlass()` require an argument of type `WallPosition`.
+
+### Related
+- [10 things good front-end developers do](/blog/2016/07/21/10-things-good-front-end-developers-do)

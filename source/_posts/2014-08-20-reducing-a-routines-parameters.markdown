@@ -6,7 +6,7 @@ comments: true
 categories: [Code Complete, complexity, simplicity, function, method, parameter]
 ---
 
-Steve McConnel's [Code Complete](http://www.amazon.co.uk/Code-Complete-Practical-Handbook-Construction/dp/0735619670) provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.
+Steve McConnel's *Code Complete* provides a great insight into understanding some of the common function forms and how to go about simplifying wayward parameter lists into something that clearly conveys intention and is easier to remember and use. McConnel writes, software should be written for people first and foremost and focus should be given to improving readability and maintainability, rather than performance.
 <!--more-->
 First, a brief note on terminology: I will be using *routine*, *method* and *function* interchangeably to refer to a *piece of code that accepts or requires a given number of inputs, or parameters*.
 
@@ -16,14 +16,17 @@ A function can usually be improved by reducing the number of parameters it requi
 
 Good code should consist primarily of *monadic* and *dyadic* functions, or those with 1 and 2 parameters, respectively. Monadic functions typically take one of three forms:
 
-- Asking a question or testing a particular condition. eg. `isRed(ball)`
-- Performing an action or transformation on a particular parameter. eg. `fileOpen(myFile)`
-- Handling an event where the function uses the argument to update the system's state. eg. `registerMouseEvent(mouseEvent)`
+- Asking a question or testing a particular condition. e.g. `isRed(ball)`
+- Performing an action or transformation on a particular parameter. e.g. `fileOpen(myFile)`
+- Handling an event where the function uses the argument to update the system's state. e.g. `registerMouseEvent(mouseEvent)`
 
-It should be noted that the first form need not return a boolean value. A function that returns a particular characteristic is also of this form. eg. `averageGrade(reportCard)`. Functions of the second form should also return the result of the action or transform wherever possible. _Output arguments_, or where functions perform an action on the argument instance itself and return either `null`/`void` or another value, are more difficult to follow. In the case of an action being performed on an instance, an object-oriented paradigm is better suited eg. `ball.bounce()` is clearer than a function `bounce(ball)` that returns the instance of `ball`.
+It should be noted that the first form need not return a boolean value. A function that returns a particular characteristic is also of this form. e.g. `averageGrade(reportCard)`. Functions of the second form should also return the result of the action or transform wherever possible. _Output arguments_, or where functions perform an action on the argument instance itself and return either `null`/`void` or another value, are more difficult to follow. In the case of an action being performed on an instance, an object-oriented paradigm is better suited e.g. `ball.bounce()` is clearer than a function `bounce(ball)` that returns the instance of `ball`.
 
 If a function or method meets one of the above descriptions and has more than a single parameter, it is a good sign that it is a candidate for refactoring.
 
 Dyadic functions are not as easily classified into categories and can perform many actions. Care should be taken with the ordering of the parameters when defining a function or method's signature so that is natural and easy to remember and should be evident from the name of the routine. If at all possible, the pairing of the two parameters should be wrapped in single argument to convert to a monadic function.
 
 The ideal function is a *niliadic function*, or a function without any parameters.
+
+### Related
+- [10 things good front-end developers do](/blog/2016/07/21/10-things-good-front-end-developers-do)

@@ -107,3 +107,7 @@ Unless you want to be spending hours each day reviewing - and likely not even th
 Material that is used regularly or is important for only a given period - perhaps while you complete a particular project - should be retired from your deck in favour of information more likely to be useful in the future. The excluded material can be re-included and rapidly re-learnt using Anki's drill feature, should there come a time when the material is required once more.
 
 You will need to find your own balance of how long you are prepared to spend revising each day, and how useful the information you're committing to memory is likely to be.
+
+
+### Related
+- [Using Spaced Repetition to Learn Programming Languages](/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages)

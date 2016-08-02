@@ -42,4 +42,7 @@ I also became aware of how delicate my rote learning seemed to be. After a sessi
 
 By the end of the weekend I am back to being almost as fast as I was with the qwerty keyboard. I can find each of the keys without consciously thinking about it, but not all of the little shortcuts for common letter combinations that I developed using the qwerty system have returned yet.
 
-Although I have yet to see the speed improvements Colemak boasts, I am already aware of how much less my fingers are moving and can see with a little more work on reducing the time to recall key placements, this will probably become my preferred and most efficient method of typing.  
+Although I have yet to see the speed improvements Colemak boasts, I am already aware of how much less my fingers are moving and can see with a little more work on reducing the time to recall key placements, this will probably become my preferred and most efficient method of typing.
+
+### Related
+- [Improving Typing Speed](/blog/2014/09/08/improving-typing-speed

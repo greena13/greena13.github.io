@@ -74,3 +74,7 @@ These interviews are with usually highly visible and always interesting people. 
 - Matt Mullenweg on Polyphasic Sleep, Tequila, and Building Billion-Dollar Companies
 - General Stan McChrystal on Anti-War Americans, Pushing Your Limits, and The - Three Military Tests You Should Take
 - The Tim Ferriss Podcast, Ep 15: Neil Strauss, Author of The Game
+
+### Related
+- [The Best Still Untitled: The Adam Savage Podcast Episodes](/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes)
+- [Notes on how to start a startup](/blog/2015/02/13/how-to-start-a-startup-notes)

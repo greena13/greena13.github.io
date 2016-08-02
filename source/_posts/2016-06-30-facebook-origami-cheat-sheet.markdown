@@ -220,3 +220,6 @@ The reverse is possible as well: you can make a patch’s output available outsi
 ## Values
 
 You can long click on any value field to get a slider rather trying to calibrate numerical values to get what you are looking for.
+
+### Related
+- [SourceTree Keyboard Shortcuts](/blog/2015/02/01/sourcetree-keyboard-shortcuts)

@@ -45,3 +45,6 @@ Listen when you want to be enthralled in a good, short story by a cool story or 
 - Tales of adventure
 - The significance of billiards
 - Rainy days
+
+### Related
+- [The Best Tim Ferriss Show Podcast Episodes](/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes)

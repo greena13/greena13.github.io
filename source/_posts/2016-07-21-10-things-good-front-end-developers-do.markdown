@@ -94,3 +94,8 @@ You should be aiming to facilitate quick code navigation by providing useful lev
 Position related routine definitions together and reflect dependencies by placing the dependent methods just above those they make calls to. Use whitespace to group and show relationships between steps in sequences and make it easy to track dependencies through a procedure.
 
 Keeping a clear purpose and ensuring code is readable and well structured are just some of the concerns a front-end developer faces: design and requirements engineering before starting programming and reviews and testing afterwards, come to mind. But in my experience these are the ones that yield the greatest rewards if mastered - and the most pain if neglected.
+
+### Related
+- [Getting to better code reviews](/blog/2016/01/17/getting-to-better-code-reviews)
+- [Reducing Code Complexity](/blog/2014/08/21/reducing-code-complexity)
+- [Ordering and Labelling Code](/blog/2014/08/21/ordering-and-labelling-code)

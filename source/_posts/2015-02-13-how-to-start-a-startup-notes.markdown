@@ -770,3 +770,6 @@ Try to develop a relationship with the people you’re doing business with and f
 ## Failing
 
 The overwhelming majority of startups fail. If you are going to fail, tell your investors you're failing - they expect most of their investments to fail. You don't want it to come as a shock to your employees. Help them find new jobs and offer three to four weeks severance pay.
+
+### Related
+- [The Best Tim Ferriss Show Podcast Episodes](/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes)
