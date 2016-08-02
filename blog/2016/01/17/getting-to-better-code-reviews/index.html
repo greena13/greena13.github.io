@@ -3,13 +3,17 @@
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>Getting to Better Code Reviews - Key Shift in Cmd</title>
   <meta name="author" content="Aleck Greenham">
 
   
-  <meta name="description" content="I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic &hellip;">
+  <meta name="description" content="Getting to Better Code Reviews written in code, review I recently set out to improve the process I use for reviewing code that myself and others &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,79 +30,52 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-55678102-2', 'auto');
-    ga('send', 'pageview');
-
-  </script>
-
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
   
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Key Shift in Cmd</a></h1>
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Getting to Better Code Reviews</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
   
-    <h2>A exercise in examined software development</h2>
+
+
+
+<time datetime="2016-01-17T12:36:29+00:00" pubdate data-updated="true"></time>
+          
+
+in
+<span class="categories">
   
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/review/'>review</a>
   
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:greena13.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Getting to Better Code Reviews</h1>
-    
-    
-      <p class="meta">
-        
+</span>
 
 
-
-
-<time class='entry-date' datetime='2016-01-17T12:36:29+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic and getting  consistent results for the time investment.</p>
+        </div>
+        <p>I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic and getting  consistent results for the time investment.</p>
 
 <p>The reviews I was doing appeared to be going well enough: they were picking up problems and I was making sensible suggestions for how to improve code quality; less bugs seemed to be finding their way into the final product when I did the reviews than when I didn&rsquo;t and I felt more confident about code that had been through review. But I began to suspect that the quality of these reviews were variable and subject to random and unpredictable human factors.</p>
+
+<!--more-->
+
 
 <p>And although previous attempts to address this had left me with a checklist of common problems to look for, holding all thirty or so items on that checklist in my mind at once and trying to search for them all at the same time was too much complexity to effectively handle. I was applying this list in an attempt to be more consistent, but becoming overwhelmed and developing only a superficial familiarity with the code. Too often I was falling back on heuristics, like whether it looked correct, or whether I could spot anything obviously wrong with it (which are two ways of saying the same thing).</p>
 
@@ -184,152 +161,72 @@
 
 
 <p>And that&rsquo;s it. At first this list took a long time to run through, but it quickly became much faster to execute while still detecting a lot more problems.</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Aleck Greenham</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2016-01-17T12:36:29+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:36 pm</span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/review/'>review</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/" data-via="" data-counturl="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2015/02/13/how-to-start-a-startup-notes/" title="Previous Post: Notes on How to Start a Startup">&laquo; Notes on How to Start a Startup</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/" title="Next Post: How I taught myself the Colemak keyboard over a weekend">How I taught myself the Colemak keyboard over a weekend &raquo;</a>
-      
-    </p>
-  </footer>
+        </section>
+        
+      </div>
+    </div>
+  </div>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
+<hr class="divider-short"/>
 
-</div>
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2015/02/13/how-to-start-a-startup-notes/" title="Previous Post: Notes on How to Start a Startup">&laquo; Previous: Notes on How to Start a Startup</a>
+        
 
-<aside class="sidebar">
-  
-    <section id="about">
-    <div id="about-picture">
-        <img class="left" src="/images/display_picture.jpg" width="350" height="350" title="image" alt="images">
+        
+          <a class="pull-right" href="/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/" title="Next Post: How I taught myself the Colemak keyboard over a weekend">Next: How I taught myself the Colemak keyboard over a weekend &raquo;</a>
+        
+      </div>
     </div>
-    <div id="about-body">
-    <p>
-        Aleck is interested in great ways to write great software.
-    </p>
+  </div>
+</div>
 
-    <p>
-        He blogs as a way of creating footnotes for discussions he is having. Maybe you are having them too.
-    </p>
-    </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
     
-      <li class="post">
-        <a href="/blog/2016/07/21/10-things-good-front-end-developers-do/">10 Things Good Front-end Developers Do</a>
-      </li>
+
     
-      <li class="post">
-        <a href="/blog/2016/07/17/how-i-learned-to-learn/">How I Learned to Learn</a>
-      </li>
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
     
-      <li class="post">
-        <a href="/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes/">The Best Still Untitled: The Adam Savage Podcast Episodes</a>
-      </li>
+
     
-      <li class="post">
-        <a href="/blog/2016/06/30/facebook-origami-cheat-sheet/">Facebook Origami Cheat Sheet</a>
-      </li>
+
     
-      <li class="post">
-        <a href="/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes/">The Best Tim Ferriss Show Podcast Episodes</a>
-      </li>
-    
-  </ul>
-</section>
+  </div>
+</div>
 
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/greena13">@greena13</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'greena13',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-
-  
-</aside>
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
 
 
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Aleck Greenham -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
 </footer>
-  
+
+    
+      
 
 <script type="text/javascript">
       var disqus_shortname = 'keyshiftincmd';
@@ -348,33 +245,6 @@
 </script>
 
 
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
+    
+  </body>
 </html>

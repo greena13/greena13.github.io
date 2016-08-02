@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Learning | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/learning/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-21T19:23:20+01:00</updated>
+  <updated>2016-08-02T21:11:23+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -18,7 +18,12 @@
     <link href="http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/"/>
     <updated>2016-07-17T18:23:35+01:00</updated>
     <id>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn</id>
-    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, it is not as insurmountable a task as I have made it sound, as there are common rules and patterns shared amongst them all. As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
+    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, there are common rules and patterns shared amongst them all.</p>
+
+<!--more-->
+
+
+<p> As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
 
 <h2>The realisation</h2>
 
@@ -55,6 +60,13 @@
 <p>When faced with a new library or language, I attempt to gain an understanding of what the entire documentation covers. I apply the 80/20 rule and spend a relatively large amount of time learning a relatively small amount: the fundamentals. It is here that I am looking for the patterns and the similarities and differences with the things I already know. I am not concerned with the details, as these are often unimportant until I have a better idea of what I need to know. I make highlights and annotations and then notes which I perform multiple parses on to make more concise. I then spend a little time getting to know what the rest of the documentation covers, so I know where to find this information when I need it. I may create some further bookmarks at this point to help remind me of what resources are available and what they contain.</p>
 
 <p>In hindsight, taking notes on what is important and not wasting resources committing irrelevant details to memory seems obvious, but I wish someone had explained to me when I was starting out the dynamic nature of full stack development. Or perhaps warned me that mastering a single area of expertise and then expanding radially was likely to be costly in time and effort, as much of what I learned was  rendered inapplicable when external requirements inevitably changed. Or that no matter how dedicated I was towards learning and remembering new information, the rate I would forget things - especially when switching between similar contexts - would barely be outpaced by the rate at which I learnt new information, so I needed a way of externally recording it to be able to quickly refresh my memory. But above all, that learning how to learn and re-learn things quickly would be the most valuable skill I could attain.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages">Using Spaced Repetition to Learn Programming Languages</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -64,6 +76,9 @@
     <updated>2014-08-28T09:58:41+01:00</updated>
     <id>http://greena13.github.io/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages</id>
     <content type="html"><![CDATA[<p>I have already written on <a href="blog/2014/08/26/creating-cards-for-spaced-repetition">tips for creating spaced repetition cards</a>, but here I hope to summarise a few of Jack Kinsella&rsquo;s tips specific to <a href="http://www.jackkinsella.ie/2011/12/05/janki-method.html">memorising programming languages</a> (and <a href="http://www.oxbridgenotes.co.uk/articles/janki_method_refined">here</a> also).</p>
+
+<!--more-->
+
 
 <h2>Use Screenshots</h2>
 
@@ -85,7 +100,14 @@
 
 <h2>Process Information Can Be Difficult to Encode</h2>
 
-<p>Processes and ordered information is difficult to store and remember in Anki because it suffers from the same problems as sets and enumerations. The process should be encoded as clozed deletions, or care should be taken to encoding a clear link between each step in the process.</p>
+<p>Processes and ordered information is difficult to store and remember in Anki because it suffers from the same problems as sets and enumerations. The process should be encoded as closed deletions, or care should be taken to encoding a clear link between each step in the process.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="/blog/2014/08/26/creating-cards-for-spaced-repetition">Creating Cards for Spaced Repetition</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -96,9 +118,12 @@
     <id>http://greena13.github.io/blog/2014/08/26/creating-cards-for-spaced-repetition</id>
     <content type="html"><![CDATA[<p><em>Spaced repetition</em> is a revision technique that minimises the number of exposures to a piece of subject matter required to commit it to longterm memory. This is achieved by altering the frequency in which items of revision material are shown to the user based on how easily it was recalled last time; the content is shown to the user right before he or she is due to forget it - and not before, avoiding wasting time on premature revision. <a href="http://ankisrs.net/">Anki</a> is a free and popular tool available on Windows, Mac and mobile devices that allows you to synchronise your progress between all your devices via <a href="https://ankiweb.net">Ankiweb</a>.</p>
 
+<!--more-->
+
+
 <p>Anki works by showing a user a series of <em>flash cards</em> in a <em>deck</em> and prompting for a response for each one. When the user comes up with an answer (or gives up), they press a button to reveal the correct response. The user then selects whether they wish to be quizzed on this again soon (because they got it wrong, or were not satisfied with how quickly they came up with the answer) or some time further in the future (because it was too easy). The algorithm for managing what material is presented and when, is very effective and can be customised based on the user&rsquo;s preferred amount of material and time available for revision each day. Anki also includes a number of more advanced features that won&rsquo;t really be covered here.</p>
 
-<p>I have recently been looking into spaced repetition to <a href="http://www.smashingmagazine.com/2014/08/19/mastering-a-programming-language-using-spaced-repetition/">improve my recall of a number of programming languages</a>. I have encountered good advice on maximising the effectiveness of spaced repetition by ensuring the content and format of flashcards is conducive to fast and meaningful memorisation. Here is a summary of the advice that stood out to me, taken primarily from Mattan Griffel&rsquo;s <a href="http://www.smashingmagazine.com/2014/08/19/mastering-a-programming-language-using-spaced-repetition/">Tips For Mastering A Programming Language Using Spaced Repetition</a>, Jack Kinsella&rsquo;s <a href="http://www.jackkinsella.ie/2011/12/05/janki-method.html">Janki Method</a>, Derek Sivers&#8217; <a href="http://sivers.org/srs">Memorizing a programming language using spaced repetition software</a> and Dr Piotr Wozniak&rsquo;s <a href="http://www.supermemo.com/articles/20rules.htm">Twenty rules of formulating knowledge</a>. Each should be consulted in addition to reading this article for further examples and discussion.</p>
+<p>I have recently been looking into spaced repetition to <a href="http://www.smashingmagazine.com/2014/08/19/mastering-a-programming-language-using-spaced-repetition/">improve my recall of a number of programming languages</a>. I have encountered good advice on maximising the effectiveness of spaced repetition by ensuring the content and format of flashcards is conducive to fast and meaningful memorisation. Here is a summary of the advice that stood out to me, taken primarily from Mattan Griffel&rsquo;s <a href="http://www.smashingmagazine.com/2014/08/19/mastering-a-programming-language-using-spaced-repetition/">Tips For Mastering A Programming Language Using Spaced Repetition</a>, Jack Kinsella&rsquo;s <a href="http://www.jackkinsella.ie/2011/12/05/janki-method.html">Janki Method</a>, Derek Sivers' <a href="http://sivers.org/srs">Memorizing a programming language using spaced repetition software</a> and Dr Piotr Wozniak&rsquo;s <a href="http://www.supermemo.com/articles/20rules.htm">Twenty rules of formulating knowledge</a>. Each should be consulted in addition to reading this article for further examples and discussion.</p>
 
 <h2>Common Memorisation Mistakes</h2>
 
@@ -193,6 +218,13 @@
 <p>Material that is used regularly or is important for only a given period - perhaps while you complete a particular project - should be retired from your deck in favour of information more likely to be useful in the future. The excluded material can be re-included and rapidly re-learnt using Anki&rsquo;s drill feature, should there come a time when the material is required once more.</p>
 
 <p>You will need to find your own balance of how long you are prepared to spend revising each day, and how useful the information you&rsquo;re committing to memory is likely to be.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages">Using Spaced Repetition to Learn Programming Languages</a></li>
+</ul>
+
 ]]></content>
   </entry>
   

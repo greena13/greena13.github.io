@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-21T19:23:20+01:00</updated>
+  <updated>2016-08-02T21:11:23+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -18,7 +18,12 @@
     <link href="http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do/"/>
     <updated>2016-07-21T19:08:15+01:00</updated>
     <id>http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do</id>
-    <content type="html"><![CDATA[<p>Without getting into the details of JavaScript, HTML, CSS, or any particular framework, there are some general things that most good front-end developers do and understand. The list that follows is intended as a jumping off point. Googling each concept will help you locate more context and the original authors; most originated from well renowned books on software engineering from the last century and are not new ideas.</p>
+    <content type="html"><![CDATA[<p>Without getting into the details of JavaScript, HTML, CSS, or any particular framework, there are some general things that most good front-end developers do and understand.</p>
+
+<!--more-->
+
+
+<p>The list that follows is intended as a jumping off point. Googling each concept will help you locate more context and the original authors; most originated from well renowned books on software engineering from the last century and are not new ideas.</p>
 
 <h2>Know what you are doing</h2>
 
@@ -109,6 +114,15 @@
 <p>Position related routine definitions together and reflect dependencies by placing the dependent methods just above those they make calls to. Use whitespace to group and show relationships between steps in sequences and make it easy to track dependencies through a procedure.</p>
 
 <p>Keeping a clear purpose and ensuring code is readable and well structured are just some of the concerns a front-end developer faces: design and requirements engineering before starting programming and reviews and testing afterwards, come to mind. But in my experience these are the ones that yield the greatest rewards if mastered - and the most pain if neglected.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews">Getting to better code reviews</a></li>
+<li><a href="http://greena13.github.io/blog/2014/08/21/reducing-code-complexity">Reducing Code Complexity</a></li>
+<li><a href="http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code">Ordering and Labelling Code</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -117,7 +131,12 @@
     <link href="http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/"/>
     <updated>2016-07-17T18:23:35+01:00</updated>
     <id>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn</id>
-    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, it is not as insurmountable a task as I have made it sound, as there are common rules and patterns shared amongst them all. As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
+    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, there are common rules and patterns shared amongst them all.</p>
+
+<!--more-->
+
+
+<p> As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
 
 <h2>The realisation</h2>
 
@@ -154,6 +173,13 @@
 <p>When faced with a new library or language, I attempt to gain an understanding of what the entire documentation covers. I apply the 80/20 rule and spend a relatively large amount of time learning a relatively small amount: the fundamentals. It is here that I am looking for the patterns and the similarities and differences with the things I already know. I am not concerned with the details, as these are often unimportant until I have a better idea of what I need to know. I make highlights and annotations and then notes which I perform multiple parses on to make more concise. I then spend a little time getting to know what the rest of the documentation covers, so I know where to find this information when I need it. I may create some further bookmarks at this point to help remind me of what resources are available and what they contain.</p>
 
 <p>In hindsight, taking notes on what is important and not wasting resources committing irrelevant details to memory seems obvious, but I wish someone had explained to me when I was starting out the dynamic nature of full stack development. Or perhaps warned me that mastering a single area of expertise and then expanding radially was likely to be costly in time and effort, as much of what I learned was  rendered inapplicable when external requirements inevitably changed. Or that no matter how dedicated I was towards learning and remembering new information, the rate I would forget things - especially when switching between similar contexts - would barely be outpaced by the rate at which I learnt new information, so I needed a way of externally recording it to be able to quickly refresh my memory. But above all, that learning how to learn and re-learn things quickly would be the most valuable skill I could attain.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages">Using Spaced Repetition to Learn Programming Languages</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -162,9 +188,12 @@
     <link href="http://greena13.github.io/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes/"/>
     <updated>2016-07-02T20:45:47+01:00</updated>
     <id>http://greena13.github.io/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes</id>
-    <content type="html"><![CDATA[<p>The Still Untitled: The Adam Savage podcast was one of the very first that I got into. Its conversational style and the fact that Adam regular answers listeners&#8217; questions makes for a welcoming and engaging listening experience.</p>
+    <content type="html"><![CDATA[<p>The Still Untitled: The Adam Savage podcast was one of the very first that I got into. Its conversational style and the fact that Adam regular answers listeners' questions makes for a welcoming and engaging listening experience.</p>
 
 <p>Like many long-running, lightly produced podcasts, however, Still Untitled has touched on a great many subjects - some much more interesting than others. Here is a list of my favourite episodes, broken down into two categories.</p>
+
+<!--more-->
+
 
 <h2>Actionable Advice for Creative Work</h2>
 
@@ -206,6 +235,13 @@
 <li>Rainy days</li>
 </ul>
 
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes">The Best Tim Ferriss Show Podcast Episodes</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -216,7 +252,12 @@
     <id>http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet</id>
     <content type="html"><![CDATA[<p><a href="http://facebook.github.io/origami/">Facebook&rsquo;s Origami</a> is an interesting UI prototyping tool that integrates nicely with <a href="https://www.sketchapp.com/">Sketch</a> and offers the ability to interact with your prototypes in a simulator or right on your mobile or tablet device.</p>
 
-<p>This is a summary of the information I picked up from watching the <a href="http://facebook.github.io/origami/tutorials/">Origami video tutorials</a>. It&rsquo;s not a complete reference, but it succinctly captures most of the information contained in the video and can serve as a quick reference.</p>
+<p>This is a summary of the information I picked up from watching the <a href="http://facebook.github.io/origami/tutorials/">Origami video tutorials</a>.</p>
+
+<!--more-->
+
+
+<p>It&rsquo;s not a complete reference, but it succinctly captures most of the information contained in the video and can serve as a quick reference.</p>
 
 <p>First, a note on terminology: as I am still learning my way around the Origami and Quartz Composer nomenclature, I may have incorrectly used some of the terminology concerned with what each of the components or widgets are called. I have also introduced groupings of layers and patches by function that were not suggested in the tutorials, but added clarity for me. They may, however, not necessarily correspond with discussion you read elsewhere.</p>
 
@@ -544,6 +585,13 @@
 <h2>Values</h2>
 
 <p>You can long click on any value field to get a slider rather trying to calibrate numerical values to get what you are looking for.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts">SourceTree Keyboard Shortcuts</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -552,7 +600,12 @@
     <link href="http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes/"/>
     <updated>2016-06-25T13:37:11+01:00</updated>
     <id>http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes</id>
-    <content type="html"><![CDATA[<p>I have been needing an easy way of recommending episodes of the fantastic Tim Ferriss Show podcast for a while now. What follows is a list of the episodes I found the most value in, but your results may vary. You can see the entire episode list on <a href="http://fourhourworkweek.com/podcast/">the podcast&rsquo;s website</a>.</p>
+    <content type="html"><![CDATA[<p>I have been needing an easy way of recommending episodes of the fantastic Tim Ferriss Show podcast for a while now. What follows is a list of the episodes I found the most value in.</p>
+
+<!--more-->
+
+
+<p>You can see the entire episode list on <a href="http://fourhourworkweek.com/podcast/">the podcast&rsquo;s website</a>.</p>
 
 <p>The easiest way of listening to the episodes is to either go to the <a href="http://fourhourworkweek.com/podcast/">website</a> and search the episode titles or search on your favourite podcast app. Google will work, also.</p>
 
@@ -591,7 +644,7 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
 
 <h2>Guests - Actionable Advice</h2>
 
-<p>These episodes are Tim interviewing guests, or guests answering listeners&#8217; questions. Generally they are much longer, and with more space between useful takeaways, but the podcast guests remain interesting or entertaining throughout. Note taking is encouraged, but not essential.</p>
+<p>These episodes are Tim interviewing guests, or guests answering listeners' questions. Generally they are much longer, and with more space between useful takeaways, but the podcast guests remain interesting or entertaining throughout. Note taking is encouraged, but not essential.</p>
 
 <ul>
 <li>Scott Adams: The Man Behind Dilbert</li>
@@ -629,6 +682,14 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
 <li>The Tim Ferriss Podcast, Ep 15: Neil Strauss, Author of The Game</li>
 </ul>
 
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes">The Best Still Untitled: The Adam Savage Podcast Episodes</a></li>
+<li><a href="http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes">Notes on how to start a startup</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -637,9 +698,10 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
     <link href="http://greena13.github.io/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/"/>
     <updated>2016-01-17T17:22:22+00:00</updated>
     <id>http://greena13.github.io/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend</id>
-    <content type="html"><![CDATA[<h1>Getting started</h1>
+    <content type="html"><![CDATA[<p>The first step was to make little stickers, one for each key that had a different placement, and attach them to the keys on the keyboard. Then I went to Google to search for a typing program that could help me remap the muscle memory I already had established using qwerty for all those years.</p>
 
-<p>The first step was to make little stickers, one for each key that had a different placement, and attach them to the keys on the keyboard. Then I went to Google to search for a typing program that could help me remap the muscle memory I already had established using qwerty for all those years.</p>
+<!--more-->
+
 
 <p>I found a site that let me type sequences of strings that at first had only a few different characters but slowly expanded to include more and more as I progressed through the lessons. This worked well enough in the beginning and let me quickly get a feel for how different the Colemak layout would be. But it had a number of flaws.</p>
 
@@ -676,6 +738,13 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
 <p>By the end of the weekend I am back to being almost as fast as I was with the qwerty keyboard. I can find each of the keys without consciously thinking about it, but not all of the little shortcuts for common letter combinations that I developed using the qwerty system have returned yet.</p>
 
 <p>Although I have yet to see the speed improvements Colemak boasts, I am already aware of how much less my fingers are moving and can see with a little more work on reducing the time to recall key placements, this will probably become my preferred and most efficient method of typing.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li>[Improving Typing Speed](/blog/2014/09/08/improving-typing-speed</li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -687,6 +756,9 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
     <content type="html"><![CDATA[<p>I recently set out to improve the process I use for reviewing code that myself and others have written. I wanted to focus on being more systematic and getting  consistent results for the time investment.</p>
 
 <p>The reviews I was doing appeared to be going well enough: they were picking up problems and I was making sensible suggestions for how to improve code quality; less bugs seemed to be finding their way into the final product when I did the reviews than when I didn&rsquo;t and I felt more confident about code that had been through review. But I began to suspect that the quality of these reviews were variable and subject to random and unpredictable human factors.</p>
+
+<!--more-->
+
 
 <p>And although previous attempts to address this had left me with a checklist of common problems to look for, holding all thirty or so items on that checklist in my mind at once and trying to search for them all at the same time was too much complexity to effectively handle. I was applying this list in an attempt to be more consistent, but becoming overwhelmed and developing only a superficial familiarity with the code. Too often I was falling back on heuristics, like whether it looked correct, or whether I could spot anything obviously wrong with it (which are two ways of saying the same thing).</p>
 
@@ -780,7 +852,12 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
     <link href="http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes/"/>
     <updated>2015-02-13T07:54:06+00:00</updated>
     <id>http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes</id>
-    <content type="html"><![CDATA[<p>I recently finished listening to the fantastic set of lectures <a href="http://startupclass.samaltman.com/">How to Start a Startup</a> and I thought I&rsquo;d share a few things I found interesting from each lecture. These notes are <strong>not</strong> complete or guaranteed to be accurate and should not be acted upon without first either listening to or reading the transcripts of the <a href="http://startupclass.samaltman.com/">source material</a> yourself. Some of this content is stuff I am only superficially familiar with, so terminology and concepts may be mangled or misunderstood. Saying that, I would appreciate any feedback on glaring errors or omissions, using the comments below.</p>
+    <content type="html"><![CDATA[<p>I recently finished listening to the fantastic set of lectures <a href="http://startupclass.samaltman.com/">How to Start a Startup</a> and I thought I&rsquo;d share a few things I found interesting from each lecture.</p>
+
+<!--more-->
+
+
+<p>These notes are <strong>not</strong> complete or guaranteed to be accurate and should not be acted upon without first either listening to or reading the transcripts of the <a href="http://startupclass.samaltman.com/">source material</a> yourself. Some of this content is stuff I am only superficially familiar with, so terminology and concepts may be mangled or misunderstood. Saying that, I would appreciate any feedback on glaring errors or omissions, using the comments below.</p>
 
 <p>My intent is a summary of the content contained in the lectures that will serve as a quick reference for myself and others, but I do encourage experiencing the source material yourself if you are interested. It&rsquo;s very engaging and nuanced and features some fantastic speakers. It should be experienced firsthand to allow the content that resonates or is most applicable to you, to emerge. The original transcripts have been linked to for each lecture.</p>
 
@@ -841,7 +918,7 @@ Productivity” Tricks for the Neurotic, Manic-Depressive, and Crazy (Like Me) 
 
 <p>To get the first few users, you need to recruit by hand and do things that do not scale. Don’t put people between you and your customers - have as much contact with your customers as possible and use metrics to keep yourself honest on user numbers and adoption. Be sure to measure the things that matter to your startup and not get distracted by metrics that aren&rsquo;t aligned with your company&rsquo;s goals.</p>
 
-<h2>Founders&#8217; Share</h2>
+<h2>Founders' Share</h2>
 
 <p>At the end of things, founders are likely to have about 10% of the company.</p>
 
@@ -1272,7 +1349,7 @@ The best founders are known for repeating these goals ad nauseum and not giving 
 
 <p>Enterprise software has now moved largely into the cloud. This shift means it can now make sense for much smaller companies to produce enterprise software. Enterprise software has also become more user-led, rather than IT lead. This is great news because when tech decisions are IT-lead, the incumbents generally win the business because they already have relationships. With user-lead tech, users are bringing in their own software. This creates an opportunity to sell to the enterprise that wants to have better control or consistency across their system. With the introduction of mobile phones, enterprises now have to monitor their full network.</p>
 
-<p>Another significant change is that enterprises are now changing how they’re getting their products to people and they need platforms to be able to do that. The customers enterprises go after need new experiences of working with the enterprises&#8217; products for them to remain engaged or connected.</p>
+<p>Another significant change is that enterprises are now changing how they’re getting their products to people and they need platforms to be able to do that. The customers enterprises go after need new experiences of working with the enterprises' products for them to remain engaged or connected.</p>
 
 <p>When considering building enterprise software, always look for environments with changing technology factors. The moments of opportunity where a tech revolution is about to happen in an industry occur when the raw materials change: for example, the cost of data storage going down and an increase in connection speeds make it easier to centralise data storage and services and let users access them on demand. Enterprises are not looking for the cheapest solution, but overall efficiency; they have a different value equation to commercial software.</p>
 
@@ -1377,7 +1454,7 @@ The best founders are known for repeating these goals ad nauseum and not giving 
 
 <h4>Ben Horowitz founder of <a href="http://a16z.com/">Andreessen Horowitz</a> and <a href="https://www.crunchbase.com/organization/opsware">Opsware</a> [<a href="http://genius.com/B-horowitz-lecture-15-how-to-manage-annotated">Original Transcription</a>]</h4>
 
-<p>When you are making a management decision, you have to understand how it’s going to be interpreted by all points of view. You need to add up to all employees&#8217; views and incorporate that into your decision.</p>
+<p>When you are making a management decision, you have to understand how it’s going to be interpreted by all points of view. You need to add up to all employees' views and incorporate that into your decision.</p>
 
 <h2>Case Study 1</h2>
 
@@ -1478,7 +1555,7 @@ If the employee has high equity, people aren’t going to think it’s fair that
 
 <h2>Raising Money</h2>
 
-<p>There are two ways of raising money: when the price or value of the company is set, typically in the &ldquo;series &#8220;A or &#8220;series B&rdquo; rounds; or when the price isn&rsquo;t set, typically in the &ldquo;seed round&rdquo;. But people can call rounds whatever they want. Not setting the price is the most straightforward and fast way of raising money. This is usually done using convertible notes or safes, meaning the investor is paying money up front for the right to receive stock at a later date when price is set by investors in a priced round. In this instance, the investor is not a shareholder and therefor has no voting rights. A <em>valuation pack</em> sets the cap on the price for conversion into shares when it comes time to receive the stock.</p>
+<p>There are two ways of raising money: when the price or value of the company is set, typically in the &ldquo;series "A or "series B&rdquo; rounds; or when the price isn&rsquo;t set, typically in the &ldquo;seed round&rdquo;. But people can call rounds whatever they want. Not setting the price is the most straightforward and fast way of raising money. This is usually done using convertible notes or safes, meaning the investor is paying money up front for the right to receive stock at a later date when price is set by investors in a priced round. In this instance, the investor is not a shareholder and therefor has no voting rights. A <em>valuation pack</em> sets the cap on the price for conversion into shares when it comes time to receive the stock.</p>
 
 <p>Investors should be sophisticated; they should have money to invest and understand the nature of investing. Such investors are typically termed <em>accredited investors</em>.</p>
 
@@ -1514,7 +1591,7 @@ If the employee has high equity, people aren’t going to think it’s fair that
 
 <p>The stages of sales can be thought of as a funnel that you move customers through. The first stage is <em>Prospecting</em> or figuring out who&rsquo;s interested.</p>
 
-<p>Everett Rogers&#8217; adoption curve illustrates that only 2.5% of companies are early adopters and will even consider buying a service from a startup. Use your personal network and industry conferences to find some members of that 2.5%. You can use emails to approach potential clients and keep them really concise and to the point; it makes it possible to customise each to the recipient. Tell them who you are, what you do and extend an invitation to meet and talk more.</p>
+<p>Everett Rogers' adoption curve illustrates that only 2.5% of companies are early adopters and will even consider buying a service from a startup. Use your personal network and industry conferences to find some members of that 2.5%. You can use emails to approach potential clients and keep them really concise and to the point; it makes it possible to customise each to the recipient. Tell them who you are, what you do and extend an invitation to meet and talk more.</p>
 
 <p>During phone conversations, shut up and listen. Some sellers aim for as low as 30% talking, 70% listening. Ask questions such as why they even took your call and find out as much as you can from the potential customers. <a href="https://www.uberconference.com/">UberConference</a> is a tool that can tell you how much time you spent talking on each phone call.</p>
 
@@ -1606,6 +1683,13 @@ If the employee has high equity, people aren’t going to think it’s fair that
 <h2>Failing</h2>
 
 <p>The overwhelming majority of startups fail. If you are going to fail, tell your investors you&rsquo;re failing - they expect most of their investments to fail. You don&rsquo;t want it to come as a shock to your employees. Help them find new jobs and offer three to four weeks severance pay.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes">The Best Tim Ferriss Show Podcast Episodes</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -1615,6 +1699,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <updated>2015-02-01T09:32:42+00:00</updated>
     <id>http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts</id>
     <content type="html"><![CDATA[<p>After wasting hours in search of a good list of keyboard shortcuts available in Atlassian&rsquo;s SourceTree and feeling utter despair at <a href="https://answers.atlassian.com/questions/238357/where-can-i-find-a-list-of-mac-keyboard-shortcuts-for-sourcetree">how slow Atlassian is being at delivering this information</a>, I thought I&rsquo;d share the ones that I discovered through brute force and determination.</p>
+
+<!--more-->
+
 
 <p>These were discovered and are only applicable on a Mac (although I am sure the Windows equivalents are easy to deduce), at the Commit All.. Screen (cmd + shift + c).</p>
 
@@ -1809,6 +1896,13 @@ If the employee has high equity, people aren’t going to think it’s fair that
 </tbody>
 </table>
 
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet">Facebook Origami Cheat Sheet</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -1818,6 +1912,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <updated>2015-01-17T08:35:20+00:00</updated>
     <id>http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job</id>
     <content type="html"><![CDATA[<p>Last year I went through the rather exciting process of interviewing for a series of positions in search of a new development job. Having sat down and thought about what I had gained from my previous working environments, I compiled a list of questions that I thought would help me gauge the type of work I would be doing and the environment I would be a part of if I took the position.</p>
+
+<!--more-->
+
 
 <p>In the hope that they may assist others, I have decided to document them here. I do not claim to have come up with them all myself (some are from friends and family, others I ran across somewhere on the web), but most were inspired by my own previous experience.</p>
 
@@ -1889,7 +1986,12 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <link href="http://greena13.github.io/blog/2014/09/08/improving-typing-speed/"/>
     <updated>2014-09-08T16:01:41+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/08/improving-typing-speed</id>
-    <content type="html"><![CDATA[<p>Always in search of productivity gains in my programming work, recently I have been looking into improving my typing speed. I read Jeff Atwood&rsquo;s <a href="http://blog.codinghorror.com/we-are-typists-first-programmers-second/">We Are Typists First, Programmers Second</a> and was enthused, despite a few commenters pointing out that typing speed is rarely the bottleneck when it comes to coding. Atwood rightly responded that it is a matter of mental &ldquo;bandwidth&rdquo;: ideally, typing should be a function performed entirely autonomously without error or disruption - the mental interference of having to consider which keys should be pressed or what corrective action is needed to rectify a mistype can be detrimental to productivity and creativity. This mirrors a similar sentiment discussed in the highly recommended <a href="http://www.amazon.co.uk/Practice-Perfect-Rules-Getting-Better-ebook/dp/B007ZQ34V4">Practice Perfect</a> by Doug Lemov, Erica Woolway and Katie Yezzi. Lemov and his co-authors discuss practicing monotonous, formulaic and repetitive skills to the point of being able to execute them effortlessly and flawlessly provides more cognitive horsepower for creativity and efficacy.</p>
+    <content type="html"><![CDATA[<p>Always in search of productivity gains in my programming work, recently I have been looking into improving my typing speed. I read Jeff Atwood&rsquo;s <a href="http://blog.codinghorror.com/we-are-typists-first-programmers-second/">We Are Typists First, Programmers Second</a> and was enthused, despite a few commenters pointing out that typing speed is rarely the bottleneck when it comes to coding.</p>
+
+<!--more-->
+
+
+<p>Atwood rightly responded that it is a matter of mental &ldquo;bandwidth&rdquo;: ideally, typing should be a function performed entirely autonomously without error or disruption - the mental interference of having to consider which keys should be pressed or what corrective action is needed to rectify a mistype can be detrimental to productivity and creativity. This mirrors a similar sentiment discussed in the highly recommended <a href="http://www.amazon.co.uk/Practice-Perfect-Rules-Getting-Better-ebook/dp/B007ZQ34V4">Practice Perfect</a> by Doug Lemov, Erica Woolway and Katie Yezzi. Lemov and his co-authors discuss practicing monotonous, formulaic and repetitive skills to the point of being able to execute them effortlessly and flawlessly provides more cognitive horsepower for creativity and efficacy.</p>
 
 <p>From working with colleague and peers, I gained the impression I had a pretty average typing speed for a regular computer user and programmer, but I wanted to try and find out a base line. I encountered many figures of average and exceptional typing speeds online, including some <a href="http://en.wikipedia.org/wiki/Words_per_minute">rather unbelievable world records</a>, but I could not find any information on the sort typing I was interested in: programming, using just about every key on the keyboard and not just the alphanumeric and punctuation keys. Unable to find the information I wanted, I resigned myself to using what I had. I took a few free typing tests I found online and got an average of about 60 WPM. This is, from what I can gather, above average and more than adequate to produce code efficiently.</p>
 
@@ -1914,6 +2016,13 @@ If the employee has high equity, people aren’t going to think it’s fair that
 <p>An interesting observation was that the greatest determinant of speed and error rate, was which language I was typing code for. It seems there are languages which lend themselves to be typed much quicker and with less errors. High-level languages with CamelCase variable and method naming conventions were by far the easiest to transcribe. They generally included less operator keystrokes, less opening and closing brackets and none of the dreaded shift + underscore key combination that is so slow and difficult to reach with you little finger. It has left with me with an interesting (but ultimately minor) consideration when selecting suitable languages for future projects.</p>
 
 <p>Overall, this was an curious experience that I would tentatively claim as a measured success. It remains unclear whether adjusting my technique to be more consistent with the suggested finger configurations has improved my typing speed, or whether I just got more accustom to the nuances of the program. I intend to continue with the program with a less intensive regime to see if more clearer results emerge after a longer time period.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="http://greena13.github.io/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend">How I taught myself the Colemak keyboard over a weekend</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -1923,6 +2032,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <updated>2014-09-06T18:24:52+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/06/factories</id>
     <content type="html"><![CDATA[<p>The finer points of the different factory design patterns has always escaped me, so I decided to look it up recently and found <a href="http://stackoverflow.com/questions/4209791/design-patterns-abstract-factory-vs-factory-method">this rather helpful stackoverflow answer</a>. I thought I&rsquo;d summarise what I learnt below (all diagrams were generated using <a href="www.yuml.me">yUML</a>).</p>
+
+<!--more-->
+
 
 <p>A factory design pattern in the most general sense is one that entrusts a class or object with the creation or instantiation of another object. Commonly, the class or object that does the creating is called the Factory object and the object being created is called the Product object. Bare this in mind when viewing the diagrams that follow.</p>
 
@@ -1967,6 +2079,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <id>http://greena13.github.io/blog/2014/09/03/inversion-of-control</id>
     <content type="html"><![CDATA[<p>Popularised by Robert C. Martin and Martin Fowler, <em>Inversion of Control</em> is a design principle where <em>custom code components</em> receive the control flow from general <em>library components</em>, similar to custom code modules being written for a larger general-purpose framework. This is an inversion of the traditional control flow found in <a href="http://greena13.github.io/blog/2014/08/31/procedural-programming">procedural programming</a> where the custom components encode the program&rsquo;s functionality in terms of general purpose libraries. The pattern offers the advantage of making the program more modular and extendable.</p>
 
+<!--more-->
+
+
 <p>Inversion of control is related to Martin&rsquo;s <a href="http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming">dependency inversion principle</a>, which is concerned with having high and low level code depend an abstraction, rather than directly on each other, thereby inverting the direction of dependency. This is analogous to the way high-level, general components yield control to the low-level specific code in Inversion of Control, thereby inverting the traditional flow of control.</p>
 
 <p>Although the term is most often used in the context of object-oriented programming, there are design patterns with wider applications that follow the Inversion of Control principle, such as software frameworks, callbacks and <a href="http://greena13.github.io/blog/2014/09/02/dependency-injection">dependency injection</a>.</p>
@@ -1978,7 +2093,12 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <link href="http://greena13.github.io/blog/2014/09/02/dependency-injection/"/>
     <updated>2014-09-02T10:56:14+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/02/dependency-injection</id>
-    <content type="html"><![CDATA[<p><em>Dependency Injection</em> is a software design pattern that works by <em>injecting</em> a reference to a dependency object into a dependent one, where it is stored and made part of the dependent object&rsquo;s state and behaviour. This separates the creation of the dependency object from the dependent object&rsquo;s code. In doing so, it more loosely couples the two objects and abides by the principles of <a href="http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Dependency Inversion</a> (because the dependent object is coupled with the dependency object&rsquo;s interface, rather than directly) and <a href="http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Single Responsibility</a> (because the dependent object is only responsible for its own behaviour, not the creation of the dependency object).</p>
+    <content type="html"><![CDATA[<p><em>Dependency Injection</em> is a software design pattern that works by <em>injecting</em> a reference to a dependency object into a dependent one, where it is stored and made part of the dependent object&rsquo;s state and behaviour. This separates the creation of the dependency object from the dependent object&rsquo;s code.</p>
+
+<!--more-->
+
+
+<p>In doing so, it more loosely couples the two objects and abides by the principles of <a href="http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Dependency Inversion</a> (because the dependent object is coupled with the dependency object&rsquo;s interface, rather than directly) and <a href="http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming">Single Responsibility</a> (because the dependent object is only responsible for its own behaviour, not the creation of the dependency object).</p>
 
 <h2>Design Pattern Elements</h2>
 
@@ -2013,6 +2133,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <updated>2014-09-01T20:18:37+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming</id>
     <content type="html"><![CDATA[<p><strong>SOLID</strong> is an acronym mnemonic coined by Michael Feathers for Robert C. Martin&rsquo;s &ldquo;first five principles&rdquo; for object-oriented programming. Each concept is worth looking at briefly so I have tried to summarise the important points of each below.</p>
+
+<!--more-->
+
 
 <h2>Single Responsibility Principle</h2>
 
@@ -2078,6 +2201,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <id>http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance</id>
     <content type="html"><![CDATA[<p>I have found variance one of the more difficult things to get my head around in computer science, so I have tried to document the basics as a way of teaching myself.</p>
 
+<!--more-->
+
+
 <p><em>Variance</em> in object-oriented programming refers to how subtyping works between complex types. For example, if <em>B</em> is a subtype of <em>A</em> and <em>CA</em> and <em>CB</em> are enumerable collections (our complex types) that contain items of type <em>A</em> and <em>B</em>, respectively, is the collection <em>CB</em> a subtype of the collection <em>CA</em>?</p>
 
 <ul>
@@ -2103,6 +2229,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <updated>2014-09-01T09:52:42+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/01/functional-programming</id>
     <content type="html"><![CDATA[<p>As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of the <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> Wikipedia page.</p>
+
+<!--more-->
+
 
 <p>Functional programming is a <a href="http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming">declarative programming</a> paradigm that treats computations as evaluations of mathematical functions and avoids referencing a system state and mutable data. It was developed, primarily, as an attempt to avoid side effects and make subroutines much easier to reason about. It introduces a number of interesting and useful concepts that are not often encountered or emphasised in object-orient programming.</p>
 
@@ -2136,6 +2265,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <id>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming</id>
     <content type="html"><![CDATA[<p>I was recently reading the Wikipedia articles of <a href="http://en.wikipedia.org/wiki/Imperative_programming">imperative programming</a> and <a href="http://en.wikipedia.org/wiki/Declarative_programming">declarative programming</a> to brush up on my understanding of the distinction.</p>
 
+<!--more-->
+
+
 <h2>Imperative Programming</h2>
 
 <p>Imperative programming is concerned with describing how a program should achieve its functionality; not only <em>what</em> should be done, but also <em>how</em> it should be done is encoded. The movement of data and execution of operations are explicitly specified, if only at an abstract level; that is to say, an imperative program is concerned with implementation as much as it is logic functionality.</p>
@@ -2159,6 +2291,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <id>http://greena13.github.io/blog/2014/08/31/procedural-programming</id>
     <content type="html"><![CDATA[<p>I have been recently trying to improve my understanding of some of the fundamental concepts in computer science. I looked at <em>procedural programming</em> this time and attempted to extract the important points of the <a href="http://en.wikipedia.org/wiki/Procedural_programming">Wikipedia article</a>.</p>
 
+<!--more-->
+
+
 <p>Procedural programming is derived from <a href="http://greena13.github.io/blog/2014/08/30/structured-programming">structured programming</a> and based on the concept of a procedure being a sequence of steps to be executed to achieve a reported goal. In this respect, procedural languages are also imperative languages because they contain not only what to do, but how to do it, by referencing the system state.</p>
 
 <p>Structurally, there is considerable overlap between procedural programming and functional programming as they both originate in structured programming. Functional programs have <em>functions</em> as their routines while procedural programs have <em>procedures</em>. The intent behind functional languages is different, however, as most of the imperative elements are removed or made second-class citizens and functional control constructs are used instead. Procedural languages model programs as a list of imperative commands that may alter a system&rsquo;s state. Functional languages, on the other hand, are designed to support <em>pure functions</em>, or routines that depend <em>only on their inputs</em> and nothing else, and which <em>do not</em> alter the system state.</p>
@@ -2173,6 +2308,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
     <updated>2014-08-30T22:11:41+01:00</updated>
     <id>http://greena13.github.io/blog/2014/08/30/structured-programming</id>
     <content type="html"><![CDATA[<p>I have been recently trying to get a better handle on some terms I possess a casual understanding of and use regularly in conversation, but suspect I don&rsquo;t really have a full appreciation for. <em>Structured programming</em> was the first of these terms. What follows is a summary of the more interesting bits of the <a href="http://en.wikipedia.org/wiki/Structured_programming">Wikipedia article</a>.</p>
+
+<!--more-->
+
 
 <h2>Structured Programming</h2>
 

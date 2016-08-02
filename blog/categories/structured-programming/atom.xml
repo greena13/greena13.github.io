@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Structured Programming | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/structured-programming/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-21T19:23:20+01:00</updated>
+  <updated>2016-08-02T21:11:23+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -19,6 +19,9 @@
     <updated>2014-09-01T09:52:42+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/01/functional-programming</id>
     <content type="html"><![CDATA[<p>As part of my continuing efforts to clarify fundamental software engineering concepts, I recently read and summarised the most interesting points of the <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> Wikipedia page.</p>
+
+<!--more-->
+
 
 <p>Functional programming is a <a href="/blog/2014/08/31/imperative-programming-vs-declarative-programming">declarative programming</a> paradigm that treats computations as evaluations of mathematical functions and avoids referencing a system state and mutable data. It was developed, primarily, as an attempt to avoid side effects and make subroutines much easier to reason about. It introduces a number of interesting and useful concepts that are not often encountered or emphasised in object-orient programming.</p>
 
@@ -52,6 +55,9 @@
     <id>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming</id>
     <content type="html"><![CDATA[<p>I was recently reading the Wikipedia articles of <a href="http://en.wikipedia.org/wiki/Imperative_programming">imperative programming</a> and <a href="http://en.wikipedia.org/wiki/Declarative_programming">declarative programming</a> to brush up on my understanding of the distinction.</p>
 
+<!--more-->
+
+
 <h2>Imperative Programming</h2>
 
 <p>Imperative programming is concerned with describing how a program should achieve its functionality; not only <em>what</em> should be done, but also <em>how</em> it should be done is encoded. The movement of data and execution of operations are explicitly specified, if only at an abstract level; that is to say, an imperative program is concerned with implementation as much as it is logic functionality.</p>
@@ -75,6 +81,9 @@
     <id>http://greena13.github.io/blog/2014/08/31/procedural-programming</id>
     <content type="html"><![CDATA[<p>I have been recently trying to improve my understanding of some of the fundamental concepts in computer science. I looked at <em>procedural programming</em> this time and attempted to extract the important points of the <a href="http://en.wikipedia.org/wiki/Procedural_programming">Wikipedia article</a>.</p>
 
+<!--more-->
+
+
 <p>Procedural programming is derived from <a href="/blog/2014/08/30/structured-programming">structured programming</a> and based on the concept of a procedure being a sequence of steps to be executed to achieve a reported goal. In this respect, procedural languages are also imperative languages because they contain not only what to do, but how to do it, by referencing the system state.</p>
 
 <p>Structurally, there is considerable overlap between procedural programming and functional programming as they both originate in structured programming. Functional programs have <em>functions</em> as their routines while procedural programs have <em>procedures</em>. The intent behind functional languages is different, however, as most of the imperative elements are removed or made second-class citizens and functional control constructs are used instead. Procedural languages model programs as a list of imperative commands that may alter a system&rsquo;s state. Functional languages, on the other hand, are designed to support <em>pure functions</em>, or routines that depend <em>only on their inputs</em> and nothing else, and which <em>do not</em> alter the system state.</p>
@@ -89,6 +98,9 @@
     <updated>2014-08-30T22:11:41+01:00</updated>
     <id>http://greena13.github.io/blog/2014/08/30/structured-programming</id>
     <content type="html"><![CDATA[<p>I have been recently trying to get a better handle on some terms I possess a casual understanding of and use regularly in conversation, but suspect I don&rsquo;t really have a full appreciation for. <em>Structured programming</em> was the first of these terms. What follows is a summary of the more interesting bits of the <a href="http://en.wikipedia.org/wiki/Structured_programming">Wikipedia article</a>.</p>
+
+<!--more-->
+
 
 <h2>Structured Programming</h2>
 

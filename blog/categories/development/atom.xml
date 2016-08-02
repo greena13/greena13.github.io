@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-21T19:23:20+01:00</updated>
+  <updated>2016-08-02T21:11:23+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -18,7 +18,12 @@
     <link href="http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do/"/>
     <updated>2016-07-21T19:08:15+01:00</updated>
     <id>http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do</id>
-    <content type="html"><![CDATA[<p>Without getting into the details of JavaScript, HTML, CSS, or any particular framework, there are some general things that most good front-end developers do and understand. The list that follows is intended as a jumping off point. Googling each concept will help you locate more context and the original authors; most originated from well renowned books on software engineering from the last century and are not new ideas.</p>
+    <content type="html"><![CDATA[<p>Without getting into the details of JavaScript, HTML, CSS, or any particular framework, there are some general things that most good front-end developers do and understand.</p>
+
+<!--more-->
+
+
+<p>The list that follows is intended as a jumping off point. Googling each concept will help you locate more context and the original authors; most originated from well renowned books on software engineering from the last century and are not new ideas.</p>
 
 <h2>Know what you are doing</h2>
 
@@ -109,6 +114,15 @@
 <p>Position related routine definitions together and reflect dependencies by placing the dependent methods just above those they make calls to. Use whitespace to group and show relationships between steps in sequences and make it easy to track dependencies through a procedure.</p>
 
 <p>Keeping a clear purpose and ensuring code is readable and well structured are just some of the concerns a front-end developer faces: design and requirements engineering before starting programming and reviews and testing afterwards, come to mind. But in my experience these are the ones that yield the greatest rewards if mastered - and the most pain if neglected.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="/blog/2016/01/17/getting-to-better-code-reviews">Getting to better code reviews</a></li>
+<li><a href="/blog/2014/08/21/reducing-code-complexity">Reducing Code Complexity</a></li>
+<li><a href="/blog/2014/08/21/ordering-and-labelling-code">Ordering and Labelling Code</a></li>
+</ul>
+
 ]]></content>
   </entry>
   

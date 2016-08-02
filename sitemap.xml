@@ -1,145 +1,293 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do/</loc>
-    <lastmod>2016-07-21T19:08:15+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/</loc>
-    <lastmod>2016-07-17T18:23:35+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes/</loc>
-    <lastmod>2016-07-02T20:45:47+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet/</loc>
-    <lastmod>2016-06-30T13:36:51+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes/</loc>
-    <lastmod>2016-06-25T13:37:11+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/</loc>
-    <lastmod>2016-01-17T17:22:22+00:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/</loc>
-    <lastmod>2016-01-17T12:36:29+00:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes/</loc>
-    <lastmod>2015-02-13T07:54:06+00:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts/</loc>
-    <lastmod>2015-02-01T09:32:42+00:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job/</loc>
-    <lastmod>2015-01-17T08:35:20+00:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/08/improving-typing-speed/</loc>
-    <lastmod>2014-09-08T16:01:41+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/06/factories/</loc>
-    <lastmod>2014-09-06T18:24:52+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/03/inversion-of-control/</loc>
-    <lastmod>2014-09-03T08:52:19+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/02/dependency-injection/</loc>
-    <lastmod>2014-09-02T10:56:14+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming/</loc>
-    <lastmod>2014-09-01T20:18:37+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance/</loc>
-    <lastmod>2014-09-01T16:37:28+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/09/01/functional-programming/</loc>
-    <lastmod>2014-09-01T09:52:42+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/</loc>
-    <lastmod>2014-08-31T10:37:39+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/31/procedural-programming/</loc>
-    <lastmod>2014-08-31T08:42:16+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/30/structured-programming/</loc>
-    <lastmod>2014-08-30T22:11:41+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages/</loc>
-    <lastmod>2014-08-28T09:58:41+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/26/creating-cards-for-spaced-repetition/</loc>
-    <lastmod>2014-08-26T14:44:22+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/22/separating-classes-into-smaller-ones/</loc>
-    <lastmod>2014-08-22T09:05:53+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/21/reducing-code-complexity/</loc>
-    <lastmod>2014-08-21T16:00:53+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/</loc>
-    <lastmod>2014-08-21T14:53:17+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters/</loc>
-    <lastmod>2014-08-20T21:04:08+01:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/blog/archives/</loc>
-    <lastmod>2016-07-21T19:23:20+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://greena13.github.io/</loc>
-    <lastmod>2016-07-21T19:23:20+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<url>
+<loc>http://greena13.github.io/blog/2016/07/21/10-things-good-front-end-developers-do/</loc>
+<lastmod>2016-07-21T19:08:15+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/</loc>
+<lastmod>2016-07-17T18:23:35+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2016/07/02/the-best-still-untitled-the-adam-savage-podcast-episodes/</loc>
+<lastmod>2016-07-02T20:45:47+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet/</loc>
+<lastmod>2016-06-30T13:36:51+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes/</loc>
+<lastmod>2016-06-25T13:37:11+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend/</loc>
+<lastmod>2016-01-17T17:22:22+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2016/01/17/getting-to-better-code-reviews/</loc>
+<lastmod>2016-01-17T12:36:29+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2015/02/13/how-to-start-a-startup-notes/</loc>
+<lastmod>2015-02-13T07:54:06+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts/</loc>
+<lastmod>2015-02-01T09:32:42+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job/</loc>
+<lastmod>2015-01-17T08:35:20+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/08/improving-typing-speed/</loc>
+<lastmod>2014-09-08T16:01:41+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/06/factories/</loc>
+<lastmod>2014-09-06T18:24:52+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/03/inversion-of-control/</loc>
+<lastmod>2014-09-03T08:52:19+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/02/dependency-injection/</loc>
+<lastmod>2014-09-02T10:56:14+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/01/first-five-principles-of-object-oriented-programming/</loc>
+<lastmod>2014-09-01T20:18:37+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance/</loc>
+<lastmod>2014-09-01T16:37:28+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/09/01/functional-programming/</loc>
+<lastmod>2014-09-01T09:52:42+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/31/imperative-programming-vs-declarative-programming/</loc>
+<lastmod>2014-08-31T10:37:39+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/31/procedural-programming/</loc>
+<lastmod>2014-08-31T08:42:16+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/30/structured-programming/</loc>
+<lastmod>2014-08-30T22:11:41+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages/</loc>
+<lastmod>2014-08-28T09:58:41+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/26/creating-cards-for-spaced-repetition/</loc>
+<lastmod>2014-08-26T14:44:22+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/22/separating-classes-into-smaller-ones/</loc>
+<lastmod>2014-08-22T09:05:53+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/21/reducing-code-complexity/</loc>
+<lastmod>2014-08-21T16:00:53+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/21/ordering-and-labelling-code/</loc>
+<lastmod>2014-08-21T14:53:17+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2014/08/20/reducing-a-routines-parameters/</loc>
+<lastmod>2014-08-20T21:04:08+01:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/archives/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/posts/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/code-complete/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/complexity/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/simplicity/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/function/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/method/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/parameter/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/clean-code/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/naming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/ordering/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/simplification/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/classes/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/spaced-repetition/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/anki/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/learning/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/memorisation/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/programming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/programming-concepts/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/structured-programming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/procedural-programming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/imperative-programming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/declarative-programming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/functional-programming/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/covariance/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/contravariance/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/dependency-injection/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/design-patterns/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/typing/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/productivity/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/interviewing/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/interview/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/job/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/keyboard-shortcuts/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/efficiency/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/sourcetree/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/atlassian/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/version-control/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/startup/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/entrepreneur/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/code/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/review/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/keyboard/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/colemak/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/podcast/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/recommendations/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/best/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/tim/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/ferris/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/facebook/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/origami/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/cheat/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/sheet/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/still/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/untitled/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/research/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/documentation/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/front-end/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/development/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/2/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/3/</loc>
+</url>
 </urlset>

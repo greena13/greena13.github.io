@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Covariance | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/covariance/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-21T19:23:20+01:00</updated>
+  <updated>2016-08-02T21:11:23+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -19,6 +19,9 @@
     <updated>2014-09-01T16:37:28+01:00</updated>
     <id>http://greena13.github.io/blog/2014/09/01/covariance-and-contravariance</id>
     <content type="html"><![CDATA[<p>I have found variance one of the more difficult things to get my head around in computer science, so I have tried to document the basics as a way of teaching myself.</p>
+
+<!--more-->
+
 
 <p><em>Variance</em> in object-oriented programming refers to how subtyping works between complex types. For example, if <em>B</em> is a subtype of <em>A</em> and <em>CA</em> and <em>CB</em> are enumerable collections (our complex types) that contain items of type <em>A</em> and <em>B</em>, respectively, is the collection <em>CB</em> a subtype of the collection <em>CA</em>?</p>
 

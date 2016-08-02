@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Research | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/research/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-07-21T19:23:20+01:00</updated>
+  <updated>2016-08-02T21:11:23+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -18,7 +18,12 @@
     <link href="http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn/"/>
     <updated>2016-07-17T18:23:35+01:00</updated>
     <id>http://greena13.github.io/blog/2016/07/17/how-i-learned-to-learn</id>
-    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, it is not as insurmountable a task as I have made it sound, as there are common rules and patterns shared amongst them all. As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
+    <content type="html"><![CDATA[<p>Every week I come into contact with over 20 programming languages, frameworks, APIs and other things I need to know. This is not remarkable for someone in the business of software development; there are many web technologies available - each regularly expanding its capabilities - and they may be connected in countless ways. However, there are common rules and patterns shared amongst them all.</p>
+
+<!--more-->
+
+
+<p> As an applier of these technologies, it is important to have a process for spotting the commonalities and being able to efficiently learn (or relearn) what you need to know and recognise the things you do not.</p>
 
 <h2>The realisation</h2>
 
@@ -55,6 +60,13 @@
 <p>When faced with a new library or language, I attempt to gain an understanding of what the entire documentation covers. I apply the 80/20 rule and spend a relatively large amount of time learning a relatively small amount: the fundamentals. It is here that I am looking for the patterns and the similarities and differences with the things I already know. I am not concerned with the details, as these are often unimportant until I have a better idea of what I need to know. I make highlights and annotations and then notes which I perform multiple parses on to make more concise. I then spend a little time getting to know what the rest of the documentation covers, so I know where to find this information when I need it. I may create some further bookmarks at this point to help remind me of what resources are available and what they contain.</p>
 
 <p>In hindsight, taking notes on what is important and not wasting resources committing irrelevant details to memory seems obvious, but I wish someone had explained to me when I was starting out the dynamic nature of full stack development. Or perhaps warned me that mastering a single area of expertise and then expanding radially was likely to be costly in time and effort, as much of what I learned was  rendered inapplicable when external requirements inevitably changed. Or that no matter how dedicated I was towards learning and remembering new information, the rate I would forget things - especially when switching between similar contexts - would barely be outpaced by the rate at which I learnt new information, so I needed a way of externally recording it to be able to quickly refresh my memory. But above all, that learning how to learn and re-learn things quickly would be the most valuable skill I could attain.</p>
+
+<h3>Related</h3>
+
+<ul>
+<li><a href="/blog/2014/08/28/using-spaced-repetition-to-learn-programming-languages">Using Spaced Repetition to Learn Programming Languages</a></li>
+</ul>
+
 ]]></content>
   </entry>
   
