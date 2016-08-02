@@ -6,8 +6,6 @@ comments: true
 categories: keyboard Colemak
 ---
 
-# Getting started
-
 The first step was to make little stickers, one for each key that had a different placement, and attach them to the keys on the keyboard. Then I went to Google to search for a typing program that could help me remap the muscle memory I already had established using qwerty for all those years.
 <!--more-->
 I found a site that let me type sequences of strings that at first had only a few different characters but slowly expanded to include more and more as I progressed through the lessons. This worked well enough in the beginning and let me quickly get a feel for how different the Colemak layout would be. But it had a number of flaws.

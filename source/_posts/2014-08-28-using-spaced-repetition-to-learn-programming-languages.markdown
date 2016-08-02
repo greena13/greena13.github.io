@@ -7,7 +7,7 @@ categories: [Spaced Repetition, Anki, learning, memorisation, programming]
 ---
 
 I have already written on [tips for creating spaced repetition cards](blog/2014/08/26/creating-cards-for-spaced-repetition), but here I hope to summarise a few of Jack Kinsella's tips specific to [memorising programming languages](http://www.jackkinsella.ie/2011/12/05/janki-method.html) (and [here](http://www.oxbridgenotes.co.uk/articles/janki_method_refined) also).
-
+<!--more-->
 ## Use Screenshots
 
 Rather than typing out code manually onto your cards, screenshots should be used. Aside from the obvious and significant time saving, screenshots provide you with syntax highlighting with no additional effort, creating a richer image for the brain to process and remember, with the salient parts already highlighted. Kinsella also claims - perhaps rightly so - that taking screenshots of the original source may draw upon situational memory to help aid in recollection.

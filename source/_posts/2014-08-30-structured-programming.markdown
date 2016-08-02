@@ -7,6 +7,7 @@ categories: ["Programming Concepts", "Structured Programming"]
 ---
 
 I have been recently trying to get a better handle on some terms I possess a casual understanding of and use regularly in conversation, but suspect I don't really have a full appreciation for. *Structured programming* was the first of these terms. What follows is a summary of the more interesting bits of the [Wikipedia article](http://en.wikipedia.org/wiki/Structured_programming).
+<!--more-->
 
 ## Structured Programming
 
