@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Debugging | Key Shift in Cmd]]></title>
+  <link href="http://greena13.github.io/blog/categories/debugging/atom.xml" rel="self"/>
+  <link href="http://greena13.github.io/"/>
+  <updated>2016-08-08T19:49:37+01:00</updated>
+  <id>http://greena13.github.io/</id>
+  <author>
+    <name><![CDATA[Aleck Greenham]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Shoot Trouble and Squish Bugs]]></title>
+    <link href="http://greena13.github.io/blog/2016/08/07/how-to-shoot-trouble-and-squish-bugs/"/>
+    <updated>2016-08-07T18:02:59+01:00</updated>
+    <id>http://greena13.github.io/blog/2016/08/07/how-to-shoot-trouble-and-squish-bugs</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s frustrating to encounter a bug or failure when you know things <em>should</em> be working just fine. This is especially true when the last time something like this happened it was several hours before you found a solution. Even worse is when you are on the other side of those several hours and still have no idea how to solve your problem, despite having tried everything you can think of.</p>
+
+<p>What you need is some debugging suggestions that will spark a new idea on how to go about finally finding that solution.</p>
+
+<!--more-->
+
+
+<h2>Don&rsquo;t solve problems that already have solutions</h2>
+
+<p>If your goal is to solve a problem as quickly as possible, then you can probably jump right in and start googling around. This should be the first step and repeated at every point you gain a new level of insight.</p>
+
+<h3>Search error messages</h3>
+
+<p>Error messages, error codes and stack traces are gold for directing you to ready-made solutions. Be sure to exclude details specific to your system if you are not having any luck; filepaths with user names or custom install locations can prevent a search query from finding similar problems. If you are getting irrelevant results, however, try adding information to your query that provides context such as platform information and names of related modules.</p>
+
+<h3>Find troubleshooting guides</h3>
+
+<p>If you can&rsquo;t work from your problem backwards, look for lists of common problems and their solutions, to see if yours is on it. They are often under the title of <em>Troubleshooting</em> and don&rsquo;t have to be official or included in the documentation, to be helpful.</p>
+
+<h3>Check the list of known issues</h3>
+
+<p>It is worth checking a module&rsquo;s known issues to see if you can see anything that sounds familiar or gives you useful troubleshooting information. Your problem may be fixed with an upgrade or a workaround that someone has already found, but hasn&rsquo;t yet made its way into the official documentation.</p>
+
+<h3>Find analogous situations</h3>
+
+<p>The problem may not be unique to the library you are working with. Find cases of people using the same build or distribution system with other libraries. How they solved their problem may applicable to resolving yours.</p>
+
+<h2>Find out as much context as possible</h2>
+
+<p>To have the best chance of diagnosing a problem, it should be examined in place. Unusual inputs or the execution environment are behind many problems that are difficult to debug.</p>
+
+<h3>Write out the error message</h3>
+
+<p>It&rsquo;s tedious to read excuses for why you&rsquo;re day isn&rsquo;t going smoothly, so it is easy to miss important details in an error message. Writing the error out by hand is a good way to force your brain to pay attention and you will often find information missed on the first read. Draw diagrams to illustrate the relationship between each concept or try rephrasing the error. Pay attention to the names of files and routines to understand where the error is really coming from.</p>
+
+<h3>Check the logs</h3>
+
+<p>Run the program in verbose mode or increase the log level to gain more information about what is going on. Look for relevant warnings before the process failed and try and identify at what point something went wrong.</p>
+
+<h3>Check the source code - briefly</h3>
+
+<p>It may be obvious what is going awry if you check the source code mentioned in the stack trace. Often you will need to trace it up a few levels to get out of the error handling code and to where the actual problem occurs. Look out for debugging ideas, alternative input values and new arguments to test. But beware of going too deep. It is easy to lose a lot of time reading source code only to end up with nothing to show for it at the end. Set a timer and stop if you don&rsquo;t find anything useful in five minutes.</p>
+
+<h2>Remove common causes of problems</h2>
+
+<p>There are a few common causes of problems that occur over and over again, yet are easily overlooked because most of the time they are working just fine.</p>
+
+<h3>Remove possible conflicts</h3>
+
+<p>Close other processes that could be using the same resources to make sure no hidden conflicts are occurring and ensure only one instance of your program is running.</p>
+
+<h3>Check versions</h3>
+
+<p>Check the version of the code and documentation you are consulting. Perhaps the one you are using doesn&rsquo;t have a certain command or accepts different arguments.</p>
+
+<h3>Check dependencies</h3>
+
+<p>Check dependencies are in place and have compatible versions. Make sure nothing has been accidentally changed or updated.</p>
+
+<h3>Check for mistakes easily made</h3>
+
+<p>Look for simple explanations - typos can cause unpredictable results and are the simplest error to fix. The same is true of missing or moved files or settings. DSLs and configuration languages do a poor job or reporting malformed statements and instead quietly ignore them, reverting to the default setting.</p>
+
+<h2>Diagnose the problem</h2>
+
+<p>David J. Agans in his book, <em>Debugging: The 9 Indispensable Rules for Finding Even the Most Elusive Software and Hardware Problems</em> includes the advice <em>Quit Thinking and Look</em>: it is easy to get so caught up in theories and hunches that we forget to closely examine what is actually happening and work from the facts.</p>
+
+<h3>Record what you’ve tried</h3>
+
+<p>Record theories you may have about what&rsquo;s going on and come up with tests to verify or disprove them. Document the exact steps to reproduce the error and keep a record of things you have tried and what you found out. This helps you be systematic and avoid fooling or confusing yourself during debugging. It&rsquo;s also great for putting the problem down for a while and resuming right where you left off by reviewing your notes.</p>
+
+<h3>Start simple and at the beginning</h3>
+
+<p>Before jumping into the details, check that everything is working on a macro scale and that you are not seeing a manifestation of a larger more obvious issue that is easy to resolve. The program may be failing because a dependency has failed, a service is down or a file has been accidentally deleted. Try running the simplest version of the process, like asking it to display its version or to perform a dry run.</p>
+
+<h3>Try and isolate the problem</h3>
+
+<p>Comment code out and try running only certain parts of the process. Nick Parlante of Stanford University, in his list of <em>11 Truths of Debugging</em>, explains the importance of being systematic and changing only one thing at a time. The problem is not moving or changing its behavior; it&rsquo;s just waiting to be found by the careful deductive process of changing one thing at a time and evaluating the result.</p>
+
+<h3>Compare it with something you know works</h3>
+
+<p>Compare your code and configuration with one that you know works correctly. Whether it is a fresh install, an example implementation, or a previous version control commit that you know worked, see if there are any differences and remove them one by one to find the cause of the issue.</p>
+
+<h3>Break it on purpose</h3>
+
+<p>Similar to selectively executing only part of the program to find where a problem lies, you can intentionally break the system to see how it fails. Agans refers to this technique as <em>Make It Fail</em> and explains how it&rsquo;s possible to test theories or learn about the system by seeing how it behaves with know error conditions.</p>
+
+<h2>Understand the problem</h2>
+
+<p>If you have tried searching for the solution and failed to diagnose the problem, then it is time to sit down and study it from the top. It is likely to be more time consuming but provides the greatest chance of not only fixing your problem, but understanding why it occurred in the first place.</p>
+
+<p>One of the Agans' rules is that you must understand a system in order to fix it. This is not strictly true, but it certainly does help you understand the implications of any work-arounds or patches that may be necessary and puts you in a better position to diagnose similar problems in the future.</p>
+
+<h3>Find out how the system should behave</h3>
+
+<p>As a general rule, if you don&rsquo;t know what to google to solve a problem, then don&rsquo;t try. Its difficult to figure out where to direct your debugging efforts if you are not familiar with the major components of a system. So instead focus on learning them and you will invariably gain the understanding you need to start asking the right questions.</p>
+
+<h3>Look for tutorials and examples</h3>
+
+<p>If researching the libraries in general feels a bit too academic or removed from the problem at hand, then search through the <em>Getting Started</em> section of the documentation. Often these will contain test steps or tidbits of information about the setup procedures that can give clues as to what is failing and why. At the very least, they should give you an idea of the components involved and what order they must be started in.</p>
+
+<h3>Test you really understand it</h3>
+
+<p><em>Saturarion</em>, as it is explained in James L. Adams', <em>Conceptual Blockbusting</em>, is the phenomenon where you think you have some information or understanding but cannot produce it when it comes time to do so. This happens a lot when researching a problem. Reading many sources on the same thing can leave you feeling like you have a much more complete understanding than you actually do.</p>
+
+<p>Write down the steps and entities that should be taking place. Boxes and flowcharts are excellent at showing dependencies and protocols; lists are great for sequences. Colour coding statements and diagrams can be great for indicating the confidence you have in your understanding of different components and help direct your further learning: focus on what seems to be most relevant or what you still don&rsquo;t seem to understand that well. You&rsquo;re goal is to get to a point where you understand it well enough to see where it may go wrong.</p>
+
+<p>Try and describe to someone what you think is happening and where the problem is. Verbalising your thoughts is a great way to test understanding and find gaps in it. This is closely related to <em>Rubber Duck Programming</em>.</p>
+
+<p>If you are still stuck after all that, take a break and let your subconscious grapple with the problem. Some piece of information often falls into place - whether you are consciously aware of it or not - and often the problem&rsquo;s solution reveals itself in short order after taking another look.</p>
+
+<p> And don&rsquo;t forget to up-vote any helpful solutions, thank any contributors and craft any pull requests that may resolve the problem for others.</p>
+]]></content>
+  </entry>
+  
+</feed>
