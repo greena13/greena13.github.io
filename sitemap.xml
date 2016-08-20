@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://greena13.github.io/blog/2016/08/19/emojis-are-the-solution-to-useless-commit-messages/</loc>
+<lastmod>2016-08-19T18:32:38+01:00</lastmod>
+</url>
+<url>
 <loc>http://greena13.github.io/blog/2016/08/07/how-to-shoot-trouble-and-squish-bugs/</loc>
 <lastmod>2016-08-07T18:02:59+01:00</lastmod>
 </url>
@@ -299,5 +303,26 @@
 </url>
 <url>
 <loc>http://greena13.github.io/blog/categories/solving/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/git/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/commit/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/message/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/emoji/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/categories/emoticon/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/2/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/3/</loc>
 </url>
 </urlset>
