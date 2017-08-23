@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emoticon | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/emoticon/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-11-30T19:55:47+00:00</updated>
+  <updated>2017-08-23T07:14:43+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -61,6 +61,7 @@
 <li>☂️ <strong>DRYing up code</strong> finding instances of duplication of data or behaviour and consolidating them into a single source of truth that is referenced each time. The system should perform the same behaviour but with less code to maintain.</li>
 <li>🌱 <strong>Extracting code</strong> relocating code that may be re-used or has its own concerns to a separate module. The external behaviour is preserved, it is just achieved using a new dependency.</li>
 <li>✂️ <strong>Removing dead code</strong> deleting code that is never executed or has no effect on the system’s behaviour.</li>
+<li>📻 <strong>Deprecation</strong> deprecating code in some way, whether it&rsquo;s adding deprecation warnings or refactoring to no longer use an old module or routine</li>
 </ul>
 
 
@@ -73,8 +74,8 @@
 <p>Functional changes are those made to how a system behaves: it changes what output will result from one or more input values. There are two main reasons for such changes:</p>
 
 <ul>
-<li><p>🐛 <strong>Bugfixing</strong> making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it’s the developer’s job to close the gap.</p></li>
-<li><p>⚙ <strong>Changing functionality</strong> altering how the system behaves to meet new requirements. Similar to bugfixing, but the way the system is intended to function has changed rather than just the system failing to meet that intention.</p></li>
+<li>🐛 <strong>Bugfixing</strong> making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it’s the developer’s job to close the gap.</li>
+<li>⚙ <strong>Changing functionality</strong> altering how the system behaves to meet new requirements. Similar to bugfixing, but the way the system is intended to function has changed rather than just the system failing to meet that intention.</li>
 </ul>
 
 
@@ -121,13 +122,21 @@
 
 <h3>Milestones &amp; Stability</h3>
 
-<p>In an earlier version of this system there were many more states, including a WIP state. I found this encouraged committing partially complete and broken code and ultimately was an exercise in documenting developer ignorance. There was little value in recording a developer’s understanding of the code’s stability at the time of completion  - because that is precisely when a developer knows the least about it. Code reviews, belated realisations and changing requirements often caused the commit to be mislabelled in retrospect.</p>
+<p>In an earlier version of this system there were many more states, including a WIP state. I found this encouraged committing partially complete and broken code and ultimately was an exercise in documenting developer ignorance. There was little value in recording a developer’s understanding of the code’s stability at the time of completion  - because that is precisely when a developer knows the least about it. Code reviews, belated realisations and changing requirements often caused the commit to be mislabelled in hindsight.</p>
 
-<p>Yet, two important states remain that should be quite clear at the time of committing the changes:</p>
+<p>Yet, three important states remain that should be quite clear at the time of committing the changes:</p>
 
 <ul>
 <li>💀 <strong>Unstable</strong> the code is known to be unstable or seriously incomplete, yet must be committed anyway because of some extenuating circumstances. This serves as a warning to all to not check out this commit and resume work.</li>
 <li>📦 <strong>New version</strong> indicates the closing off and releasing of a version. It is in this commit that the new version string is saved and it this commit that is tagged.</li>
+</ul>
+
+
+<h3>Developer oriented</h3>
+
+<ul>
+<li>🏈 <strong>Hand-off</strong> indicates the code is being committed for the purpose of handing it from one developer to another and may not be complete or stable</li>
+<li>🏷 <strong>Version control</strong> denotes a commit where merging, conflict resolution or reverting an earlier commit is taking place. Anything that is most readily expressed as a version control operation.</li>
 </ul>
 
 
@@ -151,6 +160,7 @@
 
 <ul>
 <li>💄 <strong>Styling</strong> these are superficial changes that represent modifications to how something appears to an end user. These should not include changes to the system’s core behaviour, just how that behaviour is represented.</li>
+<li>✏️ <strong>Copy changes</strong> changes to the text of an application, only.</li>
 <li>🎩 <strong>Admin features</strong> changes that are not part of the system as the end user experiences them, but are instead part of the administrative features of the system.</li>
 <li>📊 <strong>Database changes</strong> represent modifications to the data or the database that the system may maintain locally or remotely.</li>
 </ul>

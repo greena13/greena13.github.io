@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2016-11-30T19:55:47+00:00</updated>
+  <updated>2017-08-23T07:14:43+01:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -61,6 +61,7 @@
 <li>☂️ <strong>DRYing up code</strong> finding instances of duplication of data or behaviour and consolidating them into a single source of truth that is referenced each time. The system should perform the same behaviour but with less code to maintain.</li>
 <li>🌱 <strong>Extracting code</strong> relocating code that may be re-used or has its own concerns to a separate module. The external behaviour is preserved, it is just achieved using a new dependency.</li>
 <li>✂️ <strong>Removing dead code</strong> deleting code that is never executed or has no effect on the system’s behaviour.</li>
+<li>📻 <strong>Deprecation</strong> deprecating code in some way, whether it&rsquo;s adding deprecation warnings or refactoring to no longer use an old module or routine</li>
 </ul>
 
 
@@ -73,8 +74,8 @@
 <p>Functional changes are those made to how a system behaves: it changes what output will result from one or more input values. There are two main reasons for such changes:</p>
 
 <ul>
-<li><p>🐛 <strong>Bugfixing</strong> making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it’s the developer’s job to close the gap.</p></li>
-<li><p>⚙ <strong>Changing functionality</strong> altering how the system behaves to meet new requirements. Similar to bugfixing, but the way the system is intended to function has changed rather than just the system failing to meet that intention.</p></li>
+<li>🐛 <strong>Bugfixing</strong> making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it’s the developer’s job to close the gap.</li>
+<li>⚙ <strong>Changing functionality</strong> altering how the system behaves to meet new requirements. Similar to bugfixing, but the way the system is intended to function has changed rather than just the system failing to meet that intention.</li>
 </ul>
 
 
@@ -121,13 +122,21 @@
 
 <h3>Milestones &amp; Stability</h3>
 
-<p>In an earlier version of this system there were many more states, including a WIP state. I found this encouraged committing partially complete and broken code and ultimately was an exercise in documenting developer ignorance. There was little value in recording a developer’s understanding of the code’s stability at the time of completion  - because that is precisely when a developer knows the least about it. Code reviews, belated realisations and changing requirements often caused the commit to be mislabelled in retrospect.</p>
+<p>In an earlier version of this system there were many more states, including a WIP state. I found this encouraged committing partially complete and broken code and ultimately was an exercise in documenting developer ignorance. There was little value in recording a developer’s understanding of the code’s stability at the time of completion  - because that is precisely when a developer knows the least about it. Code reviews, belated realisations and changing requirements often caused the commit to be mislabelled in hindsight.</p>
 
-<p>Yet, two important states remain that should be quite clear at the time of committing the changes:</p>
+<p>Yet, three important states remain that should be quite clear at the time of committing the changes:</p>
 
 <ul>
 <li>💀 <strong>Unstable</strong> the code is known to be unstable or seriously incomplete, yet must be committed anyway because of some extenuating circumstances. This serves as a warning to all to not check out this commit and resume work.</li>
 <li>📦 <strong>New version</strong> indicates the closing off and releasing of a version. It is in this commit that the new version string is saved and it this commit that is tagged.</li>
+</ul>
+
+
+<h3>Developer oriented</h3>
+
+<ul>
+<li>🏈 <strong>Hand-off</strong> indicates the code is being committed for the purpose of handing it from one developer to another and may not be complete or stable</li>
+<li>🏷 <strong>Version control</strong> denotes a commit where merging, conflict resolution or reverting an earlier commit is taking place. Anything that is most readily expressed as a version control operation.</li>
 </ul>
 
 
@@ -151,6 +160,7 @@
 
 <ul>
 <li>💄 <strong>Styling</strong> these are superficial changes that represent modifications to how something appears to an end user. These should not include changes to the system’s core behaviour, just how that behaviour is represented.</li>
+<li>✏️ <strong>Copy changes</strong> changes to the text of an application, only.</li>
 <li>🎩 <strong>Admin features</strong> changes that are not part of the system as the end user experiences them, but are instead part of the administrative features of the system.</li>
 <li>📊 <strong>Database changes</strong> represent modifications to the data or the database that the system may maintain locally or remotely.</li>
 </ul>
@@ -328,11 +338,11 @@
 <p>A developer is usually performing one of just a few types of work:</p>
 
 <ul>
-<li><p><strong>Refactoring</strong> - improving the structure of code without changing how it functions. It is also important to know if the goal in doing so is improvements in performance, readability, structure or testability.</p></li>
-<li><p><strong>Bugfixing</strong> - making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it&rsquo;s the developer&rsquo;s job to close the gap.</p></li>
-<li><p><strong>Changing functionality</strong> - altering how the system behaves to meet new requirements. Similar to bugfixing, but the intended way the system functions has changed.</p></li>
-<li><p><strong>Adding functionality</strong> - adding new behaviour, while leaving the existing behaviour intact.</p></li>
-<li><p><strong>Addressing non-functional concerns</strong>: not changing the way a system behaves as it is seen by the end user, but adding or changing something like logging, analytics, monitoring or fault tolerance</p></li>
+<li><strong>Refactoring</strong> - improving the structure of code without changing how it functions. It is also important to know if the goal in doing so is improvements in performance, readability, structure or testability.</li>
+<li><strong>Bugfixing</strong> - making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it&rsquo;s the developer&rsquo;s job to close the gap.</li>
+<li><strong>Changing functionality</strong> - altering how the system behaves to meet new requirements. Similar to bugfixing, but the intended way the system functions has changed.</li>
+<li><strong>Adding functionality</strong> - adding new behaviour, while leaving the existing behaviour intact.</li>
+<li><strong>Addressing non-functional concerns</strong>: not changing the way a system behaves as it is seen by the end user, but adding or changing something like logging, analytics, monitoring or fault tolerance</li>
 </ul>
 
 
@@ -370,18 +380,18 @@
 <p>Structured programming is a formal system that prescribes a series of models and rules governing program structure and control flow. In particular, it is most helpful to understand how and when to use the 3 primary ways of connecting statements:</p>
 
 <ul>
-<li><p><strong>Sequences</strong>: sequentially executed statements and subroutines</p></li>
-<li><p><strong>Selections</strong>: conditionally executed statements and subroutines, depending on some system state</p></li>
-<li><p><strong>Iterations</strong>: repeatedly executed statements and subroutines until some system state is achieved or all members of a collection are exhausted</p></li>
+<li><strong>Sequences</strong>: sequentially executed statements and subroutines</li>
+<li><strong>Selections</strong>: conditionally executed statements and subroutines, depending on some system state</li>
+<li><strong>Iterations</strong>: repeatedly executed statements and subroutines until some system state is achieved or all members of a collection are exhausted</li>
 </ul>
 
 
 <p>And the corresponding 3 control structures:</p>
 
 <ul>
-<li><p><strong>Subroutines</strong>: groupings of code that can be invoked using a single statement (procedures, functions, methods)</p></li>
-<li><p><strong>Block structures</strong>: collection of statements invoked together under the same conditions</p></li>
-<li><p><strong>Loops</strong>: collection of statements that are invoked repeatedly together until a particular state is reached (for and while loops)</p></li>
+<li><strong>Subroutines</strong>: groupings of code that can be invoked using a single statement (procedures, functions, methods)</li>
+<li><strong>Block structures</strong>: collection of statements invoked together under the same conditions</li>
+<li><strong>Loops</strong>: collection of statements that are invoked repeatedly together until a particular state is reached (for and while loops)</li>
 </ul>
 
 
@@ -2536,9 +2546,9 @@ If the employee has high equity, people aren’t going to think it’s fair that
 <p>Pure functions are those that have no side effects and depend only on their argument values, not on any system information; consequently, they return the same value for a given set of parameter values every time. They have some unique properties useful for code optimisation and reasoning:</p>
 
 <ul>
-<li><p>If the result of a pure expression is not used, it can be removed without altering the code&rsquo;s behaviour.</p></li>
-<li><p>If a pure function is called with arguments that are themselves pure functions, or don&rsquo;t have side effects, then the result can be cached and returned if the function is called with the same parameter values again.</p></li>
-<li><p>If there is no dependency amongst a collection of functions, they can be run in any order with the same result.</p></li>
+<li>If the result of a pure expression is not used, it can be removed without altering the code&rsquo;s behaviour.</li>
+<li>If a pure function is called with arguments that are themselves pure functions, or don&rsquo;t have side effects, then the result can be cached and returned if the function is called with the same parameter values again.</li>
+<li>If there is no dependency amongst a collection of functions, they can be run in any order with the same result.</li>
 </ul>
 
 
