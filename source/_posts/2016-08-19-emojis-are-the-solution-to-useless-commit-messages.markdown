@@ -56,7 +56,6 @@ It now becomes possible to quickly examine the commit history - whether manually
 Functional changes are those made to how a system behaves: it changes what output will result from one or more input values. There are two main reasons for such changes:
 
 - 🐛 **Bugfixing** making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it’s the developer’s job to close the gap.
-
 - ⚙ **Changing functionality** altering how the system behaves to meet new requirements. Similar to bugfixing, but the way the system is intended to function has changed rather than just the system failing to meet that intention.
 
 These emojis clearly label the system as changing and give an indication of the resources being spent correcting bugs and changing existing functionality. Functional change emojis should **not** be used in the same commit messages as those in the Refactoring group. Perform refactoring and functional changes separately.

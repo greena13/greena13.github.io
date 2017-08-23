@@ -16,13 +16,9 @@ A developer should be aware at all times of what type of work they are currently
 A developer is usually performing one of just a few types of work:
 
 - **Refactoring** - improving the structure of code without changing how it functions. It is also important to know if the goal in doing so is improvements in performance, readability, structure or testability.
-
 - **Bugfixing** - making corrective changes to the way the system functions. There is a difference between how the system currently functions and how it should and it's the developer's job to close the gap.
-
 - **Changing functionality** - altering how the system behaves to meet new requirements. Similar to bugfixing, but the intended way the system functions has changed.
-
 - **Adding functionality** - adding new behaviour, while leaving the existing behaviour intact.
-
 - **Addressing non-functional concerns**: not changing the way a system behaves as it is seen by the end user, but adding or changing something like logging, analytics, monitoring or fault tolerance
 
 The most valuable thing about a developer being mindful of what they are doing, is it helps them identify when they done. In particular, they should be able to answer the 3 important questions:
@@ -56,17 +52,13 @@ Imperative and declarative programming are two approaches to programming (but no
 Structured programming is a formal system that prescribes a series of models and rules governing program structure and control flow. In particular, it is most helpful to understand how and when to use the 3 primary ways of connecting statements:
 
 - **Sequences**: sequentially executed statements and subroutines
-
 - **Selections**: conditionally executed statements and subroutines, depending on some system state
-
 - **Iterations**: repeatedly executed statements and subroutines until some system state is achieved or all members of a collection are exhausted
 
 And the corresponding 3 control structures:
 
 - **Subroutines**: groupings of code that can be invoked using a single statement (procedures, functions, methods)
-
 - **Block structures**: collection of statements invoked together under the same conditions
-
 - **Loops**: collection of statements that are invoked repeatedly together until a particular state is reached (for and while loops)
 
 Note that throwing and catching exceptions are absent from this list and were actually discouraged by Structured Programming, but have since proven that their benefits outweighs the complexity they add and are regularly used in modern languages.

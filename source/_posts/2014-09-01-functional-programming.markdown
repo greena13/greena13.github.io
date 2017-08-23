@@ -15,9 +15,7 @@ Functional programming is a [declarative programming](/blog/2014/08/31/imperativ
 Pure functions are those that have no side effects and depend only on their argument values, not on any system information; consequently, they return the same value for a given set of parameter values every time. They have some unique properties useful for code optimisation and reasoning:
 
 - If the result of a pure expression is not used, it can be removed without altering the code's behaviour.
-
 - If a pure function is called with arguments that are themselves pure functions, or don't have side effects, then the result can be cached and returned if the function is called with the same parameter values again.
-
 - If there is no dependency amongst a collection of functions, they can be run in any order with the same result.
 
 ## Referential Transparency
