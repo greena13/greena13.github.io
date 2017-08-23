@@ -11,7 +11,7 @@ In most git clients, commit messages are truncated after a single line. This is 
 
 The need for brevity can be partially addressed by ensuring descriptions are written so they read like steps in a set of instructions for how to modify the code: e.g. *Remove file X* is preferable to *Removed file X* or *Removing file X*. This leaves out distracting words and tense.
 
-The problem remains, however, of deciding what information is useful and at what level of abstraction it should be expressed. This leads to inconsistencies in specificity depending on the nature and size of the changes, making it difficult to form any high level judgements about the code short of reading through the changes of each commit. A reader cannot ascertain the *type* of changes made, nor the reasons for making them, just from the commit's message. 
+The problem remains, however, of deciding what information is useful and at what level of abstraction it should be expressed. This leads to inconsistencies in specificity depending on the nature and size of the changes, making it difficult to form any high level judgements about the code short of reading through the changes of each commit. A reader cannot ascertain the *type* of changes made, nor the reasons for making them, just from the commit's message.
 
 Separate systems are maintained for tracking features and fixes (and the rationale behind them) but they deal in much higher levels of abstraction; they don't explain what a developer was hoping to achieve when they moved a method or renamed a constant. This information can be recorded in comments, but often only really makes sense within the context and scope of a change. Such comments only highlight what the code used to be - not what it is - and are either irrelevant or obsolete.
 
@@ -21,11 +21,11 @@ This could be achieved by prefixing each commit to signify useful information ab
 
 Emojis are perfect for capitalising on the brain’s ability to easily parse and distinguish between visual symbols. They also take up little space - a single character position each - and are designed to quickly impart concepts and ideas, yet be versatile enough to have different meaning depending on context. They are therefore more succinct and expressive than short mnemonics created from a series of letters.
 
-## Related work 
+## Related work
 
 Emojis have been used in commit messages for years now, helped along by [Github offerring support for them using printable characters](http://www.webpagefx.com/tools/emoji-cheat-sheet/). However, I have not encountered them being used consistently or to convey as extensive a range of data as what is described below. It is worth noting that the emojis offered by Github are not as extensive as I require and although they are guaranteed to appear consistently on Github, they will not display at all in many git clients, instead rendering the longer sequence of characters that denote them - which cuts into the space afforded to the commit message itself. Git client support for them is likely to improve, however, so you may decide that staying within those offered by Github is right for you and your team.
 
-The system that follows is an amalgamation of an earlier version of itself and [Mohammad Shokri’s commit emojis](https://github.com/slashsBin/styleguide-git-commit-message) - the only other resource I was able to find online along similar lines. There are more than a few changes, exclusions and additions to fill some perceived gaps.  I believe Shokri remains within the Github emojis. 
+The system that follows is an amalgamation of an earlier version of itself and [Mohammad Shokri’s commit emojis](https://github.com/slashsBin/styleguide-git-commit-message) - the only other resource I was able to find online along similar lines. There are more than a few changes, exclusions and additions to fill some perceived gaps.  I believe Shokri remains within the Github emojis.
 
 ## Commit Emojis
 
@@ -46,6 +46,7 @@ Refactoring is improving the structure of code without changing how it functions
 - ☂️ **DRYing up code** finding instances of duplication of data or behaviour and consolidating them into a single source of truth that is referenced each time. The system should perform the same behaviour but with less code to maintain.
 - 🌱 **Extracting code** relocating code that may be re-used or has its own concerns to a separate module. The external behaviour is preserved, it is just achieved using a new dependency.
 - ✂️ **Removing dead code** deleting code that is never executed or has no effect on the system’s behaviour.
+- 📻 **Deprecation** deprecating code in some way, whether it's adding deprecation warnings or refactoring to no longer use an old module or routine
 
 By attaching any of these labels to a commit, it tells the reader that - according to the developer's understanding at the time - the code should have the same behaviour after the commit as it did before. It clearly indicates both the developer’s intentions and the nature of the changes.
 
@@ -72,9 +73,9 @@ These emojis indicate effort spent on expanding the system as opposed to maintai
 
 ### Infrastructure changes
 
-Often your software system is linked with dependencies and compiled according so some environment-specific settings. These changes do not modify the system directly, but can indirectly affect how it behaves through compiler arguments and the bundled libraries and assets to include.  
+Often your software system is linked with dependencies and compiled according so some environment-specific settings. These changes do not modify the system directly, but can indirectly affect how it behaves through compiler arguments and the bundled libraries and assets to include.
 
-- 🔧**Changing build settings** changes to the way the project is built or developed. This includes establishing and maintaining different build environments and developments tools. 
+- 🔧**Changing build settings** changes to the way the project is built or developed. This includes establishing and maintaining different build environments and developments tools.
 - **Dependencies**  ➡️ adding, ⬅️ removing, ⬆️ upgrading and ⬇️ downgrading dependencies often have a big impact on the behaviour of a system and should be marked clearly to make it easy to track when the libraries that your system depends on are changed. This makes it easier to identify the cause of newfound issues and to keep track of the addition of more prerequisites.
 
 ### Non-functional Changes
@@ -92,12 +93,18 @@ There are many changes to the code that do not effect the way a system functions
 
 ### Milestones & Stability
 
-In an earlier version of this system there were many more states, including a WIP state. I found this encouraged committing partially complete and broken code and ultimately was an exercise in documenting developer ignorance. There was little value in recording a developer’s understanding of the code’s stability at the time of completion  - because that is precisely when a developer knows the least about it. Code reviews, belated realisations and changing requirements often caused the commit to be mislabelled in retrospect.
+In an earlier version of this system there were many more states, including a WIP state. I found this encouraged committing partially complete and broken code and ultimately was an exercise in documenting developer ignorance. There was little value in recording a developer’s understanding of the code’s stability at the time of completion  - because that is precisely when a developer knows the least about it. Code reviews, belated realisations and changing requirements often caused the commit to be mislabelled in hindsight.
 
-Yet, two important states remain that should be quite clear at the time of committing the changes:
+Yet, three important states remain that should be quite clear at the time of committing the changes:
 
 - 💀 **Unstable** the code is known to be unstable or seriously incomplete, yet must be committed anyway because of some extenuating circumstances. This serves as a warning to all to not check out this commit and resume work.
 - 📦 **New version** indicates the closing off and releasing of a version. It is in this commit that the new version string is saved and it this commit that is tagged.
+
+### Developer oriented
+
+- 🏈 **Hand-off** indicates the code is being committed for the purpose of handing it from one developer to another and may not be complete or stable
+- 🏷 **Version control** denotes a commit where merging, conflict resolution or reverting an earlier commit is taking place. Anything that is most readily expressed as a version control operation.
+
 
 ## Concerns
 
@@ -115,12 +122,13 @@ If you are changing or adding functionality, there are some common motivations f
 It can be useful to label what general areas of a system a commit makes changes to so that you may gauge where to focus testing or to expect new functionality.
 
 - 💄 **Styling** these are superficial changes that represent modifications to how something appears to an end user. These should not include changes to the system’s core behaviour, just how that behaviour is represented.
+- ✏️ **Copy changes** changes to the text of an application, only.
 - 🎩 **Admin features** changes that are not part of the system as the end user experiences them, but are instead part of the administrative features of the system.
 - 📊 **Database changes** represent modifications to the data or the database that the system may maintain locally or remotely.
 
 ## Using the emojis
 
-Select as many of the *Concerns* emojis (*Reason for Changes* and *Common System Areas* emojis) as are applicable and then select one *Change Type* emoji. If two or more *Change Type* emojis are applicable, attempt to separate out the commit into several smaller ones so that each only makes a single type of change. If this is not possible, select all the *Change Type* emojis that are applicable. Use whitespace in accordance with your personal preference. Complete the rest of the message with whatever issue number and description you normally would include. 
+Select as many of the *Concerns* emojis (*Reason for Changes* and *Common System Areas* emojis) as are applicable and then select one *Change Type* emoji. If two or more *Change Type* emojis are applicable, attempt to separate out the commit into several smaller ones so that each only makes a single type of change. If this is not possible, select all the *Change Type* emojis that are applicable. Use whitespace in accordance with your personal preference. Complete the rest of the message with whatever issue number and description you normally would include.
 
 Applying the emojis on a Macbook is very quick as you simply need to press ctrl + cmd + space to bring up the emoji selector. I prefer to add and group those emojis used above in my favourites so it is even easier to chose from among them. You can copy and paste the emojis into the search bar on the emoji picker to find them for the first time.
 
