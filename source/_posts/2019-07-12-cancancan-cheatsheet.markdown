@@ -806,13 +806,13 @@ exception.subject # => Article
 # in ApplicationController
 rescue_from CanCan::AccessDenied do |exception|
   if Rails.env.development?
-    matching_rules = current_ability.send(:relevant_rules_for_match, action, exception.subject)
+    matching_rules = current_ability.send(:relevant_rules_for_match, exception.action, exception.subject)
 
     if matching_rules.any?
       describe_rules = matching_rules.map {|rule| { conditions: rule.conditions, block: rule.instance_variable_get(:@block) } }
      
-      Rails.logger.debug "CanCanCan::AccessDenied: User has ability to #{exception.subject.inspect} " \
-                         "#{exception.action}, but failed to satisfy conditions: " \
+      Rails.logger.debug "CanCanCan::AccessDenied: User has ability to #{exception.action} " \
+                         "#{exception.subject.inspect}, but failed to satisfy conditions: " \
                          "#{describe_rules.to_sentence(two_words_connector: ' or ', last_word_connector: ' or ')}"
     else
       Rails.logger.debug "CanCanCan::AccessDenied: User does not have ability to #{exception.action} " \
@@ -1011,3 +1011,12 @@ Case: For `accessible_by`
     </tr>
     </tbody>
 </table>
+
+
+### Common exceptions
+
+```ruby
+undefined method `klass' for nil:NilClass
+```                                      
+
+Occurs when you've defined an association name incorrectly in a condition hash.
