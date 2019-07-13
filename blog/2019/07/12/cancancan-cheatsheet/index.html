@@ -986,13 +986,13 @@
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># in ApplicationController</span>
 </span><span class='line'><span class="n">rescue_from</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">AccessDenied</span> <span class="k">do</span> <span class="o">|</span><span class="n">exception</span><span class="o">|</span>
 </span><span class='line'>  <span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">development?</span>
-</span><span class='line'>    <span class="n">matching_rules</span> <span class="o">=</span> <span class="n">current_ability</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:relevant_rules_for_match</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">exception</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">matching_rules</span> <span class="o">=</span> <span class="n">current_ability</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:relevant_rules_for_match</span><span class="p">,</span> <span class="n">exception</span><span class="o">.</span><span class="n">action</span><span class="p">,</span> <span class="n">exception</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">if</span> <span class="n">matching_rules</span><span class="o">.</span><span class="n">any?</span>
 </span><span class='line'>      <span class="n">describe_rules</span> <span class="o">=</span> <span class="n">matching_rules</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">rule</span><span class="o">|</span> <span class="p">{</span> <span class="ss">conditions</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">conditions</span><span class="p">,</span> <span class="ss">block</span><span class="p">:</span> <span class="n">rule</span><span class="o">.</span><span class="n">instance_variable_get</span><span class="p">(</span><span class="ss">:@block</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>      <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;CanCanCan::AccessDenied: User has ability to </span><span class="si">#{</span><span class="n">exception</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="p">\</span>
-</span><span class='line'>                         <span class="s2">&quot;</span><span class="si">#{</span><span class="n">exception</span><span class="o">.</span><span class="n">action</span><span class="si">}</span><span class="s2">, but failed to satisfy conditions: &quot;</span> <span class="p">\</span>
+</span><span class='line'>      <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;CanCanCan::AccessDenied: User has ability to </span><span class="si">#{</span><span class="n">exception</span><span class="o">.</span><span class="n">action</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="p">\</span>
+</span><span class='line'>                         <span class="s2">&quot;</span><span class="si">#{</span><span class="n">exception</span><span class="o">.</span><span class="n">subject</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">, but failed to satisfy conditions: &quot;</span> <span class="p">\</span>
 </span><span class='line'>                         <span class="s2">&quot;</span><span class="si">#{</span><span class="n">describe_rules</span><span class="o">.</span><span class="n">to_sentence</span><span class="p">(</span><span class="ss">two_words_connector</span><span class="p">:</span> <span class="s1">&#39; or &#39;</span><span class="p">,</span> <span class="ss">last_word_connector</span><span class="p">:</span> <span class="s1">&#39; or &#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">else</span>
 </span><span class='line'>      <span class="no">Rails</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;CanCanCan::AccessDenied: User does not have ability to </span><span class="si">#{</span><span class="n">exception</span><span class="o">.</span><span class="n">action</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="p">\</span>
@@ -1206,6 +1206,17 @@
     </tbody>
 </table>
 
+
+<h3>Common exceptions</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">undefined</span> <span class="nb">method</span> <span class="sb">`klass&#39; for nil:NilClass</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Occurs when you&rsquo;ve defined an association name incorrectly in a condition hash.</p>
 
 
         <hr class="divider-short"/>
