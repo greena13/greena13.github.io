@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Thinking in Dimensions: A Unified Approach to Filter Grammars - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Thinking in Dimensions: A Unified Approach to Filter Grammars written Learning filter grammars (such as CSS selectors, regular expressions or SQL) &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2020/12/12/thinking-in-dimensions-a-unified-approach-to-filter-grammars">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Thinking in Dimensions: A Unified Approach to Filter Grammars</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2020-12-12T14:48:12+00:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>Learning filter grammars (such as CSS selectors, regular expressions or SQL) can be slow and error prone. Cheatsheets help with picking up a new grammar, or revising an old one you may be returning to after a period of absence, but because each has different concepts, syntax and operators, it&rsquo;s often difficult to see the similarities. They are so different that it&rsquo;s easy to lose track of the fact that they are all different tools to perform the same job.</p>
+
+<p>This article explains a unified approach to filter grammars that provides a framework to classify, select and apply them appropriately; it also aids to reduce the barrier to identifying and learning new ones when your application calls for it.</p>
+
+<!--more-->
+
+
+<h2>General terminology: Dimensions and Nodes</h2>
+
+<p>To understand a filter grammar, you must first understand the dimensions or properties of the data structure it is designed for. The term <em>dimension</em> has its limitations (I use it because I find it helpful to think of these properties visually in dimensional space, but you may prefer instead think of them as simply attributes, or members of a tuple).</p>
+
+<p>Filter grammars tend to operate on and return results of the same type, which can be thought of as the <em>nodes</em> of the data structure. It doesn&rsquo;t matter what logical structure the data takes (whether that&rsquo;s a HTML document tree, or a flat list of file lines), it&rsquo;s useful to think of the data being filtering as a series of independent nodes, or points in space you arrive at by matching on each dimension&rsquo;s value.</p>
+
+<h2>Semantic dimensions</h2>
+
+<p>Identifying what <em>semantic</em> dimensions a data structure has is a process of considering its logic structure and meaning, and examining what specialised operators the filter grammar provides to reflect that meaning.</p>
+
+<p>We&rsquo;ll take HTML documents as an convenient example as it is used with common filter grammars like CSS and XPath.</p>
+
+<p>HTML documents have a number of <em>semantic</em> dimensions:</p>
+
+<ul>
+<li>An element&rsquo;s <em>hierarchy</em> (it&rsquo;s relationship to its ancestors and descants)</li>
+<li>An element&rsquo;s siblings (its grouping with other elements that share a parent element) and often more importantly, it&rsquo;s <em>position</em> within those siblings.</li>
+<li>An element&rsquo;s <em>type</em> (the tag type it&rsquo;s given in the document)</li>
+<li>An element&rsquo;s <em>attributes</em></li>
+<li>An element&rsquo;s <em>text content</em></li>
+<li>An element&rsquo;s <em>states</em> (focused, hovered, disabled, etc)</li>
+</ul>
+
+
+<p>A filter grammar won&rsquo;t always provide the ability to filter on all of these dimensions. For example, in CSS you can apply filters on an elements' hierarchy, position, type and attribute, but not really its text content (for that you need XPath or possible jQuery). And XPath does not provide the ability to filter on an element&rsquo;s state, but CSS does.</p>
+
+<h3>Filter grammars are comprised of smaller ones</h3>
+
+<p>Semantic dimensions are typically independent and so filter grammars can be thought of as a collection of <em>smaller</em>, simpler grammars, applied to specific dimensions. Although there are cases in some filter grammars where two or more properties are combined when matched, the dimensions tend to be kept separate. Which of dimension to filter, is usually indicated with some sort of switch. For example, in CSS, the period indicator (<code>.</code>) proceeds matches that should be applied to an element&rsquo;s <code>class</code> attribute, and a hash (<code>#</code>) is used to match on an element&rsquo;s <code>id</code>.</p>
+
+<h2>Data types</h2>
+
+<p>Once you have identified the semantic dimensions of a data structure, you need to determine the data type the filter grammar treats it as:</p>
+
+<ul>
+<li>Nominal: Named categories (e.g. enums, booleans). These values have no magnitude (no one value is greater than any other), no intervals (they&rsquo;re discrete categories with no values in between) and no absolute values (each value has meaning only in it being distinct from the other possible values and not some global measure).</li>
+<li>Ordinal: Discrete values (e.g. integers, hierarchy, position) that have an explicit ordering amongst values. They have magnitude (values can be ordered from smallest to largest), but no &ldquo;in between&rdquo; values.</li>
+<li>Scalar: Continuous values (e.g. floats). They are like ordinals, but have an infinite precision (up to the limitations of the underlying datatype).</li>
+</ul>
+
+
+<p>From these, there are some special cases:</p>
+
+<ul>
+<li>Sets and fields: Sets or collections where the order of elements does not matter. This is usually a way of encoding nominal data. (e.g. comma or space separated lists of words)</li>
+<li>Permutations: Sets or collections, where the elements are in a specific order (e.g. arrays, characters in a string, hierarchies, file paths and list items). The order itself is ordinal data (i.e. the first position - index 0 - is always lower or before the second position - index 1 - and so on).</li>
+</ul>
+
+
+<p>A dimension&rsquo;s data type determines which operators are possible (and their semantics).</p>
+
+<h3>Nominal data</h3>
+
+<p>The simplest dimensional representation to visualise is the number line. Similarly, the simplest operator is the <em>presence</em> one - which determines whether there is a value at all. After that, we consider the <em>equality</em> operator by placing values on the number line, and evaluating if they occupy the same position. We can then consider their complements - the <em>not present</em> and <em>not equal</em> operators. It is at this point we have effectively explored the full set of basic operators available for nominal data.</p>
+
+<h3>Ordinal data</h3>
+
+<p>Ordinal data (which adds magnitude) allows us to consider values <em>relative</em> to a reference points, often termed the <em>anchor</em>. We can compare two values relative to one another by deeming one the anchor and evaluating if a value is closer or further away to one end of the number line. This is how we get the <em>less than</em> and <em>greater than</em> operators (which we can overlap with the equality operators to get <em>less than or equal to</em> and <em>greater than or equal to</em>). These operators are complements of one another (paying special attention to where you want the equality to fall: e.g. the complement of <em>less than</em> is not <em>greater than</em> but <em>greater than or equal to</em>.)</p>
+
+<p>If you place the anchor at the first or last possible value of a dimension (often termed a <em>global anchor</em>) in order to find its closest neighbor, you achieve the <em>minimum</em> and <em>maximum</em> operators.</p>
+
+<p>If you introduce an additional anchor (which is the same as applying the <em>less than</em> and <em>greater than</em> operators one after another), it&rsquo;s possible to identify if a value is <em>between</em> two others. You can also place limits on the <em>less than</em> and <em>greater than</em> operators, to get the <em>within</em> operator (requiring a value to be within a certain number of places of another).</p>
+
+<h3>Scalar data</h3>
+
+<p>Scalar values - which not only have magnitude, but are continuous and have equal intervals as well - allow  aggregate functions such as averages and percentiles which may yield results between the original values (more on this in a minute).</p>
+
+<h3>Permutation data</h3>
+
+<p>Stepping away from the number line, and instead considering permutations, we get a different set of semantics for the same operators: Anchors are not based on values but position (e.g. at the start of the permutation, or at the end).</p>
+
+<p>With the number line, the position of the values were determined by those values themselves. However, permutations have both the position of the value, and the value itself. For example, in the string &ldquo;Monday&rdquo;, &lsquo;n&rsquo; has position 2 (0 indexed) and value &lsquo;n&rsquo;. Some operators set or anchor the position and attempt to match the value, like <em>begins with</em> or <em>ends with</em>. These are the global anchors. However, some operators require relative offsets or ranges for the position value, like the <em>proceeded by</em> operator; these are the relative anchors. Global anchors match on the position and then value and relative anchors match on value and then position, so neither one dimension is inherently more important than the other.</p>
+
+<h3>Summary of semantic dimension operators</h3>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 96px;"/>
+        <col style="width: 137px;"/>
+        <col style="width: 118px;"/>
+        <col style="width: 129px;"/>
+        <col style="width: 154px;"/>
+        <col style="width: 181px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 137px; padding: 8px;">
+            <div>Nominal</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 118px; padding: 8px;">
+            <div>Sets and fields</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 129px; padding: 8px;">
+            <div>Ordinal</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 154px; padding: 8px;">
+            <div>Scalar</div>
+        </td>
+        <td style="vertical-align: bottom; border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Permutations</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Magnitude</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 255px; padding: 8px;">
+            <div>None</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 129px; padding: 8px;">
+            <div>Yes</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 154px; padding: 8px;">
+            <div>Yes</div>
+        </td>
+        <td style="vertical-align: bottom; border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Yes. (Ordinal value of positions)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Discrete</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 255px; padding: 8px;">
+            <div>Yes</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 129px; padding: 8px;">
+            <div>Yes</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 154px; padding: 8px;">
+            <div>No. (Continuous.)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Yes (Each position has discrete index)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Absolute values</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 255px; padding: 8px;">
+            <div>No</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 129px; padding: 8px;">
+            <div>Yes.</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 154px; padding: 8px;">
+            <div>Yes.</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Yes. (First, last)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Examples</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 137px; padding: 8px;">
+            <div>Boolean, Categories</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 118px; padding: 8px;">
+            <div>Comma or space separated list of words</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 129px; padding: 8px;">
+            <div>Integers</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 154px; padding: 8px;">
+            <div>Floats</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Strings, Hierarchy, Lists</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6"
+            style="background-color: rgb(234, 234, 234); border: 1px solid rgb(187, 187, 187); width: 815px; padding: 8px;">
+            <div>Non anchored match</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Any/presence</div>
+        </td>
+        <td colspan="5" style="border: 1px solid rgb(204, 204, 204); width: 719px; padding: 8px;">
+            <div>Presence (not undefined)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Exact match</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 137px; padding: 8px;">
+            <div>Equals</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 118px; padding: 8px;">
+            <div>Field is equal</div>
+        </td>
+        <td colspan="3" style="border: 1px solid rgb(204, 204, 204); width: 464px; padding: 8px;">
+            <div>Equals</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Partial match</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 137px; padding: 8px;">
+            <div><span
+                    style="color: rgb(134, 134, 134); --inversion-type-color:  simple;">Not applicable</span>
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 118px; padding: 8px;">
+            <div>Set contains element</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div><span
+                    style="color: rgb(134, 134, 134); --inversion-type-color:  simple;">Not applicable</span>
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Contains (smaller permutation)</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6"
+            style="background-color: rgb(234, 234, 234); border: 1px solid rgb(187, 187, 187); width: 815px; padding: 8px;">
+            <div><span style="color: rgb(0, 0, 0); --inversion-type-color:  simple;">Top/Left anchored</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Absolute match</div>
+        </td>
+        <td rowspan="4"
+            style="height: 128px; border: 1px solid rgb(204, 204, 204); width: 255px; padding: 8px;"
+            colspan="2">
+            <div><span style="color: rgb(134, 134, 134); --inversion-type-color:  simple;">Not applicable - no position or magnitude, so anchors have no meaning</span>
+            </div>
+            <div><br/></div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Lowest (equal to lowest value in the set)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>First, Begins with (Matches elements in first positions)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Immediate relative match</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Immediately after (value in set immediately after anchor)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Immediately followed by (matches element immediately before anchor)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Any relative match</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>More than (one of the values after the anchor)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Immediately followed by (matches any element before the anchor)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Scoped relative match</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Within (one of the values less than the anchor, within a certain number of places)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Separated by (set or number of possible values)</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6"
+            style="background-color: rgb(234, 234, 234); border: 1px solid rgb(204, 204, 204); width: 815px; padding: 8px;">
+            <div><span
+                    style="--inversion-type-color:  simple; color: rgb(0, 0, 0);">Bottom/Right anchored</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Absolute match</div>
+        </td>
+        <td rowspan="4"
+            style="height: 128px; border: 1px solid rgb(204, 204, 204); width: 255px; padding: 8px;"
+            colspan="2">
+            <div><span style="color: rgb(134, 134, 134); --inversion-type-color:  simple;">Not applicable - no position or magnitude, so anchors have no meaning</span>
+            </div>
+            <div><br/></div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Highest</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Last, Ends with</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Immediate relative match</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Immediately before (value in set immediately before anchor)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Immediately proceeded by</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Any relative match</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Less than (one of the values before the anchor)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Proceeded by</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 96px; padding: 8px;">
+            <div>Scoped relative match</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 283px; padding: 8px;">
+            <div>Within (one of the values more than the anchor, within a certain number of places)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 181px; padding: 8px;">
+            <div>Separated by (set or number of possible values)</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Other dimension types</h2>
+
+<p>We&rsquo;ve discussed <em>semantic dimensions</em> thus far, but there are at least two other types.</p>
+
+<p>The first is revealed by the use of <em>projections</em>. This can also be thought of as projecting values into another dimension (using some function or transform), which has its own applicable operators. Aggregate functions are an example of a projection; they provide operators that do not depend on the values themselves, but consider the value in context with the rest of those in the set. For example, the <em>most common</em> operator, creates <em>count</em> data for each value (grouping those that are the same) and then applies a <em>maximum</em> operator.  Projections often production dimensions that are a different data type than their input values.</p>
+
+<p>Another dimension type is revealed by examining the <em>underlying data type</em> being used to represent a semantic dimension. For example, nominal data or ordinal data values may be represented as strings, which are themselves permutations of characters and the filter grammar may provide access to these operators.</p>
+
+<p>For example, consider the set of the days of the week: &lsquo;Monday&rsquo;, &lsquo;Tuesday&rsquo;, &lsquo;Wednesday&rsquo;, &lsquo;Thursday&rsquo;, &lsquo;Friday&rsquo;, &lsquo;Saturday&rsquo;, &lsquo;Sunday&rsquo;. To match on these as ordinal values, we could query the &ldquo;Days before Wednesday&rdquo;, but we could also query them on the positions of the characters in each string by asking for &ldquo;The values starting with &rsquo;T'&rdquo;.</p>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 202px;"/>
+        <col style="width: 597px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 202px; padding: 8px;">
+            <div>Semantic dimension</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 597px; padding: 8px;">
+            <div>Inherit in the semantics of the data structure and filter grammar</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 202px; padding: 8px;">
+            <div>Data type dimensions</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 597px; padding: 8px;">
+            <div>Inherit in the type of data used to represent the values of the semantic dimensions</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 202px; padding: 8px;">
+            <div>Aggregate functions and transforms</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 597px; padding: 8px;">
+            <div>Achieved by applying functions to values and projecting them into a different dimension,
+                which has it own operators
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>The relationship between dimensions and operator complexity</h2>
+
+<p>There appears to be roughly a continuum of filter grammars and data structures. At one end are the data structures with many semantic dimensions, with filter grammars that have relatively few projection or data dimension operators. One such example is CSS - the data structure (HTML documents) have many semantic dimensions and CSS selectors are largely defined in terms of these semantic dimensions, with restricted data and projection dimension operators. You cannot for example, find all elements with tags that <em>start with</em> a sequence of characters, or find <em>the most common</em> element.</p>
+
+<p>In contrast, XPath includes a lot less of the semantic dimensions CSS is designed around, and instead treats a HTML document as a generic tree structure. Consequently, it has richer set of data type dimension operators, providing a lot more power (at the cost of increased expression complexity and reduced performance).</p>
+
+<p>At the other end of the continuum are regular expressions, which operate on flat strings (usually single lines in a file) which have few semantic dimensions. Instead there is only the data type&rsquo;s dimensions, which the filter grammar provides very complex operators for (well beyond those we&rsquo;ve discussed so far). If applied to a HTML document, it interprets it only as a line semantic dimension (a permutation of characters which have the two data dimensions of position and character value), requiring a complex sequence of expressions in order to match the same nodes that would be trivial in CSS. However, it&rsquo;s possible to match character sequences that are outside of valid HTML, or which are normalized away such as whitespace.</p>
+
+<p>Utilities like <code>sed</code> and <code>awk</code> (which use regular expressions to match lines) add a few more semantic dimensions by providing the ability to match on line numbers and ranges. <code>awk</code> also separates lines into fields and provides projection dimensions by offering the ability to generate mathematical aggregate calculations like <em>count</em>, <em>average</em> etc.</p>
+
+<h2>Combining expressions</h2>
+
+<p>Putting dimensions aside now, the other component to filter grammars are how expressions are combined.</p>
+
+<p>There are 4 main logic operators:</p>
+
+<ul>
+<li>AND: Both expressions must be true</li>
+<li>OR: One or both of the expressions must be true</li>
+<li>NOT: The expression must be false, for its complement to return true</li>
+<li>Exclusive OR (XOR): One or the other of the expressions must be true, but not both</li>
+</ul>
+
+
+<p>Depending on the grammar, these operators may be available outside of expressions, to operate on them as a whole expression, or within expressions to operate on specific dimensions, or both.</p>
+
+<p>For example, in CSS to find <code>div</code>s with the class <code>foo</code> and <code>bar</code>, you apply the operator within the expression:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span><span class="nc">.foo.bar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>But to find divs with a class <code>foo</code> or <code>bar</code>, you must combine separate expressions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span><span class="nc">.foo</span><span class="o">,</span> <span class="nt">div</span><span class="nc">.bar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>XPath on the other hand, provides the AND and OR operators both inside and outside an expression:</p>
+
+<p>The following are equivalent AND expressions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">//</span><span class="nt">div</span><span class="o">[</span><span class="k">@class</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="o">][</span><span class="k">@class</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="o">//</span><span class="nt">div</span><span class="o">[</span><span class="k">@class</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nt">and</span> <span class="k">@class</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And the following are equivalent OR expressions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">//</span><span class="nt">div</span><span class="o">[</span><span class="k">@class</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="o">]</span> <span class="o">|</span> <span class="o">//</span><span class="nt">div</span><span class="o">[</span><span class="k">@class</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="o">//</span><span class="nt">div</span><span class="o">[</span><span class="k">@class</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nt">or</span> <span class="k">@class</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Filtering vs Selection</h2>
+
+<p>For some filter grammars, filtering and selection are usually the same operation (the nodes that match the filter are the ones that are selected), with a few operators that are the exception. This is true of CSS: the elements returned are those matched by the filtering operators, with the exception of the pseudo-selectors (those starting with a colon) - these continue to filter without changing the selection target to a child or sibling.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">ul</span> <span class="o">&gt;</span> <span class="nt">li</span><span class="nd">:first-child</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There is, however, no way to select an element based on its descendants without changing the selection focus <em>to</em> those descendants. The same is not true of XPath expressions, which always selecting the nodes that match the filter, but also allow filtering nodes based on their ancestors or children without changing the selection target.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="err">#</span> <span class="nt">Selects</span> <span class="nt">descendant</span>
+</span><span class='line'><span class="o">//</span><span class="nt">ul</span><span class="o">/</span><span class="nt">li</span><span class="o">[</span><span class="nt">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">#</span> <span class="nt">Select</span> <span class="nt">parent</span> <span class="nt">based</span> <span class="nt">on</span> <span class="nt">descendant</span>
+</span><span class='line'><span class="o">//</span><span class="nt">ul</span><span class="o">[</span><span class="nt">li</span><span class="o">[</span><span class="nt">position</span><span class="o">()=</span><span class="nt">1</span><span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Some grammars require explicitly specifying what you want to select from the nodes that match the filter, like SQL&rsquo;s <code>SELECT</code> operator.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="c1">-- Select username from users table</span>
+</span><span class='line'><span class="k">SELECT</span> <span class="n">username</span> <span class="k">FROM</span>  <span class="n">users</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Regular expressions are perhaps the most complicated, with their <em>capturing groups</em> and <em>non-capturing groups</em> like the <em>look ahead</em> and <em>look behind</em> operators.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="o">#</span> <span class="k">Select</span> <span class="ss">&quot;foo&quot;</span> <span class="n">followed</span> <span class="k">by</span> <span class="ss">&quot;bar&quot;</span> <span class="p">(</span><span class="n">but</span> <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">include</span> <span class="ss">&quot;bar&quot;</span> <span class="k">in</span> <span class="n">the</span> <span class="k">output</span><span class="p">)</span>
+</span><span class='line'><span class="o">/</span><span class="p">(</span><span class="n">foo</span><span class="p">)(</span><span class="o">?=</span><span class="n">bar</span><span class="p">)</span><span class="o">*/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>awk</code> also provides a <em>hold space</em> that allows for having the target of the selection be different from the target for filtering.</p>
+
+<p>A in-depth discussion of each is outside the scope of this article, but it is worth noting many grammars provide a slightly different solution to the same problem.</p>
+
+<h2>Overview of common filtering grammars</h2>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 126px;"/>
+        <col style="width: 111px;"/>
+        <col style="width: 182px;"/>
+        <col style="width: 184px;"/>
+        <col style="width: 208px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="vertical-align: bottom; border: 1px solid rgb(204, 204, 204); width: 111px; padding: 8px;">
+            <div>Operate on</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Semantic Dimensions</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Type</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Selection</div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="5"
+            style="height: 164px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>CSS Selectors</div>
+        </td>
+        <td rowspan="10"
+            style="height: 344px; border: 1px solid rgb(204, 204, 204); width: 111px; padding: 8px;">
+            <div>HTML or XML documents</div>
+            <div><br/></div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Element hierarchy</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation</div>
+        </td>
+        <td rowspan="5"
+            style="height: 164px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Pseudo-selectors further filter nodes without changing selection target</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Element position</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Element type</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Nominal</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Attribute values</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>id and class: Space-separated Fields</div>
+            <div>Permutation (String)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Element’s state (hovered, focused, etc)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Nominal</div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>XPath</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 366px; padding: 8px;">
+            <div>Same as CSS selectors</div>
+            <div>- Element’s state</div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Use filtering on descendants or ancestors to filter without changing selection target</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>+ Element’s text content</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation (String)</div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="3"
+            style="height: 92px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>jQuery Selectors</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 366px; padding: 8px;">
+            <div>Same as CSS selector</div>
+        </td>
+        <td rowspan="3"
+            style="height: 92px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Can use DOM traversal (outside of selection expression)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>+ Some internal state (animation)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Nominal</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>+ Some extra operators for those dimensions</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div><br/></div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>Globbing</div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 111px; padding: 8px;">
+            <div>File paths</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Directory hierarchy</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation</div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Can use parent operator to select siblings or ancestors of match</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Directory and file names</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation (String)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>Regular Expressions</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 111px; padding: 8px;">
+            <div>Strings</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>String content</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation (String)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Use capturing groups, look aheads and look behinds</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>grep</div>
+        </td>
+        <td style="height: 164px; border: 1px solid rgb(204, 204, 204); width: 111px; padding: 8px;"
+            rowspan="5">
+            <div>File contents</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>File lines</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation (String)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Use arguments to return files or lines</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;"
+            rowspan="2">
+            <div>sed</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 366px; padding: 8px;">
+            <div>Same as <span style="font-family: &quot;Courier New&quot;;">grep</span> </div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Use arguments to decide what’s printed</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>+ Line position</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Permutation</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;"
+            rowspan="2">
+            <div>awk</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 366px; padding: 8px;">
+            <div>Same as <span style="font-family: &quot;Courier New&quot;;">sed</span></div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div>Use print to decide output</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>+ Fields</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Fields</div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 126px; padding: 8px;">
+            <div>SQL Filtering &amp; Selection</div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 111px; padding: 8px;">
+            <div>Relational databases</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Tables</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Nominal</div>
+        </td>
+        <td rowspan="2"
+            style="height: 56px; border: 1px solid rgb(204, 204, 204); width: 208px; padding: 8px;">
+            <div><span style="font-family: &quot;Courier New&quot;;">SELECT</span> operator</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 182px; padding: 8px;">
+            <div>Fields</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 184px; padding: 8px;">
+            <div>Depends on data type</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Examples</h2>
+
+<ul>
+<li><a href="/blog/2020/12/15/css-selectors-cheatsheet">CSS Selectors Cheatsheet</a>.</li>
+<li><a href="/blog/2020/12/15/xpath-selectors-cheatsheet">XPath Selectors Cheatsheet</a>.</li>
+</ul>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2020/12/05/jquery-best-practices/" title="Previous Post: jQuery best practices">&laquo; Previous: jQuery best practices</a>
+        
+
+        
+          <a class="pull-right" href="/blog/2020/12/15/css-selectors-cheatsheet/" title="Next Post: CSS Selectors Cheatsheet">Next: CSS Selectors Cheatsheet &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2020/12/12/thinking-in-dimensions-a-unified-approach-to-filter-grammars/';
+        var disqus_url = 'http://greena13.github.io/blog/2020/12/12/thinking-in-dimensions-a-unified-approach-to-filter-grammars/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

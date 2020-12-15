@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Version Control | Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/blog/categories/version-control/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2020-12-12T12:43:55+00:00</updated>
+  <updated>2020-12-15T11:41:33+00:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -18,14 +18,14 @@
     <link href="http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts/"/>
     <updated>2015-02-01T09:32:42+00:00</updated>
     <id>http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts</id>
-    <content type="html"><![CDATA[<p>After wasting hours in search of a good list of keyboard shortcuts available in Atlassian&rsquo;s SourceTree and feeling utter despair at <a href="https://answers.atlassian.com/questions/238357/where-can-i-find-a-list-of-mac-keyboard-shortcuts-for-sourcetree">how slow Atlassian is being at delivering this information</a>, I thought I&rsquo;d share the ones that I discovered through brute force and determination.</p>
+    <content type="html"><![CDATA[<p>Originally (back in 2015) this post was a record of my attempts to brute force the discovery of Sourcetree keyboard shortcuts, because they were not well-documented by Atlassian (or anyone else I could find at the time).</p>
+
+<p>Now, in 2020, the keyboard shortcuts are readily available both in-program (on each context menu item) as well as a few easily located resources online. So I&rsquo;ll repurpose this blog post instead to surface some of the more <em>useful</em> keyboard shortcuts (this list is no longer exhaustive), and explain how I <em>extend</em> the keyboard shortcuts Sourcetree provides natively.</p>
 
 <!--more-->
 
 
-<p>These were discovered and are only applicable on a Mac (although I am sure the Windows equivalents are easy to deduce), at the Commit All.. Screen (cmd + shift + c).</p>
-
-<p>I would be <em>extremely</em> interested in hearing about any that are not already listed. Please post in the comments below.</p>
+<p>These are the Mac keyboard shortcuts (although I suspect the Windows equivalents are more often than not, the same but with ctrl instead of cmd).</p>
 
 <h2>Navigation &amp; Menus</h2>
 
@@ -42,7 +42,7 @@
 <td style="text-align:right;"> cmd + 1 </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Log Screen</strong> </td>
+<td style="text-align:left;"> <strong>History Screen</strong> </td>
 <td style="text-align:right;"> cmd + 2 </td>
 </tr>
 <tr>
@@ -50,32 +50,20 @@
 <td style="text-align:right;"> cmd + 3 </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Repo select window</strong>  </td>
-<td style="text-align:right;">  cmd + b  </td>
-</tr>
-<tr>
 <td style="text-align:left;"> <strong>New repo</strong>  </td>
 <td style="text-align:right;">  cmd + n  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Command history</strong>  </td>
-<td style="text-align:right;">  cmd + shift + w </td>
 </tr>
 <tr>
 <td style="text-align:left;"> <strong>Hide/show sidebar</strong>  </td>
 <td style="text-align:right;">  cmd + shift + k </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Spelling and grammar</strong>  </td>
-<td style="text-align:right;">  cmd + shift + ; </td>
+<td style="text-align:left;"> <strong>Repository details</strong>  </td>
+<td style="text-align:right;">  cmd + shift + i </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Settings</strong>  </td>
-<td style="text-align:right;">  cmd + ,  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Help</strong>  </td>
-<td style="text-align:right;">  cmd + shift + / </td>
+<td style="text-align:left;"> <strong>Open file browser (fastest way to switch repositories)</strong>  </td>
+<td style="text-align:right;">  cmd + o </td>
 </tr>
 </tbody>
 </table>
@@ -119,9 +107,57 @@
 <td style="text-align:left;"> <strong>Refresh</strong>  </td>
 <td style="text-align:right;">  cmd + r  </td>
 </tr>
+</tbody>
+</table>
+
+
+<h2>Removing and resetting files</h2>
+
+<table>
+<thead>
 <tr>
-<td style="text-align:left;"> <strong>Find</strong>  </td>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Delete</strong>  </td>
+<td style="text-align:right;">  cmd + delete  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Reset file to staged version</strong>  </td>
+<td style="text-align:right;">  cmd + alt + R  </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Find</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Find (file by name or path)</strong>  </td>
 <td style="text-align:right;">  cmd + f  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Find Next</strong>  </td>
+<td style="text-align:right;">  cmd + g  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Find Previous</strong>  </td>
+<td style="text-align:right;">  cmd + shit + g  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Use selection to find</strong>  </td>
+<td style="text-align:right;">  cmd + e  </td>
 </tr>
 </tbody>
 </table>
@@ -142,7 +178,7 @@
 <td style="text-align:right;">  cmd + shift + s </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Add Tag</strong>  </td>
+<td style="text-align:left;"> <strong>Add or Remove Tag</strong>  </td>
 <td style="text-align:right;">  cmd + shift + t </td>
 </tr>
 <tr>
@@ -176,12 +212,12 @@
 <td style="text-align:right;">  cmd + shift + l </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Remotes</strong>  </td>
-<td style="text-align:right;">  cmd + shift + , </td>
+<td style="text-align:left;"> <strong>Open remote in web browser</strong>  </td>
+<td style="text-align:right;">  cmd + shift + w </td>
 </tr>
 <tr>
-<td style="text-align:left;"> <strong>Open Working Copy</strong>  </td>
-<td style="text-align:right;">  cmd + o  </td>
+<td style="text-align:left;"> <strong>Open pull request</strong>  </td>
+<td style="text-align:right;">  cmd + alt + p </td>
 </tr>
 </tbody>
 </table>
@@ -213,9 +249,65 @@
 <td style="text-align:left;"> <strong>Minimise</strong>  </td>
 <td style="text-align:right;">  cmd + m  </td>
 </tr>
+<tr>
+<td style="text-align:left;"> <strong>Settings</strong>  </td>
+<td style="text-align:right;">  cmd + ,  </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Undo</strong> </td>
+<td style="text-align:right;"> Cmd + z </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Select All</strong> </td>
+<td style="text-align:right;"> Cmd + a </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Emoji &amp; Synbols</strong> </td>
+<td style="text-align:right;"> Cmd + ctrl + space </td>
+</tr>
 </tbody>
 </table>
 
+
+<h2>Creating your own keyboard shortcuts</h2>
+
+<p>Sourcetree is no different than any other Mac application, in that you can define your own keyboard shortcuts for system menu items.</p>
+
+<p>Identify the menu item that either has no keyboard shortcut, or one that you don&rsquo;t like, and take note of its name.</p>
+
+<p>Open System Preferences, select the <em>Keyboard</em> option, then the <em>Shortcuts</em> tab, followed by the <em>App Shortcuts</em> menu item. Click the + button, Select Sourcetree as the <em>Application</em>, your menu name as <em>Menu Title</em> and define your keyboard shortcut. Close System Preferences and reopen Sourcetree to use.</p>
+
+<h2>Going beyond pre-defined actions and navigating menu items</h2>
+
+<p>I use <a href="https://vimacapp.com/">Vimac</a> to navigate the parts of the Sourcetree UI and perform actions that do not have convenient keyboard shortcuts or menu items.</p>
+
+<p>It provides the following keyboard shortcuts (each is configurable):</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> <strong>Action</strong>  </th>
+<th style="text-align:right;"> <strong>Shortcut</strong> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> <strong>Activate</strong>  </td>
+<td style="text-align:right;">  ctrl + space </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Right click</strong>  </td>
+<td style="text-align:right;">  Hold shift when typing macro </td>
+</tr>
+<tr>
+<td style="text-align:left;"> <strong>Double click</strong>  </td>
+<td style="text-align:right;">  Hold cmd when typing macro </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>There are alternatives such as <a href="https://www.keyboardmaestro.com/main/">Keyboard Maestro</a> (Paid software) that may be better suited to your preferences.</p>
 
 <h3>Related</h3>
 

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://greena13.github.io/blog/2020/12/15/xpath-selectors-cheatsheet/</loc>
+<lastmod>2020-12-15T09:53:04+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2020/12/15/css-selectors-cheatsheet/</loc>
+<lastmod>2020-12-15T09:30:03+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2020/12/12/thinking-in-dimensions-a-unified-approach-to-filter-grammars/</loc>
+<lastmod>2020-12-12T14:48:12+00:00</lastmod>
+</url>
+<url>
 <loc>http://greena13.github.io/blog/2020/12/05/jquery-best-practices/</loc>
 <lastmod>2020-12-05T08:20:34+00:00</lastmod>
 </url>
@@ -334,14 +346,5 @@
 </url>
 <url>
 <loc>http://greena13.github.io/blog/categories/emoticon/</loc>
-</url>
-<url>
-<loc>http://greena13.github.io/blog/posts/2/</loc>
-</url>
-<url>
-<loc>http://greena13.github.io/blog/posts/3/</loc>
-</url>
-<url>
-<loc>http://greena13.github.io/blog/posts/4/</loc>
 </url>
 </urlset>
