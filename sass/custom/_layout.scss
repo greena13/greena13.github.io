@@ -46,4 +46,8 @@ table li {
   font-weight: inherit !important;
   font-style: inherit !important;
   font-size: inherit !important;
+
+  & > div {
+    display: inline;
+  }
 }
