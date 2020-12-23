@@ -1,0 +1,778 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Recursive Procedures - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Recursive Procedures written Recursion is difficult to think about, but if you know two things, it becomes simple. Recursive Procedures vs Recursive &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2020/12/18/recursive-procedures">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Recursive Procedures</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2020-12-18T12:16:44+00:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>Recursion is difficult to think about, but if you know two things, it becomes simple.</p>
+
+<!--more-->
+
+
+<h2>Recursive Procedures vs Recursive Processes</h2>
+
+<h3>Recursive Procedures</h3>
+
+<p>A recursive procedure is any procedure whose definition refers to itself (directly or indirectly).</p>
+
+<p>They always have two components:</p>
+
+<ul>
+<li>A base case: the circumstances where routine does not call itself again, but instead returns a result. This can be thought of as the end, or the terminating conditions of the recursion.</li>
+<li>Rules for evolving the algorithm in such a way as to eventually converge on the base-case. This can be thought of as the filtering done in parent loop, to refine the work done in its ancestors. Or the logic that prevents the recursion from being infinite.</li>
+</ul>
+
+
+<p>Recursive procedures are one of two <em>process</em> types:</p>
+
+<h3>Recursive Processes</h3>
+
+<p>A recursive <em>process</em> is a type of recursive procedure characterised by a deferred operations chain (i.e. the procedure is written in such a way that each loop can not complete without first getting the result of the next iteration and then performing some further work on it - unless it’s the base case).</p>
+
+<p>The execution of the recursive call goes through a period of expansion, where the process builds up a chain of deferred operations (by placing local variables and context on the call stack) and when the base-case is encountered, a period of contraction, where those scopes are popped off the call stack and executed.</p>
+
+<p>It’s common to use a procedure for calculating the factorial of a number, as an example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">number</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The routine for <code>factorial(n)</code> cannot complete without first the routine for <code>factorial(n-1)</code> returning, to then be multiplied by <code>n</code>. The important bit is that we need to multiple by <code>n</code>, i.e. perform additional work with the result of a subsequent iteration; this means we need to keep a record of the value of <code>n</code> and the operation to be performed (a pointer to the routine) for each iteration (which is stored as part of the scope put on the call stack).</p>
+
+<p>So for any input value, during the expansion, a deferred operations chain is pushed onto the stack (one link for each recursive call), until we reach the base-case of <code>n == 1</code> (<code>n</code> is decremented with each call to the next loop, so we always get there eventually). Then, during contraction, each stage of that chain is popped off the call stack and executed with the value of <code>n</code> set at the time it was pushed onto the stack, and the result of the next loop (which holds the accumulative product of all the subsequent loops).</p>
+
+<p>I prefer to think of these as &ldquo;bottom-up&rdquo; or &ldquo;right-to-left&rdquo; procedures, because when given a tree structure to operate on, in order to perform their work on each node, they must have the return value of the work done on their descendants, first.</p>
+
+<h3>Iterative Processes</h3>
+
+<p>Iterative processes are a type of recursive procedure characterised by a finite set of state variables being passed between execution calls. This effectively means all context and the result of previous calls are passed as arguments to the next iteration (rather than storing future work to be done when subsequent loops return). Because of this, there is theoretically no need to keep the previous call’s scope on the stack and the routine can run in constant memory. However, in reality most languages still consume linear amounts of memory (in proportion to the number of recursive calls) and can still cause <code>StackOverflow</code> exceptions if the recursion is too deep, because they need to keep track of where to return to, after each loop is finished.</p>
+
+<p>To actually get iterative processes to run in constant memory, you have to take advantage of another their properties: they can be rewritten using looping constructs - such as <code>do</code>, <code>repeat</code>, <code>until</code>, <code>for</code> and <code>while</code> - likely with one or more variables in an outer scope that can be accessed from all iterations of the loop, which you can use to store the result of the previous loop. By rewriting them in terms of looping constructs, you allow the procedure to run in constant memory.</p>
+
+<p>Some languages are smart enough to do this rewriting automatically for you at compile time or runtime, when the iterative process is <em>tail-recursive</em>, which means the call to itself is the final return value (i.e. its “tail” is a call to itself).</p>
+
+<p>Rewriting the above example to be tail-recursive:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">accumulator</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">accumulator</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">factorial</span><span class="p">(</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">number</span> <span class="o">*</span> <span class="n">accumulator</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This means passing an accumulator as an argument to hold the return value so the final line of the procedure is a call to itself (with no extra work to be performed). Now each iteration of the loop does all its work before passing onto the next iteration - there’s no need to record the value of any local variables or future operations (all context and the accumulator are passed on as arguments to the next iteration, instead).</p>
+
+<p>I prefer to think of these as &ldquo;top-down&rdquo; or &ldquo;left-to-right&rdquo; procedures, because when given a tree structure to operate on, they perform their work for each parent node before calling themselves again for the descendant nodes.</p>
+
+<h3>Summary</h3>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 152px;"/>
+        <col style="width: 298px;"/>
+        <col style="width: 343px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Description</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>Application</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Recursive processes</div>
+            <div><br/></div>
+            <div>a.k.a Bottom-up (or right-to-left)</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Partially evaluating or deferring earlier (higher up) iterations and waiting for the result
+                of later iterations to then customise or merge data with the higher evaluation
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When information on lower or subsequent iterations should affect how higher iteration should
+                be performed.
+            </div>
+            <ul>
+                <li>
+                    Whether any ancestor meets requirements
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Iterative processes</div>
+            <div><br/></div>
+            <div>a.k.a Top-down (or left-to-right)</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Evaluating earlier (higher up) algorithms and passing it through or down to later iterations
+                as context to be used to customise (stopping condition) or merge data
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When information on higher iterations should affect how subsequent iterations should
+                behave.
+            </div>
+            <ul>
+                <li>
+                    Flags/toggles
+                </li>
+                <li>
+                    Max-depths/iterations
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Message passing</h2>
+
+<p>We&rsquo;ve discussed the ways that work can be sequenced and recursively evaluated, which we can think of as how the input is processed. But also of importance is how the results of that work is then collected, which we can think of as how the output is processed.</p>
+
+<p>For simple cases, a single memo or total can be maintained (i.e. returned). However, for more complex cases, where the algorithm for collecting the results of each iteration involve one or mose decisions, a context or accumulator object may be required.</p>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 152px;"/>
+        <col style="width: 298px;"/>
+        <col style="width: 343px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Description</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>Application</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Returning</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Returning the results of subsequent operations and not mutating a shared cumulator</div>
+            <ul>
+                <li>
+                    Don’t need to pass in a receiver of the answer
+                </li>
+            </ul>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When there is only one way to cumulate the results</div>
+            <ul>
+                <li>
+                    E.g. Totals, counts, flattening of arrays
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Accumulator</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Mutating a shared cumulator object instantiated in the first loop and passed in by a parent
+                or 
+            </div>
+            <ul>
+                <li>
+                    <div>Requires breaking the algorithm into 2 parts: the actual recursive part, and a
+                        wrapper that returns this cumulator
+                    </div>
+                </li>
+            </ul>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When subsequent iterations are best placed to decide how to integrate the results of their
+                iteration into the cumulator
+            </div>
+            <ul>
+                <li>
+                    <div>When it’s non trivial to incorporate subsequent results</div>
+                </li>
+                <li>
+                    <div>E.g. when you have several counters and merging them in an earlier iteration would
+                        involve duplicating the logic in the subsequent one
+                    </div>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Summary</h2>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 93px;"/>
+        <col style="width: 144px;"/>
+        <col style="width: 256px;"/>
+        <col style="width: 314px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 93px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Returning</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Accumulator</div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="6"
+            style="height: 200px; border: 1px solid rgb(204, 204, 204); width: 93px; padding: 8px;">
+            <div>Iterative</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Merging/calculation</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 570px; padding: 8px;">
+            <div>Done in child loop</div>
+            <div><br/></div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Arguments</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Remaining dataset (only)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Remaining dataset</div>
+            <div>Accumulator (mutated by parent)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Side-effects</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>None</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Mutates accumulator with value from current iteration + all parent iterations</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Returns</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Result of algorithm run on all parent loops + Result of algorithm run on all child loops
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Accumulator for convenience of outermost call</div>
+            <div><br/></div>
+            <div>Can split out into an outer call that does the setting of the accumulator and the returning
+                for you
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Initial value</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Determined by first loop</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Determined by first loop’s accumulator</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Base case</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Return final value </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Perform final mutation</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 200px; border: 1px solid rgb(204, 204, 204); width: 93px; padding: 8px;"
+            rowspan="6">
+            <div>Recursive</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Merging/calculation</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 570px; padding: 8px;">
+            <div>Done in parent loop</div>
+            <div><br/></div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Arguments</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Remaining dataset </div>
+            <ul>
+                <li>
+                    <div>Result of algorithm run on all parent loops (result so far)</div>
+                </li>
+            </ul>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <ul>
+                <li>
+                    <div>Remaining dataset</div>
+                </li>
+                <li>
+                    <div>Accumulator (not yet mutate by parent)</div>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Side-effects</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>None</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Mutates accumulator with value from current iteration + result from all child iterations
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Returns</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Result of algorithm of all child iterations</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Accumulator for convenience of outermost call</div>
+            <div><br/></div>
+            <div>Can split out into an outer call that does the setting of the accumulator and the returning
+                for you
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Initial value</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Determined by last (innermost loop)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Determined by first loop’s accumulator</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Base case</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Return initial value</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Perform first mutation</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Examples</h2>
+
+<h3>Bottom-up, returning</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is always a simple addition, so can use returning</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_bur</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="c1"># Execution traverses full recursion path before sending the result back up the call stack</span>
+</span><span class='line'>    <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">sum_bur</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="c1"># Handling of stopping conditions - code that is evaluated on the final expansion step before contraction</span>
+</span><span class='line'>    <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Top-down, returning</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is always a simple addition, so can use returning</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_tdr</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Result is calculated in earlier iterations and then passed down into subsequent ones</span>
+</span><span class='line'>  <span class="n">next_total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="n">sum_tdr</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">,</span> <span class="n">next_total</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">next_total</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bottom-up, accumulator</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is not simple, so a accumulator is used</span>
+</span><span class='line'><span class="c1"># @note Even though algorithm is bottom up, the passing of the initial value of the accumulator is still</span>
+</span><span class='line'><span class="c1">#       top-down</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_bua</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">total</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">missing</span><span class="p">:</span> <span class="mi">0</span> <span class="p">})</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">context</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="c1"># Execution traverses full recursion path before sending the result back up the call stack</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">sum_bua</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="c1"># Mutate/update accumulator rather than return a value</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class='line'>      <span class="n">context</span><span class="o">[</span><span class="ss">:missing</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">context</span><span class="o">[</span><span class="ss">:total</span><span class="o">]</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Context is returned by convenience for top-most call, to avoid having to specify the accumulator in the</span>
+</span><span class='line'>  <span class="c1"># outer context when calling the method</span>
+</span><span class='line'>  <span class="n">context</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Top-down, accumulator</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is not simple, so a accumulator is used</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_tda</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">total</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">missing</span><span class="p">:</span> <span class="mi">0</span> <span class="p">})</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Mutate/update accumulator rather than return a value</span>
+</span><span class='line'>  <span class="c1"># @note This is done before calling the next iteration</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class='line'>    <span class="n">context</span><span class="o">[</span><span class="ss">:missing</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">context</span><span class="o">[</span><span class="ss">:total</span><span class="o">]</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="c1"># The handling of a stopping condition is to just not call itself any more</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="n">sum_tda</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Context is returned by convenience for top-most call, to avoid having to specify the accumulator in the</span>
+</span><span class='line'>  <span class="c1"># outer context when calling the method</span>
+</span><span class='line'>  <span class="n">context</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2020/12/15/xpath-selectors-cheatsheet/" title="Previous Post: XPath Selectors Cheatsheet">&laquo; Previous: XPath Selectors Cheatsheet</a>
+        
+
+        
+          <a class="pull-right" href="/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails/" title="Next Post: Writing Ruby gems for different versions of Ruby and Rails">Next: Writing Ruby gems for different versions of Ruby and Rails &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2020/12/18/recursive-procedures/';
+        var disqus_url = 'http://greena13.github.io/blog/2020/12/18/recursive-procedures/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Key Shift in Cmd]]></title>
   <link href="http://greena13.github.io/atom.xml" rel="self"/>
   <link href="http://greena13.github.io/"/>
-  <updated>2020-12-15T12:01:42+00:00</updated>
+  <updated>2020-12-23T12:50:06+00:00</updated>
   <id>http://greena13.github.io/</id>
   <author>
     <name><![CDATA[Aleck Greenham]]></name>
@@ -12,6 +12,1084 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tracking Changes in Open Source Libraries on Github]]></title>
+    <link href="http://greena13.github.io/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github/"/>
+    <updated>2020-12-19T09:42:21+00:00</updated>
+    <id>http://greena13.github.io/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github</id>
+    <content type="html"><![CDATA[<p>There are two ways to consume open source libraries. The first is for situations where you want to specify a fixed, specific version, and move that version forwards (to gain access to new features or bugfixes) or perhaps backwards (to side-step regressions or incompatible changes). This situation is common when developing end-user applications and is optimised for predictability.</p>
+
+<p>The second situation is when you want to specify a range of compatible versions, and let a package management solution decide which of those versions is the most optimal (by perhaps sharing a version already available). This situation is common when developing libraries that depend on others, which sit between an end-user application and the open source libraries and is optimised for maximum support.</p>
+
+<!--more-->
+
+
+<h2>Moving between versions: Upgrading an open source library</h2>
+
+<p>In this situation, you&rsquo;re starting for an existing reference point (you&rsquo;ve already added an earlier version of the library to your application) and you&rsquo;re interested in only the information that will get you from one fixed point to another.</p>
+
+<h3>Check the changelog</h3>
+
+<p>If you&rsquo;re lucky, the maintainers of the library in question will diligently and accurately maintain a changelog, detailing the changes with each version.</p>
+
+<p>Sometimes this is a separate file you can find in the root of the repository (or use the search feature to locate):</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/changelog.png" style="margin: auto; display: block;"/></p>
+
+<p>It may also feature as a section of the Readme file (use the browser&rsquo;s in-page search feature to quickly find references to one).</p>
+
+<p>And sometimes a changelog is maintained as a series of release notes, which you can get to from the right-hand sidebar, with the current Github layout:</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/releases.png" style="margin: auto; display: block;"/></p>
+
+<p>Finally, sometimes the changelog and/or release notes are maintained on a separate webpage. Search the Readme, look at the Google results for the package, and check the metadata (e.g. <code>package.json</code>, <code>gemspec</code> etc) for any reference of a separate homepage for the library.</p>
+
+<h3>Diff the Readme</h3>
+
+<p>Not all open source projects maintain changelogs or release notes and even those that do, are rarely written at the level of specificity needed to <em>quickly</em> determine if the reader&rsquo;s application is affected or not.</p>
+
+<p>A neat trick to quickly establish only what may have changed in terms of external behaviour is to diff the changes in the Readme file between the versions you&rsquo;re interested in. You can do so by navigating to the <code>/compare</code> path:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>https://github.com/&lt;author&gt;/&lt;library&gt;/compare</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There you can select two tags or branches to compare. Select the earlier/lower tag from the first dropdown (this is the version you are currently on), and the version you are wanting to upgrade to from the second dropdown.</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/branch-compare.png" style="margin: auto; display: block;"/></p>
+
+<p>Once the diff has been generated, select the <strong>Files Changed</strong> tab, scroll down tho the Readme File (the browser in-page search can be useful here for larger diffs) and click the button with a folded down page icon (which has a alt text of <strong>Display the rich diff</strong>).</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/rich-diff-button.png" style="margin: auto; display: block;"/></p>
+
+<p>This will show you in a concise, highly readable manner what changes were made to the Readme between the versions you&rsquo;re interested in. This is often the best way to quickly determine major changes of the library, and works best for libraries that document the majority of their functionality in the Readme (rather than in wikis or separate webpages).</p>
+
+<h2>Determining which version to upgrade to</h2>
+
+<p>Sometimes you&rsquo;re going through routine maintenance and upgrading the dependencies of your application and the question of which version to upgrade to is clear (the latest). But other times you have a particular bugfix or feature that you need from a library, and don&rsquo;t want to upgrade any further than you have to (to reduce the risk and number of changes to grapple with).</p>
+
+<h3>Working from a Github issue or pull request</h3>
+
+<p>This situation can occur when you encounter an error or problem, and after Googling it, you arrive at a closed issue on Github with a referenced pull request or commit as reportedly being the solution or resolution, but without any clear indication of what version you&rsquo;d need to upgrade to, to get the fix.</p>
+
+<p>Click on the commit link (or the merge commit in the case of a pull request) and you&rsquo;ll be taken to another page to view all the changes in that commit. At the top of this page is a widget that shows the branch this commit exists on, and the range of subsequent tags that include it.</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/tag-info.png" style="margin: auto; display: block;"/></p>
+
+<p>The lowest (left-most) tag is the first version that included this commit (which doesn&rsquo;t rule out the possibility of future regressions, but should be a good starting point for where you need to upgrade to, to get the fix or feature). For commits that are only in one tag, you will only see that tag, and not a range.</p>
+
+<p>In the case of severe security hotfixes, it&rsquo;s possible the library maintainers have also back-ported to fix to older versions of the library. So double check the release notes to ensure there isn&rsquo;t a smaller upgrade path available to you.</p>
+
+<p>If there is no tag widget at all, it means the commit has not yet been tagged or released, and you will likely have to consume the head of development (in whatever form that takes for your particular language and package management solution).</p>
+
+<h3>Working from changes in the Readme</h3>
+
+<p>Something that may also occur is you&rsquo;ve read about a feature in the library&rsquo;s latest Readme file, that you&rsquo;re sure wasn&rsquo;t available the last time you used the library (or when you tried to use it, you got an exception that clearly indicated the feature was not available in the version you were using).</p>
+
+<p>You have a few options to determine exactly when that feature was introduced:</p>
+
+<ul>
+<li>Check the library&rsquo;s changelog and search for references to it (described above)</li>
+<li>Open the Readme file from the file selector (don&rsquo;t just view it as the default page of the repository) and click the <strong>Blame</strong> button, to find in what commit the new lines in the Readme were added, which you can then use to find out what version the feature was first documented (described in more detail below).</li>
+</ul>
+
+
+<h2>Determining compatible versions of open source libraries</h2>
+
+<p>When authoring open source libraries that depend on others, it&rsquo;s often required you declare what versions of those dependencies are compatible with your own, to allow package management systems to resolve suitable versions. This is essentially a question of what library versions provide the inputs, outputs and side-effects your code expects.</p>
+
+<p>When upgrading an open source library, you are working <em>forwards</em>, jumping between two specific points (i.e. it doesn&rsquo;t matter if a bug was introduced and subsequently fixed - it only matters how the library behaves in the version you&rsquo;re upgrading to). However, determining compatible versions of a library usually involves working <em>backwards</em> from the version you initially developed against, and deals with <em>ranges</em> of compatible versions (so if a bug, vulnerability, or regression is introduced in a particular release, you may need to exclude it).</p>
+
+<h3>Check the changelog and diff the readme</h3>
+
+<p>Once again, checking the changelog and diffing the readme of the library can be useful information. However, often you&rsquo;re only using a subset of the library&rsquo;s functionality and the whole changelog can be a lot to read through and decipher. You may also be integrating with a library in a way that goes beyond the public interface (which of course is not recommended, but sometimes required) and you need a better insight into when the internals have changed.</p>
+
+<h3>Line and file changes</h3>
+
+<p>First, audit your code to get a list of classes, constants, methods, etc your code relies on from the library.  You&rsquo;re attempting to clarify the ways in which your library depends on the behaviour of the open source one.</p>
+
+<p>Next, you need to establish where each of those is defined in the open source library. Modern IDEs may be able to help point you to the right file before you switch to Github. Alternatively, you can use the <strong>Search or jump to&hellip;</strong> input in the top left-hand corner to search the repository.</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/search-input.png" style="margin: auto; display: block;"/></p>
+
+<p>Once you&rsquo;ve located the file, and the place within it where the method, class, etc is defined, click on the line number, and then the ellipses button. Select <strong>View git blame</strong> from the  the context menu
+that appears.</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/git-blame.png" style="margin: auto; display: block;"/></p>
+
+<p>This will add an extra column next to each line, with the commit and author details of the last time that line was changed (if you&rsquo;re not currently viewing the latest version of the file, it was the last time that line was changed <em>before</em> that version of the file).</p>
+
+<p>By clicking on the commit message, you&rsquo;re taken to another page to view all the changes in that commit which includes the widget for determining the range of subsequent tags that include it.</p>
+
+<p>This is effectively how long that line has been the version you were viewing. If the final tag is the latest released version, the line is still as you&rsquo;ve seen (and presumably the version of the code you had in mind when writing your own library).</p>
+
+<p>If you&rsquo;re lucky, most or all of the method&rsquo;s definition will have been last modified in the same commit. However, often a method will have been updated over time and you&rsquo;ll need to track each change and whether it makes a difference for how your code is using the library. Just because a method or class has changed, it does not necessarily mean a difference for your library (addressing linting, refactoring, or adding extra backwards compatible options, for example). You should be going back as many versions of the code module as you can, until it either doesn&rsquo;t exist, isn&rsquo;t exported or made available, or changes in such a way that the behaviour is no longer what your library requires.</p>
+
+<p>Sometimes it useful to be able to see the previous commits of a line by using the <em>View blame prior to this change</em> button:</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/previous-commit.png" style="margin: auto; display: block;"/></p>
+
+<p>If the changes are large or complex enough, it&rsquo;s usually easier to treat the file as a whole and view the history of changes to it by clicking the <em>History</em> button at the top of the page:</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/history-button.png" style="margin: auto; display: block;"/></p>
+
+<p>This allows you to view in what commits a file changed, what those changes were, and then (using the widget described above) what published versions of the library used that version of the file. Be careful to look at the most recent commit that was in each version. If a file changed twice between two versions, the commit for both versions will appear as if they were in that version. (You may wish to check the version of the file is the one you&rsquo;re expecting by viewing the tag - more on that next).</p>
+
+<h3>Tags and branches</h3>
+
+<p>Presuming the maintainers of the library have been reliably and accurately tagging the repository with version tags that match the published versions of the library, viewing the code by tag can also be a useful tool. Although this is the feature that most closely resembles what we&rsquo;re looking for (published versions of the code), it is often more helpful to start with the commit history of lines or files, as described above, because they only mention when the code <em>changes</em>; often the code you&rsquo;re interested in will not change between tags. For the best results, use a combination of the two, to get a complete picture.</p>
+
+<p>At the root of the repository, Github provides the ability to checkout the repository as it exists on a particular branch or tag:</p>
+
+<p><img src="http://greena13.github.io/images/posts/tracking-changes-in-open-source-libraries-on-github/tag-picker.png" style="margin: auto; display: block;"/></p>
+
+<p>Once you&rsquo;ve selected your tag (i.e. version), you will need to navigate to the file(s) you&rsquo;re interested in and you will see it as it exists in that version of the library.</p>
+
+<h3>Other techniques</h3>
+
+<p>A discussion of actively testing your library against all or landmark versions of its dependencies is outside the scope of this article, but it is advised to pair active testing with the techniques listed here.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Writing Ruby Gems for Different Versions of Ruby and Rails]]></title>
+    <link href="http://greena13.github.io/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails/"/>
+    <updated>2020-12-19T09:05:06+00:00</updated>
+    <id>http://greena13.github.io/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails</id>
+    <content type="html"><![CDATA[<p>This article gives a quick overview of how gem versions are managed in Ruby applications and then explains how to correctly version your own gems and their dependencies.</p>
+
+<!--more-->
+
+
+<h2>Ways your gem is consumed</h2>
+
+<p>Before going over how to version your Ruby gems and their dependencies, it&rsquo;s first worth covering the two ways your gem may be consumed: as part of another gem, or as part of a Ruby application. Each uses a slightly different mechanism.</p>
+
+<h3>Other Ruby gems</h3>
+
+<p>For each version of Ruby installed on your system, there will be one or more versions of the Ruby Gems command line interface installed. This utility has two functions it serves:</p>
+
+<ul>
+<li>As a client for the the Ruby Gems repositories: it allows downloading and installing gems (and their dependencies) from the Ruby Gems servers. It also allows building and publishing gems you may have authored locally and wish to distribute.</li>
+<li>As a package manager: it resolves compatible versions of gems and their dependencies.</li>
+</ul>
+
+
+<p>The version of Rubygems you&rsquo;re running can be seen with:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem --version</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Each gem includes a <code>gemspec</code> file that provides metadata about that gem, including its version and the compatible versions of any gems it may depend on. Ruby gems uses this information to download dependencies whenever the gem is used in a Ruby application. It is by including your gem in another&rsquo;s <code>gemspec</code>, that other gems may depend on yours.</p>
+
+<p>Ruby gems will install the latest stable version of each dependency that satisfies the version constraints in the <code>gemspec</code> file (while accounting for if there are other dependencies of the gem that also depend on it, and also have version constraints to consider).</p>
+
+<p>To install the latest version of a gem and all of its dependencies:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install &lt;gem_name&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install a specific version of a gem:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install &lt;gem_name&gt; -v&lt;version&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To see the dependencies of a gem:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem dependency &lt;gem_name&gt; -v&lt;version&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Ruby applications</h3>
+
+<p>Bundler is a Ruby gem (so it is installed and managed by Ruby Gems) that handles installing the correct gem versions for Ruby <em>applications</em> (differentiated from Ruby Gems, which manages dependencies between Ruby <em>gems</em> directly).</p>
+
+<p>The version of bundler can be seen by running:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle --version</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bundler takes the list of gems a Ruby application depends on in the form of a <code>Gemfile</code> (which may or may not specify version constraints) and resolves a version of each gem to use. It does so by starting from the latest stable version of each gem, and then applying any constraints specified in the <code>Gemfile</code>; it then applies the version constraints of any <em>other</em> gems in the <code>Gemfile</code> that depend on it (if applicable). This process is done recursively, to ensure the gems listed in the <code>Gemfile</code>, and all of their dependencies (and all of <em>their</em> dependencies, etc) are compatible with one another.</p>
+
+<p>It saves that list of specific versions as a <code>Gemfile.lock</code> file, which is used for all future bundle installs, rather than attempting to re-calculate the bundle of compatible gems again. This means versions of the gems that are subsequently published are <em>not</em> installed on future runs of <code>bundle install</code>.</p>
+
+<p>To install the same versions of all gems as when the bundle was built (or to build the bundle for the first time if a <code>Gemfile.lock</code> is not present or new gems have been added to <code>Gemfile</code>):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To recalculate the bundle (still sticking to the version constraints mentioned in the <code>Gemfile</code>):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle update</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To update beyond the versions that are mentioned in your <code>Gemfile</code>, you must first update the <code>Gemfile</code> and then run <code>bundle update</code>.</p>
+
+<p>To get a list of gems in the bundle that can be updated to newer versions (ignoring any version constraints of other gems that depend on it):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle outdated</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Differences between Ruby Gems and Bundler</h3>
+
+<p>The Ruby Gems CLI does not keep a record of the exact versions of gem&rsquo;s dependencies it installs (it does maintain a local cache, though). <code>gemspec</code> files should list the full range of known compatible dependency versions, to be as permissive as possible (without resorting to optimistic versioning).</p>
+
+<p>Bundler, however, takes the opposite approach to manage Ruby application&rsquo;s dependencies with <code>Gemfile.lock</code>: the list of gem versions are as restrictive as possible, to ensure the same behaviour between installs of the Ruby application (without the chance of different dependency versions being used). This is why the <code>Gemfile.lock</code> should be committed with version control, and shared between development and production deployments of the Ruby application.</p>
+
+<p>Bundler can also used to manage the development and testing of gems: usually you want to ensure the same version of your test framework gems and other development dependencies are used between (development) installs of the gem.</p>
+
+<p>Because it&rsquo;s possible to reference the contents of a <code>gemspec</code> file from a <code>Gemfile</code>, the <code>Gemfile</code> included with the gem is usually just a wrapper for the <code>gemspec</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gemspec</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, it allows you to install the development dependencies using <code>bundle install</code>, which (importantly) generates a <code>Gemfile.lock</code>, and if committed to version control, ensures anyone else who works on the gem or its test suite will get the same versions of the development dependencies. The <code>Gemfile</code> and <code>Gemfile.lock</code> are ignored when downloading the gem through Ruby Gems; they'e only used during development.</p>
+
+<h2>Establishing what versions of Ruby your gem is compatible with</h2>
+
+<h3>Decide up-front</h3>
+
+<p>Ideally, you should decide what versions of Ruby you&rsquo;re going to support before you begin writing your gem.</p>
+
+<p>You can use <a href="https://stats.rubygems.org/">RubyGem stats</a> to find out the latest Ruby version usage statistics, to make an informed decision about what versions you would like to support (and thereby what approximate percentage of Ruby projects or users).</p>
+
+<p>If you&rsquo;re still in doubt, you can check popular, well maintained gems for what versions or Ruby they are still supporting, and use it as a guide.</p>
+
+<p>You&rsquo;ll also need to consult the supported versions of Ruby of any dependencies you add to your gem, as they may further limit which ones your gem can support in turn. You will need to check if the list of supported Ruby versions <em>changes</em> over the versions of the gem yours is compatible with. Generally when a well-maintained gem drops support for a version of Ruby, it is done so in a major increment (but unfortunately, not always).</p>
+
+<p>To get the required Ruby versions of a gem yours depends on (in YAML):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">specification</span> <span class="o">&lt;</span><span class="n">dependency</span><span class="o">-</span><span class="n">gem</span><span class="o">-</span><span class="nb">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">v</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="n">required_ruby_version</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Check your code for version-specific features</h3>
+
+<p>Either you will have decided what versions of Ruby you&rsquo;re supporting up-front, and will restrict yourself to the syntax and standard library calls that are available in all versions, or you will have already written or inherited a gem that you need to audit. In either case, when you have finished your gem, it&rsquo;s a good idea to go through and check all classes and methods of the standard library are available in all versions of Ruby you&rsquo;re supporting.</p>
+
+<p>You can use <a href="https://apidock.com/ruby">API Dock&rsquo;s Ruby search</a> to search for classes and methods, and <a href="https://apidock.com/faq#What-is-the-bar-graph-on-the-top-of-documentation-pages">use the bar graph</a> to determine in what versions of Ruby they were available, and when their behaviour may have changed.</p>
+
+<p>Checking changes in syntax and idioms is a little trickier. You can use a summary of new feature with each new version (like <a href="https://rubychangelog.com/">Ruby Changelog.com</a> or <a href="https://www.rubyguides.com/ruby-version-changes/">Ruby Guides</a>) to get an idea. However, a more active scan can be done by installing <a href="https://github.com/rubocop-hq/rubocop">Rubocop</a> and by setting the <code>TargetRubyVersion</code> in the <code>.rubocop</code> file to your lowest supported Ruby version which, as well as performing other code linting, can warn against syntax and standard library calls not available in the target Ruby version:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">AllCops</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">TargetRubyVersion</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2.0.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Test against different Ruby versions</h3>
+
+<p>Finally, you can use <a href="https://rvm.io/">rvm</a> (or similar) to switch between Ruby versions for testing applications or running your gem&rsquo;s test suite.</p>
+
+<h3>Declaring version-specific code</h3>
+
+<p>You can determine the version of Ruby at runtime using the <code>RUBY_VERSION</code> constant:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">RUBY_VERSION</span><span class="o">.</span><span class="n">start_with?</span><span class="p">(</span><span class="s1">&#39;2.&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because <code>RUBY_VERSION</code> is a string and difficult to compare, if you&rsquo;re only supporting <a href="https://apidock.com/ruby/Gem/Version">Ruby versions beyond 1.9.3</a>, you can wrap it in <code>Gem::Version</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">RUBY_VERSION</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;2.0.0&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This approach may assist with normalizing the differences in behaviour of the standard library versions, but will not polyfill newer Ruby language syntax or idioms into older versions of Ruby.</p>
+
+<h3>Declaring what versions of Ruby your gem supports</h3>
+
+<p>To declare the versions of Ruby your gem will work with, use the <a href="https://guides.rubygems.org/specification-reference/#required_ruby_version">required_ruby_version</a> option in its <code>gemspec</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># ...                          </span>
+</span><span class='line'>  <span class="c1"># Compatible with any version of Ruby starting with a 2. (excluding pre-releases)</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">required_ruby_version</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Generally you&rsquo;ll want to be using <em>pessimistic</em> version constraints (as opposed to <em>optimistic</em> ones), which means you&rsquo;ll want to put an upper bound on the version of (likely future) versions of Ruby that are known to work with your gem: e.g. <code>~&gt; 2.0</code> rather than <code>&gt;= 2.0.0</code>. This means when Ruby 3.0 comes out, you will need to publish a new version of the gem, explicitly stating it&rsquo;s compatible, rather than assuming your gem will be compatible with any future version of Ruby.</p>
+
+<p>The <code>~&gt;</code> operator is shorthand for fixing all but the last number mentioned: e.g. <code>~&gt; 2.0</code> is shorthand for <code>['&gt;=2.0.0', '&lt; 3.0']</code>. We fix to the major version of Ruby as it&rsquo;s unlikely any breaking changes will be introduced without a major increment.</p>
+
+<p>If you want to support different major versions of Ruby, you&rsquo;ll need to use the longer <em>compound requirement</em> format: e.g. <code>['&gt;=1.7', '&lt; 3']</code> These values ANDed, i.e. all version expressions must be true of a version to be compatible.</p>
+
+<h2>Establishing what versions of Rails (or other dependencies) your gem is compatible with</h2>
+
+<p>This section uses writing a Rails engine as an example, but the same applies for writing any gem with a dependency on another.</p>
+
+<h3>Decide up-front</h3>
+
+<p>Once again, ideally you will know this up-front and restrict your gem to only using the public methods available for those versions. Go through your code at the end of writing and make sure all classes and methods you&rsquo;re using are available in all versions of the gem you&rsquo;re supporting.</p>
+
+<p>To get a list of available versions of a gem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">list</span> <span class="o">--</span><span class="n">remote</span> <span class="o">-</span><span class="n">e</span> <span class="o">&lt;</span><span class="n">dependency</span><span class="o">-</span><span class="nb">name</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Check your code for version-specific features</h3>
+
+<p>For Rails, you can search through <a href="https://apidock.com/rails">API Docks.com</a> and <a href="https://apidock.com/faq#What-is-the-bar-graph-on-the-top-of-documentation-pages">use the bar graph</a>. For other open source gems, you will need to <a href="http://greena13.github.io/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github.markdown">check the source code on Github</a>.</p>
+
+<p>Similar to the above, the <a href="https://github.com/rubocop-hq/rubocop-rails">Rubocop Rails plugin</a> allows you to target the lowest version of Rails you&rsquo;re planning on supporting and warn of missing or incompatible functionality:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">AllCops</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">TargetRailsVersion</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">4.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is likely to be less effective than the linting for different Ruby versions, as this feature started out its life as a way to toggle off newer linting rules that don&rsquo;t apply to older versions of Rails, rather than to warn of newer methods and classes being used with older versions of Rails.</p>
+
+<h3>Test against different gem versions</h3>
+
+<p>To actively test a gem&rsquo;s Rails dependency, you can generate a series of test Rails applications <a href="https://stackoverflow.com/questions/379141/specifying-rails-version-to-use-when-creating-a-new-application">using different versions</a> to verify it behaves as expected.</p>
+
+<p>To execute a test suite against a dummy app, you may choose to symlink the dummy app to those different Rails applications, or use a git submodule with a different Rails version on each branch, that you can switch between. You can use the approach for generating applications using different versions of Rails, but <a href="https://stackoverflow.com/a/23512768/1337796">generate a rails engine instead</a> and copy its dummy application (only) over into your git submodule.</p>
+
+<p>To test your gem against other dependencies, modify the <code>add_runtime_dependency</code> in your gem&rsquo;s <code>gemspec</code> file, to be specific versions, <code>bundle install</code> and re-run your test suite to make sure it still passes. Just remember to set it back before committing to version control or publishing your gem.</p>
+
+<h3>Declaring version-specific code</h3>
+
+<p>Since Rails 1.0, it has provided a <code>VERSION</code> constant, which contains: <code>MAJOR</code>, <code>MINOR</code>, <code>TINY</code> and <code>PRE</code> values. The first 3 are integers, while <code>PRE</code> is a string.</p>
+
+<p>These can be used to provide Rails-specific behaviour, to allow your gem to support versions of Rails with different interfaces, at the same time.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Rails</span><span class="o">::</span><span class="no">VERSION</span><span class="o">::</span><span class="no">MAJOR</span> <span class="o">&gt;=</span> <span class="mi">4</span>
+</span><span class='line'>  <span class="c1"># Rails 4 (and above) compatible behaviour</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="c1"># Before Rails 4 compatible behaviour</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For other gems, you can use the following approach (although I&rsquo;d suggest doing so, sparingly):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Gem</span><span class="o">.</span><span class="n">loaded_specs</span><span class="o">[</span><span class="s1">&#39;gem_name&#39;</span><span class="o">].</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;2.0.0&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Declaring what versions of Rails your gem is compatible with</h3>
+
+<p>To declare a runtime dependency (a gem yours depends on at runtime, not just during development or testing), add to your gem&rsquo;s <code>gemspec</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># ...                          </span>
+</span><span class='line'>  <span class="c1"># Compatible with any version of &lt;gem_name&gt; starting with a 2. (excluding pre-releases)</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s1">&#39;gem_name&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Again, pessimistic versioning is recommended (although keeping on top of when any of your dependencies have new versions available is a much larger effort than doing so for versions of Ruby).</p>
+
+<p>To get a summary of dependencies that may be outdated, you can regularly run in the root of your gem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">bundle</span> <span class="n">outdated</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>How to version your gem when compatible Ruby or dependency versions change</h2>
+
+<p>The approach to how you should version your gem in relation to changes in the dependency versions it supports, depends on whether you are adding a version (or expanding the list of compatible versions) or removing them.</p>
+
+<p>If you need to indicate compatibility with a new major version of a dependency (assuming you&rsquo;re using pessimistic versioning based on major versions), it should be done in isolation (and not bundled up with any other changes) as a minor or patch version, so consumers of your gem can upgrade without any undue friction. You must publish a new version because you cannot change the <code>gemspec</code> file for a published gem without giving it a new version. It should not mean any change in behaviour of your gem (and therefore should not constitute a major increment) and choosing a minor increment affords you the option of patching it (with high priority security of bug fixes) if you need to in the future (without requiring users to perform larger upgrades to get those patches).</p>
+
+<p>If you are dropping support for a version or range of versions, this should be done as a major increment. Even if doing so does not change the behaviour of your gem, it will likely mean larger changes in the applications that consume it (such as the need to upgrade the bundle). The size and complexity of this upgrade should be communicated to users of your gem by the major increment. For this reason, dropping support for older versions of dependencies is often bundled in with major changes to the library, to reduce the number of major upgrades consumers must go through to stay up-to-date.</p>
+
+<p>The exception to this may be if you discover there is a bug in a particular version of a dependency, which you want to warn users about by labelling it as being incompatible. This is usually done as a patch increment. For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># ...                          </span>
+</span><span class='line'>  <span class="c1"># All versions 2.* of gem_name, as long as they include the bugfix implemented in 2.1</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s1">&#39;gem_name&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 2.1&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Further reading</h2>
+
+<p>For additional important concepts on how to manage and publish gems that are well versioned, see <a href="https://guides.rubygems.org/patterns/">RubyGem&rsquo;s Patterns</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Recursive Procedures]]></title>
+    <link href="http://greena13.github.io/blog/2020/12/18/recursive-procedures/"/>
+    <updated>2020-12-18T12:16:44+00:00</updated>
+    <id>http://greena13.github.io/blog/2020/12/18/recursive-procedures</id>
+    <content type="html"><![CDATA[<p>Recursion is difficult to think about, but if you know two things, it becomes simple.</p>
+
+<!--more-->
+
+
+<h2>Recursive Procedures vs Recursive Processes</h2>
+
+<h3>Recursive Procedures</h3>
+
+<p>A recursive procedure is any procedure whose definition refers to itself (directly or indirectly).</p>
+
+<p>They always have two components:</p>
+
+<ul>
+<li>A base case: the circumstances where routine does not call itself again, but instead returns a result. This can be thought of as the end, or the terminating conditions of the recursion.</li>
+<li>Rules for evolving the algorithm in such a way as to eventually converge on the base-case. This can be thought of as the filtering done in parent loop, to refine the work done in its ancestors. Or the logic that prevents the recursion from being infinite.</li>
+</ul>
+
+
+<p>Recursive procedures are one of two <em>process</em> types:</p>
+
+<h3>Recursive Processes</h3>
+
+<p>A recursive <em>process</em> is a type of recursive procedure characterised by a deferred operations chain (i.e. the procedure is written in such a way that each loop can not complete without first getting the result of the next iteration and then performing some further work on it - unless it’s the base case).</p>
+
+<p>The execution of the recursive call goes through a period of expansion, where the process builds up a chain of deferred operations (by placing local variables and context on the call stack) and when the base-case is encountered, a period of contraction, where those scopes are popped off the call stack and executed.</p>
+
+<p>It’s common to use a procedure for calculating the factorial of a number, as an example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">number</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The routine for <code>factorial(n)</code> cannot complete without first the routine for <code>factorial(n-1)</code> returning, to then be multiplied by <code>n</code>. The important bit is that we need to multiple by <code>n</code>, i.e. perform additional work with the result of a subsequent iteration; this means we need to keep a record of the value of <code>n</code> and the operation to be performed (a pointer to the routine) for each iteration (which is stored as part of the scope put on the call stack).</p>
+
+<p>So for any input value, during the expansion, a deferred operations chain is pushed onto the stack (one link for each recursive call), until we reach the base-case of <code>n == 1</code> (<code>n</code> is decremented with each call to the next loop, so we always get there eventually). Then, during contraction, each stage of that chain is popped off the call stack and executed with the value of <code>n</code> set at the time it was pushed onto the stack, and the result of the next loop (which holds the accumulative product of all the subsequent loops).</p>
+
+<p>I prefer to think of these as &ldquo;bottom-up&rdquo; or &ldquo;right-to-left&rdquo; procedures, because when given a tree structure to operate on, in order to perform their work on each node, they must have the return value of the work done on their descendants, first.</p>
+
+<h3>Iterative Processes</h3>
+
+<p>Iterative processes are a type of recursive procedure characterised by a finite set of state variables being passed between execution calls. This effectively means all context and the result of previous calls are passed as arguments to the next iteration (rather than storing future work to be done when subsequent loops return). Because of this, there is theoretically no need to keep the previous call’s scope on the stack and the routine can run in constant memory. However, in reality most languages still consume linear amounts of memory (in proportion to the number of recursive calls) and can still cause <code>StackOverflow</code> exceptions if the recursion is too deep, because they need to keep track of where to return to, after each loop is finished.</p>
+
+<p>To actually get iterative processes to run in constant memory, you have to take advantage of another their properties: they can be rewritten using looping constructs - such as <code>do</code>, <code>repeat</code>, <code>until</code>, <code>for</code> and <code>while</code> - likely with one or more variables in an outer scope that can be accessed from all iterations of the loop, which you can use to store the result of the previous loop. By rewriting them in terms of looping constructs, you allow the procedure to run in constant memory.</p>
+
+<p>Some languages are smart enough to do this rewriting automatically for you at compile time or runtime, when the iterative process is <em>tail-recursive</em>, which means the call to itself is the final return value (i.e. its “tail” is a call to itself).</p>
+
+<p>Rewriting the above example to be tail-recursive:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">accumulator</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">accumulator</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">factorial</span><span class="p">(</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">number</span> <span class="o">*</span> <span class="n">accumulator</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This means passing an accumulator as an argument to hold the return value so the final line of the procedure is a call to itself (with no extra work to be performed). Now each iteration of the loop does all its work before passing onto the next iteration - there’s no need to record the value of any local variables or future operations (all context and the accumulator are passed on as arguments to the next iteration, instead).</p>
+
+<p>I prefer to think of these as &ldquo;top-down&rdquo; or &ldquo;left-to-right&rdquo; procedures, because when given a tree structure to operate on, they perform their work for each parent node before calling themselves again for the descendant nodes.</p>
+
+<h3>Summary</h3>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 152px;"/>
+        <col style="width: 298px;"/>
+        <col style="width: 343px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Description</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>Application</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Recursive processes</div>
+            <div><br/></div>
+            <div>a.k.a Bottom-up (or right-to-left)</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Partially evaluating or deferring earlier (higher up) iterations and waiting for the result
+                of later iterations to then customise or merge data with the higher evaluation
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When information on lower or subsequent iterations should affect how higher iteration should
+                be performed.
+            </div>
+            <ul>
+                <li>
+                    Whether any ancestor meets requirements
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Iterative processes</div>
+            <div><br/></div>
+            <div>a.k.a Top-down (or left-to-right)</div>
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Evaluating earlier (higher up) algorithms and passing it through or down to later iterations
+                as context to be used to customise (stopping condition) or merge data
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When information on higher iterations should affect how subsequent iterations should
+                behave.
+            </div>
+            <ul>
+                <li>
+                    Flags/toggles
+                </li>
+                <li>
+                    Max-depths/iterations
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Message passing</h2>
+
+<p>We&rsquo;ve discussed the ways that work can be sequenced and recursively evaluated, which we can think of as how the input is processed. But also of importance is how the results of that work is then collected, which we can think of as how the output is processed.</p>
+
+<p>For simple cases, a single memo or total can be maintained (i.e. returned). However, for more complex cases, where the algorithm for collecting the results of each iteration involve one or mose decisions, a context or accumulator object may be required.</p>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 152px;"/>
+        <col style="width: 298px;"/>
+        <col style="width: 343px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Description</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>Application</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Returning</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Returning the results of subsequent operations and not mutating a shared cumulator</div>
+            <ul>
+                <li>
+                    Don’t need to pass in a receiver of the answer
+                </li>
+            </ul>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When there is only one way to cumulate the results</div>
+            <ul>
+                <li>
+                    E.g. Totals, counts, flattening of arrays
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 152px; padding: 8px;">
+            <div>Accumulator</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 298px; padding: 8px;">
+            <div>Mutating a shared cumulator object instantiated in the first loop and passed in by a parent
+                or 
+            </div>
+            <ul>
+                <li>
+                    <div>Requires breaking the algorithm into 2 parts: the actual recursive part, and a
+                        wrapper that returns this cumulator
+                    </div>
+                </li>
+            </ul>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 343px; padding: 8px;">
+            <div>When subsequent iterations are best placed to decide how to integrate the results of their
+                iteration into the cumulator
+            </div>
+            <ul>
+                <li>
+                    <div>When it’s non trivial to incorporate subsequent results</div>
+                </li>
+                <li>
+                    <div>E.g. when you have several counters and merging them in an earlier iteration would
+                        involve duplicating the logic in the subsequent one
+                    </div>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Summary</h2>
+
+<table style="border-collapse: collapse; min-width: 100%;">
+    <colgroup>
+        <col style="width: 93px;"/>
+        <col style="width: 144px;"/>
+        <col style="width: 256px;"/>
+        <col style="width: 314px;"/>
+    </colgroup>
+    <tbody>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 93px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div><br/></div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Returning</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Accumulator</div>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="6"
+            style="height: 200px; border: 1px solid rgb(204, 204, 204); width: 93px; padding: 8px;">
+            <div>Iterative</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Merging/calculation</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 570px; padding: 8px;">
+            <div>Done in child loop</div>
+            <div><br/></div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Arguments</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Remaining dataset (only)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Remaining dataset</div>
+            <div>Accumulator (mutated by parent)</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Side-effects</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>None</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Mutates accumulator with value from current iteration + all parent iterations</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Returns</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Result of algorithm run on all parent loops + Result of algorithm run on all child loops
+            </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Accumulator for convenience of outermost call</div>
+            <div><br/></div>
+            <div>Can split out into an outer call that does the setting of the accumulator and the returning
+                for you
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Initial value</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Determined by first loop</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Determined by first loop’s accumulator</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Base case</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Return final value </div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Perform final mutation</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 200px; border: 1px solid rgb(204, 204, 204); width: 93px; padding: 8px;"
+            rowspan="6">
+            <div>Recursive</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Merging/calculation</div>
+        </td>
+        <td colspan="2" style="border: 1px solid rgb(204, 204, 204); width: 570px; padding: 8px;">
+            <div>Done in parent loop</div>
+            <div><br/></div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Arguments</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Remaining dataset </div>
+            <ul>
+                <li>
+                    <div>Result of algorithm run on all parent loops (result so far)</div>
+                </li>
+            </ul>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <ul>
+                <li>
+                    <div>Remaining dataset</div>
+                </li>
+                <li>
+                    <div>Accumulator (not yet mutate by parent)</div>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Side-effects</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>None</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Mutates accumulator with value from current iteration + result from all child iterations
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Returns</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Result of algorithm of all child iterations</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Accumulator for convenience of outermost call</div>
+            <div><br/></div>
+            <div>Can split out into an outer call that does the setting of the accumulator and the returning
+                for you
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Initial value</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Determined by last (innermost loop)</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Determined by first loop’s accumulator</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 144px; padding: 8px;">
+            <div>Base case</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 256px; padding: 8px;">
+            <div>Return initial value</div>
+        </td>
+        <td style="border: 1px solid rgb(204, 204, 204); width: 314px; padding: 8px;">
+            <div>Perform first mutation</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h2>Examples</h2>
+
+<h3>Bottom-up, returning</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is always a simple addition, so can use returning</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_bur</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="c1"># Execution traverses full recursion path before sending the result back up the call stack</span>
+</span><span class='line'>    <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">sum_bur</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="c1"># Handling of stopping conditions - code that is evaluated on the final expansion step before contraction</span>
+</span><span class='line'>    <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Top-down, returning</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is always a simple addition, so can use returning</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_tdr</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Result is calculated in earlier iterations and then passed down into subsequent ones</span>
+</span><span class='line'>  <span class="n">next_total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="n">sum_tdr</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">,</span> <span class="n">next_total</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">next_total</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Bottom-up, accumulator</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is not simple, so a accumulator is used</span>
+</span><span class='line'><span class="c1"># @note Even though algorithm is bottom up, the passing of the initial value of the accumulator is still</span>
+</span><span class='line'><span class="c1">#       top-down</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_bua</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">total</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">missing</span><span class="p">:</span> <span class="mi">0</span> <span class="p">})</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">context</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="c1"># Execution traverses full recursion path before sending the result back up the call stack</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">sum_bua</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="c1"># Mutate/update accumulator rather than return a value</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class='line'>      <span class="n">context</span><span class="o">[</span><span class="ss">:missing</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">context</span><span class="o">[</span><span class="ss">:total</span><span class="o">]</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Context is returned by convenience for top-most call, to avoid having to specify the accumulator in the</span>
+</span><span class='line'>  <span class="c1"># outer context when calling the method</span>
+</span><span class='line'>  <span class="n">context</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Top-down, accumulator</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># @note Algorithm for accumulation is not simple, so a accumulator is used</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">sum_tda</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">total</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">missing</span><span class="p">:</span> <span class="mi">0</span> <span class="p">})</span>
+</span><span class='line'>  <span class="c1"># Checking initial arguments</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span> <span class="k">unless</span> <span class="n">arr</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Reduction or further focusing on remaining dataset</span>
+</span><span class='line'>  <span class="n">remaining_elements</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Mutate/update accumulator rather than return a value</span>
+</span><span class='line'>  <span class="c1"># @note This is done before calling the next iteration</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">nil?</span>
+</span><span class='line'>    <span class="n">context</span><span class="o">[</span><span class="ss">:missing</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="n">context</span><span class="o">[</span><span class="ss">:total</span><span class="o">]</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Checking for stopping conditions</span>
+</span><span class='line'>  <span class="c1"># The handling of a stopping condition is to just not call itself any more</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">remaining_elements</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>    <span class="n">sum_tda</span><span class="p">(</span><span class="n">remaining_elements</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Context is returned by convenience for top-most call, to avoid having to specify the accumulator in the</span>
+</span><span class='line'>  <span class="c1"># outer context when calling the method</span>
+</span><span class='line'>  <span class="n">context</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[XPath Selectors Cheatsheet]]></title>
@@ -11758,431 +12836,6 @@ If the employee has high equity, people aren’t going to think it’s fair that
 
 <ul>
 <li><a href="http://greena13.github.io/blog/2016/06/25/the-best-tim-ferriss-show-podcast-episodes">The Best Tim Ferriss Show Podcast Episodes</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SourceTree Keyboard Shortcuts]]></title>
-    <link href="http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts/"/>
-    <updated>2015-02-01T09:32:42+00:00</updated>
-    <id>http://greena13.github.io/blog/2015/02/01/sourcetree-keyboard-shortcuts</id>
-    <content type="html"><![CDATA[<p>Originally (back in 2015) this post was a record of my attempts to brute force the discovery of Sourcetree keyboard shortcuts, because they were not well-documented by Atlassian (or anyone else I could find at the time).</p>
-
-<p>Now, in 2020, the keyboard shortcuts are readily available both in-program (on each context menu item) as well as a few easily located resources online. So I&rsquo;ll repurpose this blog post instead to surface some of the more <em>useful</em> keyboard shortcuts (this list is no longer exhaustive), and explain how I <em>extend</em> the keyboard shortcuts Sourcetree provides natively.</p>
-
-<!--more-->
-
-
-<p>These are the Mac keyboard shortcuts (although I suspect the Windows equivalents are more often than not, the same but with ctrl instead of cmd).</p>
-
-<h2>Navigation &amp; Menus</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>File Status Screen</strong> </td>
-<td style="text-align:right;"> cmd + 1 </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>History Screen</strong> </td>
-<td style="text-align:right;"> cmd + 2 </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Search Screen</strong> </td>
-<td style="text-align:right;"> cmd + 3 </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>New repo</strong>  </td>
-<td style="text-align:right;">  cmd + n  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Hide/show sidebar</strong>  </td>
-<td style="text-align:right;">  cmd + shift + k </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Repository details</strong>  </td>
-<td style="text-align:right;">  cmd + shift + i </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Open file browser (fastest way to switch repositories)</strong>  </td>
-<td style="text-align:right;">  cmd + o </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Staging &amp; Commit Operations</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Commit All&hellip; Screen</strong>  </td>
-<td style="text-align:right;">  cmd + shift + c </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Commit options</strong>  </td>
-<td style="text-align:right;">  cmd + shift + o </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Reset Selected File</strong> </td>
-<td style="text-align:right;">  cmd + shift + r </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Diff</strong>  </td>
-<td style="text-align:right;">  cmd + d  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Remove Selected File</strong> </td>
-<td style="text-align:right;"> cmd + delete </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Search</strong>  </td>
-<td style="text-align:right;">  cmd + shift + h </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Refresh</strong>  </td>
-<td style="text-align:right;">  cmd + r  </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Removing and resetting files</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Delete</strong>  </td>
-<td style="text-align:right;">  cmd + delete  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Reset file to staged version</strong>  </td>
-<td style="text-align:right;">  cmd + alt + R  </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Find</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Find (file by name or path)</strong>  </td>
-<td style="text-align:right;">  cmd + f  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Find Next</strong>  </td>
-<td style="text-align:right;">  cmd + g  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Find Previous</strong>  </td>
-<td style="text-align:right;">  cmd + shit + g  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Use selection to find</strong>  </td>
-<td style="text-align:right;">  cmd + e  </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Branch  Operations</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Stash</strong>  </td>
-<td style="text-align:right;">  cmd + shift + s </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Add or Remove Tag</strong>  </td>
-<td style="text-align:right;">  cmd + shift + t </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Branch</strong>  </td>
-<td style="text-align:right;">  cmd + shift + b </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Merge</strong>  </td>
-<td style="text-align:right;">  cmd + shift + m </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Repository Operations</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Fetch</strong>  </td>
-<td style="text-align:right;">  cmd + shift + f </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Pull from repository</strong>  </td>
-<td style="text-align:right;">  cmd + shift + l </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Open remote in web browser</strong>  </td>
-<td style="text-align:right;">  cmd + shift + w </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Open pull request</strong>  </td>
-<td style="text-align:right;">  cmd + alt + p </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Window (Normal Mac Shortcuts)</h2>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Quit</strong>  </td>
-<td style="text-align:right;">  cmd + q  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Close window</strong>  </td>
-<td style="text-align:right;">  cmd + w  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Hide</strong>  </td>
-<td style="text-align:right;">  cmd + h  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Minimise</strong>  </td>
-<td style="text-align:right;">  cmd + m  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Settings</strong>  </td>
-<td style="text-align:right;">  cmd + ,  </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Undo</strong> </td>
-<td style="text-align:right;"> Cmd + z </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Select All</strong> </td>
-<td style="text-align:right;"> Cmd + a </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Emoji &amp; Synbols</strong> </td>
-<td style="text-align:right;"> Cmd + ctrl + space </td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>Creating your own keyboard shortcuts</h2>
-
-<p>Sourcetree is no different than any other Mac application, in that you can define your own keyboard shortcuts for system menu items.</p>
-
-<p>Identify the menu item that either has no keyboard shortcut, or one that you don&rsquo;t like, and take note of its name.</p>
-
-<p>Open System Preferences, select the <em>Keyboard</em> option, then the <em>Shortcuts</em> tab, followed by the <em>App Shortcuts</em> menu item. Click the + button, Select Sourcetree as the <em>Application</em>, your menu name as <em>Menu Title</em> and define your keyboard shortcut. Close System Preferences and reopen Sourcetree to use.</p>
-
-<h2>Going beyond pre-defined actions and navigating menu items</h2>
-
-<p>I use <a href="https://vimacapp.com/">Vimac</a> to navigate the parts of the Sourcetree UI and perform actions that do not have convenient keyboard shortcuts or menu items.</p>
-
-<p>It provides the following keyboard shortcuts (each is configurable):</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:left;"> <strong>Action</strong>  </th>
-<th style="text-align:right;"> <strong>Shortcut</strong> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;"> <strong>Activate</strong>  </td>
-<td style="text-align:right;">  ctrl + space </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Right click</strong>  </td>
-<td style="text-align:right;">  Hold shift when typing macro </td>
-</tr>
-<tr>
-<td style="text-align:left;"> <strong>Double click</strong>  </td>
-<td style="text-align:right;">  Hold cmd when typing macro </td>
-</tr>
-</tbody>
-</table>
-
-
-<p>There are alternatives such as <a href="https://www.keyboardmaestro.com/main/">Keyboard Maestro</a> (Paid software) that may be better suited to your preferences.</p>
-
-<h3>Related</h3>
-
-<ul>
-<li><a href="http://greena13.github.io/blog/2016/06/30/facebook-origami-cheat-sheet">Facebook Origami Cheat Sheet</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Interview Questions for a Development Job]]></title>
-    <link href="http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job/"/>
-    <updated>2015-01-17T08:35:20+00:00</updated>
-    <id>http://greena13.github.io/blog/2015/01/17/interview-questions-for-a-development-job</id>
-    <content type="html"><![CDATA[<p>Last year I went through the rather exciting process of interviewing for a series of positions in search of a new development job. Having sat down and thought about what I had gained from my previous working environments, I compiled a list of questions that I thought would help me gauge the type of work I would be doing and the environment I would be a part of if I took the position.</p>
-
-<!--more-->
-
-
-<p>In the hope that they may assist others, I have decided to document them here. I do not claim to have come up with them all myself (some are from friends and family, others I ran across somewhere on the web), but most were inspired by my own previous experience.</p>
-
-<h2>People &amp; Company</h2>
-
-<ul>
-<li>What projects are currently on-going?</li>
-<li>What is the current team like?</li>
-<li>What sort of working environment do you offer?</li>
-<li>How does the company support people of different personality types and empower them to get the best from themselves within your working environment?</li>
-<li>How do you meet and communicate information within the company?</li>
-<li>How do you share knowledge and resources within the company?</li>
-<li>What sort of office hierarchy does the company use? How flexible is it?</li>
-<li>What parts about how the office is organised and run are open to suggestions? What things are not?</li>
-<li>What sized teams do people work in? How often do those teams change? How are they organised?</li>
-<li>How do you invest in and support your developers?</li>
-<li>What’s important to the company&rsquo;s culture?</li>
-<li>What is the company’s goals or road map for the next 12 months?</li>
-<li>What attracted you to the company?</li>
-<li>How do most people choose to get to work each morning?</li>
-</ul>
-
-
-<h2>Job Responsibilities</h2>
-
-<ul>
-<li>Does this position involve design as well as development?</li>
-<li>How much technical and creative freedom is to be expected?</li>
-<li>What would be my role here in the company for the first few weeks and how will it change in 3 months time?</li>
-<li>What is your best guess at the relative time spent developing new features and performing maintenance or bug fixing?</li>
-</ul>
-
-
-<h2>Technical</h2>
-
-<ul>
-<li>What technology could this role offer me the chance to work with?</li>
-<li>What sort of testing and quality management measures do you have in place?</li>
-<li>What software do you use in the office for version control, communication, deployment, data storage and bug tracking?</li>
-<li>What hardware do you use for development, networking, storage and presenting?</li>
-</ul>
-
-
-<h2>Procedures</h2>
-
-<ul>
-<li>How do you plan work, estimate risk and agree on deadlines and milestones?</li>
-<li>How involved are clients in the design process and in offering feedback?</li>
-<li>What sort of review opportunities do you offer, both technical and performance?</li>
-<li>How do you track development progress and allow developers to identify and raise problems early?</li>
-<li>How do you handle work that is not going to plan, is late or not going to meet a deadline?</li>
-<li>How does the company use data and data analysis in its day-to-day operation?</li>
-<li>How flexible are the work hours?</li>
-<li>Do you offer the freedom to occasionally work from home?</li>
-</ul>
-
-
-<h2>Feedback</h2>
-
-<ul>
-<li>Do you have any concerns with my ability to fulfil this role that I can address right now?</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Improving Typing Speed]]></title>
-    <link href="http://greena13.github.io/blog/2014/09/08/improving-typing-speed/"/>
-    <updated>2014-09-08T16:01:41+01:00</updated>
-    <id>http://greena13.github.io/blog/2014/09/08/improving-typing-speed</id>
-    <content type="html"><![CDATA[<p>Always in search of productivity gains in my programming work, recently I have been looking into improving my typing speed. I read Jeff Atwood&rsquo;s <a href="http://blog.codinghorror.com/we-are-typists-first-programmers-second/">We Are Typists First, Programmers Second</a> and was enthused, despite a few commenters pointing out that typing speed is rarely the bottleneck when it comes to coding.</p>
-
-<!--more-->
-
-
-<p>Atwood rightly responded that it is a matter of mental &ldquo;bandwidth&rdquo;: ideally, typing should be a function performed entirely autonomously without error or disruption - the mental interference of having to consider which keys should be pressed or what corrective action is needed to rectify a mistype can be detrimental to productivity and creativity. This mirrors a similar sentiment discussed in the highly recommended <a href="http://www.amazon.co.uk/Practice-Perfect-Rules-Getting-Better-ebook/dp/B007ZQ34V4">Practice Perfect</a> by Doug Lemov, Erica Woolway and Katie Yezzi. Lemov and his co-authors discuss practicing monotonous, formulaic and repetitive skills to the point of being able to execute them effortlessly and flawlessly provides more cognitive horsepower for creativity and efficacy.</p>
-
-<p>From working with colleague and peers, I gained the impression I had a pretty average typing speed for a regular computer user and programmer, but I wanted to try and find out a base line. I encountered many figures of average and exceptional typing speeds online, including some <a href="http://en.wikipedia.org/wiki/Words_per_minute">rather unbelievable world records</a>, but I could not find any information on the sort typing I was interested in: programming, using just about every key on the keyboard and not just the alphanumeric and punctuation keys. Unable to find the information I wanted, I resigned myself to using what I had. I took a few free typing tests I found online and got an average of about 60 WPM. This is, from what I can gather, above average and more than adequate to produce code efficiently.</p>
-
-<p>However, I knew that my typing speed slowed considerably when I had to code as opposed to writing an email but I was unsure by exactly how much. So I went in search of a tool that might help me find out. I found <a href="https://typing.io/">typing.io</a>, a service that allows you to type code from open source repositories for a number of different languages and frameworks while it measures your typing speed and error rate. Each code excerpt is broken down into chunks called <em>lessons</em>. The free version of the tool was enough to tell me my average typing speed for programming was close to 30 WPM - a rather concerning reduction of 50%. What wasn&rsquo;t available in the free version, however, was exactly which keys it was that was dragging down my typing speed.</p>
-
-<p>I decided to invest in the paid subscription to gain greater access to the lessons and more importantly, to identify which keystrokes were causing me the most problems. I thought if I could find the worst culprits, I could correct the <a href="http://en.wikipedia.org/wiki/Pareto_principle">fabled 20%</a> and get my 80% improvement.</p>
-
-<p>So, I started working through the lessons and one of the most interesting things I discovered was how I seem to deviated from the prescribed correct finger placements to suit my preferred style of typing. Typing.io provides a virtual keyboard on the bottom of the screen while you are typing, illustrating key placement on your keyboard and the correct fingers that should be used to press it. I have quite long fingers and I oftentimes use this length to my advantage by favouring the longer index and middle fingers to reach keys that are technically designated as the responsibility of the shorter, ring and little fingers.</p>
-
-<p>I wondered if perhaps this overuse of the fingers that sat in the center of the keyboard was contributing to the slower execution of keystrokes attached to keys located towards the outer edge of the board. So within the first 30 minutes of practice, after seeing no improvement in speed - and an increasing error rate as I tried to push myself out of frustration - I decided I would focus on returning to the correct form I had first learnt in highschool to see if it had any effect on my speed.</p>
-
-<p>Initially my error rate soared to around 35%, but gradually it began to come down as I focused on addressing each problem key individually and after more than 11 hours of practice over a period of a week or so, I began to arrive back at levels of ease similar to those I experienced before adjusting my technique and a nice little boost in my speed of 3 - 5 WPM.</p>
-
-<p>After almost 12 hours of use, I had a few observations of typing.io. While the report at the end of each &lsquo;lesson&rsquo; is helpful, it doesn&rsquo;t really tell me what I want to know and can be misleading at times. An infographic of a keyboard is shown and each key is coloured in increasingly warmer colours, with bright red being reserved for the keys you had mistyped the greatest percentage of times. This means that if you typed a key twice and mistyped it once, it appears redder than a key you typed 17 times and mistyped 8 times. This is obviously not useful for identifying the keys that you most often mistype. It would be more useful if data from previous lessons were included as well - perhaps weighted appropriately so the most recent previous lessons had a greater significance.</p>
-
-<p>The infographic also doesn&rsquo;t appear to display any information about how long it takes to press particular keys and therefor where improvement could to be made. It would be further helpful if the tool provided you the top five or ten slowest key transitions, so that you knew which sequences of keys to practice - assuming they occurred frequently enough to justify the effort.</p>
-
-<p>Another gripe is with the virtual keyboard that appears while you are typing, showing you the key and finger combination necessary to achieve the next keystroke. Often I mistyped something and was left confused as to where I had gone wrong; it would have been very helpful if the virtual keyboard had shown what key I had actually pressed so I could correct my form without having to glance down at the actual keyboard.</p>
-
-<p>Typing.io also did not distinguish between which shift key was being pressed and it accepted keystrokes that had been generated with the incorrect shift key. This made it especially difficult to recognise mistakes and correct them because the tool was giving feedback indicating they were correct.</p>
-
-<p>An interesting observation was that the greatest determinant of speed and error rate, was which language I was typing code for. It seems there are languages which lend themselves to be typed much quicker and with less errors. High-level languages with CamelCase variable and method naming conventions were by far the easiest to transcribe. They generally included less operator keystrokes, less opening and closing brackets and none of the dreaded shift + underscore key combination that is so slow and difficult to reach with you little finger. It has left with me with an interesting (but ultimately minor) consideration when selecting suitable languages for future projects.</p>
-
-<p>Overall, this was an curious experience that I would tentatively claim as a measured success. It remains unclear whether adjusting my technique to be more consistent with the suggested finger configurations has improved my typing speed, or whether I just got more accustom to the nuances of the program. I intend to continue with the program with a less intensive regime to see if more clearer results emerge after a longer time period.</p>
-
-<h3>Related</h3>
-
-<ul>
-<li><a href="http://greena13.github.io/blog/2016/01/17/how-i-taught-myself-the-colemak-keyboard-over-a-weekend">How I taught myself the Colemak keyboard over a weekend</a></li>
 </ul>
 
 ]]></content>

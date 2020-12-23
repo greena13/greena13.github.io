@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Writing Ruby Gems for Different Versions of Ruby and Rails - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Writing Ruby Gems for Different Versions of Ruby and Rails written This article gives a quick overview of how gem versions are managed in Ruby &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Writing Ruby Gems for Different Versions of Ruby and Rails</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2020-12-19T09:05:06+00:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>This article gives a quick overview of how gem versions are managed in Ruby applications and then explains how to correctly version your own gems and their dependencies.</p>
+
+<!--more-->
+
+
+<h2>Ways your gem is consumed</h2>
+
+<p>Before going over how to version your Ruby gems and their dependencies, it&rsquo;s first worth covering the two ways your gem may be consumed: as part of another gem, or as part of a Ruby application. Each uses a slightly different mechanism.</p>
+
+<h3>Other Ruby gems</h3>
+
+<p>For each version of Ruby installed on your system, there will be one or more versions of the Ruby Gems command line interface installed. This utility has two functions it serves:</p>
+
+<ul>
+<li>As a client for the the Ruby Gems repositories: it allows downloading and installing gems (and their dependencies) from the Ruby Gems servers. It also allows building and publishing gems you may have authored locally and wish to distribute.</li>
+<li>As a package manager: it resolves compatible versions of gems and their dependencies.</li>
+</ul>
+
+
+<p>The version of Rubygems you&rsquo;re running can be seen with:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem --version</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Each gem includes a <code>gemspec</code> file that provides metadata about that gem, including its version and the compatible versions of any gems it may depend on. Ruby gems uses this information to download dependencies whenever the gem is used in a Ruby application. It is by including your gem in another&rsquo;s <code>gemspec</code>, that other gems may depend on yours.</p>
+
+<p>Ruby gems will install the latest stable version of each dependency that satisfies the version constraints in the <code>gemspec</code> file (while accounting for if there are other dependencies of the gem that also depend on it, and also have version constraints to consider).</p>
+
+<p>To install the latest version of a gem and all of its dependencies:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install &lt;gem_name&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Install a specific version of a gem:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install &lt;gem_name&gt; -v&lt;version&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To see the dependencies of a gem:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem dependency &lt;gem_name&gt; -v&lt;version&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Ruby applications</h3>
+
+<p>Bundler is a Ruby gem (so it is installed and managed by Ruby Gems) that handles installing the correct gem versions for Ruby <em>applications</em> (differentiated from Ruby Gems, which manages dependencies between Ruby <em>gems</em> directly).</p>
+
+<p>The version of bundler can be seen by running:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle --version</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Bundler takes the list of gems a Ruby application depends on in the form of a <code>Gemfile</code> (which may or may not specify version constraints) and resolves a version of each gem to use. It does so by starting from the latest stable version of each gem, and then applying any constraints specified in the <code>Gemfile</code>; it then applies the version constraints of any <em>other</em> gems in the <code>Gemfile</code> that depend on it (if applicable). This process is done recursively, to ensure the gems listed in the <code>Gemfile</code>, and all of their dependencies (and all of <em>their</em> dependencies, etc) are compatible with one another.</p>
+
+<p>It saves that list of specific versions as a <code>Gemfile.lock</code> file, which is used for all future bundle installs, rather than attempting to re-calculate the bundle of compatible gems again. This means versions of the gems that are subsequently published are <em>not</em> installed on future runs of <code>bundle install</code>.</p>
+
+<p>To install the same versions of all gems as when the bundle was built (or to build the bundle for the first time if a <code>Gemfile.lock</code> is not present or new gems have been added to <code>Gemfile</code>):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To recalculate the bundle (still sticking to the version constraints mentioned in the <code>Gemfile</code>):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle update</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To update beyond the versions that are mentioned in your <code>Gemfile</code>, you must first update the <code>Gemfile</code> and then run <code>bundle update</code>.</p>
+
+<p>To get a list of gems in the bundle that can be updated to newer versions (ignoring any version constraints of other gems that depend on it):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bundle outdated</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Differences between Ruby Gems and Bundler</h3>
+
+<p>The Ruby Gems CLI does not keep a record of the exact versions of gem&rsquo;s dependencies it installs (it does maintain a local cache, though). <code>gemspec</code> files should list the full range of known compatible dependency versions, to be as permissive as possible (without resorting to optimistic versioning).</p>
+
+<p>Bundler, however, takes the opposite approach to manage Ruby application&rsquo;s dependencies with <code>Gemfile.lock</code>: the list of gem versions are as restrictive as possible, to ensure the same behaviour between installs of the Ruby application (without the chance of different dependency versions being used). This is why the <code>Gemfile.lock</code> should be committed with version control, and shared between development and production deployments of the Ruby application.</p>
+
+<p>Bundler can also used to manage the development and testing of gems: usually you want to ensure the same version of your test framework gems and other development dependencies are used between (development) installs of the gem.</p>
+
+<p>Because it&rsquo;s possible to reference the contents of a <code>gemspec</code> file from a <code>Gemfile</code>, the <code>Gemfile</code> included with the gem is usually just a wrapper for the <code>gemspec</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">gemspec</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, it allows you to install the development dependencies using <code>bundle install</code>, which (importantly) generates a <code>Gemfile.lock</code>, and if committed to version control, ensures anyone else who works on the gem or its test suite will get the same versions of the development dependencies. The <code>Gemfile</code> and <code>Gemfile.lock</code> are ignored when downloading the gem through Ruby Gems; they'e only used during development.</p>
+
+<h2>Establishing what versions of Ruby your gem is compatible with</h2>
+
+<h3>Decide up-front</h3>
+
+<p>Ideally, you should decide what versions of Ruby you&rsquo;re going to support before you begin writing your gem.</p>
+
+<p>You can use <a href="https://stats.rubygems.org/">RubyGem stats</a> to find out the latest Ruby version usage statistics, to make an informed decision about what versions you would like to support (and thereby what approximate percentage of Ruby projects or users).</p>
+
+<p>If you&rsquo;re still in doubt, you can check popular, well maintained gems for what versions or Ruby they are still supporting, and use it as a guide.</p>
+
+<p>You&rsquo;ll also need to consult the supported versions of Ruby of any dependencies you add to your gem, as they may further limit which ones your gem can support in turn. You will need to check if the list of supported Ruby versions <em>changes</em> over the versions of the gem yours is compatible with. Generally when a well-maintained gem drops support for a version of Ruby, it is done so in a major increment (but unfortunately, not always).</p>
+
+<p>To get the required Ruby versions of a gem yours depends on (in YAML):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">specification</span> <span class="o">&lt;</span><span class="n">dependency</span><span class="o">-</span><span class="n">gem</span><span class="o">-</span><span class="nb">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">v</span> <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span> <span class="n">required_ruby_version</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Check your code for version-specific features</h3>
+
+<p>Either you will have decided what versions of Ruby you&rsquo;re supporting up-front, and will restrict yourself to the syntax and standard library calls that are available in all versions, or you will have already written or inherited a gem that you need to audit. In either case, when you have finished your gem, it&rsquo;s a good idea to go through and check all classes and methods of the standard library are available in all versions of Ruby you&rsquo;re supporting.</p>
+
+<p>You can use <a href="https://apidock.com/ruby">API Dock&rsquo;s Ruby search</a> to search for classes and methods, and <a href="https://apidock.com/faq#What-is-the-bar-graph-on-the-top-of-documentation-pages">use the bar graph</a> to determine in what versions of Ruby they were available, and when their behaviour may have changed.</p>
+
+<p>Checking changes in syntax and idioms is a little trickier. You can use a summary of new feature with each new version (like <a href="https://rubychangelog.com/">Ruby Changelog.com</a> or <a href="https://www.rubyguides.com/ruby-version-changes/">Ruby Guides</a>) to get an idea. However, a more active scan can be done by installing <a href="https://github.com/rubocop-hq/rubocop">Rubocop</a> and by setting the <code>TargetRubyVersion</code> in the <code>.rubocop</code> file to your lowest supported Ruby version which, as well as performing other code linting, can warn against syntax and standard library calls not available in the target Ruby version:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">AllCops</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">TargetRubyVersion</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2.0.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Test against different Ruby versions</h3>
+
+<p>Finally, you can use <a href="https://rvm.io/">rvm</a> (or similar) to switch between Ruby versions for testing applications or running your gem&rsquo;s test suite.</p>
+
+<h3>Declaring version-specific code</h3>
+
+<p>You can determine the version of Ruby at runtime using the <code>RUBY_VERSION</code> constant:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">RUBY_VERSION</span><span class="o">.</span><span class="n">start_with?</span><span class="p">(</span><span class="s1">&#39;2.&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because <code>RUBY_VERSION</code> is a string and difficult to compare, if you&rsquo;re only supporting <a href="https://apidock.com/ruby/Gem/Version">Ruby versions beyond 1.9.3</a>, you can wrap it in <code>Gem::Version</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">RUBY_VERSION</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;2.0.0&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This approach may assist with normalizing the differences in behaviour of the standard library versions, but will not polyfill newer Ruby language syntax or idioms into older versions of Ruby.</p>
+
+<h3>Declaring what versions of Ruby your gem supports</h3>
+
+<p>To declare the versions of Ruby your gem will work with, use the <a href="https://guides.rubygems.org/specification-reference/#required_ruby_version">required_ruby_version</a> option in its <code>gemspec</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># ...                          </span>
+</span><span class='line'>  <span class="c1"># Compatible with any version of Ruby starting with a 2. (excluding pre-releases)</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">required_ruby_version</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Generally you&rsquo;ll want to be using <em>pessimistic</em> version constraints (as opposed to <em>optimistic</em> ones), which means you&rsquo;ll want to put an upper bound on the version of (likely future) versions of Ruby that are known to work with your gem: e.g. <code>~&gt; 2.0</code> rather than <code>&gt;= 2.0.0</code>. This means when Ruby 3.0 comes out, you will need to publish a new version of the gem, explicitly stating it&rsquo;s compatible, rather than assuming your gem will be compatible with any future version of Ruby.</p>
+
+<p>The <code>~&gt;</code> operator is shorthand for fixing all but the last number mentioned: e.g. <code>~&gt; 2.0</code> is shorthand for <code>['&gt;=2.0.0', '&lt; 3.0']</code>. We fix to the major version of Ruby as it&rsquo;s unlikely any breaking changes will be introduced without a major increment.</p>
+
+<p>If you want to support different major versions of Ruby, you&rsquo;ll need to use the longer <em>compound requirement</em> format: e.g. <code>['&gt;=1.7', '&lt; 3']</code> These values ANDed, i.e. all version expressions must be true of a version to be compatible.</p>
+
+<h2>Establishing what versions of Rails (or other dependencies) your gem is compatible with</h2>
+
+<p>This section uses writing a Rails engine as an example, but the same applies for writing any gem with a dependency on another.</p>
+
+<h3>Decide up-front</h3>
+
+<p>Once again, ideally you will know this up-front and restrict your gem to only using the public methods available for those versions. Go through your code at the end of writing and make sure all classes and methods you&rsquo;re using are available in all versions of the gem you&rsquo;re supporting.</p>
+
+<p>To get a list of available versions of a gem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="n">list</span> <span class="o">--</span><span class="n">remote</span> <span class="o">-</span><span class="n">e</span> <span class="o">&lt;</span><span class="n">dependency</span><span class="o">-</span><span class="nb">name</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Check your code for version-specific features</h3>
+
+<p>For Rails, you can search through <a href="https://apidock.com/rails">API Docks.com</a> and <a href="https://apidock.com/faq#What-is-the-bar-graph-on-the-top-of-documentation-pages">use the bar graph</a>. For other open source gems, you will need to <a href="/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github.markdown">check the source code on Github</a>.</p>
+
+<p>Similar to the above, the <a href="https://github.com/rubocop-hq/rubocop-rails">Rubocop Rails plugin</a> allows you to target the lowest version of Rails you&rsquo;re planning on supporting and warn of missing or incompatible functionality:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">AllCops</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">TargetRailsVersion</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">4.0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is likely to be less effective than the linting for different Ruby versions, as this feature started out its life as a way to toggle off newer linting rules that don&rsquo;t apply to older versions of Rails, rather than to warn of newer methods and classes being used with older versions of Rails.</p>
+
+<h3>Test against different gem versions</h3>
+
+<p>To actively test a gem&rsquo;s Rails dependency, you can generate a series of test Rails applications <a href="https://stackoverflow.com/questions/379141/specifying-rails-version-to-use-when-creating-a-new-application">using different versions</a> to verify it behaves as expected.</p>
+
+<p>To execute a test suite against a dummy app, you may choose to symlink the dummy app to those different Rails applications, or use a git submodule with a different Rails version on each branch, that you can switch between. You can use the approach for generating applications using different versions of Rails, but <a href="https://stackoverflow.com/a/23512768/1337796">generate a rails engine instead</a> and copy its dummy application (only) over into your git submodule.</p>
+
+<p>To test your gem against other dependencies, modify the <code>add_runtime_dependency</code> in your gem&rsquo;s <code>gemspec</code> file, to be specific versions, <code>bundle install</code> and re-run your test suite to make sure it still passes. Just remember to set it back before committing to version control or publishing your gem.</p>
+
+<h3>Declaring version-specific code</h3>
+
+<p>Since Rails 1.0, it has provided a <code>VERSION</code> constant, which contains: <code>MAJOR</code>, <code>MINOR</code>, <code>TINY</code> and <code>PRE</code> values. The first 3 are integers, while <code>PRE</code> is a string.</p>
+
+<p>These can be used to provide Rails-specific behaviour, to allow your gem to support versions of Rails with different interfaces, at the same time.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Rails</span><span class="o">::</span><span class="no">VERSION</span><span class="o">::</span><span class="no">MAJOR</span> <span class="o">&gt;=</span> <span class="mi">4</span>
+</span><span class='line'>  <span class="c1"># Rails 4 (and above) compatible behaviour</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="c1"># Before Rails 4 compatible behaviour</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For other gems, you can use the following approach (although I&rsquo;d suggest doing so, sparingly):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="no">Gem</span><span class="o">.</span><span class="n">loaded_specs</span><span class="o">[</span><span class="s1">&#39;gem_name&#39;</span><span class="o">].</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;2.0.0&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Declaring what versions of Rails your gem is compatible with</h3>
+
+<p>To declare a runtime dependency (a gem yours depends on at runtime, not just during development or testing), add to your gem&rsquo;s <code>gemspec</code> file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># ...                          </span>
+</span><span class='line'>  <span class="c1"># Compatible with any version of &lt;gem_name&gt; starting with a 2. (excluding pre-releases)</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s1">&#39;gem_name&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Again, pessimistic versioning is recommended (although keeping on top of when any of your dependencies have new versions available is a much larger effort than doing so for versions of Ruby).</p>
+
+<p>To get a summary of dependencies that may be outdated, you can regularly run in the root of your gem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">bundle</span> <span class="n">outdated</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>How to version your gem when compatible Ruby or dependency versions change</h2>
+
+<p>The approach to how you should version your gem in relation to changes in the dependency versions it supports, depends on whether you are adding a version (or expanding the list of compatible versions) or removing them.</p>
+
+<p>If you need to indicate compatibility with a new major version of a dependency (assuming you&rsquo;re using pessimistic versioning based on major versions), it should be done in isolation (and not bundled up with any other changes) as a minor or patch version, so consumers of your gem can upgrade without any undue friction. You must publish a new version because you cannot change the <code>gemspec</code> file for a published gem without giving it a new version. It should not mean any change in behaviour of your gem (and therefore should not constitute a major increment) and choosing a minor increment affords you the option of patching it (with high priority security of bug fixes) if you need to in the future (without requiring users to perform larger upgrades to get those patches).</p>
+
+<p>If you are dropping support for a version or range of versions, this should be done as a major increment. Even if doing so does not change the behaviour of your gem, it will likely mean larger changes in the applications that consume it (such as the need to upgrade the bundle). The size and complexity of this upgrade should be communicated to users of your gem by the major increment. For this reason, dropping support for older versions of dependencies is often bundled in with major changes to the library, to reduce the number of major upgrades consumers must go through to stay up-to-date.</p>
+
+<p>The exception to this may be if you discover there is a bug in a particular version of a dependency, which you want to warn users about by labelling it as being incompatible. This is usually done as a patch increment. For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+</span><span class='line'>  <span class="c1"># ...                          </span>
+</span><span class='line'>  <span class="c1"># All versions 2.* of gem_name, as long as they include the bugfix implemented in 2.1</span>
+</span><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">add_runtime_dependency</span> <span class="s1">&#39;gem_name&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 2.0&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;= 2.1&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Further reading</h2>
+
+<p>For additional important concepts on how to manage and publish gems that are well versioned, see <a href="https://guides.rubygems.org/patterns/">RubyGem&rsquo;s Patterns</a>.</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2020/12/18/recursive-procedures/" title="Previous Post: Recursive Procedures">&laquo; Previous: Recursive Procedures</a>
+        
+
+        
+          <a class="pull-right" href="/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github/" title="Next Post: Tracking changes in open source libraries on Github">Next: Tracking changes in open source libraries on Github &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails/';
+        var disqus_url = 'http://greena13.github.io/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

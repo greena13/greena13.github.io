@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://greena13.github.io/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github/</loc>
+<lastmod>2020-12-19T09:42:21+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2020/12/19/writing-ruby-gems-for-different-versions-of-ruby-and-rails/</loc>
+<lastmod>2020-12-19T09:05:06+00:00</lastmod>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/2020/12/18/recursive-procedures/</loc>
+<lastmod>2020-12-18T12:16:44+00:00</lastmod>
+</url>
+<url>
 <loc>http://greena13.github.io/blog/2020/12/15/xpath-selectors-cheatsheet/</loc>
 <lastmod>2020-12-15T09:53:04+00:00</lastmod>
 </url>
@@ -346,5 +358,14 @@
 </url>
 <url>
 <loc>http://greena13.github.io/blog/categories/emoticon/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/2/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/3/</loc>
+</url>
+<url>
+<loc>http://greena13.github.io/blog/posts/4/</loc>
 </url>
 </urlset>
