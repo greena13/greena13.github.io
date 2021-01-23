@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cross Site Scripting (XSS) and Cross Site Request Forgery (CSRF) Prevention Cheatsheet - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Cross Site Scripting (XSS) and Cross Site Request Forgery (CSRF) Prevention Cheatsheet written Cross Site Request Forgery (CSRF) and Cross Site &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2021/01/09/cross-site-scripting-xss-and-cross-site-request-forgery-csrf-prevention-cheatsheet">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Cross Site Scripting (XSS) and Cross Site Request Forgery (CSRF) Prevention Cheatsheet</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2021-01-09T11:32:04+00:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>Cross Site Request Forgery (CSRF) and Cross Site Scripting (XSS) are two of the most common (but certain not only) exploits the developers of web applications need to be familiar with.</p>
+
+<!--more-->
+
+
+<h2>Cross Site Request Forgery</h2>
+
+<p>Cross Site Request Forgery (CSRF) is basically tricking a user into making a request to a service that they are not meaning to. This is achieved by getting their browser to make a request to a service, using information the browser will automatically send with the request (usually a session cookie) so the service will authenticate and act on the request; an attacker need not know or have access to the user&rsquo;s credentials or session details, and only that they direct the user&rsquo;s pre-authorized browser to make the request on their behalf.</p>
+
+<p>In order for this attack to work, the browser must already be in a state where it contains the context necessary to successfully perform a request. This usually means (but is not necessarily limited to), the user already being signed into a service, without terminating their current session.</p>
+
+<p>It&rsquo;s important to point out, although this attack utilises a user&rsquo;s browser, it&rsquo;s actually concerned with executing code on a <em>server</em>, by making the corresponding request. Most countermeasures are also ultimately enforced on the server.</p>
+
+<h3>A simple example</h3>
+
+<p>Let&rsquo;s consider a simple example of how a CSRF attack works: an attacker may post a hyperlink to a popular service, say a social media platform, on a public forum or other website that they control, and try and get a user to click it by presenting it as something of interest. If a user is still signed into the other service, clicking on the link could make a request to delete their account or make a post on their behalf.</p>
+
+<p>The means of making a request to the target service need not be so obvious and doesn&rsquo;t actually require any user interaction at all. There are certain HTML tags that point to external resources that a browser will automatically make a HTTP request for in order to display or use. One such example is a <code>&lt;img&gt;</code> (image) tag - when a browser downloads a web page, it will automatically request the associated images. An attacker can use this to instead make a request to a target service.</p>
+
+<h3>CSRF Prevention techniques</h3>
+
+<h4>Lean on the Single Origin Principle</h4>
+
+<p>The Single Origin Principle (SOP) is the name given to a core principle of a collection of restrictions that span different browser APIs and features - each with slight differences - but all with the same intent of governing how resources from one origin can interact with resources of another. The most relevant of those browser features are DOM Access, <code>XMLHTTPRequest</code>s and Cookies (but they are more). While SOP a good start, because of the way the web historically functioned, there are many exclusions where SOP is not applied by browsers, and therefore provides no protection against CSRF (or similar) attacks.</p>
+
+<p>SOP chooses its exclusions based on a number of assumptions about the type of cross-origin requests that are safe to perform, which developers must ensure hold true if they want to guard against CSRF:</p>
+
+<ul>
+<li>Make sure all <code>GET</code>, <code>HEAD</code> and <code>OPTION</code> requests are free of side-effects</li>
+</ul>
+
+
+<h3>Implement Cross Origin Resource Sharing</h3>
+
+<p>Cross Origin Resource Sharing (CORS) is a way to selectively permit requests that would otherwise be forbidden by the SOP. It doesn&rsquo;t add any more protection on top of SOP; it walks it back for cases where you trust the request to came from a given origin.</p>
+
+<p>For most <code>GET</code>, <code>HEAD</code> and <code>POST</code> requests that have no body, the browser once again assumes making the request is free of side-effects and waits until the request responds before validating whether it should be used. It does so by checking for the presence and value of a <code>Access-Control-Allow-Origin</code> header with a value that matches the current origin (using a custom matching algorithm). For all other cross origin requests that would normally be forbidden by SOP, it performs a <code>OPTIONS</code> pre-flight request that contains the details of the request it is planning on making. The server responds to this request in a similar manner, and the client is able to determine whether it has approval to make the actual request.</p>
+
+<p>Developers can change or require a request to be made in such a way that is no longer qualifies as an exclusion, and in doing so, cause the browser to apply SOP restrictions and employ CORS:</p>
+
+<ul>
+<li>When a request uses JSON or XML, require it to be submitted over XHR, which forces the browser to use the <code>XMLHTTPRequest</code>s interface.</li>
+<li>For JSON or XML APIs, configure your server to always verify the <code>Content-Type</code> header is correct: Forms are limited to three content types: <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, and <code>text/plain</code>. To get a content type <code>application/json</code> you need to use a <code>XMLHTTPRequest</code>, but unless the <code>Content-Type</code> is enforced, there is nothing stopping an attacker submitting valid JSON through a form using one of those 3 content types, and in doing so, subverting SOP.</li>
+</ul>
+
+
+<h4>CSRF tokens</h4>
+
+<p>While SOP and CORS help verify a request is coming from an approved origin, CSRF tokens check the user has previously preformed an action or followed an expected sequence of actions before making the request.</p>
+
+<h5>Synchroniser Token Pattern</h5>
+
+<p>The Synchroniser Token Pattern is where a token is issued by the server and stored in the user&rsquo;s session cookies, as well as another location the client can then use to copy it into a subsequent request; the two instances of the token are then matched before the server is prepared to accept the request.</p>
+
+<h6>Form field synchroniser tokens</h6>
+
+<p>In the case of a HTML form, every time a client requests a page that contains a form, the server stores a random token as a cookie (in the response&rsquo;s headers), and includes that same token as a hidden form field (in the response&rsquo;s HTML body). When the user fills out the form and sends it back to the server, the hidden field containing the token is amongst the data sent in the request body, and the token stored in the cookie is included with the request&rsquo;s headers. The server can then compare the token in the form data with the one in the cookie: if they&rsquo;re the same, the server knows the request was made with a form that it generated (and not one that was generated by an attacker). This assumes the header has been properly transmitted over HTTPS and marked as <code>Secure</code> and <code>HttpOnly</code>.</p>
+
+<p>CSRF tokens can also be submitted as custom headers back to the server, but <em>not</em> using cookies (that&rsquo;s where the reference copy of the token is) and <em>not</em> in the URL or its query parameters. CSRF tokens must be generated securely, and then kept secret by avoiding them being logged, whereas URLs are recorded in many places over the course of a HTTP request and appear in <code>Referer</code> headers when redirecting to other sites.</p>
+
+<p>The CSRF token is changed with every new user session, or preferably with each individual request. If you do generate a unique token per request, this may cause issues if a user goes back (using the browser&rsquo;s Back button or the <code>history</code> API) to a previous page with a form on it (which has an old token as a hidden field). If they attempt to submit the form with the old token in the request body and the new one from their latest request in the cookie headers - the server will report a failed match.</p>
+
+<p>It&rsquo;s worth noting that CSRF tokens do nothing to prove the form has not been tampered with since it was initially &ldquo;issued&rdquo; by the server, and so does not protect against Cross Site Scripting or other attacks - more on this later.</p>
+
+<h4>Double submit cookie</h4>
+
+<p>A <em>Cookie-to-header token</em> is a way for JavaScript applications (using AJAX requests) to achieve a similar result to transmitting synchroniser tokens in form data. The server generates a pseudo-random value and sets it as a cookie (separate from the user&rsquo;s session) when the client makes its first request (even before they&rsquo;ve necessarily authenticated). The client then submits this value as a custom header with every request back to the server, which it checks before honouring the request. This relies on the cookie <em>not</em> being <code>httponly</code> and for the JavaScript application to be delivered from a domain that has permission to read the cookie value from the session response and set the custom header on subsequent requests.</p>
+
+<p>Using custom HTTP headers to transmit CSRF tokens is considered more secure than using form fields because, by default only JavaScript running on the same origin can add custom headers to requests (this can be extended to include cross-origin requests by permitting the custom header in the server&rsquo;s CORS configuration). This is effectively another technique to ensure the browser is applying the SOP and CORS.</p>
+
+<p>This technique is only effective if you know your subdomains are fully secure and only accept HTTPS connections, due to the possible vulnerabilities:</p>
+
+<ul>
+<li>(Possibly compromised) subdomains can write cookies to parent domains</li>
+<li>Cookies can be sent over plain HTTP (which can be sniffed or intercepted)</li>
+</ul>
+
+
+<h5>Encryption token pattern</h5>
+
+<p>The limitations of a Cookie-to-header token can be guarded against by using an encrypted token instead of the token directly.</p>
+
+<p>The Encryption Token Pattern involves the server generating a token by encrypting the user&rsquo;s session id and a timestamp, and including it in the form data or custom headers the client sends with its next request. Rather than comparing this with a token stored in the user&rsquo;s cookie, the server decrypts the token and compares the session id to the one stored in the user&rsquo;s session cookie, and the timestamp against a sliding window to prevent the same token being used in the future. If the digest is not present, or cannot be decrypted with the encryption key known only to the server, than the request is denied.</p>
+
+<p>A HMAC function can be used instead of an encryption/decryption algorithm in much the same manner, in what&rsquo;s called HMAC Based Token Pattern.</p>
+
+<h4>Using cookie prefixes</h4>
+
+<p>There is a standard for two Cookie Prefixes that further restrict how cookies can be accessed by sites in browsers that support it:</p>
+
+<ul>
+<li>A <code>__Secure-</code> prefix makes a cookie accessible to a site delivered over HTTPS only.</li>
+<li>A <code>__Host-</code> prefix is equivalent to the secure one, plus further restricting a cookie to only be available to a site from the same domain that it was set on (making it no longer possible for a subdomain to override the cookie).</li>
+</ul>
+
+
+<p>The full RFC can be seen <a href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-prefixes-00">here</a>.</p>
+
+<p>The <code>__Host-</code> prefix can be used with the techniques that place tokens in cookies.</p>
+
+<h3>Checking Source and Origin headers</h3>
+
+<p>Among the <em>Forbidden Headers</em> that cannot be set or changed via JavaScrip are the <code>Origin</code> and <code>Referer</code> headers, which are set by the browser and indicate where the request originated. By configuring your server to compare the domains of both (if present) to where you know your application to be deployed, you can confirm the request is not a cross-origin one. Care must be taken when comparing the origins to compare the entire value (not just a subset of it) to prevent an attacker registering a subdomain that is a superset of yours: <code>my.domain.com.badguys.com</code>.</p>
+
+<p>(OWASP)[<a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#identifying-source-origin-via-originreferer-header">https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#identifying-source-origin-via-originreferer-header</a>] suggests blocking requests that have neither header set, or failing that, to log these requests and actively review them.</p>
+
+<p>There are some normal cases to be aware of:</p>
+
+<ul>
+<li>IE 11 does not add an <code>Origin</code> header for CORS requests across sites in a <a href="https://docs.microsoft.com/en-us/troubleshoot/browsers/ie-security-zones-registry-entries">&ldquo;trusted site zone&rdquo;</a></li>
+<li>A <code>302</code> redirect to another origin does not set the <code>Origin</code> header</li>
+<li>There are <a href="https://stackoverflow.com/a/42242802/1337796">cases where the browser is required to set the Origin to null</a> - typically for privacy concerns</li>
+<li>Most browsers only include the <code>Origin</code> header for <code>POST</code>, <code>DELETE</code> and <code>PUT</code> requests (cross-origin requests always include it)</li>
+<li>There are equally <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#identifying-the-target-origin">use cases</a> where the <code>Referer</code> header is not set, or stripped out for privacy reasons.</li>
+</ul>
+
+
+<p>Usually your server(s) are behind one or more layers of routing or proxying and it&rsquo;s not easy to reliably determine the domain your application has been deployed to, from the <code>Host</code> header (which is rewritten when a request is proxied; the original value is typically available in the <code>X-Forwarded-Host</code> header, though). So it&rsquo;s recommended to configure each deployment with the correct static value, if you can.</p>
+
+<h3>SameSite cookie attribute</h3>
+
+<p>Another way you can mitigate against CSRF attacks is to tell the browser not to submit cookies for cross-domain requests, by using the <code>SameSite</code> attribute of the <code>Set-Cookie</code> header. It has 3 possible values:</p>
+
+<ul>
+<li><code>Strict</code>: Prevents the browser sending any stored cookies for a domain when following links from another. This prevents being able to follow links from other websites and automatically be signed in.</li>
+<li><code>Lax</code>: (Default) Blocks only for requests that typically have side effects (e.g. <code>POST</code> requests)</li>
+<li><code>None</code>: Always sends the cookie for cross-domain requests</li>
+</ul>
+
+
+<p>This approach should be used in conjunction with the techniques discussed above (not instead of). Unless the user is using a browser that supports this option (which is only &ldquo;most&rdquo; modern ones), they will receive no protection from it.</p>
+
+<h3>User interaction for high risk operations</h3>
+
+<p>For high impact actions such as changing a user&rsquo;s password, you should consider CSRF defense techniques that actually require interaction from the user, such as requesting the re-entry of their password, or re-authenticating through a secure means like 2 factor authentication. CAPTCHAs are a less secure option, but make it more difficult for an attacker to automate the generation of the request.</p>
+
+<h4>How detected or suspected CSRF attacks should be handled</h4>
+
+<p>(OWASP)[<a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#use-built-in-or-existing-csrf-implementations-for-csrf-protection">https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#use-built-in-or-existing-csrf-implementations-for-csrf-protection</a>] suggests detected CSRF requests should be:</p>
+
+<blockquote><p>aborted, [the] session of the user terminated and the event logged as a potential CSRF attack in progress</p></blockquote>
+
+<h2>Content Security Policy (CSP)</h2>
+
+<p>What&rsquo;s included and what&rsquo;s not</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2020/12/19/tracking-changes-in-open-source-libraries-on-github/" title="Previous Post: Tracking changes in open source libraries on Github">&laquo; Previous: Tracking changes in open source libraries on Github</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2021/01/09/cross-site-scripting-xss-and-cross-site-request-forgery-csrf-prevention-cheatsheet/';
+        var disqus_url = 'http://greena13.github.io/blog/2021/01/09/cross-site-scripting-xss-and-cross-site-request-forgery-csrf-prevention-cheatsheet/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

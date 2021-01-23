@@ -205,7 +205,7 @@
 
 <p>Where possible, use an id selector to find the first element with that id (it&rsquo;s invalid to have a HTML document with multiple elements with the same id). This delegates to native browser functions which are optimised and the fastest way to locate an element.</p>
 
-<p>jQuery objects appear to lazily evaluate their selectors, so unless you call a method on them, they incur no cost.</p>
+<p>jQuery objects are eagerly evaluated, so ever if you don&rsquo;t end up calling any methods on the jQuery object, it still performs the (relative expensive) operation of finding the matching selectors.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -219,7 +219,7 @@
 </span><span class='line'><span class="nx">$bar</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#bar&#39;</span><span class="p">);</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">hideFoo</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$foo</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// $bar isn&#39;t used, so isn&#39;t found</span>
+</span><span class='line'>  <span class="nx">$foo</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// $bar isn&#39;t used, but the CSS selector has already been evaluated</span>
 </span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nx">$bar</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span> <span class="c1">// $foo isn&#39;t used, so isn&#39;t found</span>
 </span><span class='line'><span class="p">}</span>
