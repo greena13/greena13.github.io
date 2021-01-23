@@ -100,14 +100,14 @@ $()
 
 Where possible, use an id selector to find the first element with that id (it's invalid to have a HTML document with multiple elements with the same id). This delegates to native browser functions which are optimised and the fastest way to locate an element.
 
-jQuery objects appear to lazily evaluate their selectors, so unless you call a method on them, they incur no cost.
+jQuery objects are eagerly evaluated, so ever if you don't end up calling any methods on the jQuery object, it still performs the (relative expensive) operation of finding the matching selectors.
 
 ```javascript
 $foo = $('#foo');
 $bar = $('#bar');
 
 if (hideFoo) {
-  $foo.hide(); // $bar isn't used, so isn't found
+  $foo.hide(); // $bar isn't used, but the CSS selector has already been evaluated
 } else {
   $bar.hide(); // $foo isn't used, so isn't found
 }
