@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Use Delta-based Tickets - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Use Delta-based Tickets written There are two ways version control systems model changes over time: delta-based and snapshot-based. By exploring the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2022/04/06/use-delta-based-tickets">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Use Delta-based Tickets</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2022-04-06T23:40:56+01:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>There are two ways version control systems model changes over time: delta-based and snapshot-based. By exploring the distinction - and when to apply each - it&rsquo;s possible to explain many common problems with planning, tracking and communicating software development.</p>
+
+<!--more-->
+
+
+<h2>Types of problems</h2>
+
+<p>A common model of the software development process is roughly as follows:</p>
+
+<ul>
+<li>Requirements or specifications are generated</li>
+<li>These requirements are considered and refined</li>
+<li>Developers implement these requirements</li>
+<li>The developers' work is reviewed for code quality</li>
+<li>The work is confirmed to meet the requirements</li>
+<li>The work is released and observed, and the process repeats</li>
+</ul>
+
+
+<p>This process often doesn&rsquo;t work perfectly, and it fails to account for the errors that may occur at each stage.</p>
+
+<ul>
+<li>The requirements may turn out to be wrong, incomplete, ambiguous or confusing. In a perfect system, this is always picked up and resolved at the start (or along the way). But things are rarely perfect.</li>
+<li>Developers may perform the work in a sub-optimal fashion; ideally this would be picked up at the code review stage, but it doesn&rsquo;t always happen.</li>
+<li>A developer may have partially implemented the requirements, or they may have introduced new bugs.</li>
+<li>In changing some of the system, developers may have triggered the realisation that further work may be required, or more factors considered.</li>
+</ul>
+
+
+<p>There are a few ways these imperfections are typically handled:</p>
+
+<p>Tickets can be rejected, re-opened, or moved back to an earlier state, causing confusion around the status of the development branch or (bleeding) edge environment. Work marked as re-opened may in fact have already been applied (but with defects).</p>
+
+<p>Alternatively, tickets can be held in a particular state, forbidden from proceeding until some required further action is performed. The ticket still appears to be in a state that it really isn&rsquo;t. A long dialogue of back-and-forth in the ticket&rsquo;s comments may reveal the details of the status of the work, but it&rsquo;s slow to go through and discern this for every ticket. Work may be blocked for extended periods of time while minor kinks are worked out.</p>
+
+<p>This way of modelling development effectively applies a <em>fuzzy</em> state: the work is <em>mostly</em> done; exactly what is meant by <em>mostly</em> is often frustrating to clarify, and it leads to misunderstandings.</p>
+
+<h2>Version control types</h2>
+
+<p>System behaviour is expressed in code. And code is typically managed in a control system that allows it to be versioned over time (i.e. developers can see previous versions if they so choose).</p>
+
+<p>There are two types of version control systems (for our purposes):</p>
+
+<ul>
+<li><strong>Delta-based</strong>: An original version of the code is recorded and then all subsequent changes are played &ldquo;on top&rdquo; of it in a sequence, until you arrive at the version you&rsquo;re interested in (the more times something has changed, the more changes that need to be replayed; and the more differences between consecutive versions, the bigger the changes that have to be applied)</li>
+<li><strong>Snapshot-based</strong>: A stream of entire snapshots (versions) are saved, with a link to the previous one (the size of the differences is irrelevant - a whole new snapshot is created each time; you can, however, jump straight to the version you want without having to fast-forward from the very first one)</li>
+</ul>
+
+
+<p>Changes between versions are expressed as <em>patches</em> (a list of instructions to change atomic pieces of information to new values - e.g. lines in a file). In delta-based systems, the patches are the steps to get from one version to it&rsquo;s successor. In snapshot-based systems, patches can be derived by comparing two snapshots of the same file. That is to say, in delta-based systems, the patches <em>are</em> the changes - they are active - whereas in snapshot-based systems, the change is the new version and patches are just a <em>description</em> of what is now different - they are passive.</p>
+
+<p>The process of making code changes is <em>itself</em> delta-based (as is any cumulative process over time): developers apply changes, and then may apply more changes at a later time - building on the state or outcome of the previous changes. They cannot, however, go back and change the actions they or others have already performed in the past. Furthermore, each action is done in terms of what already exists and what is required  (the delta).</p>
+
+<h2>Specifications and releases are snapshot-based</h2>
+
+<p>Specifications generally tell you <em>nothing</em> about any previous system state, nor the changes needed to achieve the desired behaviour - only its final state <em>after</em> the changes. This is natural for the sake of brevity, and required when there is no pre-existing functionality to reference. In this regard, they are like snapshot-based versions: self-contained descriptions without necessarily any reference to a previous state, or the number or size of changes between them.</p>
+
+<p>Similarly, releasing or deploying versions of software are also like snapshot-based version systems: they necessarily contain the information for a complete snapshot of the system. The difference is that while specifications are <em>prescriptive</em> (how it <em>should</em> function), releases are <em>descriptive</em> (how the system <em>does</em> function).</p>
+
+<p>Managers and non-technical stakeholders tend to think of software development in terms of snapshots because they input (snapshot-based) specifications, and receive (snapshot-based) releases as output. Those involved in the process in between, however, understand it is very much delta-based.</p>
+
+<p>Problems arise when the software development process is managed as if it were a snapshot-based one, rather than delta-based. User stories, acceptance criteria and requirements documentation (types of specifications), are not useful for understanding the size or nature of the work to be done, who is likely to be able to perform it, or tracking its progress. This causes problems for development and management to agree on the work to be undertaken.</p>
+
+<p>What is particularly at the root of many of the problems above, is the use of a <em>prescriptive</em> snapshot-based model for measuring delta-based changes. When the system fails to completely fulfil the requirements of the prescriptive snapshot of how the system should behave, it tells us nothing about how far off it is, or the changes that need to be made to achieve it. This causes problems for quality assurance and development to agree on what state work is in, and what there is to be done about it.</p>
+
+<h2>Tasks, bugs and spikes are delta-based</h2>
+
+<p>Refinement should be the process of taking specifications (snapshot-based), and converting it to changes to be made (delta-based). Depending on your workflow, specifications should never enter your ticketing system (but they should certainly be linked), or they enter your ticket system as a preliminary status before being refined further into actionable tickets. No developer should ever work on a ticket while it&rsquo;s considered still a description of a final state, rather than a description of work.</p>
+
+<p>Well written specification includes not only a final desired state, but rationale or context for why it is desirable. A really good ticket should contain information about why the <em>current</em> system behaviour is sub-optimal, which likely requires <em>describing that current behaviour</em> at some level, and in doing so, expressing a <em>difference between the two</em>.</p>
+
+<p>Similarly, bug tickets should begin with a description of the system&rsquo;s current functionality, and clearly state the desired or expected behaviour (perhaps requiring consultation with the team to clarify the intended behaviour).</p>
+
+<p>Finally, spikes should include a list of things that are currently unknown (the status quo), and that should be known by the time the spike is completed.</p>
+
+<p>It is when a ticket has a description of both before and after the work is done, that the difference can be examined - along with associated context or rationale - for suitable (delta-based) changes to apply or actions to take.  Once the ticket has gone through this evolution, the steps to apply the change may be discussed. Candidate solutions can be compared, and validated for whatever criteria may be appropriate (robustness, correctness, speed, cost, etc).</p>
+
+<h2>How using a delta-based model solves problems</h2>
+
+<p>The property of delta-based systems that <em>changes can only be additive</em> is incredibly clarifying when modelling software development. Tasks in your ticketing workflow should only move in one direction, and in doing so, reflect the underlying realities of the change control systems. Code has likely been committed or merged and now forms the new system state.</p>
+
+<p>Note that this does not mean that code cannot be reverted, or that actions or releases cannot be undone (rolled back), but the <em>act of reverting them</em> is another extra?. action.</p>
+
+<p>Tickets should only remain in a given state until the team members have done the work required to <em>move it out of that state</em>. If a ticket is in a state to apply the changes, it remains there until the changes have been made (irrespective of how completely or correctly those changes end up being). If it is in a state to be tested, it remains in that state only until it&rsquo;s been tested (irrespective of the outcome of that testing). In this way, testing becomes like code review: bugs or improvements are raised by examining a new system state and <em>additional changes</em> are suggested, rather than expecting the system state that is already there to be replaced, as if it never existed, with something better.</p>
+
+<p>When a problem is encountered, what happens instead of a ticket remaining stalled or moving backwards, is a new ticket is created:</p>
+
+<ul>
+<li>When some of the work is discovered to be incomplete, split the ticket into a new one, that captures the work still outstanding.</li>
+<li>When it&rsquo;s discovered some of the work was done incorrectly, create a new ticket to fix the mistake</li>
+<li>When changes introduce a new bug, create a new ticket to fix it.</li>
+<li>When requirements end up being incomplete or vague, or changes have an unexpected affect or reveal further work is required, create a new ticket to describe it.</li>
+</ul>
+
+
+<p><em>And then the original ticket is moved on</em> (likely closed).</p>
+
+<p>This creates a very dynamic, fast-moving board or workflow, with short feedback loops and up-to-date reflections of project status. Tickets become smaller, more light-weight, and contain less in the way of comments and dense discussion (instead they are replaced with more tickets). This is analogous to the fact that in a well-used version control systems, commits are light-weight and frequent.</p>
+
+<p>The democratisation of ticket generation also closely models the way successful open source communities collaborate, prioritise, allocate and action work.</p>
+
+<h2>Knowing when to release</h2>
+
+<p>Managers in particular may be perturbed by the notion of tickets regularly splitting or yielding new tickets. How will they be able to track when work has been completed? This concern is based on a fallacy: software development is vary rarely ever completed, but merely done <em>well enough</em> to be released. When a manager needs to know if work has been done yet, instead, a delta-based system can go one step further and answer <em>&ldquo;What is still left to be done?&rdquo;</em> or <em>&ldquo;If I release now, what problems will I have?&rdquo;</em>.</p>
+
+<p>Ticket management should, however, be paired with two things:</p>
+
+<ul>
+<li>Zealous linking between tickets to maintain a relationship between work to be done, and any earlier tickets that may have caused it, or that it was split from</li>
+<li>Regular reviews of the new and outstanding tickets. At a certain point a value judgement must be made: is this bug important enough to fix? Is this improvement worth doing?</li>
+</ul>
+
+
+<h2>Limitations, exceptions, simplifications</h2>
+
+<p>Just as there are ways in version control of resetting, reverting and managing separate branches that sit outside the model of additive-only changes, there are circumstances where the above approach may not apply. Perhaps your quality assurance or UAT process works with feature servers, and issues with work done is better modelled by re-opening tickets, or resolving all outstanding issues before a branch is merged in and released. Examine the realities of your own processes and chose a way of modelling that aligns appropriately.</p>
+
+<p>Consider the overhead and features of your ticketing system and where compromises may need to be made. Sometimes a quick IM message and a few line change is all that is required to clear a ticket&rsquo;s status up and keep things moving, rather than going to the effort of creating a new ticket.</p>
+
+<h2>Related ideas</h2>
+
+<p><a href="https://gettingthingsdone.com/">Getting things Done</a> emphasise the importance of breaking projects (snapshot-based) into constituent tasks (delta-based) and always determining a <em>next action</em>.</p>
+
+<p><a href="https://docs.google.com/document/d/1TCuuu-8Mm14oxsOnlk8DqfZAA1cvtYu9WGv67Yj_sSk/pub">Elephant Carpaccio</a> illustrates how large user stories (snapshot-based) can actually be expressed as a series of much smaller stories that can be released faster, and eventually arrive at the same goal (delta-based).</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2022/02/07/style-your-design-elements-not-your-mark-up/" title="Previous Post: Style your design elements, NOT your mark up">&laquo; Previous: Style your design elements, NOT your mark up</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2022/04/06/use-delta-based-tickets/';
+        var disqus_url = 'http://greena13.github.io/blog/2022/04/06/use-delta-based-tickets/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>
