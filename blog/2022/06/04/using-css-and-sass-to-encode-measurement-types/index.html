@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Using CSS and Sass to Encode Measurement Types - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Using CSS and Sass to Encode Measurement Types written CSS requires properties to be expressed in low-level units that are readily available for the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Using CSS and Sass to Encode Measurement Types</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2022-06-04T09:52:36+01:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>CSS requires properties to be expressed in low-level units that are readily available for the machines evaluating them: integers (positive and negative) and decimals (floating point numbers). These are not, however, the optimal units to express many measurements. It&rsquo;s up to developers to have the awareness and discipline to select and encode them in a way that expresses the semantics of the underlying properties.</p>
+
+<!--more-->
+
+
+<h2>Physical properties of a virtual space</h2>
+
+<p>An application renders in a virtual space and can be expressed in terms of its dimensions:</p>
+
+<ul>
+<li><strong>Layers</strong> (comprised of <strong>Planes</strong>) cover how the different levels of a design or application should be rendered: what sits on top when two or more components occupy the same horizontal and vertical space. This is the z axis in the cartesian plane your application renders within.</li>
+<li><strong>Layout and spacing</strong> (comprised of <strong>Dimensions</strong>) express the application&rsquo;s behaviour in the x and y axis: the sizing of elements and the spacing between them.</li>
+<li><strong>Theme</strong> (comprised of <strong>Colours</strong>) dictate what colour, texture or transparency the layers have.</li>
+<li><strong>Typography</strong> (comprised of <strong>Fonts</strong>) covers what information we choose to encode on the surface of these layers.</li>
+</ul>
+
+
+<h2>System properties</h2>
+
+<p>In a virtual space, you can <em>measure</em> properties (in reality, when designing or developing an application, you are actually doing the reverse and  <em>defining</em> them).</p>
+
+<h3>Measurement types</h3>
+
+<p>There are 4 types of measurements:</p>
+
+<ul>
+<li><strong>Normal</strong> measurements have no magnitude or order (e.g. categories)</li>
+<li><strong>Ordinal</strong> measurements <em>have</em>  a magnitude and a relative order but the interval between them are not necessarily equal (e.g.  <em>small</em>, <em>medium</em> and <em>large</em>)</li>
+<li><strong>Interval</strong> measurements has <em>both</em> magnitude and equal intervals, but lacks an absolute 0: there is no notion of &ldquo;none&rdquo; (e.g. temperature)</li>
+<li><strong>Ratio</strong> measurements have all 3 properties: magnitude, equal intervals, and absolute 0 (e.g. age, weight, etc)</li>
+</ul>
+
+
+<h3>Choosing the right measurement type</h3>
+
+<p>A useful way to choose which measurement type you need to express a particular design property, is to consider which operators make sense:</p>
+
+<ul>
+<li><strong>Normal</strong> measurements don&rsquo;t support any comparison or arithmetic operators (only set operators, such as <em>inclusion</em> or <em>exclusion</em>)</li>
+<li><strong>Ordinal</strong> measurements support comparison operators (<em>greater than</em> or <em>less than</em>)</li>
+<li><strong>Interval</strong> data supports comparison and arithmetic operators, but has no absolute zero</li>
+<li><strong>Ratio</strong> data supports all comparison and arithmetic operators, and has an absolute zero</li>
+</ul>
+
+
+<h3>The Insertion Problem</h3>
+
+<p>The type of measurement dictate how the list of available values may be extended:</p>
+
+<ul>
+<li><strong>Normal</strong> measurements allow addition and subtraction of values to the possibility space, without the need to reorder (e.g. a new colour can be added to a palette with out disrupting any existing ones).</li>
+<li><strong>Ordinal</strong> measurements require you to reorder or redefine adjacent values if you add or subtract from the possibility space in the middle of the ranking (e.g. if you add a new font size between &ldquo;medium&rdquo; and &ldquo;small&rdquo;). We&rsquo;ll call this the <strong>Insertion Problem</strong>.</li>
+<li><strong>Interval</strong> and <strong>Ratio</strong> data also have The Insertion Problem and don&rsquo;t allow the addition of new values (you can&rsquo;t add a new value in the middle of a list rankings from 1st to 3rd). You must redefine the values, changing the interval between them, or shift all measurements up or down, to make room.</li>
+<li><strong>Ratio</strong> data furthermore doesn&rsquo;t allow the expansion between existing values and absolute zero (you can&rsquo;t have an integer that&rsquo;s less than 1, but more than 0). We&rsquo;ll call this particular variant of the Insertion Problem the <strong>Smallest Value Insertion Problem</strong></li>
+</ul>
+
+
+<h2>Using normal measurements</h2>
+
+<p>Don&rsquo;t name your variables to suggest ordinality for normal data:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$color-1</span><span class="o">:</span> <span class="mh">#0e3a5f</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$color-2</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$color-4</span><span class="o">:</span> <span class="mh">#843534</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Using ordinal measurements</h2>
+
+<p>It can be common to see CSS quantities expressed as ratios when the underlying measurement is really ordinal. The <code>z-index</code> property is a good example: it supports positive and negative integers and if left unchecked quickly blooms into 10s or 100s of different values over time, as developers attempt to get exactly the right value to make it appear above one thing, but below another.</p>
+
+<p>Instead, you can use Sass to turn it into ordinal data (in effect reducing the possibility space down to fewer, representative values):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$plane-1</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-2</span><span class="o">:</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-3</span><span class="o">:</span> <span class="mi">3</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-4</span><span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-5</span><span class="o">:</span> <span class="mi">5</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Solving the Insertion Problem</h3>
+
+<p>The naive approach when using ordinal measurements is to do so for the values <em>and</em> their names. This results in the ordinal <strong>Insert Problem</strong>: Continuing on from the example above, what if deep into development, we discovered we did need a plane between <code>$plane-1</code> and <code>$plane-2</code>? We&rsquo;d have to define a new <code>$plane-6</code> and go through the codebase and find-and-replace every instance of <code>$plane-2</code> through <code>$plane-5</code>, bumping them up one each time, to vacate <code>$plane-2</code> so we could use it.</p>
+
+<p>We have the same problem when using size-descriptor ordinal values:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-sm</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-md</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-lg</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can insulate yourself against this possibility by using <em>widely dispersed</em> ratio values for both the underlying values and the variable&rsquo;s name (i.e. don&rsquo;t use consecutive values):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$plane-100</span><span class="o">:</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-200</span><span class="o">:</span> <span class="mi">200</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-300</span><span class="o">:</span> <span class="mi">300</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-400</span><span class="o">:</span> <span class="mi">400</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-500</span><span class="o">:</span> <span class="mi">500</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now if we need a plane between <code>$plane-100</code> and <code>$plane-200</code>, we can simply add a <code>$plane-150</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$plane-100</span><span class="o">:</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-150</span><span class="o">:</span> <span class="mi">150</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$plane-200</span><span class="o">:</span> <span class="mi">200</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this point, you may question the wisdom of including the value of the variable in the name of the variable itself. It turns out this is just coincidence in the case of z-index values, and falls away when applied to other value types:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-100</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-200</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-300</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Solving the Smallest Value Insertion Problem</h3>
+
+<p>If a font was added to the designs that was smaller than <code>$font-size-100</code> we <em>could</em> define a <code>$font-size-50</code>, but this is a technique best reserved for insulating us against relatively ad-hoc or unpredictable deviations from standard sizing. We could have allowed ourselves some growing room by choosing a more sensible starting point: in the middle.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-400</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-500</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-600</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now the ordinal data is free to grow in both directions and the addition of a smaller font is not a problem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-300</span><span class="o">:</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-400</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Some other twists</h3>
+
+<p>It is more unorthodox, but you could also use letters instead of numbers:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-E</span><span class="o">:</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-F</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-FG</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-G</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-H</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or stick with integers, but reducing the dispersion (it&rsquo;s unlikely you&rsquo;re going to need so many &ldquo;in between&rdquo; values):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-40</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-45</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-50</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-60</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Or use the concatenation strategy (used with letters above) to denote in between values (arguably this is more confusing):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$font-size-4</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-4-5</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-5</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-size-6</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2022/04/06/use-delta-based-tickets/" title="Previous Post: Use delta-based tickets">&laquo; Previous: Use delta-based tickets</a>
+        
+
+        
+          <a class="pull-right" href="/blog/2022/07/04/lessons-learned-working-with-sass-and-css-variables/" title="Next Post: Lessons learned working with Sass and CSS variables">Next: Lessons learned working with Sass and CSS variables &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types/';
+        var disqus_url = 'http://greena13.github.io/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

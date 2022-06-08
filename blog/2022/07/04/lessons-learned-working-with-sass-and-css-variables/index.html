@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Lessons Learned Working With Sass and CSS Variables - Key Shift in Cmd</title>
+  <meta name="author" content="Aleck Greenham">
+
+  
+  <meta name="description" content="Lessons Learned Working With Sass and CSS Variables written Here&rsquo;s how I&rsquo;m currently thinking about CSS, Sass and CSS variables, and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://greena13.github.io/blog/2022/07/04/lessons-learned-working-with-sass-and-css-variables">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Key Shift in Cmd" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55678102-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Lessons Learned Working With Sass and CSS Variables</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2022-07-04T09:52:36+01:00" pubdate data-updated="true"></time>
+          
+
+
+        </div>
+        <p>Here&rsquo;s how I&rsquo;m currently thinking about CSS, Sass and CSS variables, and what I&rsquo;d recommend.</p>
+
+<!--more-->
+
+
+<h2>Design process</h2>
+
+<p>Ideally development of new product designs will be a collaborative process between designers and developers as they work through the process of establishing a <strong>Design Palette</strong>, and then a <strong>Design Theme</strong>, clarifying <strong>Design Context</strong>s and identifying all <strong>Design Components</strong>.</p>
+
+<h3>1. Design fundamentals</h3>
+
+<p><strong>Design fundamentals</strong> are rules describing what makes good design, and come from physics, psychology, cognition and (perhaps most importantly) usability research.</p>
+
+<p>They apply to each of the <a href="/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types">virtual space</a> dimensions. For example:</p>
+
+<ul>
+<li>Layers: how many layers users can keep track of, or how they interact with each other in order to not surprise or confuse the user</li>
+<li>Layout and Spacing: how far items must be apart for them to be easily discernible or clickable</li>
+<li>Theme: what colours complement each other</li>
+<li>Typography: what typefaces work well together, or what font sizes effectively communicate changes in document hierarchy or structure.</li>
+</ul>
+
+
+<h3>2. Design palettes</h3>
+
+<p>A <strong>Design palette</strong> takes these fundamentals and records collections of compliant values. Some examples are:</p>
+
+<ul>
+<li>Layers: strategies for the amount and ordering of layers</li>
+<li>Layout and Spacing: progressions of units that scale how close or far apart elements are</li>
+<li>Theme: collections of primary, secondary and tertiary colours that work well together</li>
+<li>Typography: specific font families that complement each other</li>
+</ul>
+
+
+<p>Palettes select a handful of values that work well with each other from the large list of possible values (e.g. the 1000s of different colours or fonts available), and bundles them up together. They take a choice between a near infinite space of possible values and replace it with one between a few collections (palettes).</p>
+
+<p>They can be constructed with one of two things in mind:</p>
+
+<ul>
+<li>Ease of implementation: e.g. choosing units that have many common factors and are easily divisible</li>
+<li>Effectiveness: e.g. colours that are visually pleasing, or that create sufficient contrast for usability.</li>
+</ul>
+
+
+<h3>3. Design themes &amp; strategies</h3>
+
+<p>A <strong>Design Theme</strong> where the actual choosing of which design palette to use in an application is done.</p>
+
+<p>While <strong>Design Themes</strong> are collections of singular values, <strong>Design Strategies</strong> are cross-cutting concerns or rules. For example, truncating strings when they don&rsquo;t fit is a <em>strategy</em> for how to handle content that is too long. These are generally achieved in CSS with <strong>Property Groups</strong> - collections of one or more CSS properties that are changed together.</p>
+
+<p>Together these make up the bulk of your product&rsquo;s <em>Style Guide</em>.</p>
+
+<h3>4. Design contexts</h3>
+
+<p><strong>Design contexts</strong> describe how or when those <strong>Design Theme</strong>s and <strong>Design Strategies</strong> are applied (e.g. perhaps the same design looks different on mobile devices than it does on larger screens). To achieve <strong>Design contexts</strong> that are not easily expressed in CSS alone, you can use <strong>Display hooks</strong> to maintain state or perform context boundary switching in JavaScript and apply updates to the DOM where CSS can &ldquo;see&rdquo; it (more on this below).</p>
+
+<h3>5. Design components</h3>
+
+<p>Finally, <a href="/blog/2022/02/07/style-your-design-elements-not-your-mark-up">Design Components</a> express the application&rsquo;s behaviour in terms of elements in the design. They express there behaviour within <strong>Design Contexts</strong> (possibly using <strong>Display Hooks</strong>) and employ <strong>Design Strategies</strong> and set their <strong>Property Groups</strong> to values from the <strong>Design Theme</strong>.</p>
+
+<h3>Project structure</h3>
+
+<p>This is the file structure I&rsquo;d recommend to capture information as you go along:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>|- styles
+</span><span class='line'>  |- components                      # Design Components
+</span><span class='line'>    |- ....
+</span><span class='line'>  |- partials
+</span><span class='line'>    |- palettes                      # Design Palettes
+</span><span class='line'>      |- _colors.scss
+</span><span class='line'>      |- _fonts.scss
+</span><span class='line'>      |- _planes.scss
+</span><span class='line'>      |- _dimensions.scss
+</span><span class='line'>    |- strategies                    # Design Strategies
+</span><span class='line'>      |- _layers.scss
+</span><span class='line'>      |- _layout.scss
+</span><span class='line'>      |- _theme.scss
+</span><span class='line'>      |- _typography.scss
+</span><span class='line'>    |- theme                         # Design Themes
+</span><span class='line'>      |- _layers.scss
+</span><span class='line'>      |- _layout.scss
+</span><span class='line'>      |- _theme.scss
+</span><span class='line'>      |- _typography.scss
+</span><span class='line'>  index.scss
+</span><span class='line'>  variables.scss                     # CSS variables
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note the following:</p>
+
+<ul>
+<li>Sass variables are used to achieve a <strong>Design Theme</strong> and <strong>Design Palette</strong> and Sass mixins define <strong>Design strategies</strong> - all of which are imported and used as Sass partials</li>
+<li>Design themes and strategies are organised by <a href="/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types">virtual space</a> dimensions (theme, typography, layers and layout)</li>
+<li>All variables should be <a href="/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types">named and defined accordance with their measurement type</a></li>
+<li><strong>Design contexts</strong> and CSS variables are covered later in the article</li>
+</ul>
+
+
+<h3>Refactoring legacy code to introduce design constants</h3>
+
+<p>Although a more difficult task, it&rsquo;s also possible to refactor existing code bases to be more in line with these concepts.</p>
+
+<p>An example stylesheet:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="mh">#083e4b</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">caption</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">white-space</span><span class="o">:</span> <span class="no">nowrap</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">text-overflow</span><span class="o">:</span> <span class="n">ellipsis</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.button</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">padding</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">text-transform</span><span class="o">:</span> <span class="no">uppercase</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.primary</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="mh">#0e3a5f</span><span class="p">;</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:</span> <span class="mh">#f9f9f9</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.danger</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="mh">#843534</span><span class="p">;</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:</span> <span class="mh">#f9f9f9</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.secondary</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.cancel</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="mh">#93a1a1</span><span class="p">;</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:</span> <span class="mh">#f9f9f9</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.nav-item</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">padding</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">text-transform</span><span class="o">:</span> <span class="no">uppercase</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.link</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">color</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Identify design strategies</h4>
+
+<p>The first step is to identify <strong>Design Strategies</strong> (which set <strong>Property Groups</strong>) and encoding them as Sass mixins:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// styles/partials/strategies/_theme.scss</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Complement the font colour whenever it is used on a dark background</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="k">@mixin</span><span class="nf"> dark-background</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="mh">#f9f9f9</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/strategies/_typography.scss</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Truncate overflowing text with ellipsis</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="k">@mixin</span><span class="nf"> overflow-ellipsis</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">white-space</span><span class="o">:</span> <span class="no">nowrap</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-overflow</span><span class="o">:</span> <span class="n">ellipsis</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Upcase text on clickable elements and apply consistent padding</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="k">@mixin</span><span class="nf"> clickable-element</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-transform</span><span class="o">:</span> <span class="no">uppercase</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/index.scss</span>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">./partials/strategies/theme&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="mh">#083e4b</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">caption</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ovewflow-ellipsis</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.button</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> clickable-element</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.primary</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">@include</span><span class="nd"> dark-background</span><span class="p">(</span><span class="mh">#0e3a5f</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.danger</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">@include</span><span class="nd"> dark-background</span><span class="p">(</span><span class="mh">#843534</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.secondary</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.cancel</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="mh">#93a1a1</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.nav-item</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> clickable-element</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.link</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">color</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This identifies them as re-used patterns across the design and gives them a name and prominence so your development and design team can see and discuss the designs in terms of the same concepts.</p>
+
+<p>This is likely the most difficult and frustrating step, depending on how consistently the application has been developed. If you get stuck, you may find it useful to actually swap the order of the first two steps.</p>
+
+<p>It&rsquo;s normal to encounter opportunities to simplify and consolidate and bring more consistency across the application. As patterns emerge, work with you design team to formalise and refine them.</p>
+
+<h4>Identify a design theme</h4>
+
+<p>The next step is to extract a <strong>Design Theme</strong> into Sass variables:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// styles/partials/theme/_colours.scss</span>
+</span><span class='line'><span class="nv">$color-primary</span><span class="o">:</span> <span class="mh">#0e3a5f</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$color-secondary</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$color-danger</span><span class="o">:</span> <span class="mh">#843534</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$color-abandonment</span><span class="o">:</span> <span class="mh">#93a1a1</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$font-color</span><span class="o">:</span> <span class="mh">#083e4b</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-color-complement</span><span class="o">:</span> <span class="mh">#f9f9f9</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/theme/_layout.scss</span>
+</span><span class='line'><span class="nv">$grid-unit-400</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$grid-unit-500</span><span class="o">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/strategies/_theme.scss</span>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">../theme/colors&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@mixin</span><span class="nf"> dark-background</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$color</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nv">$font-color-complement</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/strategies/_typography.scss</span>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">../theme/layout&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@mixin</span><span class="nf"> overflow-ellipsis</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">white-space</span><span class="o">:</span> <span class="no">nowrap</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-overflow</span><span class="o">:</span> <span class="n">ellipsis</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@mixin</span><span class="nf"> clickable-element</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="nv">$grid-unit-400</span> <span class="nv">$grid-unit-500</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-transform</span><span class="o">:</span> <span class="no">uppercase</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/index.scss</span>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">./partials/theme/colors&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">./partials/strategies/theme&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nv">$font-color</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">caption</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> ovewflow-ellipsis</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.button</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> clickable-element</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.primary</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">@include</span><span class="nd"> dark-background</span><span class="p">(</span><span class="nv">$color-primary</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.danger</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">@include</span><span class="nd"> dark-background</span><span class="p">(</span><span class="nv">$color-danger</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.secondary</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="nv">$color-secondary</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nc">.cancel</span> <span class="p">{</span>
+</span><span class='line'>      <span class="na">background-color</span><span class="o">:</span> <span class="nv">$color-abandonment</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.nav-item</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> clickable-element</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.link</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">color</span><span class="o">:</span> <span class="nv">$color-secondary</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Whereas the introduction of <strong>Design Strategies</strong> identifies, labels and re-uses <em>strategies</em> across the design, a <strong>Design Theme</strong> does the same for <em>values</em>.</p>
+
+<h4>Optional: Extract out a design palette</h4>
+
+<p>If you&rsquo;re refactoring a legacy code base not necessarily built from first principles, you may stop here. But in situations where you&rsquo;re working from designs, it&rsquo;s often useful to illustrate the underlying fundamentals by starting with a <strong>Design Palette</strong>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// styles/partials/palette/_colours.scss</span>
+</span><span class='line'><span class="nv">$blue-100</span><span class="o">:</span> <span class="mh">#083e4b</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="nv">$blue-300</span><span class="o">:</span> <span class="mh">#0e3a5f</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'><span class="nv">$blue-600</span><span class="o">:</span> <span class="mh">#12b8d5</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/palette/_layout.scss</span>
+</span><span class='line'><span class="nv">$base-4-unit-1</span><span class="o">:</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$base-4-unit-2</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$base-4-unit-3</span><span class="o">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/theme/_colours.scss</span>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">../palette/colors&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$color-primary</span><span class="o">:</span> <span class="nv">$blue-300</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$color-secondary</span><span class="o">:</span> <span class="nv">$blue-600</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$font-color</span><span class="o">:</span> <span class="nv">$blue-100</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/theme/_layout.scss</span>
+</span><span class='line'><span class="nv">$grid-unit-400</span><span class="o">:</span> <span class="nv">$base-4-unit-2</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$grid-unit-500</span><span class="o">:</span> <span class="nv">$base-4-unit-3</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Starting with (or extracting) a <strong>Design Palette</strong> gives further insight into why certain values have made their way into the designs, how they relate to one another, and gives clues for solving problems like needing to add new values or change existing ones.</p>
+
+<h2>Working with design variables</h2>
+
+<h3>Design contexts and identifying independent variables</h3>
+
+<p>Establishing <strong>Design Contexts</strong> is effectively determining what variables may change at runtime (or &ldquo;use time&rdquo;) that could effect how a design behaves. This can be things like device orientation, changing of user preferences, or user agent settings. These become your <em>independent variables</em>, and your design is expressed in terms of <em>dependent variables</em>. It&rsquo;s essential these relationships are understood and encoded during the implementation of the designs. For example, if the user uses a larger default font size, all quantities that should adjust to accommodate that, should be expressed <em>in terms of</em> the default font size.</p>
+
+<h3>Dynamic design mechanisms</h3>
+
+<p>There are broadly speaking two types of relationships between the independent variables and their outputs:</p>
+
+<ul>
+<li><strong>On/Off</strong>: Or hard swaps between different style rules (turning some rules off and some on).</li>
+<li><strong>Scalar</strong>: Alter values in relation to another independent variable (we don&rsquo;t simply flip the value on or off).</li>
+</ul>
+
+
+<p>It&rsquo;s worth nothing On/Off can be used to enable or disable a scalar relationship.</p>
+
+<p>CSS is static, but can be leveraged through one of a two types of mechanisms to achieve different behaviour depending on the circumstances:</p>
+
+<ul>
+<li><code>@media</code> queries: The browser will select <em>which parts</em> of the CSS to apply, by which <code>@media</code> queries match. This allows us to express <strong>Design Contexts</strong> that depend on viewport dimensions, device properties and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media">more</a>. This is an On/Off relationship.</li>
+<li>Relative units: Using <code>rem</code> allows us to build designs that are adaptive to a user&rsquo;s preferred default font size. <code>%</code> allow defining quantities relative to parent elements, and <code>vw</code>, <code>vh</code> allow values relative to the viewport size. These are scalar relationships.</li>
+</ul>
+
+
+<p>What is missing from this list is <strong>Design Contexts</strong> that depend on user preferences: Perhaps you want to offer a dense and sparse version of the designs, or a dark or light mode (although there are newer <code>@media</code> queries that cover the latter). For this, you need to employ <strong>Display Hooks</strong>:</p>
+
+<ul>
+<li>On/Off: Use a dynamic language either at request time (e.g. Ruby, Node, C#, etc), or runtime (JavaScript), to encode design context information where CSS can &ldquo;see&rdquo; it and switch between stylesheets - this is usually adding properties to the DOM.</li>
+<li>Scalar: Use JavaScript at runtime to calculate and directly set properties of DOM elements.</li>
+</ul>
+
+
+<p>For example, the application could offer a &ldquo;Dark mode&rdquo; toggle that (through JavaScript) adds a <code>dark-mode</code> class to the <code>body</code> element:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="n">dimgrey</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Lots of other light mode defaults ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.dark-mode</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">background-color</span><span class="o">:</span> <span class="n">dimgrey</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Lots of other changes for dark mode ...</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Use CSS variables to DRY up On/Off relationships</h3>
+
+<p>The example above for switching to dark mode is rather contrived and simple. In reality, it would likely include hundreds of lines of switching specific values on different properties. You have to write everything twice (or at least 1.5 times): once for light mode, and once for dark mode.</p>
+
+<p>CSS variables allow you to cut that in half, by letting you swap the <em>values</em> of the properties, without having to re-state those properties:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// style/variables.scss</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">--background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">--font-color</span><span class="o">:</span> <span class="n">dimgrey</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.dark-mode</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">--background-color</span><span class="o">:</span> <span class="n">dimgrey</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">--font-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/index.scss</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">backgroud-color</span><span class="p">);</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="no">font</span><span class="o">-</span><span class="no">color</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Lots of other styling in terms of the CSS variables ...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>CSS variables can be set from within JS, or you can continue to set properties on the DOM and use that to trigger new values in CSS (as is shown above).</p>
+
+<h3>Choosing which values to express as CSS variables</h3>
+
+<p>CSS variables are for anything that is required to express you <strong>Design Contexts</strong> - anything that needs to be an variable whose value can change, if a <strong>Design Context</strong> switch occurs.</p>
+
+<h3>Use Sass variables to wrap CSS variables</h3>
+
+<p>The CSS variable syntax is a little awkward to work with, and over the course of development, what&rsquo;s actually required to be elevated from a Sass variable to a CSS one is likely to change. To minimise the use of the awkward syntax and to insulate yourself against unnecessary find-and-replaces when changes occur, use Sass variables to wrap CSS ones, and don&rsquo;t access them directly:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// style/variables.scss</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">--background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">--font-color</span><span class="o">:</span> <span class="n">dimgrey</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nc">.dark-mode</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">--background-color</span><span class="o">:</span> <span class="n">dimgrey</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">--font-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/partials/theme/_colors.scss</span>
+</span><span class='line'><span class="nv">$background-color</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">backgroud-color</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$font-color</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="no">font</span><span class="o">-</span><span class="no">color</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// styles/index.scss</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">./partials/theme/colors&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="nv">$background-color</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nv">$font-color</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Lots of other styling in terms of the CSS variables ...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2022/06/04/using-css-and-sass-to-encode-measurement-types/" title="Previous Post: Using CSS and Sass to encode measurement types">&laquo; Previous: Using CSS and Sass to encode measurement types</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/greena13"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'keyshiftincmd';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://greena13.github.io/blog/2022/07/04/lessons-learned-working-with-sass-and-css-variables/';
+        var disqus_url = 'http://greena13.github.io/blog/2022/07/04/lessons-learned-working-with-sass-and-css-variables/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>
